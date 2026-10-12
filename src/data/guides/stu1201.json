@@ -1,0 +1,620 @@
+[
+  {
+    "id": "guide-stu1201-1",
+    "courseCode": "STU 1201",
+    "lectureNumber": 1,
+    "title": "Lecture 1: Introduction to Programming Concepts",
+    "originalFileName": "Lecture 1 Introduction.pptx",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 1 Introduction.pptx",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Computer programming is the art of translating human intent into unambiguous instructions a machine can execute. Every program operates on the universal 4-stage cycle: Input, Processing, Output, and Storage (IPOS).",
+    "coreHighlights": [
+      {
+        "heading": "What Actually Is a Computer Program?",
+        "points": [
+          "A program is an ordered sequence of instructions stored in memory that directs the CPU to perform specific arithmetic and logical computations.",
+          "Without software, hardware is completely inert. Code bridges human problem-solving logic and physical silicon gates."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Computers do not \"think\"—they execute instructions literally at billions of cycles per second. Bugs exist because computers do exactly what you told them to do, not what you intended."
+        }
+      },
+      {
+        "heading": "The Universal IPOS Computation Cycle",
+        "points": [
+          "1. Input: Capturing raw data via keyboard, network socket, camera, database, or sensors.",
+          "2. Processing: CPU manipulating values in registers and RAM according to code logic.",
+          "3. Output: Presenting human-readable or machine-readable results on monitors, speakers, or HTTP responses.",
+          "4. Storage: Persisting state onto non-volatile secondary media (SSD, HDD, Cloud S3) for future retrieval."
+        ]
+      },
+      {
+        "heading": "The Execution Toolchain Essentials",
+        "points": [
+          "Source Code: The human-readable text you write in high-level languages like C, Java, or Python.",
+          "Compiler: A program that translates the entire source code file at once into binary machine instructions (.obj / .exe) before execution.",
+          "Interpreter: Reads, parses, and executes instructions statement-by-statement at runtime (slower startup, great for fast iteration).",
+          "IDE (Integrated Development Environment): Combines an intelligent code editor, compiler, debugger, and build manager in one workspace."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "At tech giants like Google, Meta, and Netflix, every single service—from search queries to streaming 4K video—strictly follows the IPOS cycle at scale: user taps play (Input), distributed servers decode video chunks (Processing), video frames stream to your phone screen (Output), and your watch progress saves to a database (Storage).",
+      "careerRelevance": "Whether you become a backend engineer, mobile developer, or DevOps engineer, understanding compilation, debugging, and memory flow is what separates script kiddies from high-earning software engineers.",
+      "concreteExample": "When you tap \"Send Money\" on M-PESA, the system captures your PIN and phone number (Input), verifies your bank balance and calculates transaction fees (Processing), sends an SMS confirmation (Output), and records the ledger transaction permanently in an immutable SQL database (Storage)."
+    },
+    "practicalExamples": [
+      {
+        "title": "Basic C IPOS Demonstration",
+        "language": "c",
+        "codeOrDiagram": "#include <stdio.h>\n\nint main(void) {\n    // 1. Storage & Variable Declaration\n    float price, tax, total;\n\n    // 2. Input\n    printf(\"Enter product price (KES): \");\n    scanf(\"%f\", &price);\n\n    // 3. Processing\n    tax = price * 0.16f; // 16% VAT\n    total = price + tax;\n\n    // 4. Output\n    printf(\"Base Price: KES %.2f\\n\", price);\n    printf(\"VAT (16%%):  KES %.2f\\n\", tax);\n    printf(\"Final Due:  KES %.2f\\n\", total);\n\n    return 0; // Success exit status\n}",
+        "explanation": "This 15-line program touches every phase: variable allocation in RAM, interactive user input, mathematical manipulation in the CPU ALU, formatted console output, and exit status code return."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing a Compiler with an Interpreter.",
+        "correctApproach": "Remember: A compiler translates everything ahead of time producing an independent executable. An interpreter must translate line-by-line while the program runs.",
+        "sampleQuestion": "Distinguish between compiled and interpreted execution models, giving two examples of each."
+      },
+      {
+        "trap": "Forgetting the 4th step of the computing cycle.",
+        "correctApproach": "Classic exam question asks for 4 steps: Input -> Processing -> Output -> Storage. Do not forget Storage!"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Algorithm",
+        "definition": "A finite, unambiguous step-by-step procedure for solving a well-defined computational problem."
+      },
+      {
+        "term": "Machine Code",
+        "definition": "The lowest level binary instructions (0s and 1s) directly decoded and executed by the CPU hardware."
+      },
+      {
+        "term": "Source Code",
+        "definition": "High-level human-readable programming language instructions before compilation or interpretation."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-2",
+    "courseCode": "STU 1201",
+    "lectureNumber": 2,
+    "title": "Lecture 2: Programming Paradigms",
+    "originalFileName": "Lecture 2 Programming Paradigms.pptx",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 2 Programming Paradigms.pptx",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "A programming paradigm is an architectural thinking style and mental model for organizing code. The major paradigms are Procedural (step-by-step), Object-Oriented (interacting objects), Functional (pure mathematical transforms), Logic (declarative rules), and Event-Driven (reactive triggers).",
+    "coreHighlights": [
+      {
+        "heading": "1. Procedural Programming (Structured)",
+        "points": [
+          "Core mental model: A recipe. Executes a strictly ordered sequence of steps, functions, and procedures.",
+          "Strengths: Very easy to understand for beginners, lightweight, minimal memory overhead.",
+          "Weaknesses: As codebases exceed 5,000 lines, global state becomes hard to manage (\"spaghetti code\").",
+          "Languages: C, Pascal, BASIC."
+        ]
+      },
+      {
+        "heading": "2. Object-Oriented Programming (OOP)",
+        "points": [
+          "Core mental model: Real-world entities. Groups data (attributes) and behavior (methods) into reusable blueprints called Classes.",
+          "Four Pillars: Encapsulation, Abstraction, Inheritance, and Polymorphism.",
+          "Languages: Java, C++, C#, Python."
+        ]
+      },
+      {
+        "heading": "3. Functional Programming",
+        "points": [
+          "Core mental model: Mathematical functions. Disallows mutating state; same input always produces identical output (pure functions).",
+          "Strengths: Eliminates side-effects and race conditions, exceptionally easy to unit test and parallelize across multi-core CPUs.",
+          "Languages: Haskell, Lisp, Elixir, modern JavaScript subsets."
+        ]
+      },
+      {
+        "heading": "4. Event-Driven Programming (EDP)",
+        "points": [
+          "Core mental model: An infinite listener loop waiting for signals (mouse click, HTTP request, sensor trigger) to execute handler callbacks.",
+          "Languages: JavaScript (Node.js, Browser), C# (WPF/MAUI)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Modern tech stacks do not stick to one paradigm; they combine them! For example, Uber uses Event-Driven architecture to listen for driver GPS updates, Functional programming for reliable real-time fare calculations without race conditions, and OOP to model Driver, Rider, and Trip objects.",
+      "careerRelevance": "Senior engineers are distinguished by picking the right tool for the job. You would not use Prolog to build an iOS app, nor would you use pure procedural C to build a modern React web interface.",
+      "concreteExample": "In an ATM banking system: Step 1 (Insert card) -> Step 2 (Enter PIN) is Procedural. The Account object holding balance and owner info is OOP. The cash dispenser motor triggering on button press is Event-Driven."
+    },
+    "practicalExamples": [
+      {
+        "title": "Paradigm Comparison Matrix for Exam Revision",
+        "language": "markdown",
+        "codeOrDiagram": "| Paradigm | Core Mental Model | Key Strength | Major Real-World Use Case |\n| :--- | :--- | :--- | :--- |\n| **Procedural** | Ordered recipe steps | Fast execution, minimal RAM | Embedded systems, Linux OS kernel |\n| **OOP** | Interacting entities | Code reuse, modularity | University ERPs, Banking apps |\n| **Functional** | Pure math functions | No side-effects, concurrency | High-frequency trading, Data pipelines |\n| **Logic** | Facts + Deduction rules | Automated problem reasoning | Legal AI, Medical diagnostic systems |\n| **Event-Driven**| Signal & Callback | Responsive interfaces | Web GUIs, IoT smart home sensors |",
+        "explanation": "Memorize this 5-row table! Lecturers frequently ask students to construct this comparison matrix."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Imperative vs Declarative.",
+        "correctApproach": "Imperative (Procedural, OOP) describes HOW to solve the problem step-by-step. Declarative (Logic, SQL) describes WHAT result you want and lets the engine figure out how.",
+        "sampleQuestion": "Differentiate between imperative and declarative programming paradigms with examples."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Paradigm",
+        "definition": "A fundamental approach, style, or philosophy for structuring computational logic."
+      },
+      {
+        "term": "Pure Function",
+        "definition": "A function where the return value is determined solely by its inputs, with no observable side effects."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-3",
+    "courseCode": "STU 1201",
+    "lectureNumber": 3,
+    "title": "Lecture 3: Programming Languages Classification",
+    "originalFileName": "Lecture 3 Programming Languages.pptx",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 3 Programming Languages.pptx",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Programming languages are classified across three main axes: Generations (1GL machine code to 5GL AI logic), Abstraction Level (Low-Level hardware control vs High-Level human expressiveness), and Execution Model (Compiled vs Interpreted).",
+    "coreHighlights": [
+      {
+        "heading": "Classification by Generations (1GL to 5GL)",
+        "points": [
+          "1GL (Machine Code): Raw binary 0s and 1s directly executed by the CPU. Not portable, zero abstraction.",
+          "2GL (Assembly Language): Uses human-readable mnemonics (MOV, ADD, JMP). Requires an Assembler.",
+          "3GL (High-Level Procedural & OOP): English-like statements independent of CPU architecture (C, C++, Java, Python).",
+          "4GL (Declarative / Domain-Specific): Focuses on data extraction without procedural loops (SQL, MATLAB).",
+          "5GL (Artificial Intelligence & Constraint Logic): Solves problems using constraints and knowledge bases without programmer-written algorithms (Prolog, Mercury)."
+        ]
+      },
+      {
+        "heading": "Key Qualities of a World-Class Language",
+        "points": [
+          "1. Reliability: Extent to which code performs without crashing under all conditions (enforced by strict type checking).",
+          "2. Writability (Expressiveness): How easily and concisely complex logic can be expressed.",
+          "3. Readability: How easily another engineer can maintain and audit the code 6 months later.",
+          "4. Total Cost: Compilation time, developer training, licensing fees, and ongoing maintenance."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "NASA and SpaceX use C and C++ (3GL Low-Level control) for rocket flight software because they cannot afford garbage collection pauses. Meanwhile, data analysts at Airbnb use SQL (4GL) to query millions of bookings, and AI researchers use Python (3GL high writability) for rapid model prototyping.",
+      "careerRelevance": "Knowing language generations and tradeoffs allows you to choose the exact right language when architecting a solution as an IT consultant.",
+      "concreteExample": "If a bank needs microsecond latency on stock trades, they write C++ (Compiled, Low-Level). If a startup needs to build an MVP mobile app in 2 weeks, they write TypeScript or Python (High-Level, fast writability)."
+    },
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Thinking 5GL means newest or best.",
+        "correctApproach": "5GL refers specifically to logic- and constraint-based languages (like Prolog) developed for knowledge systems, not just recent languages like Rust or Go (which are 3GL!)."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Abstraction",
+        "definition": "The technique of hiding complex hardware implementation details to focus on high-level logic."
+      },
+      {
+        "term": "Type Checking",
+        "definition": "The process of verifying and enforcing data type constraints to prevent catastrophic memory errors."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-4",
+    "courseCode": "STU 1201",
+    "lectureNumber": 4,
+    "title": "Lecture 4: Program Development Lifecycle (PDLC)",
+    "originalFileName": "Lecture 4 Program Development Lifecycle.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 4 Program Development Lifecycle.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "The Program Development Lifecycle (PDLC) is a rigorous 6-step engineering methodology: 1. Problem Definition -> 2. Problem Analysis -> 3. Algorithm Design -> 4. Coding -> 5. Testing & Debugging -> 6. Maintenance & Documentation.",
+    "coreHighlights": [
+      {
+        "heading": "The 6 Sequential Stages of PDLC",
+        "points": [
+          "Stage 1: Problem Definition — Clearly identifying user requirements and defining what the software must accomplish.",
+          "Stage 2: Problem Analysis — Breaking the problem down into exact inputs, expected outputs, and constraints.",
+          "Stage 3: Algorithm Design — Crafting flowcharts and pseudocode before touching an IDE.",
+          "Stage 4: Coding — Writing standard compliant source code in the chosen programming language.",
+          "Stage 5: Testing & Debugging — Identifying and fixing syntax errors, runtime crashes, and logic bugs.",
+          "Stage 6: Maintenance & Documentation — Updating software for security patches, OS changes, and user manuals."
+        ]
+      },
+      {
+        "heading": "Flowcharts vs Pseudocode Standards",
+        "points": [
+          "Flowchart: Visual diagram using standard ANSI shapes (Oval for Start/End, Parallelogram for Input/Output, Rectangle for Computation, Diamond for Decisions).",
+          "Pseudocode: Precise structured English that mirrors programming constructs (IF, ELSE, WHILE, FOR) without language-specific syntax."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "No serious software engineering team starts by writing code immediately! At companies like Amazon, engineers write a 6-page design document (Problem Definition & Analysis) before anyone writes a single line of production code.",
+      "careerRelevance": "Dry-running algorithms and tracing code is the #1 skill tested in technical job interviews at major software firms.",
+      "concreteExample": "Building an automated university grading system: Stage 1 = determine grade scale; Stage 2 = student CAT scores in, letter grade out; Stage 3 = flowchart handling bounds checking (0-100); Stage 4 = C program; Stage 5 = test with boundary cases (-5, 0, 100, 105); Stage 6 = archive for next semester."
+    },
+    "practicalExamples": [
+      {
+        "title": "Pseudocode vs C Implementation",
+        "language": "markdown",
+        "codeOrDiagram": "// Pseudocode:\nSTART\n  READ score\n  IF score >= 70 THEN\n    PRINT \"Grade A\"\n  ELSE IF score >= 60 THEN\n    PRINT \"Grade B\"\n  ELSE\n    PRINT \"Grade C\"\n  ENDIF\nEND",
+        "explanation": "Pseudocode clearly shows the logic branching without syntax noise, making it language-agnostic."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Logic Errors with Syntax Errors.",
+        "correctApproach": "Syntax errors prevent compilation (missing semicolon). Logic errors compile and run fine, but produce WRONG mathematical results (e.g. using + instead of *).",
+        "sampleQuestion": "Describe the three types of programming errors with examples."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Dry Run",
+        "definition": "Manually stepping through code on paper using a trace table to track variable values across each loop iteration."
+      },
+      {
+        "term": "Trace Table",
+        "definition": "A multi-column table recording variable states at every line of execution."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-5",
+    "courseCode": "STU 1201",
+    "lectureNumber": 5,
+    "title": "Lecture 5: Programming Tools & Developer Toolchain",
+    "originalFileName": "Lecture 5 Programming Tools.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 5 Programming Tools.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "From source code to executing CPU instructions requires a coordinated toolchain: Preprocessor -> Compiler -> Assembler -> Linker -> Loader, backed by intelligent debuggers and IDEs.",
+    "coreHighlights": [
+      {
+        "heading": "The 5-Step Compilation Pipeline",
+        "points": [
+          "1. Preprocessor: Replaces macros (#define) and copies included header files (#include) into pure C code.",
+          "2. Compiler: Translates preprocessed C into assembly language.",
+          "3. Assembler: Converts assembly mnemonics into machine code object files (.o / .obj).",
+          "4. Linker: Combines your object files with external C standard libraries (like printf inside libc) into a single standalone binary (.exe).",
+          "5. Loader: OS component that allocates memory in RAM, copies the binary, and sets the CPU Instruction Pointer to main()."
+        ]
+      },
+      {
+        "heading": "Debugging Tools in Modern Development",
+        "points": [
+          "Breakpoints: Pausing execution at a designated line to inspect RAM state.",
+          "Step Over: Executing current line without entering subroutines.",
+          "Step Into: Jumping into the called function to trace internal variables.",
+          "Watch Window: Monitoring how a specific variable changes in real-time."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Linux, Git, and Chrome were all compiled using this exact toolchain (GCC or Clang). When build engineers set up CI/CD pipelines on GitHub Actions, they automate this compilation and linking step thousands of times daily.",
+      "careerRelevance": "Understanding the linker is crucial when resolving mysterious \"undefined reference\" build errors in C/C++ projects.",
+      "concreteExample": "If your program calls sqrt(), the compiler compiles your code, but if the Linker is not told to link the math library (-lm), the build fails because it cannot find the machine code for sqrt."
+    },
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Thinking the compiler creates the final .exe directly.",
+        "correctApproach": "The compiler only creates an object file (.o). It is the LINKER that connects standard libraries and creates the final executable."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Linker",
+        "definition": "Software that binds compiled object files with library routines to resolve external references and generate an executable binary."
+      },
+      {
+        "term": "Loader",
+        "definition": "An operating system utility that loads executable program code from storage into primary memory for execution."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-6",
+    "courseCode": "STU 1201",
+    "lectureNumber": 6,
+    "title": "Lecture 6: C Program Structure",
+    "originalFileName": "Lecture 6 C Program Structure.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 6 C Program Structure.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Every C program is organized into 6 modular sections: Documentation, Link (Headers), Definition, Global Declarations, the mandatory main() function, and Subprograms (Functions).",
+    "coreHighlights": [
+      {
+        "heading": "Anatomy of Standard C Source Code",
+        "points": [
+          "1. Documentation Section: Multi-line comments /* ... */ explaining author, date, and purpose.",
+          "2. Link Section: Header inclusions like #include <stdio.h> providing function prototypes.",
+          "3. Definition Section: Constants defined with #define MAX_USERS 100.",
+          "4. Global Declaration Section: Variables and function prototypes accessible across all functions.",
+          "5. main() Section: The required execution entrypoint. Every program must have exactly one main().",
+          "6. Subprogram Section: Custom user-defined function implementations."
+        ]
+      },
+      {
+        "heading": "The Significance of return 0;",
+        "points": [
+          "int main(void) promises the operating system that it will return an integer status code.",
+          "return 0 signals SUCCESS to the operating system shell.",
+          "Any non-zero value (e.g. return 1;) signals an ERROR code."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Linux kernel source code, embedded automotive control modules, and smart meter microcontrollers are all written following this exact C structural pattern.",
+      "careerRelevance": "Automated CI/CD deployment scripts evaluate the exit code of programs. If your program returns 0, the pipeline continues; if it returns non-zero, it triggers automated alerts.",
+      "concreteExample": "When you run git status in terminal, Git returns exit code 0. If it fails to find a git repository, it returns exit code 128, allowing bash scripts to handle errors programmatically."
+    },
+    "practicalExamples": [
+      {
+        "title": "Complete Canonical C Structure",
+        "language": "c",
+        "codeOrDiagram": "/*\n * Project: Student GPACalculator\n * Author: Joseph (KCA University)\n */\n#include <stdio.h>     // Link Section\n\n#define PASS_MARK 50   // Definition Section\n\nint validateScore(int score); // Global Prototype\n\nint main(void) {              // Main Entrypoint\n    int userScore = 75;\n    if (validateScore(userScore)) {\n        printf(\"Student Passed!\\n\");\n    }\n    return 0;                 // 0 = Normal termination\n}\n\nint validateScore(int score) { // Subprogram Section\n    return score >= PASS_MARK;\n}",
+        "explanation": "Illustrates all 6 structural sections clearly formatted with proper indentation and return codes."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using void main() instead of int main(void).",
+        "correctApproach": "KCA University examiners penalize void main()! Standard ANSI/ISO C strictly requires int main(void) ending with return 0;."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Preprocessor Directive",
+        "definition": "A command beginning with # processed before compilation starts, such as file inclusion or macro expansion."
+      },
+      {
+        "term": "Scope",
+        "definition": "The region of program text where an identifier (variable or function) is visible and accessible."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-7",
+    "courseCode": "STU 1201",
+    "lectureNumber": 7,
+    "title": "Lecture 7: Lexical Elements in C",
+    "originalFileName": "Lecture 7 Lexical Elements.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 7 Lexical Elements.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Lexical elements (Tokens) are the smallest individual building blocks recognized by the C compiler. There are 6 types of tokens: Keywords, Identifiers, Constants, Strings, Operators, and Special Characters (Punctuators).",
+    "coreHighlights": [
+      {
+        "heading": "The 6 Lexical Tokens",
+        "points": [
+          "1. Keywords: 32 reserved words (auto, break, case, char, const, continue, default, do, double, else, enum, extern, float, for, goto, if, int, long, register, return, short, signed, sizeof, static, struct, switch, typedef, union, unsigned, void, volatile, while).",
+          "2. Identifiers: User-defined names for variables, arrays, and functions.",
+          "3. Constants: Immutable literal values (e.g. 100, 3.14159, 'A').",
+          "4. String Literals: Sequences of characters enclosed in double quotes terminated by null byte (\\0).",
+          "5. Operators: Mathematical and logical operational symbols (+, -, &&, ==).",
+          "6. Punctuators: Structural delimiters (;, {}, (), [])."
+        ]
+      },
+      {
+        "heading": "The 4 Strict Rules for C Identifiers",
+        "points": [
+          "Rule 1: Can only contain letters (a-z, A-Z), digits (0-9), and the underscore character (_).",
+          "Rule 2: MUST begin with a letter or an underscore. NEVER with a digit (e.g. 2ndStudent is INVALID; student_2 is VALID).",
+          "Rule 3: CANNOT be any of the 32 reserved keywords (e.g. float is invalid as a variable name).",
+          "Rule 4: C is strictly CASE-SENSITIVE: total, Total, and TOTAL are 3 completely distinct variables."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every compiler (including V8 in Google Chrome and JavaScript engines) begins execution with a Lexer / Tokenizer that converts raw text into these exact token streams before generating an Abstract Syntax Tree (AST).",
+      "careerRelevance": "Adhering to clean naming conventions (camelCase, snake_case) is vital for writing production code that passes automated lint checks and code reviews in professional teams.",
+      "concreteExample": "Invalid: int 2026_exam_score; (Fails compilation: starts with digit). Valid: int exam_score_2026; (Clean, readable, complies with C standards)."
+    },
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Thinking single quotes and double quotes are interchangeable.",
+        "correctApproach": "'A' is a single character constant (1 byte, integer ASCII value 65). \"A\" is a string literal containing two bytes: 'A' and the hidden null terminator '\\0'."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Token",
+        "definition": "The smallest individual atomic unit in a source code file parsed by the compiler."
+      },
+      {
+        "term": "Null Terminator (\\0)",
+        "definition": "An ASCII character with value 0 used in C to mark the exact end of a string array in memory."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-8",
+    "courseCode": "STU 1201",
+    "lectureNumber": 8,
+    "title": "Lecture 8: Primary Data Types in C",
+    "originalFileName": "Lecture 8 Primary Data Types in C.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 8 Primary Data Types in C.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "C provides fundamental data types to model numbers, characters, and memory: char (1 byte), int (4 bytes), float (4 bytes, single precision), double (8 bytes, double precision), and void (valueless/generic). Modifiers (signed, unsigned, short, long) adapt memory ranges.",
+    "coreHighlights": [
+      {
+        "heading": "Core Data Types & Memory Matrix",
+        "points": [
+          "char: 1 byte (8 bits). Range -128 to 127. Format specifier: %c.",
+          "unsigned char: 1 byte. Range 0 to 255. Format specifier: %c or %u.",
+          "int: 4 bytes (32 bits on modern systems). Range -2,147,483,648 to 2,147,483,647. Format specifier: %d.",
+          "unsigned int: 4 bytes. Range 0 to 4,294,967,295. Format specifier: %u.",
+          "float: 4 bytes (approx 6 decimal places precision). Format specifier: %f.",
+          "double: 8 bytes (approx 15 decimal places precision). Format specifier: %lf.",
+          "void: Represents absence of value (functions returning nothing or generic void* pointers)."
+        ]
+      },
+      {
+        "heading": "Determining Memory with sizeof",
+        "points": [
+          "sizeof(type) or sizeof(variable) returns the exact memory allocated in bytes.",
+          "Essential because integer sizes can vary across hardware architectures (e.g. 16-bit microcontrollers vs 64-bit servers)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Space missions and medical equipment have crashed because of integer overflows! The Ariane 5 rocket exploded in 1996 because a 64-bit floating point number was converted into a 16-bit signed integer, causing an overflow crash.",
+      "careerRelevance": "Memory efficiency is critical in high-traffic applications. Saving just 2 bytes per user across 100 million active users saves 200 MB of RAM on cloud instances, reducing AWS cloud hosting bills.",
+      "concreteExample": "Representing a human age: int uses 4 bytes (can store up to 2 billion years!). unsigned char uses only 1 byte (0 to 255), saving 75% memory while accurately covering all possible human ages."
+    },
+    "practicalExamples": [
+      {
+        "title": "Memory Sizing in C",
+        "language": "c",
+        "codeOrDiagram": "#include <stdio.h>\n\nint main(void) {\n    printf(\"char size:   %zu byte\\n\",  sizeof(char));\n    printf(\"int size:    %zu bytes\\n\", sizeof(int));\n    printf(\"float size:  %zu bytes\\n\", sizeof(float));\n    printf(\"double size: %zu bytes\\n\", sizeof(double));\n    return 0;\n}",
+        "explanation": "Run this in any C compiler to verify the exact byte sizes allocated by your host architecture."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using %f for double in scanf.",
+        "correctApproach": "In printf, both float and double can use %f, but in scanf you MUST use %lf for double and %f for float, or your values will be corrupted in memory!"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Precision",
+        "definition": "The degree of mutual agreement among repeated measurements; in computing, the number of significant digits in floating-point representations."
+      },
+      {
+        "term": "Format Specifier",
+        "definition": "A placeholder symbol beginning with % indicating how binary values should be converted to readable text in I/O operations."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-9",
+    "courseCode": "STU 1201",
+    "lectureNumber": 9,
+    "title": "Lecture 9: Variables, Constants and Typecasting in C",
+    "originalFileName": "Lecture 9 Variables, Constants and Typecasting in C.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 9 Variables, Constants and Typecasting in C.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Variables are named RAM memory locations whose values can change during execution. Constants are immutable values defined via #define or const. Typecasting handles the conversion between differing data types, either implicitly by compiler widening or explicitly via manual casting.",
+    "coreHighlights": [
+      {
+        "heading": "Variables: The Three Attributes",
+        "points": [
+          "Every variable in C has: 1. A Name (identifier), 2. A Data Type (dictating byte size and allowed operations), and 3. A Memory Address in RAM (retrieved using the address-of operator &var)."
+        ]
+      },
+      {
+        "heading": "Constants: #define vs const Qualifier",
+        "points": [
+          "#define PI 3.14159: Handled by preprocessor. Performs text replacement before compilation. Takes no memory allocation.",
+          "const float PI = 3.14159f;: Typed constant managed by compiler. Enforces type-safety and scope rules."
+        ]
+      },
+      {
+        "heading": "Implicit vs Explicit Typecasting",
+        "points": [
+          "Implicit (Type Promotion): Automatic widening by compiler from narrower to wider type (e.g. int + float -> float) with zero data loss.",
+          "Explicit Casting: Developer explicitly forces conversion: (target_type)expression. Essential to avoid integer division truncation!"
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Financial banking applications calculate interest rates to 8 decimal places. Explicit casting ensures rounding errors do not accumulate across millions of account transactions.",
+      "careerRelevance": "Integer truncation is one of the most common bugs written by junior developers in interview coding challenges.",
+      "concreteExample": "Calculating average score: int total = 17, count = 2; float avg = total / count; will store 8.0, NOT 8.5, because both operands are integers! To fix: float avg = (float)total / count; correctly produces 8.5."
+    },
+    "practicalExamples": [
+      {
+        "title": "Integer Truncation & Casting Fix",
+        "language": "c",
+        "codeOrDiagram": "#include <stdio.h>\n\nint main(void) {\n    int marks = 15;\n    int total = 20;\n\n    // BAD: Integer division discards decimal remainder!\n    float wrongPercent = marks / total * 100; // Evaluates 0 * 100 = 0.00%\n\n    // GOOD: Explicit typecasting forces floating point division\n    float rightPercent = ((float)marks / total) * 100; // Evaluates 0.75 * 100 = 75.00%\n\n    printf(\"Wrong: %.2f%%\\n\", wrongPercent);\n    printf(\"Right: %.2f%%\\n\", rightPercent);\n    return 0;\n}",
+        "explanation": "Demonstrates the classic integer division trap and how a single (float) cast fixes it."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Assuming float x = 5 / 2; stores 2.5.",
+        "correctApproach": "5 / 2 executes integer division FIRST, yielding 2. Only then is 2 converted to 2.000000. You must write (float)5 / 2 or 5.0 / 2."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Truncation",
+        "definition": "The abrupt discarding of fractional decimal digits when converting from a floating-point type to an integer."
+      },
+      {
+        "term": "Type Coercion",
+        "definition": "The implicit automatic conversion of a value from one data type to another by the compiler."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1201-10",
+    "courseCode": "STU 1201",
+    "lectureNumber": 10,
+    "title": "Lecture 10: Operators in C",
+    "originalFileName": "Lecture 10 Operators in C.pdf",
+    "downloadUrl": "/notes/intro-to-programming/Lecture 10 Operators in C.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Operators are special symbols that trigger arithmetic, logical, and bitwise computations. Understanding operator precedence and short-circuit evaluation in logical operations is essential for flawless condition checking.",
+    "coreHighlights": [
+      {
+        "heading": "The 7 Operator Families in C",
+        "points": [
+          "1. Arithmetic: +, -, *, /, % (modulus works ONLY on integers!).",
+          "2. Relational: ==, !=, <, >, <=, >= (returns 1 for True, 0 for False).",
+          "3. Logical: && (Logical AND), || (Logical OR), ! (Logical NOT).",
+          "4. Bitwise: & (AND), | (OR), ^ (XOR), ~ (NOT), << (Left Shift), >> (Right Shift).",
+          "5. Assignment: =, +=, -=, *=, /=, %=",
+          "6. Increment/Decrement: Pre-increment (++x) vs Post-increment (x++).",
+          "7. Ternary / Conditional: condition ? expr_if_true : expr_if_false;"
+        ]
+      },
+      {
+        "heading": "Logical Short-Circuit Evaluation",
+        "points": [
+          "In expr1 && expr2: If expr1 is FALSE (0), expr2 is NEVER evaluated because the whole condition is guaranteed false.",
+          "In expr1 || expr2: If expr1 is TRUE (1), expr2 is NEVER evaluated because the whole condition is guaranteed true."
+        ]
+      },
+      {
+        "heading": "Prefix (++x) vs Postfix (x++)",
+        "points": [
+          "Prefix (++x): Increments x immediately, then returns the new value.",
+          "Postfix (x++): Returns the original value first, and increments x afterwards."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Short-circuit evaluation is used constantly in enterprise software to prevent Null Pointer Dereference crashes (e.g. if (user != NULL && user->isActive)). If user is NULL, the second check is bypassed safely.",
+      "careerRelevance": "Bitwise operators (&, |, <<) are used in cryptography (AES/RSA encryption), networking subnet calculations, and operating system permission masks (chmod 755).",
+      "concreteExample": "Checking if a number is even or odd: instead of slow division num % 2 == 0, low-level game engines use bitwise AND: if ((num & 1) == 0) which completes in a single CPU cycle!"
+    },
+    "practicalExamples": [
+      {
+        "title": "Prefix vs Postfix Increments Demystified",
+        "language": "c",
+        "codeOrDiagram": "#include <stdio.h>\n\nint main(void) {\n    int a = 5, b = 5;\n\n    int res1 = ++a * 2; // a becomes 6, then 6 * 2 = 12\n    int res2 = b++ * 2; // 5 * 2 = 10, then b becomes 6\n\n    printf(\"Prefix result:  %d, a is %d\\n\", res1, a);\n    printf(\"Postfix result: %d, b is %d\\n\", res2, b);\n    return 0;\n}",
+        "explanation": "A classic CAT exam question. Notice res1 is 12 while res2 is 10, even though both a and b end up as 6."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using the assignment operator = instead of relational == in an if statement.",
+        "correctApproach": "if (x = 5) ASSIGNS 5 to x, evaluates to true, and always executes! You must write if (x == 5) to test equality."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Modulus (%)",
+        "definition": "An arithmetic operator returning the remainder of integer division (e.g. 7 % 3 yields 1)."
+      },
+      {
+        "term": "Precedence",
+        "definition": "The grammatical priority determining which operators are evaluated first in an expression without parentheses."
+      }
+    ]
+  }
+]

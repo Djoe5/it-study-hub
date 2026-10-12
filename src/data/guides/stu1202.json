@@ -1,0 +1,776 @@
+[
+  {
+    "id": "guide-stu1202-1",
+    "courseCode": "STU 1202",
+    "lectureNumber": 1,
+    "title": "Lesson 1: Services Provided by the Internet",
+    "originalFileName": "Lesson 1 services provided by the internet.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 1 services provided by the internet.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "The Internet is the global network of interconnected computer networks; the World Wide Web (WWW) is an information service operating on top of it. Core protocols (HTTP, HTTPS, DNS, FTP) govern communication between clients and web servers.",
+    "coreHighlights": [
+      {
+        "heading": "Internet vs World Wide Web (Critical Distinction)",
+        "points": [
+          "The Internet: The underlying global hardware infrastructure (cables, routers, satellites, fiber-optic backbones).",
+          "The World Wide Web (WWW): An application service running on the Internet using HTTP to exchange hypermedia documents.",
+          "Analogy: The Internet is the road highway network; the WWW is the traffic of cars moving packages across it."
+        ]
+      },
+      {
+        "heading": "Client-Server Architecture & DNS Resolution",
+        "points": [
+          "Client: The user agent (browser like Chrome or Safari) requesting web pages.",
+          "Server: High-performance computer listening on ports (Port 80 for HTTP, Port 443 for HTTPS) serving HTML/CSS/JS assets.",
+          "DNS (Domain Name System): The phonebook of the web that translates human names (google.com) into machine IP addresses (142.250.180.46)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Cloud providers like Cloudflare, AWS CloudFront, and Akamai manage global Content Delivery Networks (CDNs) and DNS servers to shave milliseconds off web page load times for billions of users.",
+      "careerRelevance": "Understanding HTTP status codes (200 OK, 301 Redirect, 404 Not Found, 500 Internal Server Error) is fundamental when debugging APIs and frontend web apps.",
+      "concreteExample": "When you type kcau.ac.ke in your browser: 1. Browser queries DNS for KCAU server IP. 2. Browser opens TCP handshake with server on Port 443. 3. Browser sends HTTP GET request. 4. Server returns HTML document."
+    },
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Saying the Internet and the World Wide Web are synonyms.",
+        "correctApproach": "Never say they are the same! The Internet was born in 1969 (ARPANET); the WWW was invented in 1989 by Sir Tim Berners-Lee."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "HTTP/HTTPS",
+        "definition": "Hypertext Transfer Protocol (Secure): The protocol transmitting encrypted web documents over SSL/TLS."
+      },
+      {
+        "term": "IP Address",
+        "definition": "A unique numerical identifier assigned to every device connected to a computer network."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-2",
+    "courseCode": "STU 1202",
+    "lectureNumber": 2,
+    "title": "Lesson 2: Web Project Management",
+    "originalFileName": "Lesson 2 Web Project management.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 2 Web Project management.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Professional web development is managed through structured lifecycle phases: Planning, Analysis, Design (wireframing & sitemaps), Development, Testing (cross-browser & responsive), and Deployment/Maintenance.",
+    "coreHighlights": [
+      {
+        "heading": "Web Project Development Phases",
+        "points": [
+          "1. Discovery & Planning: Identifying client business goals, target demographic, and functional requirements.",
+          "2. Information Architecture (IA): Creating sitemaps establishing page hierarchies and user navigation flows.",
+          "3. Wireframing & Prototyping: Creating low-fidelity skeletal layouts (Figma/Adobe XD) before writing HTML.",
+          "4. Implementation: Writing semantic HTML5 markup, responsive CSS, and dynamic JavaScript.",
+          "5. Testing & Quality Assurance: Verifying accessibility (WCAG), responsive breakpoints, and SEO metadata.",
+          "6. Deployment & Hosting: Publishing code to servers with SSL certificates and setting up analytics."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Software agencies charge thousands of dollars for websites because they follow this disciplined process. Skipping wireframing leads to \"scope creep\" and costly redesigns.",
+      "careerRelevance": "Agile sprints, Jira ticket tracking, and user persona creation are standard daily workflows for frontend engineers and UI/UX designers.",
+      "concreteExample": "Building an e-commerce website for a Kenyan fashion brand: wireframes ensure the shopping cart checkout has only 2 steps, reducing cart abandonment by 35% before writing any code."
+    },
+    "keyTermsGlossary": [
+      {
+        "term": "Wireframe",
+        "definition": "A visual schematic or blueprint outlining page layout and element placement without colors or graphics."
+      },
+      {
+        "term": "Information Architecture",
+        "definition": "The structural organization and labeling of website content to facilitate intuitive navigation."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-3",
+    "courseCode": "STU 1202",
+    "lectureNumber": 3,
+    "title": "Lesson 3: Website Layout Design & UI/UX Principles",
+    "originalFileName": "Lesson 3 Website Layout Design.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 3 Website Layout Design.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Effective web layout relies on foundational visual design principles (CRAP: Contrast, Repetition, Alignment, Proximity), responsive grid systems, and intuitive visual hierarchy.",
+    "coreHighlights": [
+      {
+        "heading": "The 4 Golden Visual Design Principles (CRAP)",
+        "points": [
+          "1. Contrast: Making elements visually distinct so users immediately notice what is important (e.g. bold call-to-action buttons).",
+          "2. Repetition: Repeating colors, font families, and button shapes to create visual cohesion across pages.",
+          "3. Alignment: Aligning elements along invisible grid lines to convey order and professionalism.",
+          "4. Proximity: Grouping related items closely together (e.g. an image and its caption) to communicate relationship."
+        ]
+      },
+      {
+        "heading": "Standard Anatomical Web Regions",
+        "points": [
+          "Header: Brand identity, search bar, and primary navigation.",
+          "Hero Section: Eye-catching headline, subtitle, and primary call-to-action button.",
+          "Main Content Area: Core articles, product showcases, or interactive forms.",
+          "Sidebar: Complementary widgets, filters, and sub-navigation.",
+          "Footer: Copyright notices, legal links, sitemaps, and social media handles."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every modern tech company (Apple, Stripe, Airbnb) builds their software on a Design System (like Material Design or Tailwind CSS) that codifies these exact visual hierarchy principles into reusable components.",
+      "careerRelevance": "Developers with strong UI/UX awareness command significantly higher salaries because they build interfaces that users love without needing constant designer supervision.",
+      "concreteExample": "Stripe redesigned their checkout button with high contrast against the dark background, instantly increasing customer conversion rates by 8% across millions of transactions."
+    },
+    "keyTermsGlossary": [
+      {
+        "term": "Visual Hierarchy",
+        "definition": "The deliberate arrangement of design elements in order of visual importance using size, color, and spacing."
+      },
+      {
+        "term": "Whitespace",
+        "definition": "The intentional empty space around and between design elements that gives layouts breathing room."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-4",
+    "courseCode": "STU 1202",
+    "lectureNumber": 4,
+    "title": "Lesson 4: Introduction to HTML & Basic Page Structure",
+    "originalFileName": "l4 HTML.pdf",
+    "downloadUrl": "/notes/web-design/l4 HTML.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "HyperText Markup Language (HTML) is the foundational structural language of the World Wide Web. This lecture establishes the anatomy of HTML documents, nested element hierarchies, opening and closing tags, document headers (<head>, <title>), and body structures (<h1>-<h6>, <p>, <br>, <hr>).",
+    "coreHighlights": [
+      {
+        "heading": "HTML Document Anatomy & Standards",
+        "points": [
+          "HTML documents are plain text files interpreted by web browsers to render formatted visual layouts.",
+          "Standard Structure: <!DOCTYPE html> defines modern HTML5 standards; <html> is the document root; <head> contains metadata, charset encoding, and document titles; <body> holds all rendered visual elements.",
+          "Tags vs. Elements: A tag is the markup notation (<p> or </p>); an element comprises the opening tag, content, and closing tag."
+        ]
+      },
+      {
+        "heading": "Basic Text Elements & Paragraph Breaks",
+        "points": [
+          "Headings: <h1> through <h6> establish visual and semantic information hierarchy. <h1> is the primary page title (strictly one per page for SEO).",
+          "Paragraphs (<p>) and Line Breaks (<br>): Paragraphs add automatic vertical block margins; <br> forces a line break within a block without margin padding.",
+          "Horizontal Rules (<hr>): Semantic divider separating thematic sections of content."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Modern accessibility (WCAG) and search engine optimization (SEO) depend 100% on proper heading hierarchies. Screen readers used by visually impaired users rely on <h1>-<h6> navigation trees to skim content.",
+      "careerRelevance": "Frontend engineers and technical writers must structure semantically valid markup before styling with React or Tailwind.",
+      "concreteExample": "Google indexing algorithms penalize websites with multiple <h1> tags or broken heading hierarchies because web crawlers cannot determine the primary subject of the page."
+    },
+    "practicalExamples": [
+      {
+        "title": "Standard HTML5 Boilerplate",
+        "language": "html",
+        "codeOrDiagram": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>KCA University Portal</title>\n</head>\n<body>\n  <h1>Department of Information Technology</h1>\n  <p>Welcome to the degree portal. Please review your lecture syllabus below.</p>\n  <hr>\n</body>\n</html>",
+        "explanation": "Illustrates the minimal compliant HTML5 skeleton required for all browser rendering engines."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using multiple <h1> tags per page or using headings just to make text bold.",
+        "correctApproach": "Use <h1> only once for the main document title. If you just need bold text, use <strong> or CSS font-weight.",
+        "sampleQuestion": "What is the semantic purpose of heading tags <h1> through <h6>?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "HTML",
+        "definition": "HyperText Markup Language; the standard markup language for documents designed to be displayed in a web browser."
+      },
+      {
+        "term": "Semantic Element",
+        "definition": "An HTML element that clearly describes its meaning to both the browser and the developer (e.g., <header>, <article>, <h1>)."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-5",
+    "courseCode": "STU 1202",
+    "lectureNumber": 5,
+    "title": "Lesson 6: Further Text Formatting & Preformatted Text",
+    "originalFileName": "l6 Further Text Formatting.pdf",
+    "downloadUrl": "/notes/web-design/l6 Further Text Formatting.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "This lecture explores text emphasis and formatting mechanics in HTML. It contrasts physical styling tags (<b>, <i>, <u>) with semantic phrasing elements (<strong>, <em>), and explains how preformatted blocks (<pre>) and blockquotes (<blockquote>) preserve whitespace and structure for code and quotations.",
+    "coreHighlights": [
+      {
+        "heading": "Physical vs. Semantic Text Formatting",
+        "points": [
+          "Physical Formatting: <b> (bold) and <i> (italic) instruct browsers how to display text visually without conveying semantic weight.",
+          "Semantic Phrasing: <strong> indicates strong importance (screen readers emphasize pitch); <em> indicates verbal stress emphasis.",
+          "Subscript (<sub>) and Superscript (<sup>): Used for mathematical formulas (x<sup>2</sup>) and chemical notations (H<sub>2</sub>O)."
+        ]
+      },
+      {
+        "heading": "Preserving Whitespace with <pre> & <code>",
+        "points": [
+          "Browser Whitespace Collapsing: HTML parsers collapse multiple spaces, tabs, and newlines into a single space by default.",
+          "Preformatted Text (<pre>): Displays text exactly as typed in monospace font, preserving all spaces, indents, and line breaks.",
+          "Blockquotes (<blockquote>): Represents extended quotations indented from surrounding parent paragraphs."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Technical documentation platforms (MDN, GitHub, StackOverflow) use <pre> and <code> tags to render syntax-highlighted code snippets without browser whitespace destruction.",
+      "careerRelevance": "Understanding semantic formatting is critical for web accessibility compliance required by corporate enterprise contracts.",
+      "concreteExample": "Screen readers for blind developers announce <strong> text with higher pitch and emphasis, whereas <b> tags are read monotonically."
+    },
+    "practicalExamples": [
+      {
+        "title": "Displaying Code and Formulas in HTML",
+        "language": "html",
+        "codeOrDiagram": "<p>Einstein's famous equation is E = mc<sup>2</sup>.</p>\n<p>Water molecule is represented as H<sub>2</sub>O.</p>\n\n<pre>\nfunction calculateTax(subtotal) {\n    const VAT_RATE = 0.16; // 16% Kenyan VAT\n    return subtotal * VAT_RATE;\n}\n</pre>",
+        "explanation": "Demonstrates sub/sup typography and code block whitespace preservation."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using <pre> to indent normal paragraphs.",
+        "correctApproach": "Use CSS margin or padding to indent body paragraphs; reserve <pre> strictly for code, ASCII diagrams, or pre-aligned data.",
+        "sampleQuestion": "Why do browsers collapse whitespace by default and how does the <pre> tag override this behavior?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Whitespace Collapsing",
+        "definition": "The browser mechanism that treats consecutive spaces, tabs, and line breaks in HTML source as a single whitespace."
+      },
+      {
+        "term": "<pre>",
+        "definition": "An HTML element that defines preformatted text, rendered in a fixed-width font with preserved spacing."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-6",
+    "courseCode": "STU 1202",
+    "lectureNumber": 6,
+    "title": "Lesson 7: Colours, Hexadecimal Notations & Page Backgrounds",
+    "originalFileName": "l7 Colours and Textures.pdf",
+    "downloadUrl": "/notes/web-design/l7 Colours and Textures.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Color theory and digital representation are central to visual interface design. This lecture covers the 3 color declaration models in web design (color names, hexadecimal RGB #RRGGBB, and decimal rgb()), contrasting legacy HTML attributes (bgcolor, text) with modern CSS styling and background wallpaper techniques.",
+    "coreHighlights": [
+      {
+        "heading": "Digital Color Models: Hexadecimal vs. RGB",
+        "points": [
+          "Additive RGB Color Model: Red, Green, and Blue light channels ranging from 0 to 255 (00 to FF in hexadecimal).",
+          "Hexadecimal Notation: #RRGGBB format where #000000 is pure black, #FFFFFF is pure white, #FF0000 is pure red, #00FF00 is green, and #0000FF is blue.",
+          "Color Contrast & Readability: Low contrast between foreground text and background colors degrades readability and violates accessibility guidelines."
+        ]
+      },
+      {
+        "heading": "Backgrounds, Patterns & Textures",
+        "points": [
+          "Background Color vs. Background Image: Setting solid colors vs. textured tiled patterns.",
+          "Legacy HTML vs. Modern CSS: Legacy HTML used <body bgcolor=\"#...\" background=\"image.jpg\">; modern web standards strictly decouple styling into CSS (background-color, background-image, background-repeat)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Web designers use color tokens in design systems (Figma, Tailwind CSS). WCAG 2.1 Level AA requires a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text.",
+      "careerRelevance": "UI/UX engineers must understand hex shorthand (#FFF = #FFFFFF) and alpha opacity channels (rgba()) when building production design systems.",
+      "concreteExample": "An e-commerce button with #CCCCCC grey text on a #FFFFFF white background fails WCAG contrast compliance and causes users to abandon purchases."
+    },
+    "practicalExamples": [
+      {
+        "title": "Modern Background & Contrast Styling",
+        "language": "css",
+        "codeOrDiagram": "/* Accessible Theme Styling */\nbody {\n  background-color: #0f172a; /* Deep slate */\n  color: #f8fafc; /* Crisp white - High contrast ratio > 12:1 */\n  background-image: radial-gradient(#334155 1px, transparent 1px);\n  background-size: 24px 24px;\n}",
+        "explanation": "Illustrates modern dark mode color palette implementation with high contrast compliance."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Thinking #000000 is white and #FFFFFF is black.",
+        "correctApproach": "Remember additive light: 00 = zero light emitted (black); FF = maximum light emitted across all 3 color channels (white).",
+        "sampleQuestion": "Explain how the hexadecimal color system represents colors using 6 digits."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Hexadecimal Color",
+        "definition": "A 6-character, 3-byte hexadecimal representation of colors in RGB format (#RRGGBB)."
+      },
+      {
+        "term": "WCAG Contrast Ratio",
+        "definition": "The ratio of luminance between foreground text and background colors, governing visual readability."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-7",
+    "courseCode": "STU 1202",
+    "lectureNumber": 7,
+    "title": "Lesson 8: Introduction to HTML Lists - Ordered, Unordered & Definition",
+    "originalFileName": "l8 introduction to lists.pdf",
+    "downloadUrl": "/notes/web-design/l8 introduction to lists.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Lists structure sequential or grouped data for readable visual presentation. This lecture examines the three types of HTML lists: Unordered Lists (<ul> with bullets), Ordered Lists (<ol> with numerals or letters), and Description/Definition Lists (<dl>, <dt>, <dd>), as well as list nesting and navigation bar construction.",
+    "coreHighlights": [
+      {
+        "heading": "The 3 Varieties of HTML Lists",
+        "points": [
+          "Unordered Lists (<ul>): Used when order does not matter; items are enclosed in <li> (List Item) and bulleted by default.",
+          "Ordered Lists (<ol>): Used for sequential step-by-step procedures, ranked charts, or instructions. Items use numerical or alphabetical markers (type='1', 'a', 'I').",
+          "Description Lists (<dl>): Paired metadata lists comprising <dt> (Definition Term) and <dd> (Definition Description), ideal for glossaries and key-value dictionaries."
+        ]
+      },
+      {
+        "heading": "Nested Lists & Web Navigation Systems",
+        "points": [
+          "List Nesting: Embedding a sub-list within an existing <li> element to build multi-level hierarchical trees or site outlines.",
+          "Semantic Navigation: Modern web navigation menus (<nav>) are built semantically as styled unordered lists (<ul><li><a>...</li></ul>) with CSS display: flex or inline-block."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every major website navigation bar (Amazon, Twitter/X, Apple) is under the hood an unordered list <ul>. Screen readers announce: 'Navigation menu, 5 items', giving blind users immediate context on site structure.",
+      "careerRelevance": "Frontend developers must use semantic lists rather than rows of loose <div> tags to maintain high SEO crawlability.",
+      "concreteExample": "E-commerce category filters: Main categories (Clothing) contain nested sub-lists (Men, Women, Kids) structured via nested <ul> elements."
+    },
+    "practicalExamples": [
+      {
+        "title": "Semantic Description List & Nested Navigation",
+        "language": "html",
+        "codeOrDiagram": "<!-- Academic Glossary via Description List -->\n<dl>\n  <dt>Algorithm</dt>\n  <dd>A step-by-step procedure for solving a computational problem.</dd>\n  <dt>Recursion</dt>\n  <dd>A programming technique where a function calls itself.</dd>\n</dl>\n\n<!-- Navigation Bar Unordered List -->\n<nav>\n  <ul>\n    <li><a href=\"/home\">Home</a></li>\n    <li><a href=\"/courses\">Courses</a></li>\n    <li><a href=\"/contact\">Contact</a></li>\n  </ul>\n</nav>",
+        "explanation": "Demonstrates glossary definition lists and standard semantic navigation menu markup."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Placing raw text or a nested <ul> directly inside another <ul> without wrapping in <li>.",
+        "correctApproach": "The immediate children of <ul> and <ol> must ONLY be <li> tags! A nested list must live INSIDE an <li>: <ul><li>Main<ul><li>Sub</li></ul></li></ul>.",
+        "sampleQuestion": "Write the HTML markup for a 2-level nested recipe list containing ingredients and instructions."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "<ol>",
+        "definition": "An ordered list element that renders its items with sequential numbers or letters."
+      },
+      {
+        "term": "<ul>",
+        "definition": "An unordered list element that renders items with bullet points."
+      },
+      {
+        "term": "<dl>",
+        "definition": "A description list element used to enclose term-description groupings."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-8",
+    "courseCode": "STU 1202",
+    "lectureNumber": 8,
+    "title": "Lesson 9: Graphical Images, Media Formats & Responsive Assets",
+    "originalFileName": "l9 Graphical images.pdf",
+    "downloadUrl": "/notes/web-design/l9 Graphical images.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Images enrich web documents with visual communication. This lecture covers the <img> element, required and optional attributes (src, alt, width, height), major digital image formats for the web (JPEG, PNG, GIF, SVG, WebP), aspect ratios, and the vital accessibility importance of the alt attribute.",
+    "coreHighlights": [
+      {
+        "heading": "The <img> Tag Anatomy & Void Elements",
+        "points": [
+          "Void / Self-Closing Tag: <img> does not enclose text and has no closing </img> tag.",
+          "Mandatory Attributes: src (the relative or absolute URI location of the image file) and alt (alternative text description).",
+          "Layout Dimensions: Setting width and height attributes in HTML reserves layout space before download, preventing Cumulative Layout Shift (CLS)."
+        ]
+      },
+      {
+        "heading": "Web Image Formats Comparison",
+        "points": [
+          "JPEG (.jpg): Lossy compression best for complex photography and continuous-tone scenes with millions of colors.",
+          "PNG (.png): Lossless compression supporting full alpha transparency, ideal for logos, screenshots, and UI icons.",
+          "GIF (.gif): 8-bit limited palette (256 colors), supports simple frame animation.",
+          "SVG (.svg): Scalable Vector Graphics written in XML; infinitely scalable without pixelation, perfect for responsive icons.",
+          "WebP: Modern Google format offering 30% smaller file sizes than JPEG and PNG at equivalent visual fidelity."
+        ]
+      },
+      {
+        "heading": "Accessibility & The alt Attribute Rule",
+        "points": [
+          "Screen readers read the alt text aloud for visually impaired users.",
+          "If the image file fails to load (broken 404 URL or slow network), the browser renders the alt text in place of the missing picture.",
+          "Decorative images should have an empty alt attribute (alt=\"\") so screen readers skip them quietly."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In e-commerce (Shopify, Amazon), page load latency directly governs conversion rates. Every 100ms latency reduces conversions by 1%. Optimizing image formats (serving WebP/AVIF with responsive srcset) is the single biggest performance lever.",
+      "careerRelevance": "Frontend engineers must prevent layout shifts by setting image aspect ratios and writing informative alt text for legal ADA/WCAG compliance.",
+      "concreteExample": "On Safaricom's website, product images are served in compressed WebP format with alt=\"Safaricom 5G Home Wi-Fi Router\" to optimize speed on mobile 3G networks."
+    },
+    "practicalExamples": [
+      {
+        "title": "Accessible Responsive Image Implementation",
+        "language": "html",
+        "codeOrDiagram": "<!-- High Performance Accessible Image -->\n<img \n  src=\"/images/campus-library.webp\" \n  alt=\"Students studying in the KCA University digital library\"\n  width=\"800\" \n  height=\"450\" \n  loading=\"lazy\"\n  style=\"max-width: 100%; height: auto;\"\n>",
+        "explanation": "Uses lazy loading, explicit dimensions to prevent CLS, and responsive CSS scaling."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Omitting the alt attribute or writing alt=\"image\".",
+        "correctApproach": "Always include a descriptive alt attribute explaining what the image depicts. Never leave it off completely.",
+        "sampleQuestion": "Why is the alt attribute mandatory according to W3C HTML specifications?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "alt Attribute",
+        "definition": "An HTML attribute providing alternative text for an image when it cannot be viewed."
+      },
+      {
+        "term": "SVG",
+        "definition": "Scalable Vector Graphics; an XML-based vector image format for two-dimensional graphics with support for interactivity and animation."
+      },
+      {
+        "term": "Cumulative Layout Shift (CLS)",
+        "definition": "A Core Web Vital metric measuring visual stability when images load without pre-reserved dimensions."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-9",
+    "courseCode": "STU 1202",
+    "lectureNumber": 9,
+    "title": "Lesson 10: Hyperlinks, Relative vs. Absolute URLs & Anchor Targets",
+    "originalFileName": "l10 Hyperlinks.pdf",
+    "downloadUrl": "/notes/web-design/l10 Hyperlinks.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Hyperlinks are the core mechanism that connects the World Wide Web. This lecture examines the anchor element (<a>), href destinations, Absolute URLs vs. Relative URLs, document fragment identifiers (internal bookmark jumps #id), email links (mailto:), and browsing context targets (_blank, _self).",
+    "coreHighlights": [
+      {
+        "heading": "The Anchor Element (<a>) Mechanics",
+        "points": [
+          "The <a> tag creates hypertext links to other web pages, downloadable files, email addresses, or specific sections on the same page.",
+          "href (Hypertext Reference): The mandatory attribute specifying the destination URL.",
+          "Link Text: The clickable human-readable label enclosed between <a> and </a>."
+        ]
+      },
+      {
+        "heading": "Absolute vs. Relative URLs",
+        "points": [
+          "Absolute URL: Contains the complete protocol, domain, and path (e.g. https://www.kcau.ac.ke/admissions). Used when linking to external websites.",
+          "Relative URL: Points to a file relative to the current document location (e.g. ./about.html or ../images/logo.png). Used for internal website links.",
+          "Internal Bookmarks (#id): Links to specific HTML elements with matching id attributes on the same page (e.g. href=\"#syllabus\" jumps directly to <section id=\"syllabus\">)."
+        ]
+      },
+      {
+        "heading": "The target Attribute & Security Standards",
+        "points": [
+          "target=\"_self\": Default behavior; opens link in current tab/window.",
+          "target=\"_blank\": Opens link in a brand new tab.",
+          "Security Vulnerability: When using target=\"_blank\", always add rel=\"noopener noreferrer\" to prevent the linked page from accessing window.opener and executing tabnabbing attacks."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "SEO site architecture depends on internal linking topologies. Search engine bots (Googlebot) crawl web graphs via <a> tags. Broken links (404 errors) drain crawl budgets and hurt search ranking.",
+      "careerRelevance": "Web developers must understand reverse tabnabbing and secure linking when embedding external third-party partner portals.",
+      "concreteExample": "Banking portals linking to external PDF terms use <a href=\"terms.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"> to ensure security."
+    },
+    "practicalExamples": [
+      {
+        "title": "Secure Hyperlink & In-Page Navigation",
+        "language": "html",
+        "codeOrDiagram": "<!-- External Secure Link -->\n<a href=\"https://github.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Visit GitHub Enterprise\n</a>\n\n<!-- Internal In-Page Bookmark Jump -->\n<a href=\"#lecture-notes\">Jump to Lecture Notes</a>\n\n<!-- Email Trigger -->\n<a href=\"mailto:support@kcau.ac.ke?subject=Inquiry\">Contact Support</a>",
+        "explanation": "Illustrates secure external links, in-page bookmark anchors, and mailto triggers."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using relative paths with leading forward slashes without understanding the server root.",
+        "correctApproach": "A leading slash (/about.html) searches from server root; omitting the slash (about.html) searches relative to the current directory.",
+        "sampleQuestion": "Distinguish between Absolute and Relative URLs with concrete web examples."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Anchor (<a>)",
+        "definition": "The HTML element used to create hyperlinks to other web resources."
+      },
+      {
+        "term": "Relative URL",
+        "definition": "A URL that points to a file relative to the current working directory or page location."
+      },
+      {
+        "term": "Tabnabbing",
+        "definition": "A phishing attack where a linked target page takes control of the parent window via window.opener."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-10",
+    "courseCode": "STU 1202",
+    "lectureNumber": 10,
+    "title": "Lesson 11: Web Forms, Interactive Inputs & Form Processing",
+    "originalFileName": "l11Forms.pdf",
+    "downloadUrl": "/notes/web-design/l11Forms.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Forms are the primary interactive vehicle for gathering user input on the web. This lecture covers the <form> wrapper and its critical attributes (action, method GET vs. POST), input varieties (<input type='text|password|email|checkbox|radio|submit'>), multi-line textareas (<textarea>), dropdown selects (<select><option>), semantic labeling (<label for='...'>), and client-side validation.",
+    "coreHighlights": [
+      {
+        "heading": "The <form> Container & Submission Methods",
+        "points": [
+          "action: The server-side endpoint URL that receives and processes form data.",
+          "method='GET': Appends form data directly to the URL query string (e.g. ?search=database). Used for non-sensitive read operations; limited data length.",
+          "method='POST': Transmits data securely in the HTTP request payload body. Mandatory for passwords, sensitive data, and file uploads.",
+          "enctype='multipart/form-data': Required when submitting binary files (<input type='file'>)."
+        ]
+      },
+      {
+        "heading": "Input Types & Semantic Controls",
+        "points": [
+          "Text Controls: type='text', type='password' (masks characters with dots), type='email' (enforces email regex validation).",
+          "Selection Controls: type='radio' (single choice among a group sharing the exact same name attribute), type='checkbox' (independent multi-selection).",
+          "Dropdown Menus (<select>): Saves vertical screen space compared to long lists of radio buttons.",
+          "Labels (<label for='input-id'>): Clicking the label text focuses or toggles the input field, vastly improving touch target usability on mobile devices."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In fintech and e-commerce, checkout and login forms are the highest-leverage conversion interfaces. Using type='email' and type='tel' triggers optimized virtual keyboards on iOS and Android devices.",
+      "careerRelevance": "Backend and fullstack developers must understand why passwords must NEVER be sent via HTTP GET, as URLs are recorded in proxy logs and browser history.",
+      "concreteExample": "M-PESA checkout gateway form: Uses method='POST' with encrypted payload body containing phone number and transaction amount to prevent credential leakage."
+    },
+    "practicalExamples": [
+      {
+        "title": "Complete Accessible Registration Form",
+        "language": "html",
+        "codeOrDiagram": "<form action=\"/api/register\" method=\"POST\">\n  <div>\n    <label for=\"student-email\">Student Email:</label>\n    <input type=\"email\" id=\"student-email\" name=\"email\" required>\n  </div>\n\n  <div>\n    <label for=\"password\">Password:</label>\n    <input type=\"password\" id=\"password\" name=\"password\" minlength=\"8\" required>\n  </div>\n\n  <fieldset>\n    <legend>Select Program</legend>\n    <label><input type=\"radio\" name=\"course\" value=\"it\" checked> BSc IT</label>\n    <label><input type=\"radio\" name=\"course\" value=\"cs\"> BSc Computer Science</label>\n  </fieldset>\n\n  <button type=\"submit\">Register Account</button>\n</form>",
+        "explanation": "Illustrates field grouping via <fieldset>, paired <label> tags, and native validation."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Giving radio buttons different name attributes when they belong to the same question.",
+        "correctApproach": "Radio buttons MUST share the EXACT same name attribute so the browser knows they are mutually exclusive choices.",
+        "sampleQuestion": "Explain the difference between HTTP GET and HTTP POST methods in form submissions."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "<form>",
+        "definition": "The HTML document section that contains interactive controls for submitting information to a web server."
+      },
+      {
+        "term": "GET vs POST",
+        "definition": "GET passes data via URL query strings; POST passes data securely in the HTTP request message body."
+      },
+      {
+        "term": "<label>",
+        "definition": "An element that represents a caption for an item in a user interface, improving accessibility."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-11",
+    "courseCode": "STU 1202",
+    "lectureNumber": 11,
+    "title": "Lesson 12: HTML Tables, Tabular Data Presentation & Cell Merging",
+    "originalFileName": "l12 tables.pdf",
+    "downloadUrl": "/notes/web-design/l12 tables.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Tables display complex, multi-dimensional tabular data in structured rows and columns. This lecture details the <table> element, row declarations (<tr>), column headers (<th>), data cells (<td>), structural partitioning (<thead>, <tbody>, <tfoot>), and advanced cell spanning using colspan and rowspan.",
+    "coreHighlights": [
+      {
+        "heading": "Table Architecture & Elements",
+        "points": [
+          "<table>: The container for all tabular data.",
+          "<tr> (Table Row): Declares each horizontal row.",
+          "<th> (Table Header): Defines header cells, bolded and centered by default with semantic scope='col' or scope='row'.",
+          "<td> (Table Data): Contains actual data cells in each row.",
+          "Semantic Sections: <thead> wraps table headers, <tbody> wraps data rows, and <tfoot> holds summary calculations."
+        ]
+      },
+      {
+        "heading": "Merging Cells: colspan vs. rowspan",
+        "points": [
+          "colspan='n': Merges a single cell horizontally across n columns.",
+          "rowspan='n': Merges a single cell vertically down across n rows.",
+          "Table Cell Calculation Rule: When merging cells, subsequent rows or columns must omit the consumed cells to prevent visual table blowout."
+        ]
+      },
+      {
+        "heading": "Modern Usage Rule: Tabular Data ONLY",
+        "points": [
+          "In 1990s web development, tables were misused for overall page layout.",
+          "Modern Rule: Tables must NEVER be used for page layouts; use CSS Flexbox or Grid. Tables are reserved strictly for genuine tabular data (financial ledgers, timetables, schedules)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Enterprise SaaS dashboards (Stripe financial reports, Salesforce CRM, Google Analytics) render millions of data rows using virtualized tabular components with sticky <thead> headers.",
+      "careerRelevance": "Frontend engineers must know how to build accessible data tables with scope='col' and proper ARIA labels for screen reader compatibility.",
+      "concreteExample": "University examination timetable: Days of the week span multiple time slots using colspan='3' for a 3-hour exam session."
+    },
+    "practicalExamples": [
+      {
+        "title": "Semantic Tabular Schedule with Colspan",
+        "language": "html",
+        "codeOrDiagram": "<table border=\"1\">\n  <thead>\n    <tr>\n      <th>Course Code</th>\n      <th>Course Title</th>\n      <th>Credits</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>STU 1201</td>\n      <td>Introduction to Programming</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <td>STU 1202</td>\n      <td>Web Design and Development</td>\n      <td>4</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"2\">Total Registered Credits:</td>\n      <td>8</td>\n    </tr>\n  </tfoot>\n</table>",
+        "explanation": "Demonstrates semantic table sections and horizontal cell spanning with colspan."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing colspan (horizontal) with rowspan (vertical).",
+        "correctApproach": "Remember: colspan expands across columns (left-to-right); rowspan expands down rows (top-to-bottom).",
+        "sampleQuestion": "Write the HTML code for a 3x3 table where the top-left cell spans 2 rows."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "colspan",
+        "definition": "An HTML attribute specifying the number of columns a cell should span horizontally."
+      },
+      {
+        "term": "rowspan",
+        "definition": "An HTML attribute specifying the number of rows a cell should span vertically."
+      },
+      {
+        "term": "<th>",
+        "definition": "A table header cell element that defines header information for a column or row."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-12",
+    "courseCode": "STU 1202",
+    "lectureNumber": 12,
+    "title": "Lesson 13: HTML Frames, Modern Iframes & Sandboxed Security",
+    "originalFileName": "L13 Frames.pdf",
+    "downloadUrl": "/notes/web-design/L13 Frames.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "This lecture examines window splitting and document embedding. It reviews legacy HTML framesets (<frameset>, <frame>), explains why they were deprecated in modern web standards (broken bookmarking, SEO indexing failures, usability problems), and teaches modern Inline Frames (<iframe>) along with critical security parameters (sandbox, allow, CSP).",
+    "coreHighlights": [
+      {
+        "heading": "Legacy Framesets vs. Modern Iframes",
+        "points": [
+          "Legacy <frameset>: Replaced the <body> tag to divide the browser viewport into multiple separate independent HTML documents (rows or cols).",
+          "Why Framesets Were Deprecated: URLs did not update when navigating sub-frames (breaking bookmarking and back buttons), search engines could not index content properly, and printing was problematic.",
+          "Modern Inline Frame (<iframe>): An HTML element placed inside the normal <body> that embeds an isolated external browsing context inside the current document."
+        ]
+      },
+      {
+        "heading": "Iframe Security & Sandboxing Mechanics",
+        "points": [
+          "sandbox Attribute: Restricts malicious actions from embedded third-party content by disabling scripts, forms, and popups by default.",
+          "sandbox='allow-scripts allow-same-origin': Explicitly whitelists required permissions while blocking dangerous actions.",
+          "Clickjacking Defense: Modern websites use X-Frame-Options: DENY or Content-Security-Policy: frame-ancestors to prevent malicious sites from embedding them in hidden iframes."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Payment processors (Stripe Elements, PayPal), YouTube video embeds, and Google Maps widgets are delivered through secure sandboxed <iframe> containers to prevent untrusted JavaScript from stealing credit card credentials.",
+      "careerRelevance": "Web security engineers and frontend developers must configure Content Security Policies (CSP) to defend against Clickjacking and iframe injection attacks.",
+      "concreteExample": "Embedding a YouTube lecture: <iframe src='https://www.youtube.com/embed/...' allow='accelerometer; autoplay; encrypted-media' sandbox='allow-scripts allow-same-origin'>."
+    },
+    "practicalExamples": [
+      {
+        "title": "Secure Sandboxed Iframe Embed",
+        "language": "html",
+        "codeOrDiagram": "<!-- Secure Modern Iframe Integration -->\n<iframe \n  src=\"https://maps.google.com/embed?...\" \n  width=\"100%\" \n  height=\"400\" \n  style=\"border:0; border-radius: 8px;\" \n  loading=\"lazy\"\n  referrerpolicy=\"no-referrer-when-downgrade\"\n  sandbox=\"allow-scripts allow-same-origin\"\n  title=\"KCA University Campus Map\"\n></iframe>",
+        "explanation": "Illustrates modern sandboxed iframe embedding with lazy loading and referrer policies."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Placing <frameset> inside a <body> tag.",
+        "correctApproach": "In legacy HTML, <frameset> REPLACED the <body> tag. In modern HTML5, framesets are deprecated, and <iframe> is used inside the normal <body>.",
+        "sampleQuestion": "Why were HTML framesets deprecated in favor of modern CSS layouts and iframes?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "<iframe>",
+        "definition": "An inline frame element used to embed another HTML document within the current document."
+      },
+      {
+        "term": "Sandbox",
+        "definition": "A security attribute on an iframe that applies extra restrictions to the content in the frame."
+      },
+      {
+        "term": "Clickjacking",
+        "definition": "A malicious attack where a user is tricked into clicking an actionable button embedded inside an invisible iframe."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-css",
+    "courseCode": "STU 1202",
+    "lectureNumber": 13,
+    "title": "Lesson 14: CSS Comprehensive Notes, Box Model & Modern Styling",
+    "originalFileName": "CSS notes.pdf",
+    "downloadUrl": "/notes/web-design/CSS notes.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Cascading Style Sheets (CSS) controls web presentation. Mastering the CSS Box Model (margin, border, padding, content), Flexbox for 1D layout flow, CSS Grid for 2D layouts, and Media Queries for mobile responsiveness is the cornerstone of modern web styling.",
+    "coreHighlights": [
+      {
+        "heading": "The Sacred CSS Box Model",
+        "points": [
+          "Every HTML element is rendered as a rectangular box with 4 concentric layers:",
+          "1. Content: The actual text, image, or video.",
+          "2. Padding: Transparent breathing space INSIDE the border around the content.",
+          "3. Border: The visible outline wrapping the padding and content.",
+          "4. Margin: Transparent buffer OUTSIDE the border pushing away adjacent elements.",
+          "Golden Rule: Always set * { box-sizing: border-box; } so padding and border are included in the element total width calculation!"
+        ]
+      },
+      {
+        "heading": "CSS Flexbox (1-Dimensional Layout)",
+        "points": [
+          "display: flex turns a container into a flexible parent.",
+          "justify-content: Controls alignment along the Main Axis (horizontal by default: flex-start, center, space-between, space-around).",
+          "align-items: Controls alignment along the Cross Axis (vertical by default: stretch, center, flex-start, flex-end).",
+          "flex-wrap: wrap allows items to wrap gracefully onto new lines on small phone screens."
+        ]
+      },
+      {
+        "heading": "Media Queries for Mobile-First Design",
+        "points": [
+          "Mobile-First: Write base CSS for phones first, then use @media (min-width: 768px) { ... } to enhance layout for tablets and desktops.",
+          "Ensures fast page load on mobile networks and eliminates horizontal scrolling."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every modern web application (Facebook, Twitter/X, Netflix) is styled using Flexbox and CSS Grid. Frameworks like Tailwind CSS and Bootstrap are simply pre-packaged utilities built on these exact CSS properties.",
+      "careerRelevance": "CSS layout fluency is a core interview filter. Many developers know how to write code, but struggle to vertically center a div or make a navbar responsive without breaking the page.",
+      "concreteExample": "Centering any element perfectly in both directions requires only 3 lines of CSS: display: flex; justify-content: center; align-items: center;"
+    },
+    "practicalExamples": [
+      {
+        "title": "Responsive Flexbox Navigation Bar",
+        "language": "css",
+        "codeOrDiagram": "/* Universal Box Sizing */\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n/* Flex Navbar */\n.navbar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 1rem 2rem;\n  background-color: #0f172a;\n  color: #ffffff;\n}\n\n.nav-links {\n  display: flex;\n  gap: 1.5rem;\n  list-style: none;\n}\n\n/* Mobile Breakpoint */\n@media (max-width: 768px) {\n  .navbar {\n    flex-direction: column;\n    gap: 1rem;\n  }\n}",
+        "explanation": "Creates a clean modern desktop navbar that automatically stacks into a mobile-friendly column on screens narrower than 768px."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Margin and Padding in diagrams.",
+        "correctApproach": "Padding is INSIDE the border (changes background color area). Margin is OUTSIDE the border (pushes other elements away)."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Cascade",
+        "definition": "The algorithm determining which CSS rule wins when multiple conflicting styles apply to the same element, based on importance, specificity, and source order."
+      },
+      {
+        "term": "Specificity",
+        "definition": "A numerical score calculated by browsers (Inline > ID > Class > Element) deciding which style declaration takes precedence."
+      }
+    ]
+  }
+]

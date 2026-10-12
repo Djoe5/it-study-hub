@@ -1,0 +1,757 @@
+[
+  {
+    "id": "guide-stu2102-1",
+    "courseCode": "STU 2102",
+    "lectureNumber": 1,
+    "title": "Research Methodology L1: Introduction to Computing Research",
+    "originalFileName": "Research Methodology L1.pptx",
+    "downloadUrl": "/notes/computing-research/Research Methodology L1.pptx",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Computing research is an organized, systematic, data-based, and critical scientific inquiry undertaken to establish facts, develop algorithms, or build innovative technological systems. This opening lecture defines research, details the characteristics of scientific inquiry, compares basic vs. applied research, and outlines the end-to-end research lifecycle.",
+    "coreHighlights": [
+      {
+        "heading": "The Scientific Nature of Computing Research",
+        "points": [
+          "Research is a systematic process of inquiry, investigation, examination, and experimentation that seeks to find answers to unresolved questions.",
+          "Core Characteristics: Purposeful, Rigorous, Replicable, Testable, Objective, and Generalizable.",
+          "Research vs. Everyday Problem Solving: Everyday troubleshooting addresses immediate operational symptoms; scientific research extracts generalized principles and creates new knowledge."
+        ]
+      },
+      {
+        "heading": "Pure (Basic) vs. Applied Research in IT",
+        "points": [
+          "Pure / Fundamental Research: Undertaken primarily to advance human theoretical understanding without immediate commercial goals (e.g., computational complexity boundaries, quantum cryptography foundations).",
+          "Applied Research: Addresses immediate practical problems facing organizations, society, or industrial systems (e.g., developing an edge-AI model to optimize battery life on mobile devices)."
+        ]
+      },
+      {
+        "heading": "The End-to-End Research Process Stages",
+        "points": [
+          "Stage 1: Identifying the problem and formulating precise objectives.",
+          "Stage 2: Comprehensive Literature Review to establish prior art.",
+          "Stage 3: Research Design and theoretical/conceptual framework.",
+          "Stage 4: Data Collection using calibrated instruments.",
+          "Stage 5: Data Analysis, coding, interpretation, and synthesis.",
+          "Stage 6: Writing the report and defending findings."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "R&D organizations (Google DeepMind, Microsoft Research, OpenAI) follow this exact empirical process to invent breakthrough technologies like Transformer architectures and zero-shot reasoning models.",
+      "careerRelevance": "Your fourth-year undergraduate IT capstone dissertation and any future postgraduate Master's or PhD degree depend entirely on understanding research methodology.",
+      "concreteExample": "Developing a cyber-fraud detection algorithm in Kenya: Applied research where transaction logs are empirically evaluated to test classification precision against legacy rule-based engines."
+    },
+    "practicalExamples": [
+      {
+        "title": "Formulating a Research Lifecycle Plan",
+        "language": "markdown",
+        "codeOrDiagram": "## Capstone Research Project Lifecycle\n\n1. Problem Identification: High latency in rural Kenyan mobile payment gateways.\n2. Literature Review: Survey peer-reviewed papers on edge caching and SMS batching.\n3. Hypothesis: An asynchronous edge-queue reduces checkout dropouts by >30%.\n4. Design: Design Science Research (DSR) prototyping an offline-first transaction queue.\n5. Evaluation: Benchmark stress test on 50,000 simulated concurrent requests.",
+        "explanation": "Illustrates how theoretical research stages translate into a concrete IT capstone project."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Defining research as simply searching the internet or reading books.",
+        "correctApproach": "Emphasize that research is an original investigation that generates NEW knowledge through empirical observation or artifact evaluation.",
+        "sampleQuestion": "Define research and explain four characteristics of scientific inquiry."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Applied Research",
+        "definition": "Scientific inquiry directed toward solving practical problems and developing commercial applications."
+      },
+      {
+        "term": "Replicability",
+        "definition": "The ability of an experiment or study to be duplicated by other researchers resulting in the same findings."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-2",
+    "courseCode": "STU 2102",
+    "lectureNumber": 2,
+    "title": "Research Problem L2: Identifying and Formulating the Research Problem",
+    "originalFileName": "Research Problem L2.ppt",
+    "downloadUrl": "/notes/computing-research/Research Problem L2.ppt",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "The research problem is the absolute HEART of the research process. Without an unwavering, precisely stated problem, the entire research effort collapses. This lecture breaks down how to identify viable research topics, distinguishes legitimate research problems from mere information gathering or statistical calculation, and guides students in crafting research questions, hypotheses, and scope boundaries.",
+    "coreHighlights": [
+      {
+        "heading": "The Heart of the Research Process",
+        "points": [
+          "To see the problem with unwavering clarity and state it in precise, unmistakable terms is the first requirement of scientific research.",
+          "A research project must involve both data collection and critical interpretation of that data\u2014it must elicit a mental struggle on the part of the researcher to force the data to reveal its underlying meaning."
+        ]
+      },
+      {
+        "heading": "What is NOT a Legitimate Research Problem",
+        "points": [
+          "Not a ruse for self-enlightenment: Gathering information merely to learn about an existing technology is studying, not research.",
+          "Not comparing two existing data sets: Simply comparing male vs. female employment numbers without struggling with causal meaning is a library query, not research.",
+          "Not calculating a correlation coefficient: Running a statistical formula in software without theoretical inquiry is computer processing, not research.",
+          "Not a problem yielding a simple Yes/No answer: Yes/No problems lack depth and fail to investigate the multidimensional factors driving the phenomenon."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "The Golden Rule: Research must lead to NEW knowledge. If the answer can be found in a textbook or via a quick database query, it is not a valid research problem."
+        }
+      },
+      {
+        "heading": "Crafting Research Objectives & Hypotheses",
+        "points": [
+          "General Objective: States the broad goal of the study.",
+          "Specific Objectives: SMART (Specific, Measurable, Achievable, Relevant, Time-bound) statements breaking down the research into executable milestones.",
+          "Hypotheses: Educated, testable propositions predicting the relationship between independent and dependent variables."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In enterprise product engineering, defining the wrong problem leads to wasting millions of dollars building features nobody needs. Root Cause Problem Formulation ensures software directly targets critical business pain points.",
+      "careerRelevance": "Writing a clear, defensible Problem Statement is what gets university proposals approved by department academic boards on the first submission.",
+      "concreteExample": "Weak Problem: 'Many Kenyans don't use banking apps.' Strong Problem: 'Biometric banking apps in East Africa experience a 42% authentication failure rate in rural areas due to low-resolution camera hardware, causing high transaction abandonment.'"
+    },
+    "practicalExamples": [
+      {
+        "title": "Anatomy of an Approved Problem Statement",
+        "language": "markdown",
+        "codeOrDiagram": "## Problem Statement Architecture\n\n1. Ideal State: Mobile health clinics require real-time patient record synchronization.\n2. Problem / Gap: Intermittent 3G cellular connectivity in rural clinics causes database conflict errors and 45-minute patient delays.\n3. Consequences: Inaccurate medication dosages and administrative gridlock.\n4. Proposed Solution: This study designs and evaluates an offline-first Conflict-Free Replicated Data Type (CRDT) synchronization engine.",
+        "explanation": "Illustrates the 4-part problem statement formula required for university thesis defenses."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Proposing a research problem whose answer is already well known.",
+        "correctApproach": "Always ground your problem in a documented research gap identified through recent academic literature.",
+        "sampleQuestion": "Explain three types of problems that are not considered legitimate research problems in computing."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Research Gap",
+        "definition": "A missing piece or unresolved contradiction in existing academic research literature that has not yet been explored."
+      },
+      {
+        "term": "Hypothesis",
+        "definition": "A tentative, testable statement predicting the outcome of an empirical investigation."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-3",
+    "courseCode": "STU 2102",
+    "lectureNumber": 3,
+    "title": "Research Methodology III: The Literature Review & Search Strategies",
+    "originalFileName": "RESEARCH_METHODOLOGY_III_.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_III_.ppt",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Researchers belong to a community of scholars journeying into the unknown to uncover truth. The Literature Review is the systematic identification, location, and analysis of documents containing information related to the research problem. This lecture details the role and benefits of literature reviews, primary vs. secondary sources, synthesis techniques, and how to avoid duplication of prior research.",
+    "coreHighlights": [
+      {
+        "heading": "Purpose & Benefits of the Literature Review",
+        "points": [
+          "To 'look again' (re + view) at what others have done in areas similar to one's own investigation.",
+          "Prevents unintentional duplication and reinventing the wheel.",
+          "Provides theoretical perspectives and conceptual frameworks.",
+          "Reveals successful research designs, methodologies, and measurement instruments used by previous investigators.",
+          "Helps refine and focus the central research problem by identifying authentic gaps in the literature."
+        ]
+      },
+      {
+        "heading": "Primary vs. Secondary Sources",
+        "points": [
+          "Primary Sources: Direct, firsthand accounts of research written by the person who conducted the study (peer-reviewed journal papers, conference proceedings, patents, doctoral dissertations).",
+          "Secondary Sources: Publications where authors discuss, analyze, or synthesize someone else's original work (textbooks, review articles, encyclopedias).",
+          "Golden Rule: Always prioritize primary sources for academic credibility and accuracy."
+        ]
+      },
+      {
+        "heading": "The Thematic Literature Synthesis Approach",
+        "points": [
+          "Avoid chronological laundry lists: Do not write paper-by-paper summaries ('Smith said X. Jones said Y. Doe said Z.').",
+          "Structure by Themes: Group literature around concepts, comparing competing perspectives and highlighting areas of agreement and controversy."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Before investing $50M in developing a new cloud database, software architects perform extensive literature reviews across ACM and IEEE papers to see why previous systems failed or how theoretical algorithms scale in production.",
+      "careerRelevance": "Writing comprehensive literature reviews establishes your scholarly credibility and forms Chapter 2 of your university dissertation.",
+      "concreteExample": "When researching blockchain scalability: The literature review contrasts Proof of Work vs Proof of Stake vs Sharding papers to justify why your project chooses Layer 2 Rollups."
+    },
+    "practicalExamples": [
+      {
+        "title": "Thematic Literature Review Paragraph",
+        "language": "markdown",
+        "codeOrDiagram": "While early consensus maintained that relational databases were inadequate for high-concurrency write operations (Stonebraker, 2018), recent developments in distributed consensus protocols (Zhang & Liu, 2023) demonstrate that NewSQL architectures achieve ACID guarantees at comparable throughput to NoSQL clusters. However, a significant gap remains regarding latency performance under unreliable network partitions in developing economies.",
+        "explanation": "Demonstrates thematic synthesis, contrasting academic viewpoints, and leading into an identified research gap."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Treating the literature review as an annotated bibliography of isolated paragraphs.",
+        "correctApproach": "Weave papers together thematically, highlighting relationships, agreements, and contradictions between authors.",
+        "sampleQuestion": "Explain four key functions of a literature review in computing research."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Primary Source",
+        "definition": "An original, firsthand record of research authored by the investigator who conducted the work."
+      },
+      {
+        "term": "Literature Synthesis",
+        "definition": "The critical integration of multiple sources to present a unified perspective on a research theme."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-4",
+    "courseCode": "STU 2102",
+    "lectureNumber": 4,
+    "title": "Research Methodology IV b: The Research Design - Blueprints & Strategy",
+    "originalFileName": "RESEARCH_METHODOLOGY_IV_b.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_IV_b.ppt",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Research planning is like architectural planning: meticulous blueprints must be drafted before ground is broken. The Research Design is the complete strategy of attack on the central research problem, constituting the conceptual blueprint for data collection, measurement, and analysis. This lecture covers exploratory, descriptive, and explanatory designs, experimental controls, and validity.",
+    "coreHighlights": [
+      {
+        "heading": "What is a Research Design?",
+        "points": [
+          "The complete strategy of attack on the central problem.",
+          "Provides the overall structure: what data to collect, where to collect it, when, how much, and by what means.",
+          "Constitutes the blueprint that guides research operations smoothly while maximizing information yield with minimal expenditure of time and resources."
+        ]
+      },
+      {
+        "heading": "Taxonomy of Research Designs in Computing",
+        "points": [
+          "Exploratory Design: Used when little is known about a new phenomenon; flexible, qualitative, identifying key variables.",
+          "Descriptive Design: Accurately portrays the characteristics of an IT system, organization, or user group (who, what, where, when).",
+          "Explanatory / Causal Design: Establishes cause-and-effect relationships between independent and dependent variables (why).",
+          "Design Science Research (DSR): Specifically tailored for computing: constructing and evaluating innovative IT artifacts (software, architectures)."
+        ]
+      },
+      {
+        "heading": "Internal vs. External Validity",
+        "points": [
+          "Internal Validity: The degree to which observed changes in the dependent variable are genuinely caused by the independent variable rather than confounding external factors.",
+          "External Validity: The extent to which research findings can be generalized across broader populations, environments, and systems."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In software benchmarking, research design ensures fair A/B testing. If an engineer tests a new database on high-end NVMe drives while testing the legacy database on spinning HDDs, the research design is invalid due to confounding hardware variables.",
+      "careerRelevance": "Understanding research design ensures you choose appropriate methodologies for your degree project (surveys vs experiments vs prototyping).",
+      "concreteExample": "Testing an AI model's speed: The research design isolates GPU temperature, memory background processes, and dataset batch size to ensure internal validity."
+    },
+    "practicalExamples": [
+      {
+        "title": "Experimental Research Design Matrix",
+        "language": "markdown",
+        "codeOrDiagram": "## Benchmarking Experiment Design Matrix\n\n- Independent Variable: Indexing strategy (B-Tree vs Hash vs None)\n- Dependent Variable: Query response latency (milliseconds)\n- Controlled Variables: Server CPU (8 cores), RAM (32GB), Dataset size (10M rows), Concurrent threads (50)\n- Number of Trials: 10 repeated runs per configuration to calculate statistical mean and standard deviation.",
+        "explanation": "Illustrates controlled experimental research design isolating variables in systems computing."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing research methodology with research design.",
+        "correctApproach": "Research design is the overarching strategic blueprint; methodology refers to the specific operational techniques and tools used to collect and analyze data.",
+        "sampleQuestion": "Explain why research design is compared to architectural planning."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Research Design",
+        "definition": "The overall strategy and operational framework chosen to integrate the components of a study in a logical and coherent way."
+      },
+      {
+        "term": "Internal Validity",
+        "definition": "The extent to which a study establishes a trustworthy cause-and-effect relationship."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-5",
+    "courseCode": "STU 2102",
+    "lectureNumber": 5,
+    "title": "Research Methodology V a: Data Collection Instruments - The Questionnaire",
+    "originalFileName": "RESEARCH_METHODOLOGY_V_a_.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_V_a_.ppt",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Data collection instruments are the vehicles through which researchers capture empirical evidence. The questionnaire is a special-purpose instrument allowing researchers to collect uniform facts and opinions from a large sample. This lecture examines questionnaire design principles, open-ended vs. close-ended items, Likert scales, pre-testing protocols, and response rate maximization.",
+    "coreHighlights": [
+      {
+        "heading": "Questionnaire Architecture & Purpose",
+        "points": [
+          "A standardized document used to collect uniform data and opinions from respondents at scale.",
+          "Every single item must link directly to a specific research objective, question, or hypothesis.",
+          "Common Pitfalls: Ambiguous phrasing, double-barreled questions, leading questions, and excessive length leading to survey fatigue."
+        ]
+      },
+      {
+        "heading": "Question Formats: Close-Ended vs. Open-Ended",
+        "points": [
+          "Close-Ended (Structured): Respondents select from predetermined options (dichotomous Yes/No, multiple choice, Likert scales 1-5). Easy to code, quantify, and statistically analyze.",
+          "Open-Ended (Unstructured): Respondents write in their own words. Provides rich qualitative insights, but difficult to categorize and statistically standardize."
+        ]
+      },
+      {
+        "heading": "The Pre-Testing / Pilot Testing Protocol",
+        "points": [
+          "Never distribute a questionnaire to your actual sample without pre-testing!",
+          "Administer to a small pilot group (10-15 people) similar to your target population.",
+          "Pre-testing assesses clarity, estimates completion time, identifies confusing or sensitive items, and allows question revision before expensive field deployment."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In Product Design (UX Research), System Usability Scale (SUS) questionnaires evaluate how users interact with new apps. Validated Likert scales produce a standardized score from 0 to 100 measuring usability.",
+      "careerRelevance": "Collecting user feedback for software requirements analysis relies on structured survey methodology.",
+      "concreteExample": "Evaluating user adoption of a university mobile app: Designing a 5-point Likert scale questionnaire measuring Perceived Usefulness and Perceived Ease of Use based on the Technology Acceptance Model (TAM)."
+    },
+    "practicalExamples": [
+      {
+        "title": "TAM Questionnaire Instrument Design",
+        "language": "markdown",
+        "codeOrDiagram": "## Sample Likert Scale Item (Technology Acceptance Model)\n\nStatement: 'Using the Study Hub portal improves my academic performance.'\n[ 1 ] Strongly Disagree\n[ 2 ] Disagree\n[ 3 ] Neutral\n[ 4 ] Agree\n[ 5 ] Strongly Agree\n\n*Rule: Never ask double-barreled questions like: 'Is the portal fast and easy to use?' (Split into two separate questions!)*",
+        "explanation": "Demonstrates proper unidimensional item construction avoiding double-barreled traps."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Asking 'double-barreled' questions that ask two things at once.",
+        "correctApproach": "Ensure each questionnaire item measures exactly one variable or concept.",
+        "sampleQuestion": "What is a double-barreled question, and why should it be avoided in questionnaire design?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Questionnaire",
+        "definition": "A research instrument consisting of a series of questions for gathering information from respondents."
+      },
+      {
+        "term": "Likert Scale",
+        "definition": "A psychometric scale commonly used in questionnaires to measure respondents' attitudes or opinions across ordered response choices."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-6",
+    "courseCode": "STU 2102",
+    "lectureNumber": 6,
+    "title": "Research Methodology V b: Qualitative Data Collection - The Interview",
+    "originalFileName": "RESEARCH_METHODOLOGY_V_b_.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_V_b_.ppt",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Interviews provide depth and context that structured surveys cannot capture. An interview is a face-to-face or voice fact-finding technique where the researcher collects rich data through interpersonal dialogue. This lecture covers structured vs. semi-structured vs. unstructured formats, interview schedules, non-verbal cues, rapport establishment, and interview bias mitigation.",
+    "coreHighlights": [
+      {
+        "heading": "Interview Formats in Computing Research",
+        "points": [
+          "Structured Interviews: Strictly predetermined questions read in exact order; high standardization.",
+          "Semi-Structured Interviews: Guided by an interview schedule of core questions, but allows probing and conversational flexibility to pursue unexpected insights.",
+          "Unstructured / In-Depth Interviews: Open, exploratory dialogue guided only by broad thematic goals, ideal for exploratory research."
+        ]
+      },
+      {
+        "heading": "Advantages & Limitations of Interviews",
+        "points": [
+          "Advantages: High response rate (hard to ignore a face-to-face interviewer), allows probing for deeper context, enables observation of non-verbal cues (hesitation, confusion), and allows rephrasing questions for clarity.",
+          "Limitations: Time-consuming and costly, smaller sample sizes, potential for interviewer bias, and requires skilled interpersonal rapport."
+        ]
+      },
+      {
+        "heading": "The Interviewer's Golden Rules",
+        "points": [
+          "Establish warm, professional rapport before asking questions.",
+          "Maintain neutral demeanor: Never show shock, judgment, or approval of responses.",
+          "Audio record ONLY with explicit, signed informed consent.",
+          "Take brief observational notes during the interview and write full field notes immediately after."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In Enterprise Software Requirements Engineering, business analysts interview corporate stakeholders (CEOs, accountants, clerks) to extract user stories and system requirements.",
+      "careerRelevance": "User Experience (UX) Researchers conduct user interviews to understand why users abandon shopping carts or find dashboards confusing.",
+      "concreteExample": "Interviewing hospital doctors about an Electronic Health Record system: A doctor reveals that while the software works, having to type passwords on 5 different screens during emergencies leads to workarounds that violate security."
+    },
+    "practicalExamples": [
+      {
+        "title": "Semi-Structured Interview Protocol",
+        "language": "markdown",
+        "codeOrDiagram": "## Stakeholder Interview Schedule\n\n1. Opening: 'Thank you for your time. This interview explores your experience with the university portal.'\n2. Core Question: 'Walk me through how you register for courses each trimester.'\n3. Probe: 'What is the most frustrating part of that workflow?'\n4. Follow-up: 'When that error appeared, how did you recover?'\n5. Closing: 'Is there anything else about the system you think we should know?'",
+        "explanation": "Illustrates a semi-structured protocol with primary questions and tactical probes."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Claiming interviews produce statistically generalizable findings.",
+        "correctApproach": "Interviews yield deep, qualitative, contextual insights; statistical generalizability requires large-sample quantitative surveys.",
+        "sampleQuestion": "Compare the advantages and disadvantages of interviews versus self-administered questionnaires."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Interview Schedule",
+        "definition": "A guide used by an interviewer containing a list of questions and topics to cover during an interview."
+      },
+      {
+        "term": "Interviewer Bias",
+        "definition": "The distortion of findings caused by the interviewer's characteristics, questioning style, or recording errors."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-7",
+    "courseCode": "STU 2102",
+    "lectureNumber": 7,
+    "title": "Research Methodology VI: Writing the Research Proposal & Chapter Architecture",
+    "originalFileName": "RESEARCH_METHODOLOGY_VI_.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_VI_.ppt",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Research is not a solitary activity; it begins with the formal written communication of thoughts, methods, and plans. The research proposal is the contract between a student and the university, outlining exactly what will be done, why, how, and with what resources. This lecture details the 3-chapter structure of academic proposals (Chapter 1: Introduction, Chapter 2: Literature Review, Chapter 3: Methodology), work plans, budgets, and defense readiness.",
+    "coreHighlights": [
+      {
+        "heading": "The Research Proposal as an Academic Contract",
+        "points": [
+          "A proposal is a permanent written document detailing the researcher's intended activities from beginning to end.",
+          "In academia, the approved proposal serves as a formal contract between the researcher and the faculty board.",
+          "Two Types: Academic Proposal (leads to degree conferral) vs. Project/Grant Proposal (seeks research funding from donor agencies)."
+        ]
+      },
+      {
+        "heading": "The Standard 3-Chapter Proposal Architecture",
+        "points": [
+          "Chapter 1: Introduction (Background of the study, Statement of the Problem, Objectives, Research Questions/Hypotheses, Justification/Significance, Scope & Limitations).",
+          "Chapter 2: Literature Review (Theoretical Framework, Conceptual Framework, Empirical Review of Themes, Summary of Knowledge Gaps).",
+          "Chapter 3: Research Methodology (Research Design, Target Population, Sampling Technique & Sample Size, Data Collection Instruments, Pre-testing/Piloting, Data Analysis & Presentation, Ethical Considerations)."
+        ]
+      },
+      {
+        "heading": "Logistics: Work Plan & Research Budget",
+        "points": [
+          "Gantt Chart / Work Plan: Chronological schedule showing milestones, tasks, responsible parties, and expected outcomes.",
+          "Itemized Budget: Realistic financial projections covering equipment, travel, enumerator allowances, printing, and contingencies."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In software consulting, the research proposal is equivalent to a Statement of Work (SOW) or Request for Proposal (RFP) response. Winning enterprise government contracts depends on writing crisp, methodologically sound proposals.",
+      "careerRelevance": "Proposal defense is the milestone that unlocks approval for your fourth-year IT degree project.",
+      "concreteExample": "Drafting Chapter 3: Stating exactly that 120 students across KCA University will be sampled using stratified random sampling, surveyed via Google Forms, and analyzed using Python pandas and SPSS."
+    },
+    "practicalExamples": [
+      {
+        "title": "Standard Chapter 3 Methodology Outline",
+        "language": "markdown",
+        "codeOrDiagram": "## Chapter 3: Research Methodology Structure\n\n3.1 Introduction\n3.2 Research Design (e.g. Quasi-Experimental & Survey)\n3.3 Target Population (e.g. 1,200 IT Students)\n3.4 Sampling Techniques & Sample Size (e.g. Yamane formula, n=300)\n3.5 Data Collection Instruments\n3.6 Validity and Reliability of Instruments\n3.7 Data Analysis Procedures (Descriptive & Inferential)\n3.8 Ethical Considerations",
+        "explanation": "Illustrates the mandatory Chapter 3 outline required for KCA University project proposals."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Writing proposal methodology in the past tense.",
+        "correctApproach": "A proposal describes FUTURE planned work: write in FUTURE TENSE ('Data will be collected...'). The final thesis report will be converted to PAST TENSE ('Data was collected...').",
+        "sampleQuestion": "Outline the essential sections of Chapter 1 of an academic research proposal."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Research Proposal",
+        "definition": "A formal document that details the operational plan, justification, and methodology for a proposed study."
+      },
+      {
+        "term": "Gantt Chart",
+        "definition": "A horizontal bar chart used to illustrate a project schedule and task dependencies over time."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-8",
+    "courseCode": "STU 2102",
+    "lectureNumber": 8,
+    "title": "Referencing and Citations L7: Academic Standards & Plagiarism",
+    "originalFileName": "referencing and citations L7.ppt",
+    "downloadUrl": "/notes/computing-research/referencing and citations L7.ppt",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "All sources cited in the literature review must be fully attributed in the reference list. This lecture covers major academic referencing systems (APA, Harvard, IEEE), in-text citation mechanics, matching citations to references, bibliography management software, and the legal and academic definitions of plagiarism.",
+    "coreHighlights": [
+      {
+        "heading": "Why Referencing is Non-Negotiable",
+        "points": [
+          "Gives credit to authors whose ideas shaped your thinking.",
+          "Allows readers to track down and verify the original sources.",
+          "Demonstrates the depth and scholarly authority of your literature review.",
+          "Protects you from charges of academic dishonesty and plagiarism."
+        ]
+      },
+      {
+        "heading": "Comparing Referencing Standards in Computing",
+        "points": [
+          "APA (American Psychological Association): Author-Date system (e.g. Kibuku, 2024). Standard for social sciences and general university dissertations at KCAU.",
+          "IEEE (Institute of Electrical and Electronics Engineers): Numbered citation system in square brackets (e.g. [1], [2]). Standard for computer science, robotics, and hardware publications.",
+          "Harvard: Author-Date system closely related to APA."
+        ]
+      },
+      {
+        "heading": "In-Text Citation Patterns (APA Format)",
+        "points": [
+          "Format 1 (Narrative): 'Azar and Martin (1999) found that...'",
+          "Format 2 (Parenthetical): '...attaching meaning to symbols (Samovar & Porter, 1991).'",
+          "3 or More Authors: Use the first author followed by 'et al.' from the very first citation (e.g., Kinyua et al., 2024)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In open-source software, failure to attribute source code violates GNU GPL or MIT licenses, resulting in copyright infringement lawsuits and software takedowns.",
+      "careerRelevance": "Publishing research papers in IEEE or Springer requires 100% adherence to citation formatting guidelines. Papers with broken citations are rejected without peer review.",
+      "concreteExample": "In an IT thesis: Citing 'According to Tanenbaum (2021), network routing protocols...' and ensuring Tanenbaum, A. S. (2021) appears in the alphabetical reference list at the end."
+    },
+    "practicalExamples": [
+      {
+        "title": "APA vs. IEEE Referencing Format Comparison",
+        "language": "markdown",
+        "codeOrDiagram": "### APA Style:\n- In-text: (Kibuku, 2024)\n- Reference: Kibuku, R. (2024). *Research methodology in computing*. KCA University Press.\n\n### IEEE Style:\n- In-text: As shown in [1]...\n- Reference: [1] R. Kibuku, *Research Methodology in Computing*. Nairobi: KCA University Press, 2024.",
+        "explanation": "Illustrates side-by-side differences between APA Author-Date and IEEE numeric citation standards."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Listing sources in the references that were never cited in the body of the paper.",
+        "correctApproach": "A Reference List must match 1:1 with in-text citations. If it is cited in text, it must be in references; if not cited in text, it must NOT appear.",
+        "sampleQuestion": "Explain the difference between a Reference List and a Bibliography."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "In-Text Citation",
+        "definition": "A marker in the body of a manuscript identifying the source of a specific quote, idea, or finding."
+      },
+      {
+        "term": "APA Style",
+        "definition": "An author-date documentation style established by the American Psychological Association."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-9",
+    "courseCode": "STU 2102",
+    "lectureNumber": 9,
+    "title": "Writing a Proposal L7: Proposal Structure, Formatting & Defense",
+    "originalFileName": "writing a proposal L7.ppt",
+    "downloadUrl": "/notes/computing-research/writing a proposal L7.ppt",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "A research proposal is a formal request for approval to conduct research. Formatting and visual presentation are paramount: a properly formatted document enhances credibility, adds to the perception that the work is meticulously planned, and facilitates faculty understanding. This lecture covers page layouts, headings, pagination, typographical consistency, and oral defense preparation.",
+    "coreHighlights": [
+      {
+        "heading": "Benefits of Professional Formatting",
+        "points": [
+          "Adds to the perception that the document is well thought out and rigorous.",
+          "Enhances the academic credibility and professionalism of the researcher.",
+          "Facilitates clear understanding of complex technical arguments.",
+          "Makes it effortless for examiners and supervisors to locate key sections and evaluation rubrics."
+        ]
+      },
+      {
+        "heading": "Formatting Rules & Layout Standards",
+        "points": [
+          "Margins: 1 inch (2.54 cm) on all sides; 1.5 inches on left margin if bound.",
+          "Typography: Consistent academic font (Times New Roman 12pt, Arial 11pt, or Calibri 11pt).",
+          "Line Spacing: Double spacing or 1.5 spacing with clear paragraph separation.",
+          "Headings Hierarchy: Primary headings (Bold, Centered), Secondary headings (Bold, Left-aligned), Tertiary headings (Italic, Indented).",
+          "Pagination: Roman numerals (i, ii, iii) for preliminary pages; Arabic numerals (1, 2, 3) starting from Chapter 1."
+        ]
+      },
+      {
+        "heading": "Preparing for the Oral Proposal Defense",
+        "points": [
+          "Defend the feasibility: Prove that the project can be completed within the trimester.",
+          "Know your methodology cold: Examiners focus 70% of questions on Chapter 3 (sampling, instruments, threats to validity).",
+          "Accept feedback gracefully: Defense is not an argument; it is a collaborative peer review designed to strengthen your study before field execution."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In enterprise tech consulting, formal proposals (RFPs) that fail margin, font, or page limit guidelines are automatically disqualified before being read.",
+      "careerRelevance": "The oral proposal defense is the gatekeeper exam for completing an undergraduate IT degree.",
+      "concreteExample": "Preparing an 8-slide presentation for the panel: Slide 1 (Title/Problem), Slide 2 (Objectives), Slide 3 (Literature Gap), Slide 4 (Methodology/Design), Slide 5 (Data Analysis), Slide 6 (Timeline/Budget)."
+    },
+    "practicalExamples": [
+      {
+        "title": "Defense Presentation Slide Architecture",
+        "language": "markdown",
+        "codeOrDiagram": "## Proposal Defense 8-Slide Template\n\n- Slide 1: Project Title, Candidate Name, Student ID\n- Slide 2: Background & Context (The Big Picture)\n- Slide 3: Statement of the Problem (The Core Gap)\n- Slide 4: General & Specific Objectives\n- Slide 5: Conceptual Framework Diagram\n- Slide 6: Research Methodology & Data Instruments\n- Slide 7: Ethical Safeguards & Expected Artifact\n- Slide 8: Work Plan & Timeline",
+        "explanation": "Provides the winning slide structure for 10-minute faculty defense presentations."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Neglecting consistent font formatting and heading numbering across chapters.",
+        "correctApproach": "Use word processor heading styles (Heading 1, Heading 2) to maintain strict hierarchy throughout the document.",
+        "sampleQuestion": "Why is typographical consistency and layout formatting critical in academic research proposals?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Proposal Defense",
+        "definition": "An oral presentation where a candidate defends the validity and feasibility of their proposed research before a faculty panel."
+      },
+      {
+        "term": "Conceptual Framework",
+        "definition": "A visual model illustrating the relationship between the independent and dependent variables in a study."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-10",
+    "courseCode": "STU 2102",
+    "lectureNumber": 10,
+    "title": "Research Methodology VIIb: Data Analysis, Coding & Presentation",
+    "originalFileName": "RESEARCH_METHODOLOGY_VIIb.ppt",
+    "downloadUrl": "/notes/computing-research/RESEARCH_METHODOLOGY_VIIb.ppt",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Raw field data is difficult to interpret until cleaned, coded, and analyzed. Data analysis is the process through which researchers transform empirical data into meaningful patterns, statistical summaries, and scientific insights. Prepared by Rachael Kibuku, this lecture covers pre-analysis data processing, qualitative and quantitative coding, descriptive statistics (mean, median, standard deviation), inferential statistics, and visual presentation.",
+    "coreHighlights": [
+      {
+        "heading": "Pre-Analysis Data Processing & Cleaning",
+        "points": [
+          "Raw data collected from questionnaires or automated logs must be verified, cleaned, and checked for missing values and outliers.",
+          "Data Editing: Inspecting data collection forms to identify omissions, illegible responses, or contradictory entries.",
+          "Data Coding: The systematic process of assigning numerical or symbolic codes to categorical responses so they can be grouped into classes and analyzed computationally."
+        ]
+      },
+      {
+        "heading": "Levels of Measurement in Computing Data",
+        "points": [
+          "Nominal Scale: Categorical labels with no numerical order (e.g. Operating System: 1=Linux, 2=Windows, 3=macOS).",
+          "Ordinal Scale: Categories with meaningful rank order but unequal intervals (e.g. User Satisfaction: 1=Low, 2=Medium, 3=High).",
+          "Interval Scale: Ordered values with equal distances between intervals, but no true absolute zero (e.g. Temperature in Celsius).",
+          "Ratio Scale: Quantitative data with equal intervals and an absolute true zero point (e.g. Network Latency in ms, Memory Consumption in MB, CPU %)."
+        ]
+      },
+      {
+        "heading": "Descriptive vs. Inferential Statistics",
+        "points": [
+          "Descriptive Statistics: Summarizes and describes the features of a dataset (Measures of Central Tendency: Mean, Median, Mode; Measures of Dispersion: Variance, Standard Deviation, Range).",
+          "Inferential Statistics: Draws conclusions and tests hypotheses about a larger population based on sample data (t-tests, ANOVA, Chi-square, Pearson Correlation, Linear Regression)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In Data Science, Machine Learning, and Observability (Datadog, Splunk), raw server telemetry logs must be normalized, cleaned, and aggregated into statistical dashboards to monitor 99th percentile (p99) latency.",
+      "careerRelevance": "Writing Chapter 4 (Findings and Discussion) of your undergraduate project requires reporting descriptive and inferential statistical analysis.",
+      "concreteExample": "Analyzing system performance: Reporting that the mean response time was 120ms with a standard deviation of 15ms across 10,000 requests, and running an independent samples t-test to prove the new caching algorithm is significantly faster (p < 0.01)."
+    },
+    "practicalExamples": [
+      {
+        "title": "Python Data Cleaning & Descriptive Statistics",
+        "language": "python",
+        "codeOrDiagram": "import pandas as pd\nimport numpy as np\n\n# Load raw survey telemetry\ndf = pd.read_csv('survey_responses.csv')\n\n# Data Cleaning: Drop incomplete submissions\ndf.dropna(subset=['satisfaction_score'], inplace=True)\n\n# Descriptive Statistics\nsummary = df['response_time_ms'].describe()\nprint('Mean latency:', summary['mean'])\nprint('Median latency:', summary['50%'])\nprint('Standard deviation:', summary['std'])",
+        "explanation": "Demonstrates programmatic data cleaning and descriptive statistical computation."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Calculating the mathematical mean of nominal data (e.g. averaging Gender or Operating System).",
+        "correctApproach": "Nominal data can only be summarized using Frequency Counts, Percentages, and the Mode. You cannot calculate the mean of arbitrary categorical labels!",
+        "sampleQuestion": "Explain the four levels of measurement and provide a computing example for each."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Data Coding",
+        "definition": "The process of categorizing and indexing raw qualitative or survey data into numerical values for analysis."
+      },
+      {
+        "term": "Standard Deviation",
+        "definition": "A quantity expressing how much the members of a group differ from the mean value for the group."
+      },
+      {
+        "term": "Ratio Scale",
+        "definition": "A measurement scale with a true zero point, allowing meaningful calculation of ratios between values."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu2102-11",
+    "courseCode": "STU 2102",
+    "lectureNumber": 11,
+    "title": "Ethical Issues in Computing Research L8: Ethics, Logistics & Subject Protection",
+    "originalFileName": "Ethical Issues L 8.ppt",
+    "downloadUrl": "/notes/computing-research/Ethical Issues L 8.ppt",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Logistical and ethical issues must be addressed before research commences because poor execution damages credibility and causes harm. Ethics concerns moral conduct and professional integrity. This lecture covers research logistics (pre-field, field, post-field), research permits (NACOSTI in Kenya), ethical obligations to participants (voluntary informed consent, anonymity, confidentiality, protection from psychological harm), researcher ethics (avoiding data fraud, plagiarism, and commercial conflicts of interest), and ethical challenges in experimental designs.",
+    "coreHighlights": [
+      {
+        "heading": "Research Logistics: Pre-Field, Field, and Post-Field",
+        "points": [
+          "Pre-Fieldwork: Terms of reference, securing formal research permits, developing work protocols, training research assistants, pre-testing instruments, and logistical sampling.",
+          "Research Permits in Kenya: National Commission for Science, Technology and Innovation (NACOSTI) permit is legally required for academic fieldwork in Kenya.",
+          "Fieldwork Logistics: Managing transport, security, language barriers, and participant rapport.",
+          "Post-Fieldwork: Organizing questionnaires, data security, coding, and safe storage."
+        ]
+      },
+      {
+        "heading": "Ethical Obligations to Human Research Subjects",
+        "points": [
+          "Voluntary & Informed Consent: Participants must fully understand the study's purpose, potential risks, and benefits, and freely agree to participate without deception or coercion.",
+          "Anonymity: The identity of individual participants is never recorded or linked to responses (using ID numbers or pseudonyms).",
+          "Confidentiality: Protecting private data from unauthorized disclosure or misuse.",
+          "Protection from Harm: Eliminating physical, psychological, social, or legal risks to subjects.",
+          "Vulnerable Populations: Heightened ethical safeguards when researching children, patients, or marginalized communities."
+        ]
+      },
+      {
+        "heading": "Ethics Relating to the Researcher & Scientific Process",
+        "points": [
+          "Plagiarism & Data Fraud: Fabrication (inventing data) and Falsification (manipulating data to fit desired outcomes) are academic crimes that result in revocation of degrees.",
+          "Misuse of Privilege: Never using collected data to stigmatize or harm individuals.",
+          "Transparent Dissemination: Accurately reporting all findings, including results that contradict your initial hypotheses."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In Artificial Intelligence and Big Data research, ethical violations (data scraping without consent, algorithmic bias, privacy invasion) lead to massive regulatory fines (GDPR, Kenya Data Protection Act 2019) and reputational ruin.",
+      "careerRelevance": "Every academic dissertation must include a signed ethical declaration and attach institutional ethical clearance certificates.",
+      "concreteExample": "Testing facial recognition algorithms: Researchers must obtain signed informed consent from human participants, ensure training datasets do not discriminate across ethnicities, and encrypt all biometric imagery at rest."
+    },
+    "practicalExamples": [
+      {
+        "title": "Standard Informed Consent Protocol",
+        "language": "markdown",
+        "codeOrDiagram": "## Participant Informed Consent Checklist\n\n1. Study Title: Evaluating Mobile App Usability in Academic Environments\n2. Purpose: Investigating portal workflow speed; results will be published in aggregate.\n3. Voluntary Participation: You may withdraw at any time with zero academic penalty.\n4. Confidentiality: Your student ID and personal data will be anonymized using SHA-256 hashes.\n5. Risks & Benefits: No physical risks; insights will help improve university systems.\n6. Signature Block: Formal participant signature and date.",
+        "explanation": "Illustrates a compliant informed consent form meeting NACOSTI and institutional ethics requirements."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Anonymity with Confidentiality.",
+        "correctApproach": "Anonymity means even the researcher cannot link a response to an individual. Confidentiality means the researcher knows the identity but protects it from disclosure.",
+        "sampleQuestion": "Differentiate between anonymity and confidentiality in academic research."
+      },
+      {
+        "trap": "Assuming ethical considerations only apply to medical or biological research.",
+        "correctApproach": "Computing research deals with sensitive personal data, user surveillance, algorithm bias, and privacy laws, making ethics central to IT.",
+        "sampleQuestion": "Discuss five ethical issues relating to human subjects in computing research."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Informed Consent",
+        "definition": "A process of communication between a participant and researcher that results in the participant's agreement to undergo a research study."
+      },
+      {
+        "term": "Anonymity",
+        "definition": "A condition in which a participant's identity is completely unknown even to the researcher."
+      },
+      {
+        "term": "Confidentiality",
+        "definition": "An agreement that personal information will not be shared with unauthorized parties."
+      },
+      {
+        "term": "NACOSTI",
+        "definition": "National Commission for Science, Technology and Innovation; the statutory body that regulates research in Kenya."
+      }
+    ]
+  }
+]

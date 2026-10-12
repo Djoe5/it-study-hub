@@ -1,0 +1,270 @@
+[
+  {
+    "id": "guide-stu1202-1",
+    "courseCode": "STU 1202",
+    "lectureNumber": 1,
+    "title": "Lesson 1: Services Provided by the Internet",
+    "originalFileName": "Lesson 1 services provided by the internet.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 1 services provided by the internet.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "The Internet is the global network of interconnected computer networks; the World Wide Web (WWW) is an information service operating on top of it. Core protocols (HTTP, HTTPS, DNS, FTP) govern communication between clients and web servers.",
+    "coreHighlights": [
+      {
+        "heading": "Internet vs World Wide Web (Critical Distinction)",
+        "points": [
+          "The Internet: The underlying global hardware infrastructure (cables, routers, satellites, fiber-optic backbones).",
+          "The World Wide Web (WWW): An application service running on the Internet using HTTP to exchange hypermedia documents.",
+          "Analogy: The Internet is the road highway network; the WWW is the traffic of cars moving packages across it."
+        ]
+      },
+      {
+        "heading": "Client-Server Architecture & DNS Resolution",
+        "points": [
+          "Client: The user agent (browser like Chrome or Safari) requesting web pages.",
+          "Server: High-performance computer listening on ports (Port 80 for HTTP, Port 443 for HTTPS) serving HTML/CSS/JS assets.",
+          "DNS (Domain Name System): The phonebook of the web that translates human names (google.com) into machine IP addresses (142.250.180.46)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Cloud providers like Cloudflare, AWS CloudFront, and Akamai manage global Content Delivery Networks (CDNs) and DNS servers to shave milliseconds off web page load times for billions of users.",
+      "careerRelevance": "Understanding HTTP status codes (200 OK, 301 Redirect, 404 Not Found, 500 Internal Server Error) is fundamental when debugging APIs and frontend web apps.",
+      "concreteExample": "When you type kcau.ac.ke in your browser: 1. Browser queries DNS for KCAU server IP. 2. Browser opens TCP handshake with server on Port 443. 3. Browser sends HTTP GET request. 4. Server returns HTML document."
+    },
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Saying the Internet and the World Wide Web are synonyms.",
+        "correctApproach": "Never say they are the same! The Internet was born in 1969 (ARPANET); the WWW was invented in 1989 by Sir Tim Berners-Lee."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "HTTP/HTTPS",
+        "definition": "Hypertext Transfer Protocol (Secure): The protocol transmitting encrypted web documents over SSL/TLS."
+      },
+      {
+        "term": "IP Address",
+        "definition": "A unique numerical identifier assigned to every device connected to a computer network."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-2",
+    "courseCode": "STU 1202",
+    "lectureNumber": 2,
+    "title": "Lesson 2: Web Project Management",
+    "originalFileName": "Lesson 2 Web Project management.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 2 Web Project management.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Professional web development is managed through structured lifecycle phases: Planning, Analysis, Design (wireframing & sitemaps), Development, Testing (cross-browser & responsive), and Deployment/Maintenance.",
+    "coreHighlights": [
+      {
+        "heading": "Web Project Development Phases",
+        "points": [
+          "1. Discovery & Planning: Identifying client business goals, target demographic, and functional requirements.",
+          "2. Information Architecture (IA): Creating sitemaps establishing page hierarchies and user navigation flows.",
+          "3. Wireframing & Prototyping: Creating low-fidelity skeletal layouts (Figma/Adobe XD) before writing HTML.",
+          "4. Implementation: Writing semantic HTML5 markup, responsive CSS, and dynamic JavaScript.",
+          "5. Testing & Quality Assurance: Verifying accessibility (WCAG), responsive breakpoints, and SEO metadata.",
+          "6. Deployment & Hosting: Publishing code to servers with SSL certificates and setting up analytics."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Software agencies charge thousands of dollars for websites because they follow this disciplined process. Skipping wireframing leads to \"scope creep\" and costly redesigns.",
+      "careerRelevance": "Agile sprints, Jira ticket tracking, and user persona creation are standard daily workflows for frontend engineers and UI/UX designers.",
+      "concreteExample": "Building an e-commerce website for a Kenyan fashion brand: wireframes ensure the shopping cart checkout has only 2 steps, reducing cart abandonment by 35% before writing any code."
+    },
+    "keyTermsGlossary": [
+      {
+        "term": "Wireframe",
+        "definition": "A visual schematic or blueprint outlining page layout and element placement without colors or graphics."
+      },
+      {
+        "term": "Information Architecture",
+        "definition": "The structural organization and labeling of website content to facilitate intuitive navigation."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-3",
+    "courseCode": "STU 1202",
+    "lectureNumber": 3,
+    "title": "Lesson 3: Website Layout Design & UI/UX Principles",
+    "originalFileName": "Lesson 3 Website Layout Design.pdf",
+    "downloadUrl": "/notes/web-design/Lesson 3 Website Layout Design.pdf",
+    "estimatedReadTimeMinutes": 20,
+    "executiveSummary": "Effective web layout relies on foundational visual design principles (CRAP: Contrast, Repetition, Alignment, Proximity), responsive grid systems, and intuitive visual hierarchy.",
+    "coreHighlights": [
+      {
+        "heading": "The 4 Golden Visual Design Principles (CRAP)",
+        "points": [
+          "1. Contrast: Making elements visually distinct so users immediately notice what is important (e.g. bold call-to-action buttons).",
+          "2. Repetition: Repeating colors, font families, and button shapes to create visual cohesion across pages.",
+          "3. Alignment: Aligning elements along invisible grid lines to convey order and professionalism.",
+          "4. Proximity: Grouping related items closely together (e.g. an image and its caption) to communicate relationship."
+        ]
+      },
+      {
+        "heading": "Standard Anatomical Web Regions",
+        "points": [
+          "Header: Brand identity, search bar, and primary navigation.",
+          "Hero Section: Eye-catching headline, subtitle, and primary call-to-action button.",
+          "Main Content Area: Core articles, product showcases, or interactive forms.",
+          "Sidebar: Complementary widgets, filters, and sub-navigation.",
+          "Footer: Copyright notices, legal links, sitemaps, and social media handles."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every modern tech company (Apple, Stripe, Airbnb) builds their software on a Design System (like Material Design or Tailwind CSS) that codifies these exact visual hierarchy principles into reusable components.",
+      "careerRelevance": "Developers with strong UI/UX awareness command significantly higher salaries because they build interfaces that users love without needing constant designer supervision.",
+      "concreteExample": "Stripe redesigned their checkout button with high contrast against the dark background, instantly increasing customer conversion rates by 8% across millions of transactions."
+    },
+    "keyTermsGlossary": [
+      {
+        "term": "Visual Hierarchy",
+        "definition": "The deliberate arrangement of design elements in order of visual importance using size, color, and spacing."
+      },
+      {
+        "term": "Whitespace",
+        "definition": "The intentional empty space around and between design elements that gives layouts breathing room."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-4",
+    "courseCode": "STU 1202",
+    "lectureNumber": 4,
+    "title": "Lesson 4 to 13: Core HTML5 & Semantic Web Markup",
+    "originalFileName": "HTML & CSS Modules Suite.pdf",
+    "downloadUrl": "/notes/web-design/l4 HTML.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "HTML5 is the structural skeleton of the web. Semantic markup (header, nav, main, article, footer), comprehensive forms, interactive inputs, accessible tables, and modern iframes provide the foundation for modern web engineering.",
+    "coreHighlights": [
+      {
+        "heading": "Document Structure & Semantic Tags",
+        "points": [
+          "<!DOCTYPE html>: Tells modern browsers to render in strict HTML5 standard mode.",
+          "<head>: Contains invisible metadata (charset=\"UTF-8\", title, viewport, linked stylesheets).",
+          "<body>: Contains all visible content rendered in the browser window.",
+          "Semantic Tags: Use <header>, <nav>, <main>, <section>, <article>, and <footer> instead of endless generic <div> tags to improve Google SEO ranking and screen-reader accessibility."
+        ]
+      },
+      {
+        "heading": "Forms & Interactive Data Capture",
+        "points": [
+          "<form action=\"url\" method=\"POST\">: Encapsulates user inputs.",
+          "GET vs POST: GET appends form data to the URL query string (insecure for passwords, good for searches). POST bundles data secretly in the HTTP request body.",
+          "Input Types: text, email, password, number, date, radio (mutually exclusive choices), checkbox (multiple selections).",
+          "Always link inputs to descriptive <label for=\"inputId\"> tags."
+        ]
+      },
+      {
+        "heading": "Tables, Lists & Embedded Iframes",
+        "points": [
+          "Lists: <ol> (ordered numbers), <ul> (unordered bullets), <dl> (definition lists).",
+          "Tables: <table>, <thead>, <tbody>, <tr> (row), <th> (header cell), <td> (data cell). Use colspan and rowspan to span cells.",
+          "Iframes: <iframe src=\"url\"> embeds external web pages, Google Maps, or YouTube players safely."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Modern web accessibility laws (ADA, European Accessibility Act) mandate strict semantic HTML. Sites that fail accessibility face massive legal penalties. Semantic HTML also gives search engine spiders (Google, Bing) clean data to rank your site on Page 1.",
+      "careerRelevance": "Whether you build React, Vue, or Angular apps, the underlying DOM rendered to the screen is 100% HTML. Mastering pure HTML is essential for every frontend engineer.",
+      "concreteExample": "An airline booking portal: using <input type=\"date\" required> provides native calendar widgets on iPhone and Android automatically without loading bulky external JavaScript libraries."
+    },
+    "practicalExamples": [
+      {
+        "title": "Semantic Accessible HTML5 Form",
+        "language": "html",
+        "codeOrDiagram": "<form action=\"/register\" method=\"POST\" class=\"auth-form\">\n  <h2>Student Registration</h2>\n  \n  <div class=\"form-group\">\n    <label for=\"fullName\">Full Name:</label>\n    <input type=\"text\" id=\"fullName\" name=\"fullName\" required placeholder=\"Joseph Doe\">\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"userEmail\">KCAU Email:</label>\n    <input type=\"email\" id=\"userEmail\" name=\"email\" required placeholder=\"student@kcau.ac.ke\">\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"campus\">Campus Mode:</label>\n    <select id=\"campus\" name=\"campus\">\n      <option value=\"virtual\">Virtual Campus</option>\n      <option value=\"main\">Ruaraka Main Campus</option>\n    </select>\n  </div>\n\n  <button type=\"submit\">Complete Registration</button>\n</form>",
+        "explanation": "Demonstrates proper label association, input types with client-side validation attributes, and semantic form grouping."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using GET method for login or password forms.",
+        "correctApproach": "Never use GET for sensitive data! Passwords would appear in plain text inside browser history and server access logs. Always use POST."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Semantic Element",
+        "definition": "An HTML element whose tag name clearly describes its meaning and content to both browser and developer (e.g. <article> vs <div>)."
+      },
+      {
+        "term": "DOM (Document Object Model)",
+        "definition": "The tree-like data structure created by browsers representing all HTML tags as editable objects."
+      }
+    ]
+  },
+  {
+    "id": "guide-stu1202-css",
+    "courseCode": "STU 1202",
+    "lectureNumber": 14,
+    "title": "CSS Comprehensive Guide: Box Model, Flexbox & Responsive Layouts",
+    "originalFileName": "CSS notes.pdf",
+    "downloadUrl": "/notes/web-design/CSS notes.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Cascading Style Sheets (CSS) controls web presentation. Mastering the CSS Box Model (margin, border, padding, content), Flexbox for 1D layout flow, CSS Grid for 2D layouts, and Media Queries for mobile responsiveness is the cornerstone of modern web styling.",
+    "coreHighlights": [
+      {
+        "heading": "The Sacred CSS Box Model",
+        "points": [
+          "Every HTML element is rendered as a rectangular box with 4 concentric layers:",
+          "1. Content: The actual text, image, or video.",
+          "2. Padding: Transparent breathing space INSIDE the border around the content.",
+          "3. Border: The visible outline wrapping the padding and content.",
+          "4. Margin: Transparent buffer OUTSIDE the border pushing away adjacent elements.",
+          "Golden Rule: Always set * { box-sizing: border-box; } so padding and border are included in the element total width calculation!"
+        ]
+      },
+      {
+        "heading": "CSS Flexbox (1-Dimensional Layout)",
+        "points": [
+          "display: flex turns a container into a flexible parent.",
+          "justify-content: Controls alignment along the Main Axis (horizontal by default: flex-start, center, space-between, space-around).",
+          "align-items: Controls alignment along the Cross Axis (vertical by default: stretch, center, flex-start, flex-end).",
+          "flex-wrap: wrap allows items to wrap gracefully onto new lines on small phone screens."
+        ]
+      },
+      {
+        "heading": "Media Queries for Mobile-First Design",
+        "points": [
+          "Mobile-First: Write base CSS for phones first, then use @media (min-width: 768px) { ... } to enhance layout for tablets and desktops.",
+          "Ensures fast page load on mobile networks and eliminates horizontal scrolling."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Every modern web application (Facebook, Twitter/X, Netflix) is styled using Flexbox and CSS Grid. Frameworks like Tailwind CSS and Bootstrap are simply pre-packaged utilities built on these exact CSS properties.",
+      "careerRelevance": "CSS layout fluency is a core interview filter. Many developers know how to write code, but struggle to vertically center a div or make a navbar responsive without breaking the page.",
+      "concreteExample": "Centering any element perfectly in both directions requires only 3 lines of CSS: display: flex; justify-content: center; align-items: center;"
+    },
+    "practicalExamples": [
+      {
+        "title": "Responsive Flexbox Navigation Bar",
+        "language": "css",
+        "codeOrDiagram": "/* Universal Box Sizing */\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n/* Flex Navbar */\n.navbar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 1rem 2rem;\n  background-color: #0f172a;\n  color: #ffffff;\n}\n\n.nav-links {\n  display: flex;\n  gap: 1.5rem;\n  list-style: none;\n}\n\n/* Mobile Breakpoint */\n@media (max-width: 768px) {\n  .navbar {\n    flex-direction: column;\n    gap: 1rem;\n  }\n}",
+        "explanation": "Creates a clean modern desktop navbar that automatically stacks into a mobile-friendly column on screens narrower than 768px."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Margin and Padding in diagrams.",
+        "correctApproach": "Padding is INSIDE the border (changes background color area). Margin is OUTSIDE the border (pushes other elements away)."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Cascade",
+        "definition": "The algorithm determining which CSS rule wins when multiple conflicting styles apply to the same element, based on importance, specificity, and source order."
+      },
+      {
+        "term": "Specificity",
+        "definition": "A numerical score calculated by browsers (Inline > ID > Class > Element) deciding which style declaration takes precedence."
+      }
+    ]
+  }
+]

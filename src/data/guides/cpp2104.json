@@ -1,0 +1,187 @@
+[
+  {
+    "id": "guide-cpp2104-1",
+    "courseCode": "CPP 2104",
+    "lectureNumber": 1,
+    "title": "Unit 1: Introduction to Unified Modeling Language (UML)",
+    "originalFileName": "Unit 1 Intro_to_the_Unified_Modeling_Language__UML_.pdf",
+    "downloadUrl": "/notes/object-oriented-tech/Unit 1 Intro_to_the_Unified_Modeling_Language__UML_.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Unified Modeling Language (UML) is the international standard graphical modeling language (OMG-governed) used by software engineers and solution architects to visualize, specify, construct, and document the artifacts of software-intensive systems. This lecture establishes why modeling precedes code, introduces structural vs. behavioral views, and dives deep into Class Diagrams, visibility symbols (+, -, #, ~), and relationships (association, aggregation, and composition).",
+    "coreHighlights": [
+      {
+        "heading": "Why Engineers Model Before Writing Code",
+        "points": [
+          "A model is a simplification of reality that provides a complete description of a system from a specific stakeholder perspective.",
+          "Modeling achieves 4 core aims: Visualizing a system as it should be, specifying structural and behavioral contracts without implementation bias, providing templates for guiding system construction, and documenting decisions made for future maintainers.",
+          "Building complex software without modeling is equivalent to constructing a skyscraper without architectural blueprints; simple scripts can be hacked together ad-hoc, but enterprise applications collapse without formal design."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "The Best Model Rule: The best models are connected to reality. In software engineering, an architectural model that diverges from running code becomes misleading technical debt."
+        }
+      },
+      {
+        "heading": "The 13 UML Diagrams: Structural vs. Behavioral Taxonomy",
+        "points": [
+          "Structural Diagrams (Static Aspects): Class Diagrams (classes, attributes, operations, relationships), Object Diagrams (runtime snapshots of memory instances), Component Diagrams (deployable binaries/jars/modules), and Deployment Diagrams (hardware nodes and network topology).",
+          "Behavioral Diagrams (Dynamic Aspects): Use Case Diagrams (actors and user boundaries), Sequence Diagrams (time-ordered message exchanges across lifelines), Communication Diagrams (structural interaction emphasis), State Machine Diagrams (state transitions triggered by events), and Activity Diagrams (procedural workflows and concurrent forks/joins)."
+        ]
+      },
+      {
+        "heading": "Class Diagrams Mechanics & Visibility Standards",
+        "points": [
+          "3-Compartment Box Structure: Top compartment = Class Name (italicized if abstract); Middle compartment = Attributes (name: type [multiplicity] = default); Bottom compartment = Operations/Methods (name(param: type): returnType).",
+          "Visibility Modifiers: + public (accessible everywhere), - private (encapsulated strictly within the owning class), # protected (accessible by the class and derived subclasses), ~ package/default (accessible within the same namespace/package).",
+          "Multiplicity Bounds: 0..1 (optional zero or one), 1 (exactly one mandatory), 0..* or * (zero to many), 1..* (at least one mandatory up to many), m..n (explicit range, e.g. 2..4)."
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Do not confuse Class diagrams with Flowcharts. Class diagrams define static memory types and structural invariants, never temporal execution flow or branching conditions."
+        }
+      },
+      {
+        "heading": "Object Relationships: Dependency vs. Association vs. Aggregation vs. Composition",
+        "points": [
+          "Dependency (Dashed arrow --->): A 'uses-a' transient relationship where a change in class B affects class A (e.g., method receives B as a parameter).",
+          "Association (Solid line ---): A persistent structural link where class A has a reference to class B as a field/member variable.",
+          "Aggregation (Hollow Diamond <>---): A weak 'has-a' whole-part relationship where parts can exist independently of the whole (e.g., Department has-a Professor; if Department shuts down, the Professor still exists).",
+          "Composition (Filled Diamond <*---): A strong 'death-relationship' whole-part lifecycle where the part cannot exist without the whole (e.g., House has-a Room; Order has-a OrderItem; deleting the Order deletes all OrderItems)."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In modern enterprise engineering across AWS, Stripe, and Microsoft, UML diagrams are used during RFC (Request for Comments) and ADR (Architectural Decision Records) review phases before any code is approved in pull requests. Class diagrams define JPA/Hibernate ORM entities, domain models in Domain-Driven Design (DDD), and GraphQL schemas.",
+      "careerRelevance": "Technical Lead and Systems Architect interviews require drawing UML class and sequence diagrams to demonstrate domain boundary isolation, API contracts, and loose coupling.",
+      "concreteExample": "In an e-commerce platform like Jumia: Class Order owns OrderItem via Composition (black diamond, 1 to 1..*). If an Order is cancelled before checkout, the ephemeral OrderItems are deleted. But Product has an Association with OrderItem (if Order is deleted, the catalog Product is preserved)."
+    },
+    "practicalExamples": [
+      {
+        "title": "UML Class Diagram to Java/TypeScript Implementation",
+        "language": "typescript",
+        "codeOrDiagram": "// UML Representation:\n// +-----------------------+\n// |      BankAccount      |\n// +-----------------------+\n// | - accountNumber: string|\n// | - balance: number     |\n// | # interestRate: number|\n// +-----------------------+\n// | + deposit(amt: number)|\n// | + withdraw(amt:number)|\n// | + getBalance(): number|\n// +-----------------------+\n\nexport class BankAccount {\n  private accountNumber: string;\n  private balance: number;\n  protected interestRate: number;\n\n  constructor(accNo: string, openingDeposit: number, rate = 0.05) {\n    if (openingDeposit < 0) throw new Error('Initial deposit must be non-negative');\n    this.accountNumber = accNo;\n    this.balance = openingDeposit;\n    this.interestRate = rate;\n  }\n\n  public deposit(amount: number): void {\n    if (amount <= 0) throw new Error('Deposit must exceed zero');\n    this.balance += amount;\n  }\n\n  public withdraw(amount: number): boolean {\n    if (amount > 0 && this.balance >= amount) {\n      this.balance -= amount;\n      return true;\n    }\n    return false;\n  }\n\n  public getBalance(): number {\n    return this.balance;\n  }\n}",
+        "explanation": "Demonstrates exact translation of UML visibility prefixes (- private, + public, # protected) into object-oriented encapsulation."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Drawing an arrow pointing to the subclass instead of the parent superclass.",
+        "correctApproach": "In UML, the inheritance/generalization arrow (solid line with closed hollow triangular arrowhead) always points FROM the child class TO the parent base class (Child ---> Parent).",
+        "sampleQuestion": "Which direction does the triangle arrowhead point in UML generalization?"
+      },
+      {
+        "trap": "Mixing up filled diamond (Composition) and hollow diamond (Aggregation).",
+        "correctApproach": "Remember: Filled/Solid black diamond = Strong lifecycle bound (Whole dies -> Part dies). Hollow white diamond = Independent lifecycle (Whole dies -> Part lives).",
+        "sampleQuestion": "Explain the semantic difference between Aggregation and Composition with an authentic code example."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "UML (Unified Modeling Language)",
+        "definition": "A standard visual modeling language governed by the Object Management Group (OMG) for specifying, visualizing, constructing, and documenting software artifacts."
+      },
+      {
+        "term": "Generalization",
+        "definition": "The taxonomic relationship between a more general classifier (superclass) and a more specific classifier (subclass), implementing object-oriented inheritance."
+      },
+      {
+        "term": "Composition",
+        "definition": "A strict form of aggregation with strong ownership and coincident lifetime of parts by the whole (represented by a solid black diamond)."
+      },
+      {
+        "term": "Multiplicity",
+        "definition": "Specification of the cardinality of instances of one class related to a single instance of another class (e.g. 0..1, 1..*)."
+      }
+    ]
+  },
+  {
+    "id": "guide-cpp2104-2",
+    "courseCode": "CPP 2104",
+    "lectureNumber": 2,
+    "title": "Unit 2: Structural Modeling Using UML - Classes, Advanced Relationships & Packaging",
+    "originalFileName": "Unit-2-1.pdf",
+    "downloadUrl": "/notes/object-oriented-tech/Unit-2-1.pdf",
+    "estimatedReadTimeMinutes": 35,
+    "executiveSummary": "Unit 2 dives into advanced structural modeling in UML. It dissects the anatomy of classes, responsibilities, stereotype extensions (<<interface>>, <<utility>>, <<entity>>), advanced relationships (dependencies, realized interfaces, association classes, reflexive associations), packages for modular grouping, and the concrete distinction between Class Diagrams (descriptor level) and Object Diagrams (instance level snapshot).",
+    "coreHighlights": [
+      {
+        "heading": "Class Anatomy & Stereotypes in Enterprise Systems",
+        "points": [
+          "A class is a descriptor for a set of objects that share the same attributes, operations, relationships, and semantics.",
+          "Stereotypes (guillemets << >>): UML extension mechanism allowing architects to customize model elements (e.g., <<entity>> for persistent database models, <<control>> for business orchestration logic, <<boundary>> for UI/API inputs, <<interface>> for pure method contracts).",
+          "Tagged Values & Constraints: Additional metadata formatted in curly braces (e.g., {readOnly}, {abstract}, {ordered}) to specify invariant business rules."
+        ]
+      },
+      {
+        "heading": "Advanced Relationships & Association Classes",
+        "points": [
+          "Association Classes: When an association itself possesses attributes and operations. For example, a Student enrolls in a Course; the attribute 'grade' or 'enrollmentDate' belongs neither exclusively to the Student nor to the Course, but to the Enrollment association class connecting them.",
+          "Reflexive (Self) Association: When an instance of a class relates to another instance of the same class (e.g., Employee manages Employee; Directory contains Directory).",
+          "Interface Realization (Dashed line with hollow triangle): A structural contract where a concrete class promises to implement all abstract operations declared by an <<interface>>."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Association classes in UML correspond 1:1 with join tables containing extra columns in relational database modeling."
+        }
+      },
+      {
+        "heading": "Packages, Namespaces & Dependency Management",
+        "points": [
+          "A Package is a general-purpose grouping mechanism depicted as a tabbed folder icon. Packages contain classes, interfaces, and even sub-packages.",
+          "Package Import (<<import>>) vs Package Access (<<access>>): Controls namespace visibility across architectural layers.",
+          "High Cohesion & Low Coupling: High-performing software architectures bundle closely related classes within the same package while minimizing cross-package dependencies."
+        ]
+      },
+      {
+        "heading": "Class Diagrams vs. Object Diagrams",
+        "points": [
+          "Descriptor Level (Class Diagram): Shows types, abstract inheritance hierarchies, potential multiplicity bounds, and static definitions.",
+          "Instance Level (Object Diagram): Shows concrete objects existing at a single frozen moment in runtime execution. Object names are underlined (e.g., johnDoe : Student), attributes display literal runtime values, and links replace associations."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Spring Boot (Java), NestJS (TypeScript), and Django (Python) frameworks are organized around packages and stereotypes. Controllers (<<boundary>>), Services (<<control>>), and Repositories/Entities (<<entity>>) directly reflect the 3-tier architectural UML pattern taught in this unit.",
+      "careerRelevance": "Refactoring monolithic software into microservices requires package dependency analysis. Understanding cyclic dependencies in UML diagrams prevents deadlock and dependency hell in enterprise production deployments.",
+      "concreteExample": "In Uber or Bolt ride-hailing: A Driver and a Passenger are both connected through a Trip association class, which contains tripFare, pickupTimestamp, and rating metrics."
+    },
+    "practicalExamples": [
+      {
+        "title": "UML Association Class & Interface Realization",
+        "language": "typescript",
+        "codeOrDiagram": "// Interface Realization in TypeScript:\ninterface PaymentGateway {\n  processPayment(amount: number, currency: string): Promise<boolean>;\n  refund(transactionId: string): Promise<boolean>;\n}\n\n// Stereotype <<entity>>\nexport class Order {\n  constructor(public orderId: string, public totalAmount: number) {}\n}\n\n// Association Class: Connects Student & Course with Grade metadata\nexport class Enrollment {\n  constructor(\n    public studentId: string,\n    public courseCode: string,\n    public enrollmentDate: Date,\n    public currentGrade: number = 0\n  ) {}\n\n  public recordGrade(score: number): void {\n    if (score < 0 || score > 100) throw new Error('Grade out of bounds');\n    this.currentGrade = score;\n  }\n}",
+        "explanation": "Illustrates how interface realization and association classes are written in clean, strongly-typed production code."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Forgetting to underline object names in UML Object Diagrams.",
+        "correctApproach": "Always write object names formatted as <u>objectName : ClassName</u> (underlined). If the object is anonymous, write <u>: ClassName</u>.",
+        "sampleQuestion": "How do you differentiate an instance box in an Object Diagram from a class box in a Class Diagram?"
+      },
+      {
+        "trap": "Placing attributes like 'grade' inside the Student class instead of an Association Class.",
+        "correctApproach": "A student has multiple grades across different courses. Placing 'grade' in Student violates 1NF and domain purity. Grade must belong to Enrollment (the association class).",
+        "sampleQuestion": "When is it necessary to introduce an Association Class into a UML class model?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Association Class",
+        "definition": "An association that also has class properties, allowing attributes and operations to attach to a link between two classifiers."
+      },
+      {
+        "term": "Stereotype",
+        "definition": "A UML extensibility mechanism denoted by guillemets << >> that categorizes the architectural intent of a classifier."
+      },
+      {
+        "term": "Package",
+        "definition": "A general-purpose grouping mechanism used to organize model elements into higher-level namespaces."
+      },
+      {
+        "term": "Object Diagram",
+        "definition": "A structural diagram that provides a snapshot of the runtime instances and links in a system at a specific point in time."
+      }
+    ]
+  }
+]

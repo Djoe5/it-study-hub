@@ -1,0 +1,331 @@
+[
+  {
+    "id": "guide-cuu2102-1",
+    "courseCode": "CUU 2102",
+    "lectureNumber": 1,
+    "title": "Part 1: Introduction to Information Literacy & Lifelong Learning",
+    "originalFileName": "PART 1 INTRODUCTION TO IL.docx",
+    "downloadUrl": "/notes/information-literacy/PART 1 INTRODUCTION TO IL.docx",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Information Literacy (IL) is the set of integrated capabilities encompassing the reflective discovery of information, the understanding of how information is produced and valued, and the ethical use of information in creating new knowledge. Spearheaded by Benjamin Mutungi at KCA University, this lecture defines why information literacy is the foundational pillar of academic writing, independent inquiry, and lifelong career adaptation in the information age.",
+    "coreHighlights": [
+      {
+        "heading": "The Information Explosion & The Need for Information Literacy",
+        "points": [
+          "We live in an era of information overload where unfiltered digital content, predatory publishing, and generative AI content proliferate exponentially.",
+          "Information literacy is not mere digital literacy (knowing how to click or operate a computer); it is the cognitive capability to recognize when information is needed, formulate effective inquiry, locate authoritative sources, evaluate credibility, and synthesize insights ethically.",
+          "Lifelong Learning: Academic credentials become obsolete without the meta-skill of self-directed research\u2014knowing how to learn, unlearn, and relearn across technological shifts."
+        ]
+      },
+      {
+        "heading": "The 5-Stage Information Literacy Cycle",
+        "points": [
+          "1. Recognize: Identify the exact information gap or research question required for an assignment or technical task.",
+          "2. Locate & Access: Determine where authoritative data resides (peer-reviewed journals, institutional databases, official documentation vs. random blog posts).",
+          "3. Evaluate: Apply rigorous criteria (currency, relevance, authority, accuracy, and purpose) to test source credibility.",
+          "4. Organize & Synthesize: Integrate new information into an existing knowledge schema without distortion.",
+          "5. Ethical Use: Attribute all intellectual debt appropriately to uphold academic integrity and copyright law."
+        ]
+      },
+      {
+        "heading": "Characteristics of an Information Literate Student",
+        "points": [
+          "Curiosity paired with skepticism: Refuses to accept first-page search results without scrutiny.",
+          "Methodological rigor: Constructs targeted Boolean search strings rather than typing colloquial questions.",
+          "Ethical stewardship: Respects intellectual property and understands the severe academic and legal penalties of plagiarism."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In software engineering, cybersecurity, and data science, information literacy directly impacts security and system stability. Copy-pasting unvetted code snippets from random forums without verifying license compatibility (GPL vs. MIT vs. Apache) or security vulnerabilities introduces critical remote code execution bugs and legal liability.",
+      "careerRelevance": "Technical researchers, solutions architects, and data analysts spend up to 40% of their time evaluating technical documentation, RFCs, and vendor whitepapers before deciding multi-million dollar tech stacks.",
+      "concreteExample": "When assessing a third-party open-source library on npm: An information-literate engineer evaluates the author's reputation, GitHub stars, commit recency, open issues, security CVE audit history, and licensing terms before adding it to production dependencies."
+    },
+    "practicalExamples": [
+      {
+        "title": "The CRAAP Source Evaluation Framework in Computing",
+        "language": "markdown",
+        "codeOrDiagram": "## CRAAP Evaluation Checklist\n\n- Currency: Has this library or documentation been updated in the last 12 months? (Is it maintained?)\n- Relevance: Does this research paper directly address my specific database latency problem?\n- Authority: Who wrote this article? Is it a recognized core committer, an IEEE peer-reviewed researcher, or an unverified marketing affiliate?\n- Accuracy: Are the benchmarks peer-reviewed, reproducible, and supported by methodology data?\n- Purpose: Is this article written to objectively inform, or is it a sponsored advertorial designed to sell a proprietary cloud platform?",
+        "explanation": "Applies the academic CRAAP test directly to evaluate software libraries, cloud vendors, and technical whitepapers."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Equating Information Literacy with basic computer computer literacy.",
+        "correctApproach": "Computer literacy is operational (using hardware and software); Information literacy is conceptual and evaluative (critically judging information quality and ethics).",
+        "sampleQuestion": "Differentiate between computer literacy and information literacy."
+      },
+      {
+        "trap": "Omitting the ethical dimension when defining Information Literacy.",
+        "correctApproach": "Always highlight the ethical and legal use of information (referencing, copyright, intellectual property) as an indispensable pillar of IL.",
+        "sampleQuestion": "Explain the five core capabilities of an information-literate person according to international frameworks."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Information Literacy",
+        "definition": "The ability to recognize when information is needed and have the ability to locate, evaluate, and use effectively the needed information."
+      },
+      {
+        "term": "Lifelong Learning",
+        "definition": "The continuous, self-motivated pursuit of knowledge for personal or professional reasons throughout life."
+      },
+      {
+        "term": "Peer Review",
+        "definition": "Evaluation of scientific, academic, or professional work by others working in the same field before publication."
+      },
+      {
+        "term": "CRAAP Test",
+        "definition": "A test to evaluate the credibility of sources based on Currency, Relevance, Authority, Accuracy, and Purpose."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu2102-2",
+    "courseCode": "CUU 2102",
+    "lectureNumber": 2,
+    "title": "Information Literacy 1: Academic Search Strategies & Scholarly Databases",
+    "originalFileName": "Information Literacy 1.pptx",
+    "downloadUrl": "/notes/information-literacy/Information Literacy 1.pptx",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Finding credible scholarly information is a structured science rather than serendipitous browsing. This lecture covers advanced search syntax, institutional repository access at KCA University (KCAU Library portal, KOHA, DSpace), subscription databases (IEEE Xplore, ScienceDirect, JSTOR, Emerald, SpringerLink), and the construction of high-precision Boolean search queries (AND, OR, NOT, wildcard asterisks, and phrase quoting).",
+    "coreHighlights": [
+      {
+        "heading": "The Scholarly Information Ecosystem",
+        "points": [
+          "The Surface Web vs. The Deep Web / Academic Web: Less than 5% of web content is indexed by commercial search engines like Google. High-impact peer-reviewed journals live behind academic paywalls and institutional digital libraries.",
+          "Institutional Repositories (DSpace): Host university dissertations, faculty research papers, and localized Kenyan research outputs.",
+          "Major Scholarly Databases: IEEE Xplore (computing, electrical engineering, hardware), ACM Digital Library (computer science algorithms, software engineering), ScienceDirect & SpringerLink (interdisciplinary research)."
+        ]
+      },
+      {
+        "heading": "Boolean Logic & Search Precision Mechanics",
+        "points": [
+          "AND (Intersection): Narrows the search. Both terms must appear (e.g., 'artificial intelligence' AND 'healthcare').",
+          "OR (Union): Broadens the search. Either term may appear; ideal for synonyms (e.g., 'cybersecurity' OR 'information security' OR 'infosec').",
+          "NOT (Exclusion): Eliminates irrelevant noise (e.g., 'python' NOT 'snake' NOT 'reptile'). Use with caution as it can discard relevant papers.",
+          "Phrase Searching (\" \"): Enforces exact word order (e.g., \"distributed database systems\").",
+          "Truncation / Wildcards (*): Captures all morphological word variants (e.g., comput* matches compute, computer, computing, computation)."
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Never type complete natural sentences into academic databases. Break your research question down into core concepts, identify 2-3 synonyms for each concept, and connect them with (Concept1 OR Synonym1) AND (Concept2 OR Synonym2)."
+        }
+      },
+      {
+        "heading": "Controlled Vocabularies & Subject Headings",
+        "points": [
+          "Thesauri and MeSH / IEEE taxonomy headings index articles by standardized semantic concepts rather than the arbitrary words authors chose in their titles.",
+          "Using subject headings prevents missing landmark papers that use alternate phrasing for the same technology."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "Patent attorneys, R&D engineers, and enterprise architects perform Prior Art Searches before filing patents or releasing commercial software. Precision Boolean searching ensures a company does not infringe on existing intellectual property or reinvent algorithms already patented.",
+      "careerRelevance": "Competitive intelligence analysts and vulnerability researchers rely on advanced search operators (Google dorks, Boolean operators in Shodan/Censys) to find exposed assets and research threat actor tactics.",
+      "concreteExample": "When researching zero-trust architecture in banking: Search string: (\"zero trust\" OR \"perimeterless security\") AND (\"banking\" OR \"fintech\" OR \"financial services\") AND (\"Kenya\" OR \"East Africa\") AND (implementation OR adoption)."
+    },
+    "practicalExamples": [
+      {
+        "title": "Boolean Query Construction Matrix",
+        "language": "sql",
+        "codeOrDiagram": "-- Translating a Research Objective into a Boolean Academic String:\n-- Research Question: 'How does cloud migration affect database security in healthcare?'\n\n-- Step 1: Extract concepts\n-- Concept A: Cloud Migration\n-- Concept B: Database Security\n-- Concept C: Healthcare\n\n-- Step 2: Assemble Boolean string for IEEE Xplore / ScienceDirect:\n(\"cloud migration\" OR \"cloud adoption\" OR \"cloud transition\")\nAND \n(\"database security\" OR \"data protection\" OR \"encryption\")\nAND \n(\"healthcare\" OR \"medical records\" OR \"hospital information systems\")",
+        "explanation": "Demonstrates step-by-step query design to achieve high recall and precision in academic databases."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Using 'AND' when you intended to search for synonyms.",
+        "correctApproach": "Remember: AND restricts and reduces total results; OR expands and increases total results. Synonyms must ALWAYS be grouped with OR inside parentheses.",
+        "sampleQuestion": "Construct an effective Boolean search query to research the impact of machine learning on fraud detection."
+      },
+      {
+        "trap": "Forgetting parentheses when mixing AND with OR.",
+        "correctApproach": "Database search engines parse left-to-right unless parentheses are used. Always group OR terms in parentheses: (A OR B) AND C.",
+        "sampleQuestion": "Why are parentheses critical when combining multiple Boolean operators?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Boolean Operators",
+        "definition": "Simple words (AND, OR, NOT) used as conjunctions to combine or exclude keywords in a search."
+      },
+      {
+        "term": "Truncation",
+        "definition": "A search technique using symbols (such as *) to find various endings of a root word."
+      },
+      {
+        "term": "Institutional Repository",
+        "definition": "An online archive for collecting, preserving, and disseminating digital copies of the intellectual output of an institution."
+      },
+      {
+        "term": "Peer-Reviewed Journal",
+        "definition": "An academic periodical whose articles are vetted by independent subject-matter experts before publication."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu2102-3",
+    "courseCode": "CUU 2102",
+    "lectureNumber": 3,
+    "title": "Information Literacy 2: Core Standards, Evaluation & Characteristics",
+    "originalFileName": "Information Literacy 2.pptx",
+    "downloadUrl": "/notes/information-literacy/Information Literacy 2.pptx",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "This lecture examines the official Australian and New Zealand Information Literacy (ANZIL) Framework and ACRL standards. It details the 6 core standards an information-literate learner must master: recognizing information needs, locating resources efficiently, critically evaluating information and the seeking process, managing collected evidence, applying knowledge to create new concepts, and navigating the cultural, ethical, and socio-economic dimensions of information.",
+    "coreHighlights": [
+      {
+        "heading": "The ANZIL & ACRL Core Standards Framework",
+        "points": [
+          "Standard 1: Recognizes the need for information and determines the nature and extent of information required.",
+          "Standard 2: Finds needed information effectively and efficiently using optimal research tools and methodology.",
+          "Standard 3: Critically evaluates information and the information seeking process, assessing accuracy, authority, and intrinsic bias.",
+          "Standard 4: Manages information collected or generated, maintaining organized citations and personal digital repositories.",
+          "Standard 5: Applies prior and new information to construct new concepts, solve problems, or create new understandings.",
+          "Standard 6: Uses information with understanding and acknowledges cultural, ethical, economic, legal, and social issues surrounding its use."
+        ]
+      },
+      {
+        "heading": "Critical Evaluation of the Information Seeking Process",
+        "points": [
+          "Reflective Search Adjustment: If an initial query yields zero results, the literate researcher diagnoses the failure (overly specific keywords, wrong vocabulary, wrong database) and re-evaluates.",
+          "If a query returns 50,000 results, the researcher realizes the query is too broad and applies filters (publication date, peer-review checkbox, domain constraints).",
+          "Assessing Bias & Commercial Conflicts of Interest: Identifying whether research findings are funded by corporate sponsors whose products are endorsed in the paper."
+        ]
+      },
+      {
+        "heading": "Synthesizing Information to Generate New Knowledge",
+        "points": [
+          "Synthesis is not a mosaic of quotes pasted back-to-back. It is the intellectual weaving together of disparate viewpoints into a coherent narrative.",
+          "Comparing and contrasting author findings to identify contradictions, research gaps, and emerging technological consensus."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In tech consulting and system integration (Gartner, McKinsey, Accenture), analysts evaluate conflicting benchmark claims from vendors (e.g., Oracle vs. Snowflake vs. Databricks). Applying ANZIL Standard 3 prevents enterprise clients from signing multimillion-dollar contracts based on cherry-picked vendor benchmarks.",
+      "careerRelevance": "Product managers and CTOs evaluate user metrics and market research reports to make strategic bets on future product architecture.",
+      "concreteExample": "When assessing AI safety claims: An information-literate engineer evaluates whether an AI safety paper was authored by an independent university consortium or by a vendor promoting their own commercial API."
+    },
+    "practicalExamples": [
+      {
+        "title": "Synthesis Matrix for Technical Literature",
+        "language": "markdown",
+        "codeOrDiagram": "| Author / Year | Methodology | Findings | Limitations | Relevance to My System |\n|---|---|---|---|---|\n| Kamau et al. (2024) | Empirical benchmarking on 10,000 TPS | Redis cluster latency under 2ms | Tested only on gigabit LAN | Proves latency viability for local staging |\n| Omondi (2025) | Case study of 3 Kenyan banks | Cloud migration cut infra cost 28% | High egress fee surprises | Highlights risk of hidden network charges |\n| Synthesis Paragraph | While Kamau et al. (2024) demonstrated sub-2ms throughput on local clusters, Omondi (2025) cautions that real-world cloud migrations face compounding egress bandwidth costs. Therefore, our architecture will employ local edge caching to mitigate inter-region traffic fees. |",
+        "explanation": "Illustrates how professional scholars and technical architects construct a synthesis matrix to cross-examine multiple sources."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Summarizing articles individually in a literature review without synthesizing them.",
+        "correctApproach": "A high-scoring literature review groups literature by themes, comparing and contrasting perspectives, rather than dedicating an isolated paragraph to each paper.",
+        "sampleQuestion": "Discuss five characteristics of an information-literate learner and illustrate each with a concrete example."
+      },
+      {
+        "trap": "Neglecting Standard 4 (Information Management).",
+        "correctApproach": "Demonstrate the use of citation management software (Zotero, Mendeley, EndNote) to organize and retrieve collected references.",
+        "sampleQuestion": "Explain how reference management tools support ANZIL Standard 4."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "ANZIL Framework",
+        "definition": "Australian and New Zealand Information Literacy framework; an internationally recognized benchmark for information literacy standards."
+      },
+      {
+        "term": "Synthesis",
+        "definition": "The combination of ideas, facts, or theories into a complex whole, demonstrating critical analysis and original insight."
+      },
+      {
+        "term": "Literature Matrix",
+        "definition": "A visual tabular tool used to organize and compare key elements of multiple research studies."
+      },
+      {
+        "term": "Authority",
+        "definition": "The expertise and standing of an author or publishing body that lends credibility to their work."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu2102-4",
+    "courseCode": "CUU 2102",
+    "lectureNumber": 4,
+    "title": "Information Literacy 3: Information Retrieval, Academic Integrity & Referencing",
+    "originalFileName": "Information Literacy 3.pptx",
+    "downloadUrl": "/notes/information-literacy/Information Literacy 3.pptx",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "This lecture provides end-to-end mastery of Information Retrieval (IR) and academic ethics. It dissects the two-step IR process (locating sources and selecting relevant blocks), teaches effective note-taking and information filtering, addresses the legal and moral anatomy of Plagiarism and Fraud, and details the rigorous mechanics of in-text citations and reference list formatting according to APA 7th Edition standards.",
+    "coreHighlights": [
+      {
+        "heading": "The Two-Step Information Retrieval (IR) Process",
+        "points": [
+          "Step 1: Locate Relevant Sources. Prioritize hierarchical authoritative tiers: (1) Lecture notes & syllabi, (2) Prescribed core textbooks, (3) University reading lists, (4) Peer-reviewed digital libraries (IEEE, ACM, Springer), (5) General scholarly repositories.",
+          "Step 2: Select the Relevant Information. Do not read 500-page books cover-to-cover; utilize the Table of Contents, Index, Abstract, Executive Summary, Chapter Conclusions, and topic headings to pinpoint targeted data blocks."
+        ]
+      },
+      {
+        "heading": "Academic Integrity & The Anatomy of Plagiarism",
+        "points": [
+          "Plagiarism Definition: Presenting someone else's work, ideas, words, code, or data as your own, without clear, unambiguous academic acknowledgment.",
+          "Forms of Plagiarism: Direct copy-paste without quotation marks or citation; Patchwriting (superficial synonym swapping while preserving the original grammatical structure); Self-plagiarism (submitting work from a previous course without instructor permission); and Code plagiarism (stealing open-source algorithms without attributing repository origin and license).",
+          "Fraud & Falsification: Manufacturing data that was never collected, altering experimental results to fit a hypothesis, or fabricating sources in a bibliography."
+        ],
+        "callout": {
+          "type": "warning",
+          "text": "Academic Penalties at KCA University: Plagiarism is treated as intellectual theft. Penalties range from grade F on the assignment, failure of the course, suspension, to permanent revocation of degree conferred."
+        }
+      },
+      {
+        "heading": "APA 7th Edition Referencing Standard Essentials",
+        "points": [
+          "In-Text Citation Format 1 (Narrative): Author is part of the sentence: e.g., 'Mutungi (2024) argued that information literacy is essential for academic research.'",
+          "In-Text Citation Format 2 (Parenthetical): Author and year enclosed at end: e.g., 'Information retrieval requires a systematic two-step process (Mutungi, 2024).'",
+          "Direct Quotations: Mandatory page number required: e.g., (Mutungi, 2024, p. 45).",
+          "Reference List Architecture: Hanging indent (0.5 inch), alphabetical order by first author's surname. Required elements: Author, A. A. (Year). Title of article/book. Source/Publisher. DOI or URL."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In commercial software development, plagiarism translates directly into Copyright Infringement and License Violation lawsuits. The landmark Google v. Oracle lawsuit centered around declaring API code copied without authorization, involving billions in liability.",
+      "careerRelevance": "Publishing technical whitepapers, conference proceedings, or industry patents requires flawless citation. Inaccurate attribution damages professional credibility and leads to career-ending retractions.",
+      "concreteExample": "Using open-source code in production: A software engineer copies an algorithm from StackOverflow licensed under CC-BY-SA into a proprietary banking app. Proper ethical attribution requires citing the original author, URL, and license, or rewriting the algorithm cleanly to avoid contaminating the codebase with viral copyleft licenses."
+    },
+    "practicalExamples": [
+      {
+        "title": "APA 7th Edition Reference Formats in Action",
+        "language": "markdown",
+        "codeOrDiagram": "### 1. Journal Article with DOI:\nMutungi, B., & Kibuku, R. (2024). Evaluating digital literacy across Kenyan universities. *Journal of Information Systems Education*, 15(2), 112\u2013128. https://doi.org/10.1016/j.jise.2024.03.011\n\n### 2. Academic Book:\nPressman, R. S., & Maxim, B. R. (2020). *Software engineering: A practitioner's approach* (9th ed.). McGraw-Hill Education.\n\n### 3. Web Document / Official Report:\nWorld Health Organization. (2023). *Global report on AI in healthcare*. https://www.who.int/publications/i/item/9789240076822",
+        "explanation": "Provides exact template examples for citing journal papers, core textbooks, and online technical reports in APA 7th edition."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Citing Wikipedia, ChatGPT, or informal blog URLs as authoritative references in university assignments.",
+        "correctApproach": "Use Wikipedia only as a starting point to find the primary sources cited in its reference section. Always cite the primary peer-reviewed source.",
+        "sampleQuestion": "Why is Wikipedia not considered an acceptable source for academic research?"
+      },
+      {
+        "trap": "Omitting page numbers in direct quotations.",
+        "correctApproach": "Whenever you quote an author verbatim (inside quotation marks), APA 7th strictly requires the page number: (Author, Year, p. XX). For paraphrasing, page numbers are encouraged but not mandatory.",
+        "sampleQuestion": "Under what circumstance is a page number mandatory in an APA in-text citation?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Plagiarism",
+        "definition": "The practice of taking someone else's work or ideas and passing them off as one's own without appropriate attribution."
+      },
+      {
+        "term": "In-Text Citation",
+        "definition": "A brief notation in the body of an academic text indicating that a quotation, paraphrase, or piece of evidence has been taken from a source."
+      },
+      {
+        "term": "DOI (Digital Object Identifier)",
+        "definition": "A persistent, unique alphanumeric string assigned by an organization to identify electronic content and provide a persistent link to its location on the internet."
+      },
+      {
+        "term": "Patchwriting",
+        "definition": "Restating a phrase or passage by making only minor modifications or substitutions of words, considered a form of unintentional plagiarism."
+      }
+    ]
+  }
+]

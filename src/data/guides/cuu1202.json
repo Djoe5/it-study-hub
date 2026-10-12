@@ -1,0 +1,265 @@
+[
+  {
+    "id": "guide-cuu1202-1",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 1,
+    "title": "Introduction and Origin of Critical and Creative Thinking",
+    "originalFileName": "Introduction and origin of critical and creative thinking.pdf",
+    "downloadUrl": "/notes/critical-thinking/Introduction and origin of critical and creative thinking.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Critical thinking is the disciplined, self-directed mental process of analyzing, evaluating, and synthesizing information to make reasoned judgments free from emotional bias and dogmatic conditioning. Originating from Socratic questioning and philosophical inquiry (Socrates, Plato, Aristotle), this foundational lecture establishes the difference between passive absorption of information and rigorous metacognition (thinking about thinking), tracing why values, unconscious biases, and intellectual courage dictate decision-making outcomes in computing and leadership.",
+    "coreHighlights": [
+      {
+        "heading": "The Etymology & Socratic Foundations of Critical Thought",
+        "points": [
+          "Root Meaning: 'Critical' derives from the Greek 'Kritikos' (meaning discerning judgment) and 'Kriterion' (standards of judgment). It is not cynical fault-finding, but objective truth-testing.",
+          "Socratic Method: Socrates established that authority figures frequently lack rational justification for their confident claims. Truth emerges through disciplined dialectic questioning that exposes underlying contradictions and unsupported premises.",
+          "Metacognition: Critical thinking requires second-order reflection\u2014examining the cognitive lenses, cultural conditioning, and emotional heuristics through which we interpret raw data."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Critical thinking is intellectual self-defense. In an era of AI hallucination, algorithmic echo chambers, and synthetic media, the ability to dissect arguments is the ultimate human superpower."
+        }
+      },
+      {
+        "heading": "Core Intellectual Standards for Evaluating Thinking",
+        "points": [
+          "Clarity: Can an argument be elaborated or illustrated with concrete examples? If a statement is vague, its validity cannot even be assessed.",
+          "Accuracy: Is the assertion factually verified against authentic empirical evidence?",
+          "Precision: Does the problem formulation contain exact details, quantitative parameters, and bounded scopes?",
+          "Relevance & Depth: How does the point connect to the central thesis? Does it address compounding root causes or merely superficial symptoms?",
+          "Fairness & Intellectual Humility: Are opposing viewpoints evaluated charitably without strawmanning or confirmation bias?"
+        ]
+      },
+      {
+        "heading": "Critical Thinking vs. Creative Thinking: The Complementary Dyad",
+        "points": [
+          "Convergent vs. Divergent: Creative thinking is divergent (generative, exploring lateral possibilities, suspending judgment to synthesize novelty). Critical thinking is convergent (evaluative, applying logic to filter and test feasibility).",
+          "Symbiotic Necessity: Creative thinking without critical evaluation produces ungrounded, non-viable fantasies; critical thinking without creative imagination produces sterile analysis incapable of innovation."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In tech leadership and software architecture (Google, Microsoft, Meta), Post-Mortem Blameless Reviews and Architecture Reviews depend entirely on critical thinking. When an outage brings down an entire cloud region, engineers must avoid scapegoating, distinguish correlation from causation, and systematically isolate root failure mechanisms.",
+      "careerRelevance": "High-level IT consultants and cybersecurity analysts are hired not just for syntactic coding skills, but for risk assessment\u2014anticipating malicious attack vectors and questioning untested architectural assumptions.",
+      "concreteExample": "When assessing whether to migrate a banking monolith to microservices: A critical thinker rejects vendor hype ('everyone uses Kubernetes'), analyzes latency overhead, operational complexity, and network partitioning risks, and insists on running empirical benchmarks before committing capital."
+    },
+    "practicalExamples": [
+      {
+        "title": "The Socratic Code/Architecture Review Framework",
+        "language": "markdown",
+        "codeOrDiagram": "## Socratic Architecture Review Matrix\n\n1. Clarification: 'What exact problem does introducing this distributed cache solve?'\n2. Probing Assumptions: 'Are we assuming Redis will never fail or drop network connections?'\n3. Probing Evidence: 'What telemetry data proves that database I/O is our actual bottleneck?'\n4. Exploring Alternatives: 'Could an in-memory application cache achieve 80% of the benefit at 10% of the maintenance overhead?'\n5. Analyzing Consequences: 'If cache invalidation desynchronizes, how will account balances recover?'",
+        "explanation": "Illustrates how philosophical Socratic questioning translates directly into high-reliability engineering checklists."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Defining critical thinking as 'criticizing' or finding fault with people.",
+        "correctApproach": "Emphasize that critical thinking is constructive, objective evaluation of ideas and arguments against rational standards, distinct from emotional criticism or hostility.",
+        "sampleQuestion": "Distinguish between everyday criticism and critical thinking in an academic context."
+      },
+      {
+        "trap": "Treating critical and creative thinking as mutually exclusive opposites.",
+        "correctApproach": "Demonstrate that they are complementary stages of the universal problem-solving loop (Divergence generates solutions -> Convergence filters the best solution).",
+        "sampleQuestion": "Why is creative thinking incomplete without critical evaluation?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Metacognition",
+        "definition": "Awareness and understanding of one's own thought processes; thinking about thinking."
+      },
+      {
+        "term": "Socratic Method",
+        "definition": "A form of cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking and draw out underlying ideas and presumptions."
+      },
+      {
+        "term": "Intellectual Humility",
+        "definition": "Consciousness of the limits of one's knowledge, including sensitivity to circumstances in which one's native egocentrism is likely to function self-deceptively."
+      },
+      {
+        "term": "Divergent Thinking",
+        "definition": "A thought process or method used to generate creative ideas by exploring many possible solutions in a non-linear manner."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu1202-2",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 2,
+    "title": "Arguments, Logic & Fallacies: Deductive vs. Inductive Reasoning",
+    "originalFileName": "ARGUMENTS  FALLACIES.pdf",
+    "downloadUrl": "/notes/critical-thinking/ARGUMENTS  FALLACIES.pdf",
+    "estimatedReadTimeMinutes": 35,
+    "executiveSummary": "This comprehensive lecture breaks down the formal machinery of human discourse: logic. Logic acts as the silent court of appeal in rational debate. The guide examines the anatomy of an argument (premises leading to a conclusion), rigorously contrasts Deductive Logic (validity and soundness) with Inductive Logic (strength and cogency), and catalogs the major formal and informal fallacies (Ad Hominem, Straw Man, Begging the Question, False Dilemma, Slippery Slope) that corrupt technical decision-making.",
+    "coreHighlights": [
+      {
+        "heading": "Anatomy of an Argument: Premises vs. Conclusion",
+        "points": [
+          "Discourse & Propositions: An argument is not a heated dispute; it is a connected series of statements (propositions) where one or more premises provide evidential support for a final conclusion.",
+          "Indicator Words: Premise indicators include 'because', 'since', 'given that', 'for the reason that'. Conclusion indicators include 'therefore', 'thus', 'consequently', 'it follows that'.",
+          "Arguments vs. Non-Arguments: Explanations, conditional 'if-then' statements on their own, and unsupported assertions are NOT arguments unless evidence is marshaled to establish the truth of a claim."
+        ]
+      },
+      {
+        "heading": "Deductive Reasoning: Validity & Soundness",
+        "points": [
+          "Deductive Standard: A deductive argument claims that if all premises are true, it is impossible for the conclusion to be false (truth-preserving).",
+          "Validity: Concerns the logical structural bond between premises and conclusion. If the structure guarantees the conclusion, the argument is VALID, regardless of whether premises are factually true.",
+          "Soundness: The gold standard of deduction. An argument is SOUND if and only if: (1) It is structurally VALID, AND (2) All its premises are FACTUALLY TRUE in the real world.",
+          "Classic Deductive Patterns: Modus Ponens (If P then Q; P; Therefore Q); Modus Tollens (If P then Q; Not Q; Therefore Not P)."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Mathematical proofs and cryptographic algorithms operate strictly on deductive validity: given mathematical axioms, encryption keys guarantee confidentiality unconditionally."
+        }
+      },
+      {
+        "heading": "Inductive Reasoning: Strength & Cogency",
+        "points": [
+          "Inductive Standard: An inductive argument claims that if the premises are true, the conclusion is PROBABLE or likely, but never 100% guaranteed.",
+          "Inductive Strength: If the premises provide high probabilistic support, the argument is STRONG; otherwise WEAK.",
+          "Cogency: An inductive argument is COGENT if: (1) It is strong, and (2) All premises are empirically true in reality.",
+          "Forms of Induction: Statistical generalizations, predictive arguments, arguments from analogy, and causal inferences. Machine Learning models and A/B tests are entirely inductive."
+        ]
+      },
+      {
+        "heading": "Taxonomy of Common Informal Fallacies",
+        "points": [
+          "Ad Hominem: Attacking the person's character, background, or motives rather than addressing the logical merit of their argument.",
+          "Straw Man: Distorting, exaggerating, or misrepresenting an opponent's position to make it easier to attack.",
+          "Begging the Question (Petitio Principii / Circular Reasoning): Assuming the truth of the conclusion within the premises themselves.",
+          "False Dilemma (Black-or-White): Artificially reducing a complex spectrum of possibilities into two extreme binary choices.",
+          "Post Hoc Ergo Propter Hoc (False Cause): Assuming that because event B followed event A, event A caused event B.",
+          "Appeal to Ignorance (Argumentum ad Ignorantiam): Claiming a proposition is true simply because it hasn't been proven false."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In cybersecurity and systems engineering, fallacious logic causes multi-million dollar breaches. The 'Appeal to Ignorance' fallacy ('Our intrusion detection system logged zero alerts today, therefore our network has never been breached') leads to catastrophic false security.",
+      "careerRelevance": "Product Managers, Data Scientists, and C-Suite executives use inductive reasoning when reading A/B test results and telemetry metrics. Knowing when a sample size is statistically unrepresentative prevents deploying flawed algorithms.",
+      "concreteExample": "False Dilemma in Engineering: 'Either we rewrite our entire application in Rust right now, or our system will inevitably crash under load.' A sound engineer rejects this false binary and evaluates localized profiling, query optimization, and caching."
+    },
+    "practicalExamples": [
+      {
+        "title": "Logical Proof vs. Fallacy Dissection",
+        "language": "markdown",
+        "codeOrDiagram": "### Valid & Sound Deductive Argument (Modus Ponens):\n- Premise 1: All relational databases that comply with ACID guarantee isolation.\n- Premise 2: PostgreSQL is a relational database complying with ACID.\n- Conclusion: Therefore, PostgreSQL guarantees isolation.\n(Status: Valid and Sound)\n\n### Fallacious Argument (Affirming the Consequent):\n- Premise 1: If a server is DDoS attacked, CPU usage spikes to 100%.\n- Premise 2: The server CPU usage has spiked to 100%.\n- Conclusion: Therefore, the server is under a DDoS attack.\n(Status: INVALID - A runaway background script, memory leak, or cron job could cause the spike!)",
+        "explanation": "Illustrates how formal logical fallacies lead engineers to misdiagnose production infrastructure incidents."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Calling an invalid argument 'false' or calling a premise 'invalid'.",
+        "correctApproach": "Arguments are VALID or INVALID (structure). Individual premises and statements are TRUE or FALSE (facts). Never mix up these terms in exams!",
+        "sampleQuestion": "Can an argument have all true premises and a true conclusion yet still be invalid? Provide an example."
+      },
+      {
+        "trap": "Confusing Post Hoc Ergo Propter Hoc with Correlation vs. Causation.",
+        "correctApproach": "Post Hoc specifically requires temporal sequence (A happened before B, hence A caused B).",
+        "sampleQuestion": "Identify and explain the fallacy in: 'Sales dropped immediately after the new UI update was released, so the UI update ruined sales.'"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Soundness",
+        "definition": "A property of a deductive argument that is both structurally valid and contains premises that are true in reality."
+      },
+      {
+        "term": "Modus Tollens",
+        "definition": "The valid deductive argument form: If P, then Q; Not Q; Therefore, not P."
+      },
+      {
+        "term": "Ad Hominem",
+        "definition": "A logical fallacy where an argument is rebutted by attacking the character, motive, or other attribute of the person making the argument, rather than attacking the substance of the argument itself."
+      },
+      {
+        "term": "Circular Reasoning",
+        "definition": "A fallacy in which the premise assumes the truth of the conclusion instead of supporting it."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu1202-3",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 3,
+    "title": "Creative Thinking & Structured Problem Solving in Technology",
+    "originalFileName": "Creative thinking and problem solving.pdf",
+    "downloadUrl": "/notes/critical-thinking/Creative thinking and problem solving.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "Creative thinking is a deliberate, divergent mental process that uses imagination, lateral thinking, and heuristic reframing to uncover novel, non-obvious solutions to complex problems. This lecture presents formal models of creativity, breaks down perceptual, emotional, and cultural barriers to innovation, and teaches structured creative frameworks including Mind Mapping, Edward de Bono's Six Thinking Hats, SCAMPER, and Root Cause Analysis (Ishikawa/Fishbone diagram and the 5 Whys).",
+    "coreHighlights": [
+      {
+        "heading": "The Creative Process & Lateral Thinking",
+        "points": [
+          "Divergent Exploration: Creative problem solving requires deliberately looking beyond the initial obvious answer, generating an expansive portfolio of unconventional ideas before filtering.",
+          "Lateral Thinking (Edward de Bono): While vertical logic proceeds step-by-step down a single well-worn mental groove, lateral thinking moves sideways to deliberately disrupt mental assumptions and establish cross-disciplinary connections.",
+          "Incubation Period: Scientific breakthroughs often occur during diffuse mental modes (rest, walks, sleep) after intense focused mental effort, allowing subconscious neural networks to assemble novel associations."
+        ]
+      },
+      {
+        "heading": "Psychological & Cultural Blocks to Creative Innovation",
+        "points": [
+          "Perceptual Blocks: Functional fixedness\u2014the inability to see an object or tool being used outside its standard intended design.",
+          "Emotional Blocks: Fear of making mistakes, looking foolish in front of peers, or premature self-censorship before an idea is even articulated.",
+          "Cultural & Environmental Blocks: Institutional dogma ('that is not how things are done here'), rigid bureaucratic taboos, and fear of questioning established leadership hierarchy."
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Rule of Brainstorming: Suspend all critique during the ideation phase. Evaluating ideas while generating them kills divergent creativity instantly."
+        }
+      },
+      {
+        "heading": "Structured Problem Solving Methodologies",
+        "points": [
+          "SCAMPER Technique: Substitute, Combine, Adapt, Modify/Magnify, Put to other uses, Eliminate, Reverse/Rearrange.",
+          "Six Thinking Hats (De Bono): White (Objective data & metrics), Red (Intuition & emotion), Black (Critical caution & risk identification), Yellow (Optimism & benefits), Green (Pure creativity & lateral alternatives), Blue (Process control & metacognitive moderation).",
+          "Root Cause Analysis (5 Whys): Asking 'Why?' iteratively 5 times to drill past superficial symptoms down to foundational systemic design flaws."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In tech startups and enterprise innovation labs (Y Combinator, Google X), design thinking sprints and lateral heuristics drive billion-dollar pivots. Uber was invented by applying 'Substitute & Combine' (SCAMPER): combining GPS smartphones, idle private vehicles, and cashless payment to replace traditional street taxis.",
+      "careerRelevance": "Senior Software Engineers and Tech Leads are valued for unblocking tricky production bugs that resist conventional debugging, requiring lateral hypotheses and creative diagnostic probes.",
+      "concreteExample": "Using the 5 Whys after an authentication outage: (1) Why did login fail? Database pool exhausted. (2) Why? Connections never closed. (3) Why? Unhandled exception aborted execution. (4) Why? Third-party SMS gateway timed out. (5) Root Cause: Lack of timeout circuit-breaker on external API dependencies."
+    },
+    "practicalExamples": [
+      {
+        "title": "Applying SCAMPER to an IT System",
+        "language": "markdown",
+        "codeOrDiagram": "## SCAMPER Matrix: Redesigning a University Portal\n\n- [S] Substitute: Replace password logins with WebAuthn biometric passkeys.\n- [C] Combine: Merge grade transcripts and assignment submission into a unified real-time dashboard.\n- [A] Adapt: Adapt TikTok-style bite-sized cards for reading academic lecture highlights.\n- [M] Modify: Magnify mobile responsiveness for 3G rural network bandwidth.\n- [P] Put to other use: Turn historical course enrollment data into an AI elective recommender.\n- [E] Eliminate: Eliminate paper exam cards; use QR-code digital verification.\n- [R] Reverse: Invert grading flow\u2014allow students to submit continuous self-assessments before finals.",
+        "explanation": "Demonstrates systematic application of SCAMPER to transform an everyday academic workflow."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing the functions of the Black Hat and the Red Hat in Six Thinking Hats.",
+        "correctApproach": "Black Hat is logical-negative (identifies genuine objective risks and reasons why something may fail). Red Hat is emotional-intuitive (expresses hunches and feelings without needing logical justification).",
+        "sampleQuestion": "Explain the role of the Black Hat and why it must not be confused with mere cynicism."
+      },
+      {
+        "trap": "Stopping after the first answer in Root Cause Analysis.",
+        "correctApproach": "Always demonstrate at least 4 to 5 iterations of the 5 Whys to reveal systemic procedural or architectural causes rather than blaming an individual.",
+        "sampleQuestion": "Apply the 5 Whys technique to diagnose why a payment transaction failed."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Lateral Thinking",
+        "definition": "A manner of solving problems using an indirect and creative approach, via reasoning that is not immediately obvious."
+      },
+      {
+        "term": "Functional Fixedness",
+        "definition": "A cognitive bias that limits a person to using an object only in the way it is traditionally used."
+      },
+      {
+        "term": "SCAMPER",
+        "definition": "A creative thinking technique that uses action verbs as stimuli to spark innovative ideas and modifications."
+      },
+      {
+        "term": "5 Whys",
+        "definition": "An iterative interrogative technique used to explore the cause-and-effect relationships underlying a particular problem until the root cause is uncovered."
+      }
+    ]
+  }
+]
