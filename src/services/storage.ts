@@ -2,10 +2,10 @@ import { Course, Assignment, UserProfile, StudySession } from '../types';
 import { initialCourses, initialAssignments, initialProfile } from '../data/initialData';
 
 const STORAGE_KEYS = {
-  COURSES: 'it_study_hub_courses_v5_all_canonical_guides',
-  ASSIGNMENTS: 'it_study_hub_assignments_v5_all_canonical_guides',
-  PROFILE: 'it_study_hub_profile_v5_all_canonical_guides',
-  STUDY_SESSIONS: 'it_study_hub_sessions_v5_all_canonical_guides',
+  COURSES: 'it_study_hub_courses_v6_critical_thinking_update',
+  ASSIGNMENTS: 'it_study_hub_assignments_v6_critical_thinking_update',
+  PROFILE: 'it_study_hub_profile_v6_critical_thinking_update',
+  STUDY_SESSIONS: 'it_study_hub_sessions_v6_critical_thinking_update',
 };
 
 export const StorageService = {

@@ -261,5 +261,344 @@
         "definition": "An iterative interrogative technique used to explore the cause-and-effect relationships underlying a particular problem until the root cause is uncovered."
       }
     ]
+  },
+  {
+    "id": "guide-cuu1202-4",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 4,
+    "title": "Thinking Processes, Cognitive Biases & Sound Decision Making",
+    "originalFileName": "Importance of thinking in decision making.pdf",
+    "downloadUrl": "/notes/critical-thinking/Importance of thinking in decision making.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Thinking is the cornerstone of rational human action and effective technical decision-making. Far from being a passive reflex, high-quality thinking is an intentional cognitive process that gathers sensory data, filters it through selective attention, retrieves mental models from memory, and applies deductive and inductive reasoning to evaluate complex trade-offs. This guide explores the 10 vital reasons why deliberate thinking is crucial in decision-making, breaks down the 7 sequential stages of the human cognitive cycle, and provides an exhaustive field guide to 12 destructive cognitive biases (including Confirmation Bias, Anchoring, Availability Heuristic, and Loss Aversion) along with concrete de-biasing protocols used by senior engineering leads.",
+    "coreHighlights": [
+      {
+        "heading": "The 10 Strategic Reasons Why Thinking Governs Decision-Making",
+        "points": [
+          "Clarity & Problem Formulation: High-quality thinking strips away emotional clutter to define explicit goals, scope boundaries, and core priorities.",
+          "Multi-Alternative Analysis: Evaluates multiple competing architectural and career paths rather than latching onto the first obvious option.",
+          "Bias & Emotion Attenuation: Suppresses impulsive emotional reactions (e.g., panic in production outages or infatuation with new tech stacks) in favor of systematic logic.",
+          "Root-Cause Problem Solving: Goes beyond symptom patching to isolate foundational bottlenecks in software and organizational systems.",
+          "Consequence Prediction & Anticipation: Models second-order and third-order effects before executing irreversible changes.",
+          "Experiential Learning: Systematically conducts retrospectives and post-mortems so past missteps compound into wisdom.",
+          "Proactive Risk Management: Quantifies failure modes, worst-case latency scenarios, and security vulnerabilities prior to deployment.",
+          "Constructive Conflict Resolution: Facilitates objective consensus across engineering, product, and business stakeholders.",
+          "Unlocking Lateral Creativity: Provides the mental runway needed for divergent brainstorming and unconventional problem framing.",
+          "Accountability & Execution Confidence: Empowers engineers to take decisive ownership of technical choices because they are grounded in verifiable data."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Impulsive decisions optimize for immediate emotional relief, while critical thinking optimizes for long-term systemic stability. In software architecture, skipping thoughtful deliberation creates technical debt that takes years to pay off."
+        }
+      },
+      {
+        "heading": "The 7-Stage Architecture of the Human Thinking Process",
+        "points": [
+          "1. Perception: Environmental input gathered through human senses and system telemetry (dashboards, logs, user complaints).",
+          "2. Selective Attention: Cognitive filtering mechanism that focuses limited processing bandwidth onto the highest-priority signals while ignoring noise.",
+          "3. Memory Retrieval: Accessing short-term working memory (immediate context) and long-term semantic/episodic memory (design patterns, past incident post-mortems).",
+          "4. Reasoning Engine: Applying formal deductive logic (top-down rules) and inductive probability (pattern matching across telemetry) to construct hypotheses.",
+          "5. Decision Execution: Committing to an optimal action based on weighted trade-offs and resource constraints.",
+          "6. Metacognitive Monitoring: Actively 'thinking about thinking'\u2014evaluating whether one's reasoning has fallen victim to emotional defensiveness or cognitive fatigue.",
+          "7. Solution Validation: Observing system response and closing the feedback loop."
+        ]
+      },
+      {
+        "heading": "Catalog of 12 Fatal Cognitive Biases & Mitigation Protocols",
+        "points": [
+          "Confirmation Bias: Seeking only evidence that proves your hypothesis while ignoring contradictory telemetry. Fix: Actively design falsification tests.",
+          "Anchoring Bias: Over-relying on the first number, estimate, or theory presented. Fix: Independent blind estimates (Planning Poker in Scrum).",
+          "Availability Heuristic: Overestimating risks that are memorable, recent, or dramatic over statistically probable risks. Fix: Look at historical database logs, not gut feelings.",
+          "Overconfidence Bias: Overestimating personal competence and certainty. Fix: Calibrated probability assessments and peer code reviews.",
+          "Hindsight Bias ('I Knew It All Along'): Rewriting history after an incident occurs. Fix: Pre-commit written hypotheses and incident timelines in blameless post-mortems.",
+          "Bandwagon Effect: Adopting tools or opinions simply because the industry or team is hyping them. Fix: Enforce structured POCs (Proof of Concepts) and benchmark metrics.",
+          "Fundamental Attribution Error: Blaming an engineer's character for an error while attributing your own errors to external environment. Fix: Blameless post-mortem culture.",
+          "Loss Aversion: Feeling the pain of a loss twice as acutely as equivalent pleasure of a gain. Fix: Reframe choices in terms of expected value (EV) and calculated risks.",
+          "Framing Effect: Making different decisions depending on whether facts are presented positively or negatively. Fix: Invert the problem statement and restate numbers in neutral terms.",
+          "Sunk Cost Fallacy: Continuing to pour resources into a failing project because of prior investments. Fix: Base decisions solely on future ROI and marginal cost from today.",
+          "In-Group Bias: Preferring ideas from internal cliques or familiar teams over external stakeholders. Fix: Establish standardized rubric-based evaluation.",
+          "Self-Serving Bias: Crediting personal skill for successes while blaming infrastructure or teammates for failures. Fix: Regular peer 360 feedback and objective KPI tracking."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In major tech incidents (e.g., AWS outage or Cloudflare BGP route leak), cognitive biases are the leading cause of prolonged downtime. Engineers suffering from confirmation bias will spend hours troubleshooting DNS because 'it's always DNS', ignoring database metrics screaming that thread pools are exhausted.",
+      "careerRelevance": "Staff+ Engineers and CTOs are distinguished not by syntax mastery, but by metacognitive calibration. They anticipate where their teams will anchor, where loss aversion will delay deprecating obsolete legacy systems, and how to introduce blameless inquiry.",
+      "concreteExample": "When assessing whether to kill an in-house CMS built over 2 years that is slow and buggy: Junior managers fall prey to the Sunk Cost Fallacy ('We spent $200k on this!'). A critical thinker realizes that past dollars are gone forever and chooses a headless CMS that will save $50k annually going forward."
+    },
+    "practicalExamples": [
+      {
+        "title": "Engineering De-Biasing Checklist for Architecture Decisions",
+        "language": "markdown",
+        "codeOrDiagram": "## Architecture Decision De-Biasing Protocol\n\n1. Anti-Confirmation Probe: 'What metric or failure condition would immediately convince us that this architecture is wrong?'\n2. Blind Estimation: All developers submit independent timeline estimates before speaking aloud to eliminate Anchoring.\n3. Pre-Mortem Analysis: Assume it is 12 months from now and this deployment failed disastrously. Ask: 'What caused it?'\n4. Sunk Cost Neutralizer: 'If we were hired today with zero emotional attachment to this codebase, would we build this or replace it?'\n5. Framing Inversion: Reframe '99.9% uptime (positive)' as '8.76 hours of unexpected downtime per year (negative)' to evaluate business impact.",
+        "explanation": "Translates cognitive psychology principles into practical, repeatable engineering team rituals."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing Anchoring Bias with Confirmation Bias in exam scenarios.",
+        "correctApproach": "Anchoring occurs at the very beginning based on the first piece of information received (e.g. an initial price or initial root cause guess). Confirmation bias occurs during evidence gathering, where you selectively filter data that supports whatever belief you already hold.",
+        "sampleQuestion": "An engineer estimates a feature will take 3 weeks after the product manager casually mentions 'this shouldn't take more than 3 weeks'. Which bias is this?"
+      },
+      {
+        "trap": "Believing that cognitive biases only affect unintelligent people.",
+        "correctApproach": "Cognitive biases are universal evolutionary heuristics wired into the human brain; higher intelligence often just makes someone better at rationalizing their biased conclusions. Only structured processes and self-awareness overcome them.",
+        "sampleQuestion": "Explain why metacognition is necessary to combat cognitive biases."
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Cognitive Bias",
+        "definition": "A systematic pattern of deviation from rationality or objective judgment caused by mental shortcuts and heuristic processing."
+      },
+      {
+        "term": "Metacognition",
+        "definition": "The active monitoring, regulation, and critical evaluation of one's own thought processes; thinking about how one thinks."
+      },
+      {
+        "term": "Sunk Cost Fallacy",
+        "definition": "The irrational tendency to continue an endeavor once an investment of money, effort, or time has been made, rather than evaluating future utility."
+      },
+      {
+        "term": "Availability Heuristic",
+        "definition": "A mental shortcut that relies on immediate examples that come to a person's mind when evaluating a specific topic, concept, method or decision."
+      },
+      {
+        "term": "Anchoring Bias",
+        "definition": "The cognitive bias where an individual depends too heavily on an initial piece of information offered (considered to be the 'anchor') when making decisions."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu1202-5",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 5,
+    "title": "Source Credibility, Bias Detection & Evidence-Based Thinking",
+    "originalFileName": "SOURCE CREDIBILITY  BIAS DETECTION.pdf",
+    "downloadUrl": "/notes/critical-thinking/SOURCE CREDIBILITY  BIAS DETECTION.pdf",
+    "estimatedReadTimeMinutes": 25,
+    "executiveSummary": "In an era of generative AI hallucinations, sponsored tech advocacy, and algorithmic echo chambers, establishing source credibility and detecting bias is vital for academic and technical survival. Source credibility rests upon perceived trustworthiness, competence, and goodwill. This guide presents the 5 core pillars of source evaluation (Depth, Objectivity, Currency, Authority, Purpose - DOCAP/CRAAP), outlines systematic methodologies to detect covert bias in research and technical benchmarks, and establishes the Evidence-Based Thinking (EBT) paradigm across education, healthcare, and software engineering.",
+    "coreHighlights": [
+      {
+        "heading": "The Triad of Source Credibility: Trust, Competence & Goodwill",
+        "points": [
+          "Perceived Trustworthiness: The integrity, honesty, and ethical transparency of the author or publisher (disclosing financial affiliations or conflicts of interest).",
+          "Perceived Competence: Demonstrated domain expertise, verified academic credentials, peer-reviewed publications, and technical track record.",
+          "Perceived Goodwill: The author's underlying intent\u2014whether they genuinely aim to inform and educate the reader, or manipulate opinion for political or financial gain."
+        ],
+        "callout": {
+          "type": "tip",
+          "text": "Using unverified or biased sources destroys your academic authority. Even if a thesis is sound, citing dubious blogs or vendor-sponsored benchmarks invalidates your entire argument in the eyes of examiners and peers."
+        }
+      },
+      {
+        "heading": "The 5 Pillars of Source Evaluation (DOCAP / CRAAP Criteria)",
+        "points": [
+          "1. Depth of Coverage: Does the source provide rigorous, substantive technical detail, methodology explanations, and contextual scope, or merely a superficial high-level overview?",
+          "2. Objectivity: Is the research free from corporate or ideological bias? Does the author acknowledge limitations, present counter-evidence, and cite authentic opposing studies?",
+          "3. Currency: When was the research published or updated? In computer science, cloud computing, and AI, sources older than 3 to 5 years may be dangerously obsolete.",
+          "4. Authority: Who authored the text? Are they affiliated with an accredited university, recognized standards body (IEEE, ACM, W3C), or verified research laboratory?",
+          "5. Purpose: What is the underlying motivation? Is it to teach, advance empirical science, sell enterprise software licenses, or manipulate political sentiment?"
+        ]
+      },
+      {
+        "heading": "Methods to Detect Hidden Bias & Cognitive Traps",
+        "points": [
+          "Selective Citation (Cherry-Picking): Highlighting only benchmark runs where a particular database wins while omitting scenarios where competitors outperform.",
+          "Tone & Loaded Language: Using emotive rhetoric ('disastrous', 'revolutionary', 'obvious') instead of objective empirical statements.",
+          "Funding & Affiliation Links: Inspecting who financed the research study. Industry-sponsored whitepapers frequently disguise marketing as academic scholarship.",
+          "Absence of Peer Review: Relying on self-published Medium posts, LinkedIn influencer threads, or unverified Reddit discussions instead of vetted literature."
+        ]
+      },
+      {
+        "heading": "4 Institutional Protocols to Mitigate Bias in Technical Teams",
+        "points": [
+          "1. Formal Devil's Advocate: Designating a team member specifically tasked with challenging assumptions and arguing the contrary position.",
+          "2. Blind Review Process: Anonymizing technical design proposals and code submissions to prevent seniority or demographic bias.",
+          "3. Team Diversity: Incorporating engineers with diverse backgrounds, junior perspectives, and cross-functional skill sets to prevent groupthink.",
+          "4. Explicit Bias Training: Training staff to identify anchoring, confirmation bias, and cognitive blind spots in incident management."
+        ]
+      },
+      {
+        "heading": "Evidence-Based Thinking (EBT) Across Key Domains",
+        "points": [
+          "Definition: Aligning beliefs and technical decisions with verifiable empirical evidence rather than tradition, authority mandates, or emotional intuition.",
+          "EBT in Education: Conducting diagnostic pre-assessments, defining measurable learning outcomes, and adapting based on student performance data.",
+          "EBT in Healthcare: Prescribing treatments validated by double-blind randomized clinical trials rather than anecdotal testimonies.",
+          "EBT in Software Engineering: Relying on distributed tracing, APM telemetry, A/B test statistical significance, and load testing rather than developer intuition."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In tech infrastructure procurement (evaluating cloud providers like AWS vs Azure, or database engines like MongoDB vs PostgreSQL), vendor whitepapers are notoriously biased. Engineering directors use the DOCAP/CRAAP criteria to filter through marketing claims and demand reproducible third-party benchmarks.",
+      "careerRelevance": "Academic researchers, data scientists, and solution architects must defend their technical stacks before executive steering committees. The ability to cite peer-reviewed ACM/IEEE papers rather than sponsored blog posts gives proposals unbeatable credibility.",
+      "concreteExample": "Evaluating an AI benchmarking claim: A vendor claims their LLM outperforms GPT-4. An evidence-based engineer examines the test: Was the test benchmark leaked into the training set (contamination)? Was the test performed with zero-shot vs few-shot? Were the prompts cherry-picked? Applying DOCAP uncovers that the test was conducted under unrepresentative conditions."
+    },
+    "practicalExamples": [
+      {
+        "title": "DOCAP / CRAAP Source Evaluation Rubric",
+        "language": "markdown",
+        "codeOrDiagram": "## Source Credibility Verification Matrix\n\n| Evaluation Metric | Question to Ask | Passing Indicator (High Credibility) | Red Flag (Low Credibility) |\n|---|---|---|---|\n| **Depth** | Does it explain *why* and *how*? | Includes raw data, mathematical proofs, architecture schemas | Superficial 500-word summary with buzzwords |\n| **Objectivity** | Is there a commercial conflict? | Acknowledges trade-offs, limitations, and failure modes | 'Our product is 100% flawless in every scenario' |\n| **Currency** | Is it up to date? | Published within last 1-3 years (tech) with active revisions | Cites deprecated APIs or ancient libraries |\n| **Authority** | Who is behind it? | Peer-reviewed researcher, IEEE/ACM fellow, core contributor | Anonymous handle or marketing copywriter |\n| **Purpose** | What is the goal? | Educational inquiry, empirical testing, open knowledge | Lead generation, affiliate link clicks, sponsored content |",
+        "explanation": "Standardized rubric for students and engineers to grade research papers and vendor documentation."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Assuming that any peer-reviewed paper is automatically relevant or 100% applicable to your research question.",
+        "correctApproach": "Peer-review guarantees academic rigor, but does not guarantee relevance, depth, or currency for your specific context. Always verify whether the study's scope matches your problem.",
+        "sampleQuestion": "Why is peer-review necessary but not always sufficient when selecting sources for an IT research paper?"
+      },
+      {
+        "trap": "Confusing 'Objectivity' with absence of an opinion.",
+        "correctApproach": "An objective source can still draw a strong conclusion, provided that conclusion is logically derived from transparent data and fair consideration of opposing evidence.",
+        "sampleQuestion": "How does an academic source demonstrate objectivity while defending a specific thesis?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Source Credibility",
+        "definition": "The perceived trustworthiness, competence, and goodwill of an author, institution, or information entity."
+      },
+      {
+        "term": "Evidence-Based Thinking (EBT)",
+        "definition": "The systematic practice of making decisions and forming beliefs grounded in empirical, verifiable data and rational analysis rather than tradition, dogma, or anecdote."
+      },
+      {
+        "term": "DOCAP Framework",
+        "definition": "A 5-part evaluation framework assessing Depth, Objectivity, Currency, Authority, and Purpose to determine source reliability."
+      },
+      {
+        "term": "Devil's Advocate",
+        "definition": "A deliberate structural role in group discussion where an individual argues against the prevailing consensus to expose hidden flaws and assumptions."
+      },
+      {
+        "term": "Cherry-Picking",
+        "definition": "The act of selectively pointing to individual cases or data that seem to confirm a particular position while ignoring significant portions of related contradicting cases."
+      }
+    ]
+  },
+  {
+    "id": "guide-cuu1202-6",
+    "courseCode": "CUU 1202",
+    "lectureNumber": 6,
+    "title": "Problem-Solving Strategies, Decision Frameworks & Group Dynamics",
+    "originalFileName": "Strategies for Problem Solving and Decision Making.pdf",
+    "downloadUrl": "/notes/critical-thinking/Strategies for Problem Solving and Decision Making.pdf",
+    "estimatedReadTimeMinutes": 30,
+    "executiveSummary": "Problem solving and decision making form an inseparable symbiotic loop: you cannot solve a problem without making decisions, and every strategic decision exists to resolve a problem or achieve a goal. Based directly on the foundational CUU 1202 Group 4 lecture, this master guide provides an end-to-end blueprint for engineering leaders. It covers the universal 6-step problem-solving lifecycle (Define, Analyze, Find Options, Compare, Act, Review), decomposes 6 classic algorithmic and heuristic strategies, details root cause analysis toolkits (Toyota 5 Whys, Ishikawa Fishbone, Pareto 80/20), contrasts 4 primary decision-making models (Rational, Herbert Simon's Satisficing, Intuitive, Gary Klein's Recognition-Primed Decision), and explores group decision dynamics (Consensus, Voting, Leader-led, Nominal Group Technique) along with psychological pitfalls like Groupthink.",
+    "coreHighlights": [
+      {
+        "heading": "The Inseparable Dyad: Problem Solving vs. Decision Making",
+        "points": [
+          "Problem Solving: The diagnostic and generative process of navigating from an undesirable current state to a target goal state when the route is not immediately obvious.",
+          "Decision Making: The evaluative process of selecting one optimal course of action from among competing alternatives based on weighted criteria.",
+          "The Symbiotic Bond: You cannot solve a complex problem without making iterative decisions, and you make decisions specifically to unblock and resolve problems."
+        ],
+        "callout": {
+          "type": "insight",
+          "text": "Most failed projects do not fail because engineers picked the wrong technical answer; they fail because the team rushed to solve the wrong problem without defining it properly."
+        }
+      },
+      {
+        "heading": "The 6-Step Universal Problem-Solving Pipeline",
+        "points": [
+          "1. Define: Formulate a precise, quantifiable problem statement. Avoid confusing symptoms with the underlying problem.",
+          "2. Analyze: Collect empirical facts, telemetry data, and stakeholder constraints. Dissect causal relationships.",
+          "3. Find Options: Engage in divergent ideation (brainstorming, lateral thinking) to generate a broad portfolio of potential solutions.",
+          "4. Compare: Evaluate candidate options against explicit criteria (cost, latency, security, operational overhead, time-to-market).",
+          "5. Act: Commit to the selected option, allocate resources, and implement the plan systematically.",
+          "6. Review: Conduct post-implementation evaluation to measure if the target goal was met and document lessons learned."
+        ]
+      },
+      {
+        "heading": "The 6 Core Problem-Solving Strategies Matrix",
+        "points": [
+          "1. Algorithm: Step-by-step deterministic procedure that guarantees the correct solution every time (e.g., sorting algorithms, mathematical formulas). Used when the exact method is known.",
+          "2. Trial and Error: Testing various actions sequentially until one succeeds. Used when candidate options are small and the cost of failure is negligible.",
+          "3. Heuristics: Practical mental shortcuts or 'rules of thumb' (e.g., 'check network connectivity first'). Used when time is constrained and perfection is unnecessary.",
+          "4. Divide and Conquer: Recursively breaking a massive, complex monolith into smaller, manageable subproblems (e.g., microservices, merge sort).",
+          "5. Working Backwards: Starting from the desired end state and tracing backward step-by-step to the present. Ideal for project milestone scheduling and security threat modeling.",
+          "6. Means-Ends Analysis: Continually identifying the gap between the current state and target state, creating intermediate subgoals to steadily shrink that gap."
+        ]
+      },
+      {
+        "heading": "Root Cause Analysis (RCA) Diagnostic Toolkit",
+        "points": [
+          "The 5 Whys (Toyota Production System / Taiichi Ohno): Iteratively asking 'Why?' at least 5 times to bypass superficial proximate causes down to foundational systemic flaws.",
+          "Fishbone / Ishikawa Diagram: Visual diagram categorizing root causes under standardized dimensions: People, Process, Tools, Environment, Materials, and Management.",
+          "Pareto Principle (80/20 Rule): Recognizing that roughly 80% of system crashes or user complaints stem from 20% of critical bugs. Always address the vital few before the trivial many."
+        ]
+      },
+      {
+        "heading": "4 Decision-Making Models & Bounded Rationality",
+        "points": [
+          "1. Rational Model: The classical normative ideal\u2014exhaustively listing all options, scoring every factor, and selecting the mathematically optimal choice.",
+          "2. Satisficing (Herbert Simon): Real humans operate under 'Bounded Rationality' (limited time, limited data, limited brain bandwidth). Decision-makers select the first alternative that meets the acceptable threshold ('good enough') rather than searching forever for perfection.",
+          "3. Intuitive Model: Rapid subconscious pattern matching based on deep tacit experience. Highly effective for experts in familiar environments, dangerous for novices.",
+          "4. Recognition-Primed Decision (RPD - Gary Klein): Observed in fire incident commanders and emergency DevOps leads\u2014experts match novel chaotic scenarios to mental prototypes and immediately simulate actions mentally before executing."
+        ]
+      },
+      {
+        "heading": "Group Decision Dynamics & Avoiding Groupthink",
+        "points": [
+          "Consensus: High stakeholder buy-in, but requires significant time and can lead to watered-down compromises.",
+          "Majority Vote: Fast and democratic, but risks alienating the minority faction who may resist execution.",
+          "Leader Autocracy: Maximum speed and clear accountability, but sacrifices team collective intelligence and creative input.",
+          "Nominal Group Technique (NGT): Individuals write ideas in silence first, then discuss and rank them collectively. Eliminates loud voices dominating the room.",
+          "Combating Groupthink (Irving Janis): Appoint a designated Devil's Advocate, invite external objective observers, and have leaders deliberately withhold their opinions until team members speak."
+        ]
+      }
+    ],
+    "realWorldApplication": {
+      "industryContext": "In software incident response (Site Reliability Engineering at Netflix, Google, Amazon), troubleshooting major outages relies directly on these frameworks. SRE teams use Means-Ends Analysis to triage cascading failures, run the 5 Whys in Blameless Post-Mortems, and use Decision Matrices to pick failover strategies.",
+      "careerRelevance": "Technical Project Managers, Lead Architects, and Startup Founders face ambiguous, high-stakes decisions daily. Knowing when to use Satisficing (shipping an MVP to survive) versus the Rational Model (selecting a core database for a 10-year platform) determines career trajectory.",
+      "concreteExample": "Group Assignment 3 Decision Matrix Example: Selecting a student collaboration platform. Criteria: Ease of use (30%), Simultaneous editing (30%), Fast notification speed (20%), Cost (20%). WhatsApp scores 3.8/5, MS Teams scores 3.7/5, Google Docs scores 4.3/5. Google Docs mathematically wins based on weighted priorities."
+    },
+    "practicalExamples": [
+      {
+        "title": "Weighted Multi-Criteria Decision Analysis (MCDA) Matrix",
+        "language": "markdown",
+        "codeOrDiagram": "## Weighted Decision Matrix: Collaboration Tool Selection (CUU 1202 Group 4)\n\n| Evaluation Criteria | Weight | WhatsApp (Score 1-5) | Google Docs (Score 1-5) | MS Teams (Score 1-5) |\n|---|---|---|---|---|\n| Ease of Use | 30% (0.30) | 5 (1.50) | 4 (1.20) | 3 (0.90) |\n| Real-Time Co-Authoring | 30% (0.30) | 1 (0.30) | 5 (1.50) | 4 (1.20) |\n| Message Visibility & Speed | 20% (0.20) | 5 (1.00) | 3 (0.60) | 4 (0.80) |\n| Cost / Accessibility | 20% (0.20) | 5 (1.00) | 5 (1.00) | 4 (0.80) |\n| **Weighted Total** | **100% (1.00)** | **3.80 / 5.00** | **4.30 / 5.00 (WINNER)** | **3.70 / 5.00** |\n\n### Root Cause Analysis (5 Whys Case Study):\n- Problem: Group assignment submitted 2 hours past deadline.\n- Why 1: Final compilation started 30 minutes before cutoff.\n- Why 2: Tasks were never delegated to individual members.\n- Why 3: No initial kickoff meeting or team leader was appointed.\n- Why 4: Everyone assumed someone else was coordinating the submission.\n- Root Cause: Lack of explicit role ownership and decentralized bystander effect.\n- Corrective Action: Mandatory role contract in Week 1 with internal mini-deadlines.",
+        "explanation": "Directly implements the official Group 4 Assignment 3 Decision Matrix and 5 Whys case study."
+      }
+    ],
+    "examPitfallsAndTricks": [
+      {
+        "trap": "Confusing an Algorithm with a Heuristic in exam definitions.",
+        "correctApproach": "An algorithm is a step-by-step procedure that GUARANTEES a solution if followed correctly (e.g. Euclidean algorithm, long division). A heuristic is a rule of thumb or shortcut that is FAST but does NOT guarantee optimal success.",
+        "sampleQuestion": "Differentiate between an algorithmic and heuristic problem-solving approach with a computing example."
+      },
+      {
+        "trap": "Describing 'Satisficing' as mere laziness or carelessness.",
+        "correctApproach": "Satisficing (Herbert Simon) is an intelligent, rational adaptation to Bounded Rationality: when exhaustive search is cost-prohibitive or impossible, picking a solution that meets all necessary criteria is optimal.",
+        "sampleQuestion": "Why did Herbert Simon introduce the concept of satisficing in organizational decision making?"
+      }
+    ],
+    "keyTermsGlossary": [
+      {
+        "term": "Satisficing",
+        "definition": "A decision-making strategy that aims for a satisfactory or adequate result ('good enough') rather than the mathematically optimal solution, introduced by Herbert Simon."
+      },
+      {
+        "term": "Bounded Rationality",
+        "definition": "The concept that human decision-making is limited by cognitive capacity, available information, and finite time."
+      },
+      {
+        "term": "5 Whys",
+        "definition": "An iterative root cause interrogative technique developed at Toyota to drill down past superficial symptoms to the fundamental systemic failure."
+      },
+      {
+        "term": "Means-Ends Analysis",
+        "definition": "A problem-solving strategy where the problem-solver envisions the target end state and repeatedly determines intermediate actions to shrink the difference between current and goal states."
+      },
+      {
+        "term": "Groupthink",
+        "definition": "A psychological phenomenon occurring within a group where the desire for harmony or conformity results in irrational or dysfunctional decision-making."
+      },
+      {
+        "term": "Nominal Group Technique (NGT)",
+        "definition": "A structured group decision method that gathers individual ideas independently in silence before group ranking to minimize social loafing and conformity."
+      }
+    ]
   }
 ]

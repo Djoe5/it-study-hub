@@ -365,6 +365,36 @@ export const initialCourses: Course[] = [
         "covered": false
       },
       {
+        "id": "res-ct-decision-making",
+        "title": "Thinking Processes, Cognitive Biases & Sound Decision Making (PDF Notes)",
+        "url": "/notes/critical-thinking/Importance of thinking in decision making.pdf",
+        "category": "pdf",
+        "fileType": "pdf",
+        "fileSize": "167 KB",
+        "week": 4,
+        "covered": false
+      },
+      {
+        "id": "res-ct-source-credibility",
+        "title": "Source Credibility, Bias Detection & Evidence-Based Thinking (PDF Notes)",
+        "url": "/notes/critical-thinking/SOURCE CREDIBILITY  BIAS DETECTION.pdf",
+        "category": "pdf",
+        "fileType": "pdf",
+        "fileSize": "90 KB",
+        "week": 5,
+        "covered": false
+      },
+      {
+        "id": "res-ct-problem-solving-strategies",
+        "title": "Problem-Solving Strategies, Decision Frameworks & Group Dynamics (PDF Notes)",
+        "url": "/notes/critical-thinking/Strategies for Problem Solving and Decision Making.pdf",
+        "category": "pdf",
+        "fileType": "pdf",
+        "fileSize": "1.1 MB",
+        "week": 6,
+        "covered": false
+      },
+      {
         "id": "res-zoom-33605",
         "title": "Live Zoom Lecture Link (Wednesdays 5:30 PM)",
         "url": "https://virtualcampus.kcau.ac.ke/mod/zoom/view.php?id=488989",
