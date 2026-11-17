@@ -1723,5 +1723,84 @@ export const initialAssignments: Assignment[] = [
     "weight": 15,
     "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=32622",
     "notes": "Lecturer: Benjamin Kasyoki Mutungi. Memorize author-date formatting and journal reference entries."
+  },
+  // SEP - DEC 2026 ORDINARY EXAMINATIONS (OFFICIAL TIMETABLE)
+  {
+    "id": "exam-2026-stu1201",
+    "courseId": "kcau-33500",
+    "title": "STU 1201: Final Ordinary Exam — Introduction to Programming",
+    "description": "Session #36 · Tue Dec 1, 2026 · 17:00 – 19:00 HRS · Stream A (Part-Time/DL). Venues: MAIN (STUDENT CENTRE), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-01T17:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=33500",
+    "notes": "Lecturer: Griffin Kenga Kitili. Kickoff exam! Focus on flowcharts, C syntax, loops, arrays, functions & trace tables."
+  },
+  {
+    "id": "exam-2026-cuu1202",
+    "courseId": "kcau-33605",
+    "title": "CUU 1202: Final Ordinary Exam — Critical & Creative Thinking",
+    "description": "Session #40 · Wed Dec 2, 2026 · 17:00 – 19:00 HRS · Stream A (Part-Time). Venues: MAIN (STUDENT CENTRE), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-02T17:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=33605",
+    "notes": "Part-Time listed lecturer: Stephen Kamba Mwangangi. Note: Verify exam card — DL/Weekend is Sun Dec 6, 14:00–16:00 HRS."
+  },
+  {
+    "id": "exam-2026-cuu2102",
+    "courseId": "kcau-32622",
+    "title": "CUU 2102: Final Ordinary Exam — Information Literacy & Academic Writing",
+    "description": "Session #48 · Fri Dec 4, 2026 · 17:00 – 19:00 HRS · Stream A (Part-Time). Venues: MAIN (STUDENT CENTRE), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-04T17:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=32622",
+    "notes": "Lecturer: Benjamin Kasyoki Mutungi. Review CRAAP evaluation, Boolean operators, APA 7th referencing & plagiarism."
+  },
+  {
+    "id": "exam-2026-stu1202",
+    "courseId": "kcau-33501",
+    "title": "STU 1202: Final Ordinary Exam — Web Design & Development",
+    "description": "Session #50 · Sat Dec 5, 2026 · 11:00 – 13:00 HRS · Stream A (Part-Time/DL). Venues: MAIN (STUDENT CENTRE), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-05T11:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=33501",
+    "notes": "Lecturer: Gladys Mange. MORNING EXAM (11:00 AM) right after Friday evening paper! Review HTML5, CSS Grid/Flexbox, responsive queries & DOM."
+  },
+  {
+    "id": "exam-2026-stu2102",
+    "courseId": "kcau-33505",
+    "title": "STU 2102: Final Ordinary Exam — Computing Research Skills & Design",
+    "description": "Session #60 · Mon Dec 7, 2026 · 17:00 – 19:00 HRS · Stream A (Part-Time/DL). Venues: MAIN (TC 3RD FLR), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-07T17:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=33505",
+    "notes": "Lecturer: Gladys Mange. Note MAIN venue change: TC 3RD FLR. Review L1–L8 slides: problem formulation, sampling, design & ethics."
+  },
+  {
+    "id": "exam-2026-cpp2104",
+    "courseId": "kcau-33251",
+    "title": "CPP 2104: Final Ordinary Exam — Object-Oriented Technologies",
+    "description": "Session #72 · Thu Dec 10, 2026 · 17:00 – 19:00 HRS · Stream A (Part-Time/DL). Venues: MAIN (TC 2-2), TOWN (Main Hall GF), KITENGELA (ROOM 4-10 TO 4-11), KSM (HALL).",
+    "type": "exam",
+    "priority": "high",
+    "dueDate": "2026-12-10T17:00",
+    "status": "not_started",
+    "weight": 60,
+    "submissionLink": "https://virtualcampus.kcau.ac.ke/course/view.php?id=33251",
+    "notes": "Lecturer: Beatrice Muthoni Kagucia. Final paper! Note MAIN venue change: TC 2-2. Focus on UML diagrams, 4 OOP pillars, polymorphism & design patterns."
   }
 ];

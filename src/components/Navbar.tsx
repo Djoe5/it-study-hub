@@ -100,14 +100,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => setActiveTab('timetable')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === 'timetable'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                  ? 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md shadow-rose-600/25'
+                  : 'text-rose-200 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30'
               }`}
             >
-              <Calendar className="h-4 w-4" />
-              <span className="hidden md:inline">Class Schedule</span>
+              <Calendar className="h-4 w-4 shrink-0" />
+              <span className="whitespace-nowrap">Exams & Revision</span>
             </button>
 
             <button

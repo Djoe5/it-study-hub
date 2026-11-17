@@ -10,10 +10,13 @@ import {
   Clock, 
   ExternalLink,
   Calendar,
-  Sparkles
+  Sparkles,
+  GraduationCap,
+  MapPin
 } from 'lucide-react';
 import { Course, Assignment, UserProfile, StudySession } from '../types';
 import { getDeadlineStatus, formatDateTime } from '../utils/dateUtils';
+import { EXAM_TIMETABLE, getSavedExamCampus } from '../data/examTimetable';
 import confetti from 'canvas-confetti';
 
 interface DashboardProps {
@@ -22,7 +25,7 @@ interface DashboardProps {
   assignments: Assignment[];
   sessions: StudySession[];
   onSelectCourse: (courseId: string) => void;
-  onNavigateToTab: (tab: 'dashboard' | 'courses' | 'assignments' | 'timer') => void;
+  onNavigateToTab: (tab: 'dashboard' | 'courses' | 'assignments' | 'timetable' | 'timer') => void;
   onToggleAssignmentStatus: (assignmentId: string) => void;
   onOpenNewAssignment: () => void;
 }
@@ -96,7 +99,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => onNavigateToTab('timetable')}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white text-sm font-bold shadow-lg shadow-rose-600/30 transition-all"
+            >
+              <GraduationCap className="w-4 h-4" />
+              <span>Exams & Revision</span>
+            </button>
             <button
               onClick={() => onNavigateToTab('timer')}
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 text-sm font-medium border border-slate-700 shadow-sm transition-all"
@@ -280,11 +290,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
                           </span>
 
                           <span className={`text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md border ${
-                            asg.type === 'cat' 
-                              ? 'text-amber-300 bg-amber-500/20 border-amber-500/30 font-bold' 
-                              : 'text-slate-400 bg-slate-800 border-slate-700'
+                            asg.type === 'exam'
+                              ? 'text-rose-300 bg-rose-500/20 border-rose-500/35 font-bold'
+                              : asg.type === 'cat' 
+                                ? 'text-amber-300 bg-amber-500/20 border-amber-500/30 font-bold' 
+                                : 'text-slate-400 bg-slate-800 border-slate-700'
                           }`}>
-                            {asg.type === 'cat' ? 'CAT' : asg.type}
+                            {asg.type === 'exam' ? 'FINAL EXAM' : asg.type === 'cat' ? 'CAT' : asg.type}
                           </span>
                         </div>
 
@@ -327,8 +339,70 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
           )}
 
+          {/* Final Exam Radar Banner */}
+          <div className="mt-8 rounded-xl bg-gradient-to-r from-rose-950/40 via-slate-900 to-slate-900 border border-rose-500/30 p-5 shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1">
+                    <GraduationCap className="w-3 h-3 text-rose-400" />
+                    Dec 2026 Ordinary Exams
+                  </span>
+                  <span className="text-xs text-amber-300 font-medium">6 Papers • Dec 1 – Dec 10</span>
+                </div>
+                <h3 className="text-base font-bold text-white">
+                  Official Final Examination Timetable
+                </h3>
+              </div>
+              <button
+                onClick={() => onNavigateToTab('timetable')}
+                className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition-all shadow-md shadow-rose-600/20"
+              >
+                <span>View Full Exam Schedule</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-3 border-t border-slate-800/80 text-xs">
+              {EXAM_TIMETABLE.slice(0, 3).map((exam, idx) => {
+                const campus = getSavedExamCampus();
+                const venue = exam.venues[campus];
+                const dateObj = new Date(`${exam.date}T12:00:00`);
+                const formattedDate = dateObj.toLocaleDateString('en-US', {
+                  weekday: 'short',
+                  month: 'short',
+                  day: 'numeric',
+                });
+
+                return (
+                  <div
+                    key={exam.id}
+                    onClick={() => onNavigateToTab('timetable')}
+                    className="cursor-pointer p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 hover:border-rose-500/40 transition-all"
+                  >
+                    <div className="flex items-center justify-between text-[11px] mb-1">
+                      <span className="font-extrabold text-amber-400">{exam.code}</span>
+                      <span className="text-[10px] text-slate-400 font-mono">Paper {idx + 1}</span>
+                    </div>
+                    <div className="font-semibold text-slate-200 truncate text-[11px] mb-1">
+                      {exam.title}
+                    </div>
+                    <div className="text-[10px] text-slate-400 flex items-center gap-1">
+                      <Calendar className="w-3 h-3 text-indigo-400 shrink-0" />
+                      <span>{formattedDate} • {exam.timeRange.split(' ')[0]}</span>
+                    </div>
+                    <div className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5 truncate">
+                      <MapPin className="w-3 h-3 text-rose-400 shrink-0" />
+                      <span className="truncate">{campus}: {venue}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Quick IT Course Schedule */}
-          <div className="mt-8 rounded-xl bg-slate-900/60 border border-slate-800/80 p-5">
+          <div className="mt-6 rounded-xl bg-slate-900/60 border border-slate-800/80 p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-indigo-400" />

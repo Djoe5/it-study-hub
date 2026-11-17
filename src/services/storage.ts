@@ -67,7 +67,19 @@ export const StorageService = {
         this.saveAssignments(initialAssignments);
         return initialAssignments;
       }
-      return JSON.parse(stored);
+      const parsed: Assignment[] = JSON.parse(stored);
+
+      // Ensure official Dec 2026 final exams are merged in without overwriting existing user progress
+      const missingExams = initialAssignments.filter(
+        initAsg => initAsg.id.startsWith('exam-2026-') && !parsed.some(p => p.id === initAsg.id)
+      );
+      if (missingExams.length > 0) {
+        const merged = [...parsed, ...missingExams];
+        this.saveAssignments(merged);
+        return merged;
+      }
+
+      return parsed;
     } catch (e) {
       console.error('Error reading assignments from storage', e);
       return initialAssignments;
