@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Youtube,
+  PlayCircle,
   Play,
   ExternalLink,
   CheckCircle2,
@@ -71,7 +71,7 @@ export const VideoStudyVaultView: React.FC<VideoStudyVaultViewProps> = ({ onSele
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2.5">
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-red-500/20 text-red-300 border border-red-500/35 flex items-center gap-1.5">
-                <Youtube className="w-3.5 h-3.5 text-red-400" />
+                <PlayCircle className="w-3.5 h-3.5 text-red-400" />
                 Distraction-Free YouTube Study Vault
               </span>
               <span className="text-xs text-slate-300 font-medium">

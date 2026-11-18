@@ -16,7 +16,7 @@ import {
   Info,
   FileSearch,
   CalendarRange,
-  Youtube,
+  PlayCircle,
 } from 'lucide-react';
 import { Course } from '../types';
 import {
@@ -310,7 +310,7 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            <Youtube className="w-4 h-4" />
+            <PlayCircle className="w-4 h-4" />
             <span>YouTube Videos</span>
             <span
               className={`px-1.5 py-0.5 rounded-full text-[10px] ${
