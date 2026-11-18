@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KCA BSc IT — 23-Day Vigorous Revision & Exam Timetable (Nov 18 – Dec 10, 2026)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 11mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      color: #0f172a;
+      background: #f8fafc;
+      font-size: 9.5px;
+      line-height: 1.32;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .sheet {
+      max-width: 210mm;
+      margin: 12px auto;
+      background: #ffffff;
+      padding: 12mm 12mm;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+    }
+    @media print {
+      body { background: #ffffff; }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; break-before: page; }
+    }
+    .print-bar {
+      max-width: 210mm;
+      margin: 12px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+    .print-btn {
+      background: #e11d48;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .print-btn:hover { background: #be123c; }
+    header {
+      border-bottom: 2.5px solid #0f172a;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 9.5px;
+      color: #475569;
+      margin-top: 2px;
+    }
+    .meta-right {
+      text-align: right;
+      font-size: 8.8px;
+      color: #334155;
+    }
+    .meta-right strong { color: #0f172a; }
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 9px;
+    }
+    .protocol-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 5px 7px;
+      background: #f8fafc;
+    }
+    .protocol-box strong {
+      display: block;
+      font-size: 8.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+    .protocol-box span {
+      font-size: 8.2px;
+      color: #475569;
+    }
+    .section-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin: 8px 0 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-title.phase1 { background: #1e3a8a; }
+    .section-title.phase2 { background: #92400e; }
+    .section-title.phase3 { background: #9f1239; }
+    .section-title span {
+      font-weight: 500;
+      font-size: 8.2px;
+      opacity: 0.9;
+      text-transform: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 5.5px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #e2e8f0;
+      font-weight: 700;
+      font-size: 8.3px;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+    tr.exam-row {
+      background: #fff1f2;
+    }
+    tr.exam-row td {
+      border-color: #fda4af;
+    }
+    .cb {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border: 1.2px solid #334155;
+      border-radius: 1.5px;
+      margin-right: 4px;
+      vertical-align: -1px;
+      background: #fff;
+    }
+    .unit-tag {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 8px;
+      padding: 0.5px 4px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #0f172a;
+      margin-right: 3px;
+    }
+    .unit-tag.exam {
+      background: #be123c;
+      color: #ffffff;
+    }
+    .unit-tag.mock {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #f59e0b;
+    }
+    .day-col {
+      width: 13%;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .day-sub {
+      display: block;
+      font-size: 7.8px;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .block-col {
+      width: 29%;
+    }
+    .alert-strip {
+      border: 1.2px solid #f59e0b;
+      background: #fffbeb;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 8.3px;
+      margin-top: 6px;
+      color: #78350f;
+    }
+    .alert-strip strong { color: #92400e; }
+    .footer-note {
+      margin-top: 7px;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="print-bar no-print">
+    <div><strong>Print-Ready A4 Revision Timetable</strong> — Optimized for 2-Page A4 Print or Save as PDF</div>
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+  </div>
+
+  <div class="sheet">
+    <!-- PAGE 1 -->
+    <header>
+      <div>
+        <h1>KCA UNIVERSITY — BSc IT 23-DAY EXAM REVISION TIMETABLE</h1>
+        <div class="subtitle">Joseph · Year 1, Trimester 3 (Sep–Dec 2026) · Ordinary Examinations Sprint (Wed, Nov 18 → Thu, Dec 10, 2026)</div>
+      </div>
+      <div class="meta-right">
+        <div><strong>Target:</strong> First Class Honours (70%+ / A)</div>
+        <div><strong>Mode:</strong> BIT Part-Time / DL (Stream A)</div>
+      </div>
+    </header>
+
+    <!-- DAILY PROTOCOL -->
+    <div class="protocol-grid">
+      <div class="protocol-box">
+        <strong>1. Morning (08:30–11:00)</strong>
+        <span>3×50m Pomodoro on hardest technical unit. Write C, HTML/CSS & UML <b>by hand on paper</b>.</span>
+      </div>
+      <div class="protocol-box">
+        <strong>2. Afternoon (14:00–16:00)</strong>
+        <span>2×50m second unit coverage OR strict 2-hr closed-book KCA past paper (70 Marks).</span>
+      </div>
+      <div class="protocol-box">
+        <strong>3. Evening (19:30–21:00)</strong>
+        <span>Active recall, APA/fallacy/syntax drills & mock autopsy. <b>Hard stop 21:30</b> (7.5h sleep).</span>
+      </div>
+      <div class="protocol-box">
+        <strong>4. Exam Room Split (120m)</strong>
+        <span>5m read · <b>50m Q1 (30m)</b> · 32m Q2 (20m) · 28m Q3 (20m) · 5m proofread syntax/APA.</span>
+      </div>
+    </div>
+
+    <!-- OFFICIAL EXAM SUMMARY TABLE -->
+    <div class="section-title">
+      Official Ordinary Examinations Schedule & Legacy Past Paper Codes
+      <span>All 6 Enrolled BSc IT Units</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:6%;">#</th>
+          <th style="width:11%;">Unit</th>
+          <th style="width:24%;">Unit Name</th>
+          <th style="width:14%;">Date & Day</th>
+          <th style="width:12%;">Time (EAT)</th>
+          <th style="width:15%;">MAIN Venue*</th>
+          <th style="width:18%;">Legacy Past Paper Codes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>STU 1201</strong></td>
+          <td>Introduction to Programming</td>
+          <td><strong>Tue, Dec 1</strong></td>
+          <td>17:00 – 19:00</td>
+          <td>STUDENT CENTRE</td>
+          <td>BIT 1106, BSD 1105, BCT 1104</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>CUU 1202</strong></td>
+          <td>Critical &amp; Creative Thinking</td>
+          <td><strong>Wed, Dec 2</strong></td>
+          <td>17:00 – 19:00</td>
+          <td>STUDENT CENTRE</td>
+          <td>UCU 103, BCU 002, KCAU 002</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><strong>CUU 2102</strong></td>
+          <td>Info Literacy &amp; Academic Writing</td>
+          <td><strong>Fri, Dec 4</strong></td>
+          <td>17:00 – 19:00</td>
+          <td>STUDENT CENTRE</td>
+          <td>KCAU 001, BIT 1111, BAC 1106</td>
+        </tr>
+        <tr class="exam-row">
+          <td><strong>4</strong></td>
+          <td><strong>STU 1202</strong></td>
+          <td>Web Design &amp; Development</td>
+          <td><strong>Sat, Dec 5</strong></td>
+          <td><strong>11:00 – 13:00 (AM!)</strong></td>
+          <td>STUDENT CENTRE</td>
+          <td>BIT 1203, BIT 2106, BSD 1203</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><strong>STU 2102</strong></td>
+          <td>Computing Research Skills &amp; Design</td>
+          <td><strong>Mon, Dec 7</strong></td>
+          <td>17:00 – 19:00</td>
+          <td><strong>TC 3RD FLR 📍</strong></td>
+          <td>BIT 3102, BSD 2106, BIT 2208</td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><strong>CPP 2104</strong></td>
+          <td>Object-Oriented Technologies</td>
+          <td><strong>Thu, Dec 10</strong></td>
+          <td>17:00 – 19:00</td>
+          <td><strong>TC 2-2 📍</strong></td>
+          <td>BIT 2107, BIT 2108, BBIT 203</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PHASE 1 -->
+    <div class="section-title phase1">
+      Phase 1: Full Syllabus Mastery — All 46 Lecture Guides (Nov 18 – Nov 24)
+      <span>Tick [ ] each block as you finish</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="day-col">Day / Date</th>
+          <th class="block-col">Morning (08:30 – 11:00)</th>
+          <th class="block-col">Afternoon (14:00 – 16:00)</th>
+          <th class="block-col">Evening (19:30 – 21:00)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-col">Day 1<span class="day-sub">Wed, Nov 18</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> L1–4: IPOS, Paradigms, Languages &amp; PDLC (+ Flowchart YT vid).</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> L1–2: Critical Thinking Origins, Deductive vs Inductive &amp; Fallacies.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> Closed-book: Hand-draw 3 flowcharts &amp; pseudocode on paper.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 2<span class="day-sub">Thu, Nov 19</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> L5–8: Toolchain, C Structure, Lexical Elements &amp; Primary Data Types.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Lessons 1–4: Internet Services, Web PM, UI/UX &amp; HTML Basics.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> Hand-write 5 small C programs (printf/scanf, %d/%f/%c, VAT calc).</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 3<span class="day-sub">Fri, Nov 20</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> L9–10 + Loops: Variables, Typecasting, Operators, if/else, switch &amp; loops.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Lessons 6–9: Text Formatting, Hex Colors, Lists (&lt;ol&gt;/&lt;ul&gt;/&lt;dl&gt;) &amp; Images.</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> L3–4: Creative Thinking, Problem Solving &amp; 6 Cognitive Biases.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 4<span class="day-sub">Sat, Nov 21</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Lessons 10–13: Links, Forms (GET/POST), Tables (colspan/rowspan), Iframes.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> C Functions, 1D Arrays, Strings &amp; 4 manual loop trace tables.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Closed-book paper code: Student form + 4×4 merged-cell table.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 5<span class="day-sub">Sun, Nov 22</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Lesson 14: CSS Box Model, Selectors, Flexbox/Grid &amp; @media (100% done!).</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 2102</span> Guides 1–2: Info Literacy Intro, Boolean (AND/OR/NOT) &amp; Databases.</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> L5–6: Source Credibility &amp; Decision Frameworks (100% done!).</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 6<span class="day-sub">Mon, Nov 23</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 2102</span> Guides 1–5: Intro, Research Problem, Lit Review, Design &amp; Questionnaires.</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 2102</span> Guides 3–4: CRAAP Test, Plagiarism &amp; APA 7th Rules (100% done!).</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 2102</span> Hand-write 8 APA 7th references (book, journal, web, et al.).</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 7<span class="day-sub">Tue, Nov 24</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 2102</span> Guides 6–11: Interviews, Proposal Ch 1–3, Analysis &amp; Ethics (100% done!).</td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> UML Units 1–2: Class Diagrams, Visibility, Aggregation vs Composition.</td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> 4 OOP Pillars, Abstract vs Interface, Exceptions &amp; Design Patterns.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert-strip">
+      <strong>*Other Campus Venues:</strong> Town = Main Hall GF · Kitengela = Room 4-10 to 4-11 · Kisumu = Hall. &nbsp;|&nbsp;
+      <strong>CUU 1202 Check:</strong> Confirm on your exam card — Part-Time is Wed Dec 2 (17:00); DL/Weekend is Sun Dec 6 (14:00).
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page-break"></div>
+
+    <header>
+      <div>
+        <h1>PHASE 2 &amp; PHASE 3 — PAST PAPERS, MOCKS &amp; EXAM WEEK</h1>
+        <div class="subtitle">Wed, Nov 25 → Thu, Dec 10, 2026 · Timed 2-Hour Closed-Book Simulations &amp; Precision Execution</div>
+      </div>
+      <div class="meta-right">
+        <div><strong>Past Paper Portals:</strong> Virtual Campus · library.kcau.ac.ke · MyLoft</div>
+        <div><strong>Rule:</strong> Mark every mock harshly &amp; fix every gap same night</div>
+      </div>
+    </header>
+
+    <!-- PHASE 2 -->
+    <div class="section-title phase2">
+      Phase 2: KCA Past Papers &amp; Timed 2-Hour Mock Warfare (Nov 25 – Nov 30)
+      <span>Simulate real 70-mark handwritten exams</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="day-col">Day / Date</th>
+          <th class="block-col">Morning (08:30 – 11:00)</th>
+          <th class="block-col">Afternoon (14:00 – 16:00)</th>
+          <th class="block-col">Evening (19:30 – 21:00)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-col">Day 8<span class="day-sub">Wed, Nov 25</span></td>
+          <td><span class="cb"></span><span class="unit-tag">ALL 6</span> Harvest KCA Exam Bank papers (use legacy codes!) &amp; tag recurring Qs.</td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>STU 1201</strong> 2-Hr Closed-Book Exam #1 (70 Marks on foolscap).</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> Grade script harshly + build 1-page C Syntax Cheat Sheet.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 9<span class="day-sub">Thu, Nov 26</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>STU 1202</strong> 2-Hr Closed-Book Web Design Mock #1 (Tables, Forms, CSS).</td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CUU 1202</strong> 2-Hr Critical Thinking Mock #1 (Fallacies, Biases, Essays).</td>
+          <td><span class="cb"></span><span class="unit-tag">AUTOPSY</span> Fix HTML/CSS tag slips + flash-drill 12 Informal Fallacies.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 10<span class="day-sub">Fri, Nov 27</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CUU 2102</strong> 2-Hr Info Literacy Mock #1 (Boolean, CRAAP, APA 7th).</td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>STU 2102</strong> 2-Hr Research Mock #1 (Problem, Framework, Sampling, Ethics).</td>
+          <td><span class="cb"></span><span class="unit-tag">AUTOPSY</span> Verify APA punctuation + lock in Proposal Ch 1–3 template.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 11<span class="day-sub">Sat, Nov 28</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CPP 2104</strong> 2-Hr OOP &amp; UML Mock #1 (Draw Class/Use Case w/ ruler!).</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> Build 1-page Master HTML5 + CSS Sheet (defuses Dec 4→5!).</td>
+          <td><span class="cb"></span><span class="unit-tag">RECALL</span> Fix UML arrow errors + 30m flashcards for STU 1201 &amp; CUU 1202.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 12<span class="day-sub">Sun, Nov 29</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>STU 1201</strong> Timed Mock #2 (Target ≥80% · 50m Q1, 32m Q2, 28m Q3).</td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CUU 1202</strong> Past Paper #2 + structured 4-part applied IT essays.</td>
+          <td><span class="cb"></span><span class="unit-tag">AUDIT</span> Print Exam Card (verify CUU 1202 date!), check Student ID &amp; pens.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 13<span class="day-sub">Mon, Nov 30</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> Final walkthrough: 5 C trace-table warmups + PDLC/Operator pitfalls.</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> Calm 60-min oral recall of all 6 lectures (pre-loads Paper 2).</td>
+          <td><span class="cb"></span><span class="unit-tag">REST</span> Pack ID, Exam Card, pens &amp; ruler. Close books by 21:00!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PHASE 3 -->
+    <div class="section-title phase3">
+      Phase 3: Exam-Week Precision Execution (Dec 1 – Dec 10)
+      <span>Arrive 30 mins early · Watch venue shifts &amp; Sat morning paper!</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="day-col">Day / Date</th>
+          <th class="block-col">Morning (08:30 – 11:00)</th>
+          <th class="block-col">Exam Slot / Afternoon</th>
+          <th class="block-col">Evening (19:30 – 21:00)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="exam-row">
+          <td class="day-col">Day 14<span class="day-sub">Tue, Dec 1</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1201</span> Light 90m C syntax &amp; operator scan (zero cramming).</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #1</span> <strong>STU 1201 · 17:00–19:00</strong> (S#36 · MAIN: Student Centre).</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> 45m calm review of Fallacies &amp; Deductive rules → Sleep early.</td>
+        </tr>
+        <tr class="exam-row">
+          <td class="day-col">Day 15<span class="day-sub">Wed, Dec 2</span></td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 1202</span> Final recall: Fallacies, Syllogisms, Biases &amp; Decision Frameworks.</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #2</span> <strong>CUU 1202 · 17:00–19:00</strong> (S#40 · MAIN: Student Centre).</td>
+          <td><span class="cb"></span><span class="unit-tag">REST</span> Zero study tonight! Recharge (2/6 papers conquered).</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 16<span class="day-sub">Thu, Dec 3</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CUU 2102</strong> Past Paper #2 + flawless APA 7th reference drill.</td>
+          <td><span class="cb"></span><span class="unit-tag mock">PRE-ARM</span> <strong>STU 1202</strong> Heavy HTML5 Forms/Tables &amp; CSS Box Model drill!</td>
+          <td><span class="cb"></span><span class="unit-tag">CUU 2102</span> Closed-book check: ACRL standards, Boolean &amp; CRAAP test.</td>
+        </tr>
+        <tr class="exam-row">
+          <td class="day-col">Day 17<span class="day-sub">Fri, Dec 4</span></td>
+          <td><span class="cb"></span><span class="unit-tag">SPLIT</span> 60m CUU 2102 scan + 60m STU 1202 HTML/CSS flash review.</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #3</span> <strong>CUU 2102 · 17:00–19:00</strong> (S#48 · MAIN: Student Centre).</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> 60m 1-page HTML/CSS scan. <b>Sleep by 21:30 for 11 AM exam!</b></td>
+        </tr>
+        <tr class="exam-row">
+          <td class="day-col">Day 18<span class="day-sub">Sat, Dec 5</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 1202</span> 08:00–09:30 quick tag/CSS refresh → Reach venue by 10:30 AM!</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #4</span> <strong>STU 1202 · 11:00–13:00 (AM!)</strong> (S#50 · MAIN: Student Centre).</td>
+          <td><span class="cb"></span><span class="unit-tag">REST</span> Afternoon &amp; evening off! Halfway crossed (4/6 done).</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 19<span class="day-sub">Sun, Dec 6</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 2102</span> Deep Review L1–5: Problem, Lit Review, Design &amp; Sampling.</td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>STU 2102</strong> L6–8 (Instruments, Analysis, Ethics) + Timed Mock #2.</td>
+          <td><span class="cb"></span><span class="unit-tag">STU 2102</span> 20-min Mini-Proposal speed drill (Title → Objectives → Ethics).</td>
+        </tr>
+        <tr class="exam-row">
+          <td class="day-col">Day 20<span class="day-sub">Mon, Dec 7</span></td>
+          <td><span class="cb"></span><span class="unit-tag">STU 2102</span> Calm scan: Qual vs Quant, Sampling &amp; NACOSTI/Ethics rules.</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #5</span> <strong>STU 2102 · 17:00–19:00</strong> (S#60 · <b>MAIN: TC 3RD FLR 📍</b>).</td>
+          <td><span class="cb"></span><span class="unit-tag">REST</span> Unwind! 5/6 done — 2 full open days for final boss CPP 2104.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 21<span class="day-sub">Tue, Dec 8</span></td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> UML Workshop: Hand-draw 3 Class &amp; Use Case diagrams w/ ruler.</td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> 4 OOP Pillars, Overloading vs Overriding, Abstract vs Interface.</td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> Paper coding: Inheritance, Polymorphism &amp; try/catch/finally.</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 22<span class="day-sub">Wed, Dec 9</span></td>
+          <td><span class="cb"></span><span class="unit-tag mock">MOCK</span> <strong>CPP 2104</strong> Timed Mock #2 (Target ≥85% · Crisp UML + clean code).</td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> Singleton, Factory &amp; Observer patterns + fix Mock #2 slips.</td>
+          <td><span class="cb"></span><span class="unit-tag">PREP</span> Pack ruler, pencil, pens, ID &amp; Exam Card. Full sleep!</td>
+        </tr>
+        <tr class="exam-row">
+          <td class="day-col">Day 23<span class="day-sub">Thu, Dec 10</span></td>
+          <td><span class="cb"></span><span class="unit-tag">CPP 2104</span> 90m UML arrow legend (+/-/ #, 1..*, diamonds) &amp; 4 OOP pillars scan.</td>
+          <td><span class="cb"></span><span class="unit-tag exam">EXAM #6</span> <strong>CPP 2104 · 17:00–19:00</strong> (S#72 · <b>MAIN: TC 2-2 📍</b>).</td>
+          <td><span class="cb"></span><span class="unit-tag">DONE! 🎉</span> Trimester 3 Complete — 6/6 Ordinary Exams conquered!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert-strip">
+      <strong>Exam Hall Checklist (Every Paper):</strong> [ ] Student ID &nbsp; [ ] Printed Exam Card &nbsp; [ ] 2 Blue/Black Pens &nbsp; [ ] Pencil, Eraser &amp; Ruler (Flowcharts, Box Model &amp; UML!) &nbsp; [ ] Water Bottle &nbsp; [ ] Arrive 30 mins before start.
+    </div>
+
+    <div class="footer-note">
+      <span>IT Study Hub · BSc Information Technology (KCA University)</span>
+      <span>Interactive Tracker &amp; 25 Verified YouTube Tutorials: it-study-hub-git-main-joseph-2dc7.vercel.app</span>
+    </div>
+  </div>
+</body>
+</html>

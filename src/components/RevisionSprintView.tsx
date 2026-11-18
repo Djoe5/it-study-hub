@@ -12,6 +12,8 @@ import {
   FileCheck2,
   Brain,
   RotateCcw,
+  Printer,
+  Download,
 } from 'lucide-react';
 import {
   REVISION_SPRINT_DAYS,
@@ -188,12 +190,31 @@ export const RevisionSprintView: React.FC<RevisionSprintViewProps> = ({ onSelect
               />
             </div>
 
-            <div className="mt-3 pt-3 border-t border-slate-800 text-[11px] text-slate-300 space-y-1">
+            <div className="mt-3 pt-3 border-t border-slate-800 text-[11px] text-slate-300 space-y-2.5">
               <div className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>
-                  <strong>Exam Timing Split:</strong> 50m Q1 (30m) + 32m Q2 + 32m Q3 + 6m review
+                  <strong>Exam Timing Split:</strong> 50m Q1 (30m) + 32m Q2 + 28m Q3 + 5m review
                 </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="/KCA-Dec-2026-Revision-Timetable.pdf"
+                  download="KCA-Dec-2026-Revision-Timetable.pdf"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>PDF</span>
+                </a>
+                <a
+                  href="/revision-timetable-print.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-bold border border-slate-700 transition-all"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Print View</span>
+                </a>
               </div>
             </div>
           </div>
