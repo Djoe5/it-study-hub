@@ -16,6 +16,7 @@ import {
   Info,
   FileSearch,
   CalendarRange,
+  Youtube,
 } from 'lucide-react';
 import { Course } from '../types';
 import {
@@ -28,6 +29,8 @@ import {
 } from '../data/examTimetable';
 import { RevisionSprintView } from './RevisionSprintView';
 import { PastPapersHubView } from './PastPapersHubView';
+import { VideoStudyVaultView } from './VideoStudyVaultView';
+import { STUDY_VIDEOS } from '../data/videoLibrary';
 
 interface TimetableViewProps {
   courses: Course[];
@@ -222,7 +225,7 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
   courses,
   onSelectCourse,
 }) => {
-  const [viewMode, setViewMode] = useState<'exams' | 'sprint' | 'pastpapers' | 'classes'>('exams');
+  const [viewMode, setViewMode] = useState<'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes'>('exams');
   const [selectedCampus, setSelectedCampus] = useState<CampusCode>(() => getSavedExamCampus());
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>('all');
 
@@ -297,6 +300,25 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
           >
             <FileSearch className="w-4 h-4" />
             <span>KCA Past Papers</span>
+          </button>
+
+          <button
+            onClick={() => setViewMode('videos')}
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+              viewMode === 'videos'
+                ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-600/20'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Youtube className="w-4 h-4" />
+            <span>YouTube Videos</span>
+            <span
+              className={`px-1.5 py-0.5 rounded-full text-[10px] ${
+                viewMode === 'videos' ? 'bg-white/20 text-white' : 'bg-red-500/20 text-red-300'
+              }`}
+            >
+              {STUDY_VIDEOS.length}
+            </span>
           </button>
 
           <button
@@ -626,6 +648,8 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
         <RevisionSprintView onSelectCourse={onSelectCourse} />
       ) : viewMode === 'pastpapers' ? (
         <PastPapersHubView onSelectCourse={onSelectCourse} />
+      ) : viewMode === 'videos' ? (
+        <VideoStudyVaultView onSelectCourse={onSelectCourse} />
       ) : (
         <>
           {/* Weekly Class Schedule Top Banner */}
