@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KCA University — Dec 2026 Exam Timetable — Joseph (BSc IT)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 6mm 10mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background: #f8fafc;
+      font-size: 9.5px;
+      line-height: 1.32;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .sheet {
+      max-width: 210mm;
+      margin: 12px auto;
+      background: #ffffff;
+      padding: 8mm 10mm;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+      border-radius: 6px;
+    }
+    @media print {
+      body { background: #ffffff; }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .no-print { display: none !important; }
+    }
+    .print-bar {
+      max-width: 210mm;
+      margin: 12px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .print-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .print-btn:hover { background: #1d4ed8; }
+
+    /* University Header */
+    .uni-header {
+      border-bottom: 2.5px solid #1e3a8a;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .crest-col {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .crest-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e3a8a, #0284c7);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 6px rgba(30, 58, 138, 0.25);
+    }
+    .uni-titles h1 {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .uni-titles .dept {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .uni-titles .session-tag {
+      font-size: 9.5px;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+    .header-badge {
+      text-align: right;
+    }
+    .official-pill {
+      display: inline-block;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+    .header-badge .date-stamp {
+      font-size: 8.5px;
+      color: #64748b;
+    }
+
+    /* Student Info Box */
+    .student-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #1e3a8a;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: 1.3fr 1.3fr 1fr 1fr;
+      gap: 8px;
+    }
+    .info-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .info-label {
+      font-size: 8px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .info-val {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 1px;
+    }
+
+    /* KPI Highlights */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .stat-box {
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 6px 10px;
+      text-align: center;
+    }
+    .stat-box.highlight {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+    .stat-num {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .stat-box.highlight .stat-num {
+      color: #166534;
+    }
+    .stat-lbl {
+      font-size: 8px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Timetable Table */
+    .table-container {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5px;
+    }
+    thead th {
+      background: #1e3a8a;
+      color: #ffffff;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 8.5px;
+      letter-spacing: 0.4px;
+      padding: 7px 8px;
+      text-align: left;
+      border-bottom: 1px solid #1e40af;
+    }
+    thead th.center { text-align: center; }
+    tbody td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+      color: #1e293b;
+    }
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .paper-num {
+      font-weight: 800;
+      color: #1e3a8a;
+      text-align: center;
+      font-size: 10px;
+    }
+    .date-col {
+      font-weight: 700;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    .date-day {
+      font-size: 8px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+    .time-slot {
+      font-weight: 800;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    .time-badge {
+      display: inline-block;
+      font-size: 7.5px;
+      font-weight: 800;
+      padding: 1.5px 5px;
+      border-radius: 3px;
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+    .time-badge.eve {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .time-badge.mor {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .code-pill {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 9px;
+    }
+    .unit-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 9.8px;
+      margin-top: 2px;
+    }
+    .venue-main {
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .venue-sub {
+      font-size: 8px;
+      color: #64748b;
+    }
+    .lecturer-txt {
+      font-size: 8.5px;
+      color: #475569;
+      font-style: italic;
+    }
+
+    /* Campus Venues Guide */
+    .venues-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .venue-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 6px 8px;
+      background: #f8fafc;
+    }
+    .venue-card h4 {
+      font-size: 8.5px;
+      font-weight: 800;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .venue-card p {
+      font-size: 8px;
+      color: #475569;
+    }
+
+    /* Notice & Regulations */
+    .notice-box {
+      border: 1px solid #fed7aa;
+      background: #fffbeb;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+    }
+    .notice-box h3 {
+      font-size: 9px;
+      font-weight: 800;
+      color: #9a3412;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .notice-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 12px;
+      font-size: 8.3px;
+      color: #7c2d12;
+    }
+    .notice-list li {
+      position: relative;
+      padding-left: 10px;
+    }
+    .notice-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #ea580c;
+      font-weight: 900;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8px;
+      color: #64748b;
+    }
+    .footer strong { color: #0f172a; }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Only Print Toolbar -->
+  <div class="print-bar no-print">
+    <div>
+      <strong>KCA University — Final Examination Timetable (Dec 2026)</strong>
+      <div style="font-size: 10px; color: #94a3b8; margin-top: 1px;">Official student exam schedule for Joseph — BSc in Information Technology</div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button class="print-btn" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / Save as PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="sheet">
+    
+    <!-- University & Exam Header -->
+    <div class="uni-header">
+      <div class="crest-col">
+        <div class="crest-badge">KCA</div>
+        <div class="uni-titles">
+          <h1>KCA University</h1>
+          <div class="dept">School of Technology — Department of SDIS</div>
+          <div class="session-tag">End of Trimester University Examinations — September – December 2026</div>
+        </div>
+      </div>
+      <div class="header-badge">
+        <div class="official-pill">Official Candidate Schedule</div>
+        <div class="date-stamp">Timetable Version: SDIS-FINAL-DRAFT-2026</div>
+      </div>
+    </div>
+
+    <!-- Candidate Profile Card -->
+    <div class="student-card">
+      <div class="info-item">
+        <span class="info-label">Candidate Name</span>
+        <span class="info-val">Joseph</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Degree Programme</span>
+        <span class="info-val">BSc in Information Technology (BIT)</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Academic Level</span>
+        <span class="info-val">Year 1, Trimester 3 (PT / DL)</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Primary Examination Centre</span>
+        <span class="info-val">Main Campus (Ruaraka, Thika Rd)</span>
+      </div>
+    </div>
+
+    <!-- Exam Sprint Key Stats -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">6 Papers</div>
+        <div class="stat-lbl">Registered Units</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Tue, 01 Dec 2026</div>
+        <div class="stat-lbl">First Examination</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Thu, 10 Dec 2026</div>
+        <div class="stat-lbl">Final Examination</div>
+      </div>
+      <div class="stat-box highlight">
+        <div class="stat-num">10 Days</div>
+        <div class="stat-lbl">Sprint Duration (Dec 1 – 10)</div>
+      </div>
+    </div>
+
+    <!-- Examination Schedule Table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="center" style="width: 32px;">#</th>
+            <th style="width: 95px;">Date & Day</th>
+            <th style="width: 110px;">Time Slot</th>
+            <th style="width: 75px;">Unit Code</th>
+            <th>Unit / Course Title</th>
+            <th style="width: 55px;" class="center">Session</th>
+            <th style="width: 125px;">Venue (Main Campus)</th>
+            <th style="width: 115px;">Lecturer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Paper 1 -->
+          <tr>
+            <td class="paper-num">01</td>
+            <td class="date-col">
+              01 Dec 2026
+              <div class="date-day">Tuesday</div>
+            </td>
+            <td class="time-slot">
+              17:00 – 19:00 HRS
+              <div><span class="time-badge eve">5:00 PM – 7:00 PM</span></div>
+            </td>
+            <td><span class="code-pill">STU 1201</span></td>
+            <td>
+              <div class="unit-title">Introduction to Programming</div>
+              <div style="font-size: 8px; color: #64748b;">Core Computing • Theory & Logic</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#36</td>
+            <td>
+              <div class="venue-main">Student Centre</div>
+              <div class="venue-sub">Town: Main Hall GF • Kit: 4-10</div>
+            </td>
+            <td class="lecturer-txt">Griffin Kenga Kitili</td>
+          </tr>
+
+          <!-- Paper 2 -->
+          <tr>
+            <td class="paper-num">02</td>
+            <td class="date-col">
+              02 Dec 2026
+              <div class="date-day">Wednesday</div>
+            </td>
+            <td class="time-slot">
+              17:00 – 19:00 HRS
+              <div><span class="time-badge eve">5:00 PM – 7:00 PM</span></div>
+            </td>
+            <td><span class="code-pill">CUU 1202</span></td>
+            <td>
+              <div class="unit-title">Foundations of Critical & Creative Thinking</div>
+              <div style="font-size: 8px; color: #64748b;">University Core • Logic & Reasoning</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#40</td>
+            <td>
+              <div class="venue-main">Student Centre</div>
+              <div class="venue-sub">Town: Main Hall GF • Kit: 4-10</div>
+            </td>
+            <td class="lecturer-txt">Stephen Kamba Mwangangi</td>
+          </tr>
+
+          <!-- Paper 3 -->
+          <tr>
+            <td class="paper-num">03</td>
+            <td class="date-col">
+              04 Dec 2026
+              <div class="date-day">Friday</div>
+            </td>
+            <td class="time-slot">
+              17:00 – 19:00 HRS
+              <div><span class="time-badge eve">5:00 PM – 7:00 PM</span></div>
+            </td>
+            <td><span class="code-pill">CUU 2102</span></td>
+            <td>
+              <div class="unit-title">Information Literacy & Academic Writing</div>
+              <div style="font-size: 8px; color: #64748b;">University Core • Research & Referencing</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#48</td>
+            <td>
+              <div class="venue-main">Student Centre</div>
+              <div class="venue-sub">Town: Main Hall GF • Kit: 4-10</div>
+            </td>
+            <td class="lecturer-txt">Benjamin Kasyoki Mutungi</td>
+          </tr>
+
+          <!-- Paper 4 -->
+          <tr>
+            <td class="paper-num">04</td>
+            <td class="date-col">
+              05 Dec 2026
+              <div class="date-day" style="color: #b45309; font-weight: 800;">Saturday</div>
+            </td>
+            <td class="time-slot">
+              11:00 – 13:00 HRS
+              <div><span class="time-badge mor">⚠️ 11:00 AM – 1:00 PM (Morning)</span></div>
+            </td>
+            <td><span class="code-pill">STU 1202</span></td>
+            <td>
+              <div class="unit-title">Web Design & Development</div>
+              <div style="font-size: 8px; color: #64748b;">HTML5, CSS3, JavaScript, DOM & Responsive Web</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#50</td>
+            <td>
+              <div class="venue-main">Student Centre</div>
+              <div class="venue-sub">Town: Main Hall GF • Kit: 4-10</div>
+            </td>
+            <td class="lecturer-txt">Gladys Mange</td>
+          </tr>
+
+          <!-- Paper 5 -->
+          <tr>
+            <td class="paper-num">05</td>
+            <td class="date-col">
+              07 Dec 2026
+              <div class="date-day">Monday</div>
+            </td>
+            <td class="time-slot">
+              17:00 – 19:00 HRS
+              <div><span class="time-badge eve">5:00 PM – 7:00 PM</span></div>
+            </td>
+            <td><span class="code-pill">STU 2102</span></td>
+            <td>
+              <div class="unit-title">Computing Research Skills & Design</div>
+              <div style="font-size: 8px; color: #64748b;">Methodologies, Data Analysis & Proposal Writing</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#60</td>
+            <td>
+              <div class="venue-main">TC 3rd Floor</div>
+              <div class="venue-sub">Technology Centre • Town: Main Hall GF</div>
+            </td>
+            <td class="lecturer-txt">Gladys Mange</td>
+          </tr>
+
+          <!-- Paper 6 -->
+          <tr>
+            <td class="paper-num">06</td>
+            <td class="date-col">
+              10 Dec 2026
+              <div class="date-day">Thursday</div>
+            </td>
+            <td class="time-slot">
+              17:00 – 19:00 HRS
+              <div><span class="time-badge eve">5:00 PM – 7:00 PM</span></div>
+            </td>
+            <td><span class="code-pill">CPP 2104</span></td>
+            <td>
+              <div class="unit-title">Object-Oriented Technologies</div>
+              <div style="font-size: 8px; color: #64748b;">OOP Concepts, Classes, Inheritance & Polymorphism</div>
+            </td>
+            <td class="center" style="font-weight: 700; color: #475569;">#72</td>
+            <td>
+              <div class="venue-main">TC 2-2</div>
+              <div class="venue-sub">Technology Centre 2nd Floor • Town: GF</div>
+            </td>
+            <td class="lecturer-txt">Beatrice Muthoni Kagucia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Campus Venue Directory -->
+    <div class="venues-grid">
+      <div class="venue-card">
+        <h4>Main Campus (Ruaraka)</h4>
+        <p><strong>Student Centre:</strong> Ground & Upper Halls<br><strong>TC Rooms:</strong> Technology Centre (2nd & 3rd Flr)</p>
+      </div>
+      <div class="venue-card">
+        <h4>Town Campus (CBD)</h4>
+        <p><strong>Main Hall GF:</strong> Monrovia Street Campus Ground Floor Examination Hall</p>
+      </div>
+      <div class="venue-card">
+        <h4>Kitengela Campus</h4>
+        <p><strong>Rooms 4-10 & 4-11:</strong> Academic Block 4th Floor</p>
+      </div>
+      <div class="venue-card">
+        <h4>Distance Learning (DL)</h4>
+        <p><strong>Alternate CUU 1202:</strong> Sun 06 Dec (14:00–16:00 HRS) under Jackson Ndungu</p>
+      </div>
+    </div>
+
+    <!-- Essential Rules & Notice -->
+    <div class="notice-box">
+      <h3>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        Important Examination Instructions for Candidate
+      </h3>
+      <ul class="notice-list">
+        <li><strong>Identification:</strong> Must present a valid KCA Student ID Card and Examination Clearance Card at the room entrance.</li>
+        <li><strong>Arrival Time:</strong> Candidates must be seated at least 30 minutes before the official start time of each examination.</li>
+        <li><strong>Weekend Morning Slot:</strong> Paper 4 (STU 1202 Web Design) sits on <em>Saturday morning at 11:00 AM</em>, not the evening slot.</li>
+        <li><strong>Academic Integrity:</strong> Mobile phones, smart watches, notes, and unauthorized digital devices are strictly forbidden.</li>
+      </ul>
+    </div>
+
+    <!-- Official Document Footer -->
+    <div class="footer">
+      <div>
+        <strong>KCA University</strong> • Directorate of Examinations • Sep–Dec 2026 Examination Series
+      </div>
+      <div>
+        Candidate: <strong>Joseph (BSc IT)</strong> • Generated on November 20, 2026 • Page 1 of 1
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

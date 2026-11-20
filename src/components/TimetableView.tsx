@@ -17,6 +17,8 @@ import {
   FileSearch,
   CalendarRange,
   PlayCircle,
+  FileDown,
+  Printer,
 } from 'lucide-react';
 import { Course } from '../types';
 import {
@@ -407,6 +409,35 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
                     <strong className="text-white">17:00–19:00</strong>{' '}
                     <span className="text-amber-300">(Sat STU 1202 @ 11:00)</span>
                   </div>
+                </div>
+
+                {/* PDF Timetable Download & Print Action Buttons */}
+                <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                  <a
+                    href="/KCA-Dec-2026-Exam-Timetable-Joseph.pdf"
+                    download="KCA-Dec-2026-Exam-Timetable-Joseph.pdf"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md shadow-rose-600/25 transition-all"
+                  >
+                    <FileDown className="w-4 h-4" />
+                    <span>Download Official Exam PDF</span>
+                  </a>
+                  <a
+                    href="/exam-timetable-print.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-950/80 hover:bg-slate-800 text-slate-200 text-xs font-bold border border-slate-700 transition-all"
+                  >
+                    <Printer className="w-4 h-4" />
+                    <span>Print 1-Page Schedule</span>
+                  </a>
+                  <a
+                    href="/KCA-Dec-2026-Revision-Timetable.pdf"
+                    download="KCA-Dec-2026-Revision-Timetable.pdf"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 text-xs font-bold border border-emerald-800/60 transition-all"
+                  >
+                    <FileDown className="w-4 h-4" />
+                    <span>23-Day Revision Plan PDF</span>
+                  </a>
                 </div>
               </div>
 
