@@ -24,6 +24,17 @@ export const App: React.FC = () => {
   
   // Active course navigation
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(courses[0]?.id || null);
+  const [examViewMode, setExamViewMode] = useState<'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes'>('exams');
+  const [pastPapersSubTab, setPastPapersSubTab] = useState<'vault' | 'flashcards' | 'practice'>('vault');
+
+  const handleNavigateToExamSection = (
+    mode: 'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes',
+    subTab: 'vault' | 'flashcards' | 'practice' = 'vault'
+  ) => {
+    setExamViewMode(mode);
+    setPastPapersSubTab(subTab);
+    setActiveTab('timetable');
+  };
 
   // Modals state
   const [isAssignmentModalOpen, setIsAssignmentModalOpen] = useState(false);
@@ -147,6 +158,7 @@ export const App: React.FC = () => {
             sessions={sessions}
             onSelectCourse={handleSelectCourseFromDashboard}
             onNavigateToTab={setActiveTab}
+            onNavigateToExamSection={handleNavigateToExamSection}
             onToggleAssignmentStatus={handleToggleAssignmentStatus}
             onOpenNewAssignment={handleOpenNewAssignment}
           />
@@ -183,6 +195,8 @@ export const App: React.FC = () => {
           <TimetableView
             courses={courses}
             onSelectCourse={handleSelectCourseFromDashboard}
+            initialViewMode={examViewMode}
+            initialPastPapersSubTab={pastPapersSubTab}
           />
         )}
 

@@ -12,11 +12,17 @@ import {
   Calendar,
   Sparkles,
   GraduationCap,
-  MapPin
+  MapPin,
+  Layers,
+  ClipboardCheck,
+  FileSearch,
+  Target
 } from 'lucide-react';
 import { Course, Assignment, UserProfile, StudySession } from '../types';
 import { getDeadlineStatus, formatDateTime } from '../utils/dateUtils';
 import { EXAM_TIMETABLE, getSavedExamCampus } from '../data/examTimetable';
+import { EXAM_FLASHCARDS, EXAM_PRACTICE_BANK, RETRIEVED_PAST_PAPERS_CATALOG, getMasteredFlashcards } from '../data/flashcardsData';
+import { SMART_STUDY_GUIDES } from '../data/smartStudyNotes';
 import confetti from 'canvas-confetti';
 
 interface DashboardProps {
@@ -26,6 +32,10 @@ interface DashboardProps {
   sessions: StudySession[];
   onSelectCourse: (courseId: string) => void;
   onNavigateToTab: (tab: 'dashboard' | 'courses' | 'assignments' | 'timetable' | 'timer') => void;
+  onNavigateToExamSection?: (
+    mode: 'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes',
+    subTab?: 'vault' | 'flashcards' | 'practice'
+  ) => void;
   onToggleAssignmentStatus: (assignmentId: string) => void;
   onOpenNewAssignment: () => void;
 }
@@ -37,6 +47,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   sessions,
   onSelectCourse,
   onNavigateToTab,
+  onNavigateToExamSection,
   onToggleAssignmentStatus,
   onOpenNewAssignment,
 }) => {
@@ -59,6 +70,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
   // Total study hours
   const totalStudyMinutes = sessions.reduce((acc, s) => acc + s.durationMinutes, 0);
   const totalStudyHours = (totalStudyMinutes / 60).toFixed(1);
+
+  // Total smart summary guides & exam readiness counts
+  const totalSmartGuides = Object.values(SMART_STUDY_GUIDES).reduce((acc, list) => acc + list.length, 0);
+  const masteredFlashcardCount = getMasteredFlashcards().length;
+  const diagCheckedCount = (() => {
+    try {
+      const raw = localStorage.getItem('it_study_hub_diag_v1');
+      return raw ? JSON.parse(raw).length : 0;
+    } catch {
+      return 0;
+    }
+  })();
 
   // Handle celebration checkmark
   const handleCheck = (id: string, e: React.MouseEvent) => {
@@ -121,6 +144,101 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <span>+ Add Task</span>
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Dec 2026 Exam Mastery Command Center (Upgraded Vault, Flashcards, Rubrics & 57 Notes) */}
+      <div className="rounded-2xl bg-gradient-to-br from-slate-900 via-emerald-950/25 to-indigo-950/35 border border-emerald-500/30 p-5 sm:p-6 shadow-xl space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              UPDATED · DEC 2026 EXAM VAULT
+            </span>
+            <h2 className="text-sm sm:text-base font-extrabold text-white">
+              Exam Mastery Command Center (All 6 Units Upgraded)
+            </h2>
+          </div>
+          <span className="text-xs text-slate-400">
+            Click any card below to launch straight into active recall
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <button
+            type="button"
+            onClick={() => onNavigateToTab('courses')}
+            className="text-left p-4 rounded-xl bg-slate-950/80 hover:bg-slate-900 border border-indigo-500/30 hover:border-indigo-400 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="p-2 rounded-lg bg-indigo-500/15 text-indigo-300">
+                <BookOpen className="w-4 h-4" />
+              </span>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">
+                +11 NEW GUIDES
+              </span>
+            </div>
+            <div className="text-lg font-extrabold text-white">{totalSmartGuides} Summary Notes</div>
+            <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+              Added C++ OOP U3–U5, C Loops/Pointers L11–L13, APA/AI Ethics P5–P6, JS L15, Research L12 & Fallacies L7.
+            </p>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigateToExamSection ? onNavigateToExamSection('pastpapers', 'vault') : onNavigateToTab('timetable')}
+            className="text-left p-4 rounded-xl bg-slate-950/80 hover:bg-slate-900 border border-amber-500/30 hover:border-amber-400 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="p-2 rounded-lg bg-amber-500/15 text-amber-300">
+                <FileSearch className="w-4 h-4" />
+              </span>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">
+                VERIFIED KCA
+              </span>
+            </div>
+            <div className="text-lg font-extrabold text-white">{RETRIEVED_PAST_PAPERS_CATALOG.length} Real Past Papers</div>
+            <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+              All uploaded CUU 2102 & OOP PDFs + direct Masomo Msingi BIT 1304, BIT 1203 & BIT 2301 links.
+            </p>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigateToExamSection ? onNavigateToExamSection('pastpapers', 'flashcards') : onNavigateToTab('timetable')}
+            className="text-left p-4 rounded-xl bg-slate-950/80 hover:bg-slate-900 border border-violet-500/30 hover:border-violet-400 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="p-2 rounded-lg bg-violet-500/15 text-violet-300">
+                <Layers className="w-4 h-4" />
+              </span>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-violet-500/20 text-violet-300">
+                {masteredFlashcardCount}/{EXAM_FLASHCARDS.length} MASTERED
+              </span>
+            </div>
+            <div className="text-lg font-extrabold text-white">{EXAM_FLASHCARDS.length} Exam Flashcards</div>
+            <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+              Interactive flip-cards citing exact KCA exam traps (9-Mark Table, #define macro, CRAAP, Validity).
+            </p>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigateToExamSection ? onNavigateToExamSection('pastpapers', 'practice') : onNavigateToTab('timetable')}
+            className="text-left p-4 rounded-xl bg-slate-950/80 hover:bg-slate-900 border border-emerald-500/30 hover:border-emerald-400 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="p-2 rounded-lg bg-emerald-500/15 text-emerald-300">
+                <ClipboardCheck className="w-4 h-4" />
+              </span>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 flex items-center gap-1">
+                <Target className="w-3 h-3" /> {diagCheckedCount}/6 READY
+              </span>
+            </div>
+            <div className="text-lg font-extrabold text-white">{EXAM_PRACTICE_BANK.length} Worked Rubrics</div>
+            <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+              Timed MCQs, C/C++/HTML code answers & Maria AI case essay + 6-Point Diagnostic Checklist.
+            </p>
+          </button>
         </div>
       </div>
 

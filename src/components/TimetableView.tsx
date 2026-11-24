@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Calendar,
   Clock,
@@ -37,6 +37,8 @@ import { STUDY_VIDEOS } from '../data/videoLibrary';
 interface TimetableViewProps {
   courses: Course[];
   onSelectCourse: (courseId: string) => void;
+  initialViewMode?: 'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes';
+  initialPastPapersSubTab?: 'vault' | 'flashcards' | 'practice';
 }
 
 interface ScheduleDay {
@@ -226,8 +228,14 @@ function formatExamDate(dateStr: string): string {
 export const TimetableView: React.FC<TimetableViewProps> = ({
   courses,
   onSelectCourse,
+  initialViewMode = 'exams',
+  initialPastPapersSubTab = 'vault',
 }) => {
-  const [viewMode, setViewMode] = useState<'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes'>('exams');
+  const [viewMode, setViewMode] = useState<'exams' | 'sprint' | 'pastpapers' | 'videos' | 'classes'>(initialViewMode);
+
+  useEffect(() => {
+    setViewMode(initialViewMode);
+  }, [initialViewMode]);
   const [selectedCampus, setSelectedCampus] = useState<CampusCode>(() => getSavedExamCampus());
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>('all');
 
@@ -678,7 +686,7 @@ export const TimetableView: React.FC<TimetableViewProps> = ({
       ) : viewMode === 'sprint' ? (
         <RevisionSprintView onSelectCourse={onSelectCourse} />
       ) : viewMode === 'pastpapers' ? (
-        <PastPapersHubView onSelectCourse={onSelectCourse} />
+        <PastPapersHubView onSelectCourse={onSelectCourse} initialSubTab={initialPastPapersSubTab} />
       ) : viewMode === 'videos' ? (
         <VideoStudyVaultView onSelectCourse={onSelectCourse} />
       ) : (

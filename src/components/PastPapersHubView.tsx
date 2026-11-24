@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   FileSearch,
   ExternalLink,
@@ -34,6 +34,7 @@ import {
 
 interface PastPapersHubViewProps {
   onSelectCourse: (courseId: string) => void;
+  initialSubTab?: 'vault' | 'flashcards' | 'practice';
 }
 
 type HubSubTab = 'vault' | 'flashcards' | 'practice';
@@ -49,8 +50,15 @@ const UNIT_FILTERS: UnitFilter[] = [
   'CPP 2104',
 ];
 
-export const PastPapersHubView: React.FC<PastPapersHubViewProps> = ({ onSelectCourse }) => {
-  const [subTab, setSubTab] = useState<HubSubTab>('vault');
+export const PastPapersHubView: React.FC<PastPapersHubViewProps> = ({
+  onSelectCourse,
+  initialSubTab = 'vault',
+}) => {
+  const [subTab, setSubTab] = useState<HubSubTab>(initialSubTab);
+
+  useEffect(() => {
+    setSubTab(initialSubTab);
+  }, [initialSubTab]);
   const [unitFilter, setUnitFilter] = useState<UnitFilter>('ALL');
   const [expandedMockIds, setExpandedMockIds] = useState<string[]>(['kcau-33500']);
 

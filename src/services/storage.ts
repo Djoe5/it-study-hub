@@ -27,21 +27,64 @@ export const StorageService = {
         return initialCourses;
       }
 
-      // Check if courses have fewer resources than the newly uploaded notes collection
+      // Automatically merge any newly added syllabus modules, updated titles, or resources from initialCourses
+      // while preserving the student's existing completion progress, notes, and grade scores!
       const totalStoredResources = parsed.reduce((acc, c) => acc + (c.resources?.length || 0), 0);
       const totalInitialResources = initialCourses.reduce((acc, c) => acc + (c.resources?.length || 0), 0);
-      if (totalStoredResources < totalInitialResources) {
-        // Upgrade to fresh course notes while preserving user's custom additions
+      const totalStoredSyllabus = parsed.reduce((acc, c) => acc + (c.syllabus?.length || 0), 0);
+      const totalInitialSyllabus = initialCourses.reduce((acc, c) => acc + (c.syllabus?.length || 0), 0);
+      const schemaUpgraded = localStorage.getItem('it_study_hub_exam_mastery_v7') === 'done';
+
+      if (totalStoredResources < totalInitialResources || totalStoredSyllabus < totalInitialSyllabus || !schemaUpgraded) {
         const merged = initialCourses.map(initCourse => {
           const existing = parsed.find(p => p.id === initCourse.id || p.code === initCourse.code);
           if (!existing) return initCourse;
+
+          // Merge syllabus: keep completion/notes for existing module IDs, include all new modules & updated titles
+          const mergedSyllabus = initCourse.syllabus.map(initMod => {
+            const oldMod = existing.syllabus.find(m => m.id === initMod.id);
+            if (!oldMod) return initMod;
+            return {
+              ...initMod,
+              completed: oldMod.completed,
+              completedAt: oldMod.completedAt,
+              timeSpentMinutes: oldMod.timeSpentMinutes,
+              studyNotes: oldMod.studyNotes,
+            };
+          });
+          // Also preserve any custom user-added syllabus modules not in initialCourses
+          const customSyllabus = existing.syllabus.filter(
+            m => !initCourse.syllabus.some(im => im.id === m.id)
+          );
+
+          // Merge resources: keep covered flags for existing resources, include all new exam summary resources
+          const mergedResources = (initCourse.resources || []).map(initRes => {
+            const oldRes = (existing.resources || []).find(r => r.id === initRes.id);
+            if (!oldRes) return initRes;
+            return {
+              ...initRes,
+              covered: oldRes.covered,
+              coveredAt: oldRes.coveredAt,
+              timeSpentMinutes: oldRes.timeSpentMinutes,
+            };
+          });
+          const customResources = (existing.resources || []).filter(
+            r => !(initCourse.resources || []).some(ir => ir.id === r.id)
+          );
+
           return {
             ...initCourse,
-            // Keep gradeComponents if user customized scores
+            syllabus: [...mergedSyllabus, ...customSyllabus],
+            resources: [...mergedResources, ...customResources],
             gradeComponents: existing.gradeComponents || initCourse.gradeComponents,
           };
         });
         this.saveCourses(merged);
+        try {
+          localStorage.setItem('it_study_hub_exam_mastery_v7', 'done');
+        } catch {
+          // ignore
+        }
         return merged;
       }
 

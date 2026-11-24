@@ -190,6 +190,31 @@ export const initialCourses: Course[] = [
         "category": "other",
         "covered": false
       }
+    ,
+      {
+        "id": "res-33251-guide3",
+        "title": "NEW EXAM SUMMARY — Unit 3: C++ OOP Core, Struct vs Class vs Union, Constructors & Destructors",
+        "url": "#guide-cpp2104-3",
+        "category": "slides",
+        "week": 3,
+        "covered": false
+      },
+      {
+        "id": "res-33251-guide4",
+        "title": "NEW EXAM SUMMARY — Unit 4: 9-Mark Inheritance Visibility Table, Friend/Inline/Static & Composition",
+        "url": "#guide-cpp2104-4",
+        "category": "slides",
+        "week": 4,
+        "covered": false
+      },
+      {
+        "id": "res-33251-guide5",
+        "title": "NEW EXAM SUMMARY — Unit 5: Polymorphism, Pure Virtual Functions, Templates & fstream File I/O",
+        "url": "#guide-cpp2104-5",
+        "category": "slides",
+        "week": 5,
+        "covered": false
+      }
     ],
     "notes": "Lecturer: Beatrice Muthoni Kagucia. Thursdays 5:30 PM. Focus on UML class diagrams, inheritance hierarchies, and dynamic polymorphism."
   },
@@ -311,7 +336,7 @@ export const initialCourses: Course[] = [
       {
         "id": "syl-33605-7",
         "week": 7,
-        "title": "Critical Evaluation of Digital Media & Data",
+        "title": "Lecture 7: KCA Exam Synthesis — Syllogisms, 10 Fallacies Drill, SCAMPER & 6 Thinking Hats",
         "topics": [
           "Disinformation and algorithmic filter bubbles",
           "Rhetorical fallacies in technology marketing",
@@ -415,6 +440,15 @@ export const initialCourses: Course[] = [
         "category": "portal",
         "covered": false
       }
+    ,
+      {
+        "id": "res-33605-guide7",
+        "title": "NEW EXAM SUMMARY — Lecture 7: Syllogisms (Valid/Sound), 10 Fallacies Drill, SCAMPER & 6 Hats",
+        "url": "#guide-cuu1202-7",
+        "category": "slides",
+        "week": 7,
+        "covered": false
+      }
     ],
     "notes": "Lecturer: John Kennedy Kinyua. Wednesdays 5:30 PM. Quiz 2 closes Oct 7 (8:00 PM, 10 mins). Group Assignment 3 due Oct 16 (10 Marks)."
   },
@@ -513,7 +547,7 @@ export const initialCourses: Course[] = [
       {
         "id": "syl-32622-5",
         "week": 5,
-        "title": "Academic Essay Architecture & Thesis Statements",
+        "title": "Part 5: Academic Writing Structure, Coherence/Cohesion, APA 7th & Big6 vs. SCONUL",
         "topics": [
           "Arguable, concise thesis statement formulation",
           "Topic sentences, paragraph unity, and MEAL plan",
@@ -525,7 +559,7 @@ export const initialCourses: Course[] = [
       {
         "id": "syl-32622-6",
         "week": 6,
-        "title": "Technical & Empirical Research Writing",
+        "title": "Part 6: Information Ethics, AI-Assisted Writing, Boolean Queries & Real KCA Case Studies",
         "topics": [
           "Abstract structure (IMRAD model)",
           "Objective methodology presentation",
@@ -619,6 +653,23 @@ export const initialCourses: Course[] = [
         "title": "Purdue OWL APA 7th Referencing Guide",
         "url": "https://owl.purdue.edu",
         "category": "other",
+        "covered": false
+      }
+    ,
+      {
+        "id": "res-32622-guide5",
+        "title": "NEW EXAM SUMMARY — Part 5: Essay Structure, Formal Style, Coherence/Cohesion, APA 7th & Big6/SCONUL",
+        "url": "#guide-cuu2102-5",
+        "category": "slides",
+        "week": 5,
+        "covered": false
+      },
+      {
+        "id": "res-32622-guide6",
+        "title": "NEW EXAM SUMMARY — Part 6: Information Ethics, Maria AI Case Study, Boolean Queries & Plagiarism",
+        "url": "#guide-cuu2102-6",
+        "category": "slides",
+        "week": 6,
         "covered": false
       }
     ],
@@ -794,6 +845,43 @@ export const initialCourses: Course[] = [
         "completed": false,
         "targetStudyMinutes": 30
       }
+    ,
+      {
+        "id": "syl-33500-11",
+        "week": 11,
+        "title": "Lecture 11: Control Structures in C — Decisions, Loops, Nested Patterns & Math Library",
+        "topics": [
+          "if/else if/else vs switch-case & overtime wage branching [Paper C1]",
+          "while vs do-while flowcharts & nested loop pattern tracing",
+          "break/continue jump statements & <math.h>/<ctype.h> expressions [Paper C4]"
+        ],
+        "completed": false,
+        "targetStudyMinutes": 35
+      },
+      {
+        "id": "syl-33500-12",
+        "week": 12,
+        "title": "Lecture 12: Functions, Modularization, Recursion, Scope & Preprocessor Directives",
+        "topics": [
+          "Function prototypes vs definitions & parameters vs arguments [Paper C1, C3]",
+          "Call-by-value vs call-by-reference & variable scope",
+          "Recursion vs iteration (rec_cheers, Factorial) & #define macro trap (64) [Paper C3]"
+        ],
+        "completed": false,
+        "targetStudyMinutes": 30
+      },
+      {
+        "id": "syl-33500-13",
+        "week": 13,
+        "title": "Lecture 13: Arrays (1D & 2D), Strings, Pointers & Structures (struct) in C",
+        "topics": [
+          "1D & 2D arrays (char grapes[2][3], marks[3][5], 4x3 matrix addition) [Paper C1, C4]",
+          "Pointers (& address-of, * dereference) & pointer arithmetic trace [Paper C4]",
+          "C struct declarations (struct person BMI, struct student) & dynamic memory"
+        ],
+        "completed": false,
+        "targetStudyMinutes": 35
+      }
     ],
     "resources": [
       {
@@ -915,6 +1003,31 @@ export const initialCourses: Course[] = [
         "title": "Online C/Python Compiler & Debugger (OnlineGDB)",
         "url": "https://www.onlinegdb.com",
         "category": "other",
+        "covered": false
+      }
+    ,
+      {
+        "id": "res-33500-guide11",
+        "title": "NEW EXAM SUMMARY — Lecture 11: Control Structures, Loops, Patterns & math.h [Papers C1–C4]",
+        "url": "#guide-stu1201-11",
+        "category": "slides",
+        "week": 11,
+        "covered": false
+      },
+      {
+        "id": "res-33500-guide12",
+        "title": "NEW EXAM SUMMARY — Lecture 12: Functions, Recursion, Scope & #define Macro Trap [Papers C1, C3]",
+        "url": "#guide-stu1201-12",
+        "category": "slides",
+        "week": 12,
+        "covered": false
+      },
+      {
+        "id": "res-33500-guide13",
+        "title": "NEW EXAM SUMMARY — Lecture 13: Arrays (1D/2D), Strings, Pointers & Structs in C [Papers C1–C4]",
+        "url": "#guide-stu1201-13",
+        "category": "slides",
+        "week": 13,
         "covered": false
       }
     ],
@@ -1129,6 +1242,19 @@ export const initialCourses: Course[] = [
         "completed": false,
         "targetStudyMinutes": 35
       }
+    ,
+      {
+        "id": "syl-33501-14",
+        "week": 14,
+        "title": "Lesson 15: Client-Side JavaScript, DOM Events, CGI, XML/SGML, Image Maps & Exam Traps",
+        "topics": [
+          "JavaScript onFocus, onSubmit validation, document.writeln & Java vs JS [Paper D4]",
+          "Physical vs Logical HTML tags, GIF vs JPEG, Image Maps & WYSIWYG editors [Paper D1, D4]",
+          "XML vs SGML, CGI scripts vs programs & Internet servers (Proxy/App/Web) [Paper D3, D4]"
+        ],
+        "completed": false,
+        "targetStudyMinutes": 35
+      }
     ],
     "resources": [
       {
@@ -1280,6 +1406,15 @@ export const initialCourses: Course[] = [
         "title": "MDN Web Docs (HTML5 & CSS3 Standard Reference)",
         "url": "https://developer.mozilla.org",
         "category": "other",
+        "covered": false
+      }
+    ,
+      {
+        "id": "res-33501-guide14",
+        "title": "NEW EXAM SUMMARY — Lesson 15: Client-Side JavaScript, DOM Events, CGI, XML/SGML & BIT 1203 Traps",
+        "url": "#guide-stu1202-14",
+        "category": "slides",
+        "week": 14,
         "covered": false
       }
     ],
@@ -1468,6 +1603,19 @@ export const initialCourses: Course[] = [
         "completed": false,
         "targetStudyMinutes": 25
       }
+    ,
+      {
+        "id": "syl-33505-12",
+        "week": 12,
+        "title": "Lecture 12: KCA Exam Synthesis — Sub-Problems, Hypotheses, Validity/Reliability & Experimental Designs",
+        "topics": [
+          "4 Sub-Problem characteristics, H0 vs H1 hypotheses & 6 hypothesis traits [Paper E1]",
+          "5 Types of Validity vs Reliability & Descriptive vs Inferential stats [Paper E2]",
+          "Tool vs Method vs Methodology vs Framework (20m) & Action Research [Paper E3]"
+        ],
+        "completed": false,
+        "targetStudyMinutes": 30
+      }
     ],
     "resources": [
       {
@@ -1599,6 +1747,15 @@ export const initialCourses: Course[] = [
         "title": "Google Scholar / IEEE Xplore Portal",
         "url": "https://scholar.google.com",
         "category": "other",
+        "covered": false
+      }
+    ,
+      {
+        "id": "res-33505-guide12",
+        "title": "NEW EXAM SUMMARY — Lecture 12: Sub-Problems, H0/H1, 5 Validity Types & Tool/Method/Methodology",
+        "url": "#guide-stu2102-12",
+        "category": "slides",
+        "week": 12,
         "covered": false
       }
     ],

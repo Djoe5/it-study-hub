@@ -26,6 +26,7 @@ import { Course, SyllabusModule, GradeComponent, CourseResource, StudySession } 
 import { StudyReadingRoomModal } from './StudyReadingRoomModal';
 import confetti from 'canvas-confetti';
 import { STU_1201_LECTURES } from '../data/stu1201Lectures';
+import { SMART_STUDY_GUIDES } from '../data/smartStudyNotes';
 
 interface CoursesViewProps {
   courses: Course[];
@@ -382,7 +383,20 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
                   </h2>
                 </div>
 
-                <div className="flex items-center gap-2 self-start">
+                <div className="flex flex-wrap items-center gap-2 self-start">
+                  {(SMART_STUDY_GUIDES[activeCourse.code]?.length || 0) > 0 && (
+                    <button
+                      onClick={() => {
+                        setActiveStudyModule(activeCourse.syllabus[activeCourse.syllabus.length - 1] || activeCourse.syllabus[0]);
+                        setActiveStudyResource(undefined);
+                        setIsStudyRoomOpen(true);
+                      }}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs font-bold shadow-md shadow-indigo-600/25 transition-all"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>Open Smart Summary Notes ({SMART_STUDY_GUIDES[activeCourse.code].length} Guides)</span>
+                    </button>
+                  )}
                   {onResetAllToUnread && (
                     <button
                       onClick={() => {
