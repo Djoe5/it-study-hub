@@ -154,7 +154,7 @@ export const EXAM_TIMETABLE: ExamEntry[] = [
     },
     color: '#06b6d4',
     gapNote: '1 full revision day (Sun Dec 6 free) — Note MAIN venue changes to TC 3RD FLR',
-    revisionFocus: 'Problem formulation, literature review, conceptual frameworks, sampling, data analysis & ethics',
+    revisionFocus: 'Problem formulation, sub-problems, H0/H1 hypotheses, validity vs reliability, Tool/Method/Methodology, sampling & ethics',
   },
   {
     id: 'exam-2026-cpp2104',
@@ -179,7 +179,7 @@ export const EXAM_TIMETABLE: ExamEntry[] = [
     },
     color: '#8b5cf6',
     gapNote: 'Final paper — 2 full revision days (Tue Dec 8 & Wed Dec 9 free) · MAIN venue: TC 2-2',
-    revisionFocus: 'UML class diagrams, 4 OOP pillars, constructors, polymorphism, interfaces & design patterns',
+    revisionFocus: 'UML class diagrams + C++ OOP: 9-Mark Inheritance Visibility Table, constructors/destructors, friend & pure virtual functions, fstream file I/O',
   },
 ];
 

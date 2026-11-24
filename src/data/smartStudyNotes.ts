@@ -223,612 +223,955 @@ export const SMART_STUDY_GUIDES: Record<string, SmartLectureGuide[]> = {
           "definition": "A structural diagram that provides a snapshot of the runtime instances and links in a system at a specific point in time."
         }
       ]
+    },
+    {
+      "id": "guide-cpp2104-3",
+      "courseCode": "CPP 2104",
+      "lectureNumber": 3,
+      "title": "Unit 3: C++ OOP Core — Classes, Struct vs. Class vs. Union, Constructors & Destructors",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Directly aligned with KCA University OOP examinations (BAC 2101 Aug 2024 [Paper B1], BIT 2108 Apr/Aug/Dec 2025 [Papers B2, B4, B6], and CPP 2201 Nov 2025 [Paper B3]). This guide bridges UML design to concrete C++ implementation: contrasting struct, class, and union; defining state vs. behavior; mastering encapsulation with private attributes and getters/setters; and writing default, parameterized, and copy constructors alongside destructors.",
+      "coreHighlights": [
+        {
+          "heading": "OOP vs. Procedural Programming & Core Building Blocks [Paper B2: Q1b, Paper B3: Q1c]",
+          "points": [
+            "Object: A runtime instance of a class combining State (data members/attributes describing properties) and Behavior (member functions/methods defining actions) [Paper B1: Q1c, Paper B2: Q1a].",
+            "Three Typical Steps in Developing an OOP Program [Paper B1: Q1a]: (1) Problem Analysis & Class Identification (identifying entities, attributes, and methods), (2) Design / Modeling (UML Class Diagrams and pseudocode), (3) Implementation & Testing (coding classes in C++, instantiating objects, and verifying behavior).",
+            "Why OOP Beats Procedural Programming [Paper B2: Q1b, Paper B3: Q1c]: Encapsulation prevents accidental global data corruption; Inheritance promotes code reuse without copy-paste; Modularity eases maintenance in large enterprise systems; Polymorphism enables extensible interfaces."
+          ]
+        },
+        {
+          "heading": "Struct vs. Class vs. Union in C++ [Paper B1: Q1b, Paper B5: Q1b]",
+          "points": [
+            "Struct: Best for passive Plain Old Data (POD) records grouping related fields (e.g., struct Participant { string name, ward, phoneNumber; }; [Paper B2: Q3a]). Default member and inheritance visibility is PUBLIC.",
+            "Class: Best for full OOP entities requiring data hiding, invariants, constructors, and encapsulation (e.g., BankAccount, CallLog, Employee). Default member and inheritance visibility is PRIVATE.",
+            "Union: Allocates a SINGLE shared memory block sized to its largest member—only ONE field can hold a valid value at a time. Ideal for memory-constrained embedded/systems programming or tagged variants."
+          ],
+          "callout": {
+            "type": "warning",
+            "text": "Exam Trap [Paper B1: Q1b]: Never claim structs cannot have functions in C++. In C++, the ONLY technical difference between struct and class is default visibility (public vs. private)."
+          }
+        },
+        {
+          "heading": "Constructors, Destructors & Encapsulation Accessors [Paper B1: Q2a, Paper B3: Q1d, Q4b]",
+          "points": [
+            "Constructor Rules: Must share the exact class name, has NO return type (not even void), executes automatically when an object is created, and can be overloaded (default/unparameterized vs. parameterized).",
+            "Destructor Rules: Prefixed with tilde (~ClassName()), takes NO parameters, cannot be overloaded, and executes automatically when an object goes out of scope to release dynamic memory or close open files.",
+            "Encapsulation & Data Hiding [Paper B3: Q4b, Paper B4: Q3a]: Declare sensitive attributes (e.g., balance, brand, salary) as private and expose validated public getter/setter methods (e.g., deposit(), withdraw() checking balance >= amount) to enforce data integrity."
+          ]
+        },
+        {
+          "heading": "C++ Program Errors & Program Modularization [Paper B6: Q1a, Q2b]",
+          "points": [
+            "Two Main Types of Errors [Paper B6: Q1a]: (1) Compile-time / Syntax Errors (missing semicolons, undeclared variables caught by compiler) and (2) Runtime / Logic Errors (division by zero, array out-of-bounds, wrong formulas occurring after compilation).",
+            "Testing Concepts [Paper B6: Q2b]: Driver Program (minimal main() harness written to invoke and test a module/function), Stub (dummy placeholder function returning hardcoded values to simulate unfinished dependencies), Black Box Analogy (using a function/class via its public input-output interface without knowing internal code)."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "C++ classes with strict RAII (Resource Acquisition Is Initialization—acquiring resources in constructors and releasing them in destructors) power game engines (Unreal Engine), financial high-frequency trading systems, browser engines (Chromium), and embedded firmware.",
+        "careerRelevance": "Mastering constructor initialization lists, access specifiers, and clean getters/setters is mandatory for backend, systems, and mobile OOP development across C++, Java, C#, and TypeScript.",
+        "concreteExample": "In KCA's BankAccount question [Paper B4: Q3a-ii], keeping balance private prevents external code from executing acc.balance = -50000; instead, withdraw(double amount) validates if (amount > 0 && amount <= balance) before deducting."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solution: Class E-Shamba (2 Constructors + Area) [Paper B1: Q2a] & BankAccount [Paper B4: Q3a]",
+          "language": "cpp",
+          "codeOrDiagram": "#include <iostream>\nusing namespace std;\n\n// Solution to BAC 2101 Aug 2024 Q2(a): E-Shamba (8 Marks)\nclass EShamba {\nprivate:\n    double length, width;\npublic:\n    // Unparameterized (Default) Constructor\n    EShamba() : length(0), width(0) {}\n\n    // Parameterized Constructor\n    EShamba(double l, double w) : length(l), width(w) {}\n\n    double Area() const {\n        return length * width;\n    }\n};\n\n// Solution to BIT 2108 Apr 2025 Q3(a-ii): BankAccount (6 Marks)\nclass BankAccount {\nprivate:\n    int accountNumber;\n    double balance;\npublic:\n    BankAccount(int accNo, double bal) : accountNumber(accNo), balance(bal) {}\n    void deposit(double amount) {\n        if (amount > 0) balance += amount;\n    }\n    void withdraw(double amount) {\n        if (amount > 0 && balance - amount >= 0) balance -= amount;\n        else cout << \"Insufficient funds!\\n\";\n    }\n    void display() const {\n        cout << \"Account: \" << accountNumber << \" | Balance: KES \" << balance << endl;\n    }\n};\n\nint main() {\n    EShamba S1(13, 19), S2(25, 35);\n    cout << \"S1 Area: \" << S1.Area() << endl; // 247\n    cout << \"S2 Area: \" << S2.Area() << endl; // 875\n    return 0;\n}",
+          "explanation": "Notice clean syntax: semicolon `};` after class definition, private fields, constructor initializer lists, and validation in withdraw()."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Forgetting the trailing semicolon `};` at the end of a C++ class or struct definition.",
+          "correctApproach": "Always end every C++ class/struct block with `};` — missing it is the #1 handwritten exam syntax error.",
+          "sampleQuestion": "Modify class Vehicle to include private data hiding and get/set methods [Paper B3: Q4b]."
+        },
+        {
+          "trap": "Putting `void` as a return type on a constructor or destructor.",
+          "correctApproach": "Write `Employee(int id) { ... }` and `~Employee() { ... }` with ZERO return type.",
+          "sampleQuestion": "With appropriate syntax, illustrate the difference between a constructor and a destructor in a C++ class [Paper B3: Q1d]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Encapsulation",
+          "definition": "Bundling data (attributes) and methods operating on that data inside a single class while hiding internal state using private access specifiers."
+        },
+        {
+          "term": "Constructor",
+          "definition": "A special member function automatically invoked upon object instantiation to initialize data members; shares the class name and has no return type."
+        },
+        {
+          "term": "Destructor",
+          "definition": "A special member function prefixed with ~ (~ClassName()) automatically called when an object is destroyed to free resources."
+        },
+        {
+          "term": "Object Code",
+          "definition": "Machine-readable binary code generated by the compiler from source code prior to linking into an executable [Paper B6: Q1b-iv]."
+        }
+      ]
+    },
+    {
+      "id": "guide-cpp2104-4",
+      "courseCode": "CPP 2104",
+      "lectureNumber": 4,
+      "title": "Unit 4: Inheritance Visibility Matrix (9 Marks), Friend/Inline/Static Functions & Composition",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Covers the highest-value recurring questions in KCA OOP exams: the 9-Mark Inheritance Member Visibility Table [Paper B1: Q1d], Single/Multilevel/Multiple/Hierarchical inheritance [Paper B3: Q3b, Paper B5: Q1c, Q4b], Friend functions (16% VAT Product calculator [Paper B1: Q3c]), Inline & Static members [Paper B3: Q1b, Q2c], and Composition vs. Inheritance [Paper B3: Q4c].",
+      "coreHighlights": [
+        {
+          "heading": "The 9-Mark Inheritance Visibility Table [Paper B1: Q1d — MUST MEMORIZE!]",
+          "points": [
+            "RULE 1 (Absolute Law): Parent PRIVATE members are NEVER directly accessible in the child class under ANY derivation mode (Public, Protected, or Private).",
+            "RULE 2 (Public Derivation `class Child : public Parent`): Parent Public -> Child Public; Parent Protected -> Child Protected.",
+            "RULE 3 (Protected Derivation `class Child : protected Parent`): Parent Public -> Child Protected; Parent Protected -> Child Protected.",
+            "RULE 4 (Private Derivation `class Child : private Parent`): Parent Public -> Child Private; Parent Protected -> Child Private."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Memory Shortcut: Derivation mode acts as a CEILING (cap). Public lets everything pass unchanged; Protected downgrades Public to Protected; Private downgrades BOTH Public and Protected to Private. Base Private is ALWAYS 'Not Accessible'!"
+          }
+        },
+        {
+          "heading": "Types of Inheritance in C++ [Paper B3: Q3b, Paper B4: Q4b, Paper B5: Q4b]",
+          "points": [
+            "Single Inheritance: One child inherits from one parent (`class Dog : public Animal`).",
+            "Multilevel Inheritance: Chain of inheritance (`Person -> Employee -> Manager` [Paper B3: Q3b]). Each level adds attributes and extends behavior.",
+            "Multiple Inheritance: One child inherits from TWO or more base classes (`class Hybrid : public PetrolCar, public ElectricCar` [Paper B5: Q1c]). Watch out for the Diamond Problem (resolved with virtual inheritance).",
+            "Hierarchical Inheritance: Multiple derived classes inherit from a single base class (`SavingsAccount` and `CurrentAccount` both inherit from `BankAccount`)."
+          ]
+        },
+        {
+          "heading": "Friend, Inline & Static Members [Paper B1: Q3b-c, Paper B3: Q1b, Q2c]",
+          "points": [
+            "Friend Function [Paper B1: Q3b]: Declared inside a class with the `friend` keyword. Characteristics: (1) NOT in the scope of the class (not a member function), (2) cannot be called using an object dot operator (`obj.func()`), (3) takes an object as an argument, and (4) can access private & protected members directly.",
+            "Inline Function [Paper B3: Q1b, Paper B5: Q5b]: Prefixed with `inline`; requests the compiler to expand the function body directly at each call site to eliminate function-call stack overhead for small, frequently called functions.",
+            "Static Data Member [Paper B3: Q2c]: Declared `static int count;` inside class and defined outside (`int MyClass::count = 0;`). Shared across ALL objects of the class (one memory copy total)."
+          ]
+        },
+        {
+          "heading": "Composition vs. Inheritance & Prototype vs. Signature [Paper B1: Q3a, Paper B3: Q4c]",
+          "points": [
+            "Inheritance ('is-a'): `class Car : public Vehicle`. Subclass inherits parent's interface and implementation tightly.",
+            "Composition ('has-a'): `class Car { private: Engine eng; };`. A class contains objects of another class as private members—preferred for loose coupling and modularity.",
+            "Function Signature vs. Function Prototype [Paper B1: Q3a]: Function Signature = Function name + parameter types/order (used by compiler to resolve overloading; excludes return type). Function Prototype = Full declaration including return type + signature + semicolon (e.g., `double compute(int, double);`)."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Modern software engineering favors 'Composition over Inheritance' (GoF Design Patterns) to prevent fragile deep inheritance hierarchies, while C++ friend functions are widely used to overload stream operators (`operator<<` and `operator>>`).",
+        "careerRelevance": "Knowing exact access modifier rules prevents security bugs and accidental API exposure in C++, Java, and C# codebases.",
+        "concreteExample": "In KCA's Multilevel Inheritance question [Paper B3: Q3b], `Person` stores `name`, `Employee : public Person` adds `empId`, and `Manager : public Employee` adds `department`—eliminating duplicated name/ID code."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solutions: Friend Function (16% VAT) [Paper B1: Q3c] & Multilevel Inheritance [Paper B3: Q3b]",
+          "language": "cpp",
+          "codeOrDiagram": "#include <iostream>\n#include <string>\nusing namespace std;\n\n// 1. BAC 2101 Aug 2024 Q3(c): Friend Function VAT Calculator (8 Marks)\nclass Product {\nprivate:\n    int quantity;\n    double price;\npublic:\n    void getData() {\n        cout << \"Enter quantity and price: \";\n        cin >> quantity >> price;\n    }\n    friend double calcTotalVAT(const Product& p);\n};\n\ndouble calcTotalVAT(const Product& p) {\n    const double VAT = 0.16;\n    double subtotal = p.quantity * p.price;\n    return subtotal + (subtotal * VAT);\n}\n\n// 2. CPP 2201 Nov 2025 Q3(b): Multilevel Inheritance (7 Marks)\nclass Person {\nprotected:\n    string name;\npublic:\n    void setPerson(string n) { name = n; }\n    void displayPerson() { cout << \"Name: \" << name << endl; }\n};\nclass Employee : public Person {\nprotected:\n    int empId;\npublic:\n    void setEmployee(int id) { empId = id; }\n    void displayEmployee() { displayPerson(); cout << \"Emp ID: \" << empId << endl; }\n};\nclass Manager : public Employee {\nprivate:\n    string department;\npublic:\n    void setManager(string dept) { department = dept; }\n    void displayManager() { displayEmployee(); cout << \"Dept: \" << department << endl; }\n};",
+          "explanation": "Complete, exam-ready C++ code solving both the Friend Function 16% VAT problem and the Person -> Employee -> Manager multilevel hierarchy."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Writing 'Private' instead of 'Not Accessible / Inaccessible' in the Parent-Private row of the Visibility Table.",
+          "correctApproach": "Always write 'Inaccessible (Not directly inherited)' across ALL 3 columns for Parent Private members [Paper B1: Q1d].",
+          "sampleQuestion": "Copy and complete the table to show the visibility of inherited members (9 Marks) [Paper B1: Q1d]."
+        },
+        {
+          "trap": "Calling a friend function with dot notation like `prod.calcTotalVAT()`.",
+          "correctApproach": "A friend function is NOT a member function; invoke it as a normal standalone function passing the object: `calcTotalVAT(prod)`.",
+          "sampleQuestion": "Outline THREE characteristics of a friend function in C++ [Paper B1: Q3b]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Friend Function",
+          "definition": "A non-member function declared with the `friend` keyword inside a class, granting it access to the class's private and protected data."
+        },
+        {
+          "term": "Inline Function",
+          "definition": "A function whose body is substituted directly at the point of invocation by the compiler to reduce call overhead."
+        },
+        {
+          "term": "Static Member",
+          "definition": "A class-level attribute or method shared across all instances of a class rather than duplicated per object."
+        },
+        {
+          "term": "Composition",
+          "definition": "A 'has-a' design technique where a class builds complex behavior by holding instances of other classes as member attributes."
+        }
+      ]
+    },
+    {
+      "id": "guide-cpp2104-5",
+      "courseCode": "CPP 2104",
+      "lectureNumber": 5,
+      "title": "Unit 5: Polymorphism, Pure Virtual Functions, Templates & C++ File Handling (fstream)",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Completes the KCA OOP exam syllabus with high-mark topics from Papers B1–B6: Compile-time Polymorphism (function & operator overloading), Runtime Polymorphism (virtual functions, early vs. late binding, pure virtual functions & abstract classes), Template Classes, and Persistent File Handling (`<fstream>`, `ofstream`, `ifstream`) tested in both Aug 2025 (`calllogs.txt`) and Dec 2025 (6 Employee records).",
+      "coreHighlights": [
+        {
+          "heading": "Polymorphism: Compile-Time (Early Binding) vs. Runtime (Late Binding) [Paper B3: Q4a, Paper B5: Q3a]",
+          "points": [
+            "Compile-Time Polymorphism (Early / Static Binding): Function call is resolved by the compiler before execution using Function Overloading (same name, different parameter count/types, e.g., `compute(l,w)` vs `compute(l,w,h)` [Paper B1: Q4c]) or Operator Overloading (`+`, `<<` redefined for user types [Paper B3: Q3c]).",
+            "Runtime Polymorphism (Late / Dynamic Binding): Resolved at runtime via a Base class pointer/reference pointing to a Derived object calling a `virtual` overridden function (uses the class's vtable/vptr).",
+            "Three Benefits of Polymorphism [Paper B1: Q4a]: (1) Extensibility—add new derived classes without changing existing client code, (2) Code Reusability—write generic routines operating on base class pointers, (3) Cleaner, unified interfaces."
+          ]
+        },
+        {
+          "heading": "Pure Virtual Functions, Abstract Classes & Templates [Paper B1: Q4b, Paper B5: Q3b, Q4c]",
+          "points": [
+            "Pure Virtual Function: Declared with `= 0` (`virtual double area() = 0;`). It has no implementation in the base class and forces every concrete derived class to override it.",
+            "Abstract Class: Any class containing at least one pure virtual function. You CANNOT instantiate an abstract class directly, though you can declare pointers/references to it.",
+            "Template Classes [Paper B5: Q3b]: Enable generic programming (`template <class T> class Box { T value; };`) so one class definition works seamlessly for `int`, `double`, or `string`."
+          ]
+        },
+        {
+          "heading": "Persistent File Handling in C++ (`<fstream>`) [Paper B2: Q4d-e, Paper B6: Q4a-b]",
+          "points": [
+            "Why Store Data in Files vs. RAM [Paper B2: Q4d]: (1) Persistence—data survives power loss or program termination, (2) Capacity & Portability—handles large datasets and can be shared across applications/reports.",
+            "Stream Classes (`#include <fstream>`): `ofstream` (output/write to file), `ifstream` (input/read from file), `fstream` (both read and write).",
+            "Step-by-Step Procedure for Reading a Text File [Paper B6: Q4a]: (1) `#include <fstream>`, (2) Declare `ifstream inFile(\"data.txt\");`, (3) Verify file opened (`if (!inFile)`), (4) Loop and read data (`while (getline(inFile, line))` or `inFile >> var`), (5) Close stream (`inFile.close();`)."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Exam Pattern Alert: File Handling (`calllogs.txt` and `Employee` records) appeared in BOTH August 2025 AND December 2025 KCA OOP papers! Memorize the 5-line `ofstream`/`ifstream` pattern cold."
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Plugin architectures, payment gateways (M-Pesa, Stripe, PayPal implementing an abstract `PaymentProcessor` interface), and structured log writers rely on runtime polymorphism and file I/O streams.",
+        "careerRelevance": "Understanding virtual dispatch and file serialization bridges foundational C++ coursework directly to backend system design and API engineering.",
+        "concreteExample": "In Express Call Centre's `CallLog` system [Paper B2: Q4], polymorphism allows `computeCharge()` to behave differently for `LocalCall`, `InternationalCall`, and `TollFreeCall` via a single `CallLog*` pointer array."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solutions: Function Overloading `compute()` [Paper B1: Q4c] & `calllogs.txt` File I/O [Paper B2: Q4c-e]",
+          "language": "cpp",
+          "codeOrDiagram": "#include <iostream>\n#include <fstream>\n#include <string>\nusing namespace std;\n\n// 1. Overloaded compute() for O1(15,6) area and O2(7,5,10) volume [Paper B1: Q4c]\nint compute(int l, int w) { return l * w; }\nint compute(int l, int w, int h) { return l * w * h; }\n\n// 2. Pure Virtual Function & Abstract Base Class [Paper B1: Q4b]\nclass Shape {\npublic:\n    virtual double area() const = 0; // Pure virtual\n};\nclass Circle : public Shape {\n    double r;\npublic:\n    Circle(double radius) : r(radius) {}\n    double area() const override { return 3.142 * r * r; }\n};\n\n// 3. CallLog Class + Writing to calllogs.txt [Paper B2: Q4c-e]\nclass CallLog {\nprivate:\n    int logNo, duration;\n    string callerName, callReason;\n    double charge;\npublic:\n    void input() {\n        cin >> logNo >> callerName >> callReason >> duration >> charge;\n    }\n    void display() const {\n        cout << logNo << \" \" << callerName << \" KES \" << charge << endl;\n    }\n    void saveToFile() const {\n        ofstream out(\"calllogs.txt\", ios::app);\n        if (out.is_open()) {\n            out << logNo << \",\" << callerName << \",\" << callReason << \",\" << duration << \",\" << charge << \"\\n\";\n            out.close();\n        }\n    }\n};",
+          "explanation": "Covers the three highest-mark C++ coding prompts across KCA 2024–2025 OOP papers."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Trying to overload functions solely by changing their return type (e.g., `int compute(int)` vs `double compute(int)`).",
+          "correctApproach": "Function overloading is resolved ONLY by parameter count, parameter types, or parameter order—NEVER by return type alone [Paper B5: Q2b].",
+          "sampleQuestion": "Explain how function calls are matched with overloaded functions [Paper B5: Q2b]."
+        },
+        {
+          "trap": "Forgetting `#include <fstream>` or omitting `file.close()` in file handling questions.",
+          "correctApproach": "Always include `<fstream>`, check `if (out.is_open())`, and explicitly call `.close()`.",
+          "sampleQuestion": "Write a C++ program segment to open calllogs.txt and write one call log record [Paper B2: Q4e]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Pure Virtual Function",
+          "definition": "A virtual function initialized to `= 0` in a base class with no body, making the class abstract and requiring derived classes to override it."
+        },
+        {
+          "term": "Late Binding (Dynamic Dispatch)",
+          "definition": "Resolving which overridden virtual method to execute at runtime based on the actual object type pointed to, not the pointer's static type."
+        },
+        {
+          "term": "Function Overloading",
+          "definition": "Defining multiple functions with the same name in the same scope differing in number or types of parameters."
+        },
+        {
+          "term": "ofstream / ifstream",
+          "definition": "Standard C++ `<fstream>` classes used to write output to files (`ofstream`) and read input from files (`ifstream`)."
+        }
+      ]
     }
   ],
   "CUU 1202": [
     {
-        "id": "guide-cuu1202-1",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 1,
-        "title": "Introduction and Origin of Critical and Creative Thinking",
-        "originalFileName": "Introduction and origin of critical and creative thinking.pdf",
-        "downloadUrl": "/notes/critical-thinking/Introduction and origin of critical and creative thinking.pdf",
-        "estimatedReadTimeMinutes": 25,
-        "executiveSummary": "Critical thinking is the disciplined, self-directed mental process of analyzing, evaluating, and synthesizing information to make reasoned judgments free from emotional bias and dogmatic conditioning. Originating from Socratic questioning and philosophical inquiry (Socrates, Plato, Aristotle), this foundational lecture establishes the difference between passive absorption of information and rigorous metacognition (thinking about thinking), tracing why values, unconscious biases, and intellectual courage dictate decision-making outcomes in computing and leadership.",
-        "coreHighlights": [
-            {
-                "heading": "The Etymology & Socratic Foundations of Critical Thought",
-                "points": [
-                    "Root Meaning: 'Critical' derives from the Greek 'Kritikos' (meaning discerning judgment) and 'Kriterion' (standards of judgment). It is not cynical fault-finding, but objective truth-testing.",
-                    "Socratic Method: Socrates established that authority figures frequently lack rational justification for their confident claims. Truth emerges through disciplined dialectic questioning that exposes underlying contradictions and unsupported premises.",
-                    "Metacognition: Critical thinking requires second-order reflection\u2014examining the cognitive lenses, cultural conditioning, and emotional heuristics through which we interpret raw data."
-                ],
-                "callout": {
-                    "type": "insight",
-                    "text": "Critical thinking is intellectual self-defense. In an era of AI hallucination, algorithmic echo chambers, and synthetic media, the ability to dissect arguments is the ultimate human superpower."
-                }
-            },
-            {
-                "heading": "Core Intellectual Standards for Evaluating Thinking",
-                "points": [
-                    "Clarity: Can an argument be elaborated or illustrated with concrete examples? If a statement is vague, its validity cannot even be assessed.",
-                    "Accuracy: Is the assertion factually verified against authentic empirical evidence?",
-                    "Precision: Does the problem formulation contain exact details, quantitative parameters, and bounded scopes?",
-                    "Relevance & Depth: How does the point connect to the central thesis? Does it address compounding root causes or merely superficial symptoms?",
-                    "Fairness & Intellectual Humility: Are opposing viewpoints evaluated charitably without strawmanning or confirmation bias?"
-                ]
-            },
-            {
-                "heading": "Critical Thinking vs. Creative Thinking: The Complementary Dyad",
-                "points": [
-                    "Convergent vs. Divergent: Creative thinking is divergent (generative, exploring lateral possibilities, suspending judgment to synthesize novelty). Critical thinking is convergent (evaluative, applying logic to filter and test feasibility).",
-                    "Symbiotic Necessity: Creative thinking without critical evaluation produces ungrounded, non-viable fantasies; critical thinking without creative imagination produces sterile analysis incapable of innovation."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In tech leadership and software architecture (Google, Microsoft, Meta), Post-Mortem Blameless Reviews and Architecture Reviews depend entirely on critical thinking. When an outage brings down an entire cloud region, engineers must avoid scapegoating, distinguish correlation from causation, and systematically isolate root failure mechanisms.",
-            "careerRelevance": "High-level IT consultants and cybersecurity analysts are hired not just for syntactic coding skills, but for risk assessment\u2014anticipating malicious attack vectors and questioning untested architectural assumptions.",
-            "concreteExample": "When assessing whether to migrate a banking monolith to microservices: A critical thinker rejects vendor hype ('everyone uses Kubernetes'), analyzes latency overhead, operational complexity, and network partitioning risks, and insists on running empirical benchmarks before committing capital."
+      "id": "guide-cuu1202-1",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 1,
+      "title": "Introduction and Origin of Critical and Creative Thinking",
+      "originalFileName": "Introduction and origin of critical and creative thinking.pdf",
+      "downloadUrl": "/notes/critical-thinking/Introduction and origin of critical and creative thinking.pdf",
+      "estimatedReadTimeMinutes": 25,
+      "executiveSummary": "Critical thinking is the disciplined, self-directed mental process of analyzing, evaluating, and synthesizing information to make reasoned judgments free from emotional bias and dogmatic conditioning. Originating from Socratic questioning and philosophical inquiry (Socrates, Plato, Aristotle), this foundational lecture establishes the difference between passive absorption of information and rigorous metacognition (thinking about thinking), tracing why values, unconscious biases, and intellectual courage dictate decision-making outcomes in computing and leadership.",
+      "coreHighlights": [
+        {
+          "heading": "The Etymology & Socratic Foundations of Critical Thought",
+          "points": [
+            "Root Meaning: 'Critical' derives from the Greek 'Kritikos' (meaning discerning judgment) and 'Kriterion' (standards of judgment). It is not cynical fault-finding, but objective truth-testing.",
+            "Socratic Method: Socrates established that authority figures frequently lack rational justification for their confident claims. Truth emerges through disciplined dialectic questioning that exposes underlying contradictions and unsupported premises.",
+            "Metacognition: Critical thinking requires second-order reflection—examining the cognitive lenses, cultural conditioning, and emotional heuristics through which we interpret raw data."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Critical thinking is intellectual self-defense. In an era of AI hallucination, algorithmic echo chambers, and synthetic media, the ability to dissect arguments is the ultimate human superpower."
+          }
         },
-        "practicalExamples": [
-            {
-                "title": "The Socratic Code/Architecture Review Framework",
-                "language": "markdown",
-                "codeOrDiagram": "## Socratic Architecture Review Matrix\n\n1. Clarification: 'What exact problem does introducing this distributed cache solve?'\n2. Probing Assumptions: 'Are we assuming Redis will never fail or drop network connections?'\n3. Probing Evidence: 'What telemetry data proves that database I/O is our actual bottleneck?'\n4. Exploring Alternatives: 'Could an in-memory application cache achieve 80% of the benefit at 10% of the maintenance overhead?'\n5. Analyzing Consequences: 'If cache invalidation desynchronizes, how will account balances recover?'",
-                "explanation": "Illustrates how philosophical Socratic questioning translates directly into high-reliability engineering checklists."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Defining critical thinking as 'criticizing' or finding fault with people.",
-                "correctApproach": "Emphasize that critical thinking is constructive, objective evaluation of ideas and arguments against rational standards, distinct from emotional criticism or hostility.",
-                "sampleQuestion": "Distinguish between everyday criticism and critical thinking in an academic context."
-            },
-            {
-                "trap": "Treating critical and creative thinking as mutually exclusive opposites.",
-                "correctApproach": "Demonstrate that they are complementary stages of the universal problem-solving loop (Divergence generates solutions -> Convergence filters the best solution).",
-                "sampleQuestion": "Why is creative thinking incomplete without critical evaluation?"
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Metacognition",
-                "definition": "Awareness and understanding of one's own thought processes; thinking about thinking."
-            },
-            {
-                "term": "Socratic Method",
-                "definition": "A form of cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking and draw out underlying ideas and presumptions."
-            },
-            {
-                "term": "Intellectual Humility",
-                "definition": "Consciousness of the limits of one's knowledge, including sensitivity to circumstances in which one's native egocentrism is likely to function self-deceptively."
-            },
-            {
-                "term": "Divergent Thinking",
-                "definition": "A thought process or method used to generate creative ideas by exploring many possible solutions in a non-linear manner."
-            }
-        ]
+        {
+          "heading": "Core Intellectual Standards for Evaluating Thinking",
+          "points": [
+            "Clarity: Can an argument be elaborated or illustrated with concrete examples? If a statement is vague, its validity cannot even be assessed.",
+            "Accuracy: Is the assertion factually verified against authentic empirical evidence?",
+            "Precision: Does the problem formulation contain exact details, quantitative parameters, and bounded scopes?",
+            "Relevance & Depth: How does the point connect to the central thesis? Does it address compounding root causes or merely superficial symptoms?",
+            "Fairness & Intellectual Humility: Are opposing viewpoints evaluated charitably without strawmanning or confirmation bias?"
+          ]
+        },
+        {
+          "heading": "Critical Thinking vs. Creative Thinking: The Complementary Dyad",
+          "points": [
+            "Convergent vs. Divergent: Creative thinking is divergent (generative, exploring lateral possibilities, suspending judgment to synthesize novelty). Critical thinking is convergent (evaluative, applying logic to filter and test feasibility).",
+            "Symbiotic Necessity: Creative thinking without critical evaluation produces ungrounded, non-viable fantasies; critical thinking without creative imagination produces sterile analysis incapable of innovation."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In tech leadership and software architecture (Google, Microsoft, Meta), Post-Mortem Blameless Reviews and Architecture Reviews depend entirely on critical thinking. When an outage brings down an entire cloud region, engineers must avoid scapegoating, distinguish correlation from causation, and systematically isolate root failure mechanisms.",
+        "careerRelevance": "High-level IT consultants and cybersecurity analysts are hired not just for syntactic coding skills, but for risk assessment—anticipating malicious attack vectors and questioning untested architectural assumptions.",
+        "concreteExample": "When assessing whether to migrate a banking monolith to microservices: A critical thinker rejects vendor hype ('everyone uses Kubernetes'), analyzes latency overhead, operational complexity, and network partitioning risks, and insists on running empirical benchmarks before committing capital."
+      },
+      "practicalExamples": [
+        {
+          "title": "The Socratic Code/Architecture Review Framework",
+          "language": "markdown",
+          "codeOrDiagram": "## Socratic Architecture Review Matrix\n\n1. Clarification: 'What exact problem does introducing this distributed cache solve?'\n2. Probing Assumptions: 'Are we assuming Redis will never fail or drop network connections?'\n3. Probing Evidence: 'What telemetry data proves that database I/O is our actual bottleneck?'\n4. Exploring Alternatives: 'Could an in-memory application cache achieve 80% of the benefit at 10% of the maintenance overhead?'\n5. Analyzing Consequences: 'If cache invalidation desynchronizes, how will account balances recover?'",
+          "explanation": "Illustrates how philosophical Socratic questioning translates directly into high-reliability engineering checklists."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Defining critical thinking as 'criticizing' or finding fault with people.",
+          "correctApproach": "Emphasize that critical thinking is constructive, objective evaluation of ideas and arguments against rational standards, distinct from emotional criticism or hostility.",
+          "sampleQuestion": "Distinguish between everyday criticism and critical thinking in an academic context."
+        },
+        {
+          "trap": "Treating critical and creative thinking as mutually exclusive opposites.",
+          "correctApproach": "Demonstrate that they are complementary stages of the universal problem-solving loop (Divergence generates solutions -> Convergence filters the best solution).",
+          "sampleQuestion": "Why is creative thinking incomplete without critical evaluation?"
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Metacognition",
+          "definition": "Awareness and understanding of one's own thought processes; thinking about thinking."
+        },
+        {
+          "term": "Socratic Method",
+          "definition": "A form of cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking and draw out underlying ideas and presumptions."
+        },
+        {
+          "term": "Intellectual Humility",
+          "definition": "Consciousness of the limits of one's knowledge, including sensitivity to circumstances in which one's native egocentrism is likely to function self-deceptively."
+        },
+        {
+          "term": "Divergent Thinking",
+          "definition": "A thought process or method used to generate creative ideas by exploring many possible solutions in a non-linear manner."
+        }
+      ]
     },
     {
-        "id": "guide-cuu1202-2",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 2,
-        "title": "Arguments, Logic & Fallacies: Deductive vs. Inductive Reasoning",
-        "originalFileName": "ARGUMENTS  FALLACIES.pdf",
-        "downloadUrl": "/notes/critical-thinking/ARGUMENTS  FALLACIES.pdf",
-        "estimatedReadTimeMinutes": 35,
-        "executiveSummary": "This comprehensive lecture breaks down the formal machinery of human discourse: logic. Logic acts as the silent court of appeal in rational debate. The guide examines the anatomy of an argument (premises leading to a conclusion), rigorously contrasts Deductive Logic (validity and soundness) with Inductive Logic (strength and cogency), and catalogs the major formal and informal fallacies (Ad Hominem, Straw Man, Begging the Question, False Dilemma, Slippery Slope) that corrupt technical decision-making.",
-        "coreHighlights": [
-            {
-                "heading": "Anatomy of an Argument: Premises vs. Conclusion",
-                "points": [
-                    "Discourse & Propositions: An argument is not a heated dispute; it is a connected series of statements (propositions) where one or more premises provide evidential support for a final conclusion.",
-                    "Indicator Words: Premise indicators include 'because', 'since', 'given that', 'for the reason that'. Conclusion indicators include 'therefore', 'thus', 'consequently', 'it follows that'.",
-                    "Arguments vs. Non-Arguments: Explanations, conditional 'if-then' statements on their own, and unsupported assertions are NOT arguments unless evidence is marshaled to establish the truth of a claim."
-                ]
-            },
-            {
-                "heading": "Deductive Reasoning: Validity & Soundness",
-                "points": [
-                    "Deductive Standard: A deductive argument claims that if all premises are true, it is impossible for the conclusion to be false (truth-preserving).",
-                    "Validity: Concerns the logical structural bond between premises and conclusion. If the structure guarantees the conclusion, the argument is VALID, regardless of whether premises are factually true.",
-                    "Soundness: The gold standard of deduction. An argument is SOUND if and only if: (1) It is structurally VALID, AND (2) All its premises are FACTUALLY TRUE in the real world.",
-                    "Classic Deductive Patterns: Modus Ponens (If P then Q; P; Therefore Q); Modus Tollens (If P then Q; Not Q; Therefore Not P)."
-                ],
-                "callout": {
-                    "type": "insight",
-                    "text": "Mathematical proofs and cryptographic algorithms operate strictly on deductive validity: given mathematical axioms, encryption keys guarantee confidentiality unconditionally."
-                }
-            },
-            {
-                "heading": "Inductive Reasoning: Strength & Cogency",
-                "points": [
-                    "Inductive Standard: An inductive argument claims that if the premises are true, the conclusion is PROBABLE or likely, but never 100% guaranteed.",
-                    "Inductive Strength: If the premises provide high probabilistic support, the argument is STRONG; otherwise WEAK.",
-                    "Cogency: An inductive argument is COGENT if: (1) It is strong, and (2) All premises are empirically true in reality.",
-                    "Forms of Induction: Statistical generalizations, predictive arguments, arguments from analogy, and causal inferences. Machine Learning models and A/B tests are entirely inductive."
-                ]
-            },
-            {
-                "heading": "Taxonomy of Common Informal Fallacies",
-                "points": [
-                    "Ad Hominem: Attacking the person's character, background, or motives rather than addressing the logical merit of their argument.",
-                    "Straw Man: Distorting, exaggerating, or misrepresenting an opponent's position to make it easier to attack.",
-                    "Begging the Question (Petitio Principii / Circular Reasoning): Assuming the truth of the conclusion within the premises themselves.",
-                    "False Dilemma (Black-or-White): Artificially reducing a complex spectrum of possibilities into two extreme binary choices.",
-                    "Post Hoc Ergo Propter Hoc (False Cause): Assuming that because event B followed event A, event A caused event B.",
-                    "Appeal to Ignorance (Argumentum ad Ignorantiam): Claiming a proposition is true simply because it hasn't been proven false."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In cybersecurity and systems engineering, fallacious logic causes multi-million dollar breaches. The 'Appeal to Ignorance' fallacy ('Our intrusion detection system logged zero alerts today, therefore our network has never been breached') leads to catastrophic false security.",
-            "careerRelevance": "Product Managers, Data Scientists, and C-Suite executives use inductive reasoning when reading A/B test results and telemetry metrics. Knowing when a sample size is statistically unrepresentative prevents deploying flawed algorithms.",
-            "concreteExample": "False Dilemma in Engineering: 'Either we rewrite our entire application in Rust right now, or our system will inevitably crash under load.' A sound engineer rejects this false binary and evaluates localized profiling, query optimization, and caching."
+      "id": "guide-cuu1202-2",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 2,
+      "title": "Arguments, Logic & Fallacies: Deductive vs. Inductive Reasoning",
+      "originalFileName": "ARGUMENTS  FALLACIES.pdf",
+      "downloadUrl": "/notes/critical-thinking/ARGUMENTS  FALLACIES.pdf",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "This comprehensive lecture breaks down the formal machinery of human discourse: logic. Logic acts as the silent court of appeal in rational debate. The guide examines the anatomy of an argument (premises leading to a conclusion), rigorously contrasts Deductive Logic (validity and soundness) with Inductive Logic (strength and cogency), and catalogs the major formal and informal fallacies (Ad Hominem, Straw Man, Begging the Question, False Dilemma, Slippery Slope) that corrupt technical decision-making.",
+      "coreHighlights": [
+        {
+          "heading": "Anatomy of an Argument: Premises vs. Conclusion",
+          "points": [
+            "Discourse & Propositions: An argument is not a heated dispute; it is a connected series of statements (propositions) where one or more premises provide evidential support for a final conclusion.",
+            "Indicator Words: Premise indicators include 'because', 'since', 'given that', 'for the reason that'. Conclusion indicators include 'therefore', 'thus', 'consequently', 'it follows that'.",
+            "Arguments vs. Non-Arguments: Explanations, conditional 'if-then' statements on their own, and unsupported assertions are NOT arguments unless evidence is marshaled to establish the truth of a claim."
+          ]
         },
-        "practicalExamples": [
-            {
-                "title": "Logical Proof vs. Fallacy Dissection",
-                "language": "markdown",
-                "codeOrDiagram": "### Valid & Sound Deductive Argument (Modus Ponens):\n- Premise 1: All relational databases that comply with ACID guarantee isolation.\n- Premise 2: PostgreSQL is a relational database complying with ACID.\n- Conclusion: Therefore, PostgreSQL guarantees isolation.\n(Status: Valid and Sound)\n\n### Fallacious Argument (Affirming the Consequent):\n- Premise 1: If a server is DDoS attacked, CPU usage spikes to 100%.\n- Premise 2: The server CPU usage has spiked to 100%.\n- Conclusion: Therefore, the server is under a DDoS attack.\n(Status: INVALID - A runaway background script, memory leak, or cron job could cause the spike!)",
-                "explanation": "Illustrates how formal logical fallacies lead engineers to misdiagnose production infrastructure incidents."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Calling an invalid argument 'false' or calling a premise 'invalid'.",
-                "correctApproach": "Arguments are VALID or INVALID (structure). Individual premises and statements are TRUE or FALSE (facts). Never mix up these terms in exams!",
-                "sampleQuestion": "Can an argument have all true premises and a true conclusion yet still be invalid? Provide an example."
-            },
-            {
-                "trap": "Confusing Post Hoc Ergo Propter Hoc with Correlation vs. Causation.",
-                "correctApproach": "Post Hoc specifically requires temporal sequence (A happened before B, hence A caused B).",
-                "sampleQuestion": "Identify and explain the fallacy in: 'Sales dropped immediately after the new UI update was released, so the UI update ruined sales.'"
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Soundness",
-                "definition": "A property of a deductive argument that is both structurally valid and contains premises that are true in reality."
-            },
-            {
-                "term": "Modus Tollens",
-                "definition": "The valid deductive argument form: If P, then Q; Not Q; Therefore, not P."
-            },
-            {
-                "term": "Ad Hominem",
-                "definition": "A logical fallacy where an argument is rebutted by attacking the character, motive, or other attribute of the person making the argument, rather than attacking the substance of the argument itself."
-            },
-            {
-                "term": "Circular Reasoning",
-                "definition": "A fallacy in which the premise assumes the truth of the conclusion instead of supporting it."
-            }
-        ]
+        {
+          "heading": "Deductive Reasoning: Validity & Soundness",
+          "points": [
+            "Deductive Standard: A deductive argument claims that if all premises are true, it is impossible for the conclusion to be false (truth-preserving).",
+            "Validity: Concerns the logical structural bond between premises and conclusion. If the structure guarantees the conclusion, the argument is VALID, regardless of whether premises are factually true.",
+            "Soundness: The gold standard of deduction. An argument is SOUND if and only if: (1) It is structurally VALID, AND (2) All its premises are FACTUALLY TRUE in the real world.",
+            "Classic Deductive Patterns: Modus Ponens (If P then Q; P; Therefore Q); Modus Tollens (If P then Q; Not Q; Therefore Not P)."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Mathematical proofs and cryptographic algorithms operate strictly on deductive validity: given mathematical axioms, encryption keys guarantee confidentiality unconditionally."
+          }
+        },
+        {
+          "heading": "Inductive Reasoning: Strength & Cogency",
+          "points": [
+            "Inductive Standard: An inductive argument claims that if the premises are true, the conclusion is PROBABLE or likely, but never 100% guaranteed.",
+            "Inductive Strength: If the premises provide high probabilistic support, the argument is STRONG; otherwise WEAK.",
+            "Cogency: An inductive argument is COGENT if: (1) It is strong, and (2) All premises are empirically true in reality.",
+            "Forms of Induction: Statistical generalizations, predictive arguments, arguments from analogy, and causal inferences. Machine Learning models and A/B tests are entirely inductive."
+          ]
+        },
+        {
+          "heading": "Taxonomy of Common Informal Fallacies",
+          "points": [
+            "Ad Hominem: Attacking the person's character, background, or motives rather than addressing the logical merit of their argument.",
+            "Straw Man: Distorting, exaggerating, or misrepresenting an opponent's position to make it easier to attack.",
+            "Begging the Question (Petitio Principii / Circular Reasoning): Assuming the truth of the conclusion within the premises themselves.",
+            "False Dilemma (Black-or-White): Artificially reducing a complex spectrum of possibilities into two extreme binary choices.",
+            "Post Hoc Ergo Propter Hoc (False Cause): Assuming that because event B followed event A, event A caused event B.",
+            "Appeal to Ignorance (Argumentum ad Ignorantiam): Claiming a proposition is true simply because it hasn't been proven false."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In cybersecurity and systems engineering, fallacious logic causes multi-million dollar breaches. The 'Appeal to Ignorance' fallacy ('Our intrusion detection system logged zero alerts today, therefore our network has never been breached') leads to catastrophic false security.",
+        "careerRelevance": "Product Managers, Data Scientists, and C-Suite executives use inductive reasoning when reading A/B test results and telemetry metrics. Knowing when a sample size is statistically unrepresentative prevents deploying flawed algorithms.",
+        "concreteExample": "False Dilemma in Engineering: 'Either we rewrite our entire application in Rust right now, or our system will inevitably crash under load.' A sound engineer rejects this false binary and evaluates localized profiling, query optimization, and caching."
+      },
+      "practicalExamples": [
+        {
+          "title": "Logical Proof vs. Fallacy Dissection",
+          "language": "markdown",
+          "codeOrDiagram": "### Valid & Sound Deductive Argument (Modus Ponens):\n- Premise 1: All relational databases that comply with ACID guarantee isolation.\n- Premise 2: PostgreSQL is a relational database complying with ACID.\n- Conclusion: Therefore, PostgreSQL guarantees isolation.\n(Status: Valid and Sound)\n\n### Fallacious Argument (Affirming the Consequent):\n- Premise 1: If a server is DDoS attacked, CPU usage spikes to 100%.\n- Premise 2: The server CPU usage has spiked to 100%.\n- Conclusion: Therefore, the server is under a DDoS attack.\n(Status: INVALID - A runaway background script, memory leak, or cron job could cause the spike!)",
+          "explanation": "Illustrates how formal logical fallacies lead engineers to misdiagnose production infrastructure incidents."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Calling an invalid argument 'false' or calling a premise 'invalid'.",
+          "correctApproach": "Arguments are VALID or INVALID (structure). Individual premises and statements are TRUE or FALSE (facts). Never mix up these terms in exams!",
+          "sampleQuestion": "Can an argument have all true premises and a true conclusion yet still be invalid? Provide an example."
+        },
+        {
+          "trap": "Confusing Post Hoc Ergo Propter Hoc with Correlation vs. Causation.",
+          "correctApproach": "Post Hoc specifically requires temporal sequence (A happened before B, hence A caused B).",
+          "sampleQuestion": "Identify and explain the fallacy in: 'Sales dropped immediately after the new UI update was released, so the UI update ruined sales.'"
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Soundness",
+          "definition": "A property of a deductive argument that is both structurally valid and contains premises that are true in reality."
+        },
+        {
+          "term": "Modus Tollens",
+          "definition": "The valid deductive argument form: If P, then Q; Not Q; Therefore, not P."
+        },
+        {
+          "term": "Ad Hominem",
+          "definition": "A logical fallacy where an argument is rebutted by attacking the character, motive, or other attribute of the person making the argument, rather than attacking the substance of the argument itself."
+        },
+        {
+          "term": "Circular Reasoning",
+          "definition": "A fallacy in which the premise assumes the truth of the conclusion instead of supporting it."
+        }
+      ]
     },
     {
-        "id": "guide-cuu1202-3",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 3,
-        "title": "Creative Thinking & Structured Problem Solving in Technology",
-        "originalFileName": "Creative thinking and problem solving.pdf",
-        "downloadUrl": "/notes/critical-thinking/Creative thinking and problem solving.pdf",
-        "estimatedReadTimeMinutes": 25,
-        "executiveSummary": "Creative thinking is a deliberate, divergent mental process that uses imagination, lateral thinking, and heuristic reframing to uncover novel, non-obvious solutions to complex problems. This lecture presents formal models of creativity, breaks down perceptual, emotional, and cultural barriers to innovation, and teaches structured creative frameworks including Mind Mapping, Edward de Bono's Six Thinking Hats, SCAMPER, and Root Cause Analysis (Ishikawa/Fishbone diagram and the 5 Whys).",
-        "coreHighlights": [
-            {
-                "heading": "The Creative Process & Lateral Thinking",
-                "points": [
-                    "Divergent Exploration: Creative problem solving requires deliberately looking beyond the initial obvious answer, generating an expansive portfolio of unconventional ideas before filtering.",
-                    "Lateral Thinking (Edward de Bono): While vertical logic proceeds step-by-step down a single well-worn mental groove, lateral thinking moves sideways to deliberately disrupt mental assumptions and establish cross-disciplinary connections.",
-                    "Incubation Period: Scientific breakthroughs often occur during diffuse mental modes (rest, walks, sleep) after intense focused mental effort, allowing subconscious neural networks to assemble novel associations."
-                ]
-            },
-            {
-                "heading": "Psychological & Cultural Blocks to Creative Innovation",
-                "points": [
-                    "Perceptual Blocks: Functional fixedness\u2014the inability to see an object or tool being used outside its standard intended design.",
-                    "Emotional Blocks: Fear of making mistakes, looking foolish in front of peers, or premature self-censorship before an idea is even articulated.",
-                    "Cultural & Environmental Blocks: Institutional dogma ('that is not how things are done here'), rigid bureaucratic taboos, and fear of questioning established leadership hierarchy."
-                ],
-                "callout": {
-                    "type": "tip",
-                    "text": "Rule of Brainstorming: Suspend all critique during the ideation phase. Evaluating ideas while generating them kills divergent creativity instantly."
-                }
-            },
-            {
-                "heading": "Structured Problem Solving Methodologies",
-                "points": [
-                    "SCAMPER Technique: Substitute, Combine, Adapt, Modify/Magnify, Put to other uses, Eliminate, Reverse/Rearrange.",
-                    "Six Thinking Hats (De Bono): White (Objective data & metrics), Red (Intuition & emotion), Black (Critical caution & risk identification), Yellow (Optimism & benefits), Green (Pure creativity & lateral alternatives), Blue (Process control & metacognitive moderation).",
-                    "Root Cause Analysis (5 Whys): Asking 'Why?' iteratively 5 times to drill past superficial symptoms down to foundational systemic design flaws."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In tech startups and enterprise innovation labs (Y Combinator, Google X), design thinking sprints and lateral heuristics drive billion-dollar pivots. Uber was invented by applying 'Substitute & Combine' (SCAMPER): combining GPS smartphones, idle private vehicles, and cashless payment to replace traditional street taxis.",
-            "careerRelevance": "Senior Software Engineers and Tech Leads are valued for unblocking tricky production bugs that resist conventional debugging, requiring lateral hypotheses and creative diagnostic probes.",
-            "concreteExample": "Using the 5 Whys after an authentication outage: (1) Why did login fail? Database pool exhausted. (2) Why? Connections never closed. (3) Why? Unhandled exception aborted execution. (4) Why? Third-party SMS gateway timed out. (5) Root Cause: Lack of timeout circuit-breaker on external API dependencies."
+      "id": "guide-cuu1202-3",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 3,
+      "title": "Creative Thinking & Structured Problem Solving in Technology",
+      "originalFileName": "Creative thinking and problem solving.pdf",
+      "downloadUrl": "/notes/critical-thinking/Creative thinking and problem solving.pdf",
+      "estimatedReadTimeMinutes": 25,
+      "executiveSummary": "Creative thinking is a deliberate, divergent mental process that uses imagination, lateral thinking, and heuristic reframing to uncover novel, non-obvious solutions to complex problems. This lecture presents formal models of creativity, breaks down perceptual, emotional, and cultural barriers to innovation, and teaches structured creative frameworks including Mind Mapping, Edward de Bono's Six Thinking Hats, SCAMPER, and Root Cause Analysis (Ishikawa/Fishbone diagram and the 5 Whys).",
+      "coreHighlights": [
+        {
+          "heading": "The Creative Process & Lateral Thinking",
+          "points": [
+            "Divergent Exploration: Creative problem solving requires deliberately looking beyond the initial obvious answer, generating an expansive portfolio of unconventional ideas before filtering.",
+            "Lateral Thinking (Edward de Bono): While vertical logic proceeds step-by-step down a single well-worn mental groove, lateral thinking moves sideways to deliberately disrupt mental assumptions and establish cross-disciplinary connections.",
+            "Incubation Period: Scientific breakthroughs often occur during diffuse mental modes (rest, walks, sleep) after intense focused mental effort, allowing subconscious neural networks to assemble novel associations."
+          ]
         },
-        "practicalExamples": [
-            {
-                "title": "Applying SCAMPER to an IT System",
-                "language": "markdown",
-                "codeOrDiagram": "## SCAMPER Matrix: Redesigning a University Portal\n\n- [S] Substitute: Replace password logins with WebAuthn biometric passkeys.\n- [C] Combine: Merge grade transcripts and assignment submission into a unified real-time dashboard.\n- [A] Adapt: Adapt TikTok-style bite-sized cards for reading academic lecture highlights.\n- [M] Modify: Magnify mobile responsiveness for 3G rural network bandwidth.\n- [P] Put to other use: Turn historical course enrollment data into an AI elective recommender.\n- [E] Eliminate: Eliminate paper exam cards; use QR-code digital verification.\n- [R] Reverse: Invert grading flow\u2014allow students to submit continuous self-assessments before finals.",
-                "explanation": "Demonstrates systematic application of SCAMPER to transform an everyday academic workflow."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Confusing the functions of the Black Hat and the Red Hat in Six Thinking Hats.",
-                "correctApproach": "Black Hat is logical-negative (identifies genuine objective risks and reasons why something may fail). Red Hat is emotional-intuitive (expresses hunches and feelings without needing logical justification).",
-                "sampleQuestion": "Explain the role of the Black Hat and why it must not be confused with mere cynicism."
-            },
-            {
-                "trap": "Stopping after the first answer in Root Cause Analysis.",
-                "correctApproach": "Always demonstrate at least 4 to 5 iterations of the 5 Whys to reveal systemic procedural or architectural causes rather than blaming an individual.",
-                "sampleQuestion": "Apply the 5 Whys technique to diagnose why a payment transaction failed."
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Lateral Thinking",
-                "definition": "A manner of solving problems using an indirect and creative approach, via reasoning that is not immediately obvious."
-            },
-            {
-                "term": "Functional Fixedness",
-                "definition": "A cognitive bias that limits a person to using an object only in the way it is traditionally used."
-            },
-            {
-                "term": "SCAMPER",
-                "definition": "A creative thinking technique that uses action verbs as stimuli to spark innovative ideas and modifications."
-            },
-            {
-                "term": "5 Whys",
-                "definition": "An iterative interrogative technique used to explore the cause-and-effect relationships underlying a particular problem until the root cause is uncovered."
-            }
-        ]
+        {
+          "heading": "Psychological & Cultural Blocks to Creative Innovation",
+          "points": [
+            "Perceptual Blocks: Functional fixedness—the inability to see an object or tool being used outside its standard intended design.",
+            "Emotional Blocks: Fear of making mistakes, looking foolish in front of peers, or premature self-censorship before an idea is even articulated.",
+            "Cultural & Environmental Blocks: Institutional dogma ('that is not how things are done here'), rigid bureaucratic taboos, and fear of questioning established leadership hierarchy."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Rule of Brainstorming: Suspend all critique during the ideation phase. Evaluating ideas while generating them kills divergent creativity instantly."
+          }
+        },
+        {
+          "heading": "Structured Problem Solving Methodologies",
+          "points": [
+            "SCAMPER Technique: Substitute, Combine, Adapt, Modify/Magnify, Put to other uses, Eliminate, Reverse/Rearrange.",
+            "Six Thinking Hats (De Bono): White (Objective data & metrics), Red (Intuition & emotion), Black (Critical caution & risk identification), Yellow (Optimism & benefits), Green (Pure creativity & lateral alternatives), Blue (Process control & metacognitive moderation).",
+            "Root Cause Analysis (5 Whys): Asking 'Why?' iteratively 5 times to drill past superficial symptoms down to foundational systemic design flaws."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In tech startups and enterprise innovation labs (Y Combinator, Google X), design thinking sprints and lateral heuristics drive billion-dollar pivots. Uber was invented by applying 'Substitute & Combine' (SCAMPER): combining GPS smartphones, idle private vehicles, and cashless payment to replace traditional street taxis.",
+        "careerRelevance": "Senior Software Engineers and Tech Leads are valued for unblocking tricky production bugs that resist conventional debugging, requiring lateral hypotheses and creative diagnostic probes.",
+        "concreteExample": "Using the 5 Whys after an authentication outage: (1) Why did login fail? Database pool exhausted. (2) Why? Connections never closed. (3) Why? Unhandled exception aborted execution. (4) Why? Third-party SMS gateway timed out. (5) Root Cause: Lack of timeout circuit-breaker on external API dependencies."
+      },
+      "practicalExamples": [
+        {
+          "title": "Applying SCAMPER to an IT System",
+          "language": "markdown",
+          "codeOrDiagram": "## SCAMPER Matrix: Redesigning a University Portal\n\n- [S] Substitute: Replace password logins with WebAuthn biometric passkeys.\n- [C] Combine: Merge grade transcripts and assignment submission into a unified real-time dashboard.\n- [A] Adapt: Adapt TikTok-style bite-sized cards for reading academic lecture highlights.\n- [M] Modify: Magnify mobile responsiveness for 3G rural network bandwidth.\n- [P] Put to other use: Turn historical course enrollment data into an AI elective recommender.\n- [E] Eliminate: Eliminate paper exam cards; use QR-code digital verification.\n- [R] Reverse: Invert grading flow—allow students to submit continuous self-assessments before finals.",
+          "explanation": "Demonstrates systematic application of SCAMPER to transform an everyday academic workflow."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Confusing the functions of the Black Hat and the Red Hat in Six Thinking Hats.",
+          "correctApproach": "Black Hat is logical-negative (identifies genuine objective risks and reasons why something may fail). Red Hat is emotional-intuitive (expresses hunches and feelings without needing logical justification).",
+          "sampleQuestion": "Explain the role of the Black Hat and why it must not be confused with mere cynicism."
+        },
+        {
+          "trap": "Stopping after the first answer in Root Cause Analysis.",
+          "correctApproach": "Always demonstrate at least 4 to 5 iterations of the 5 Whys to reveal systemic procedural or architectural causes rather than blaming an individual.",
+          "sampleQuestion": "Apply the 5 Whys technique to diagnose why a payment transaction failed."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Lateral Thinking",
+          "definition": "A manner of solving problems using an indirect and creative approach, via reasoning that is not immediately obvious."
+        },
+        {
+          "term": "Functional Fixedness",
+          "definition": "A cognitive bias that limits a person to using an object only in the way it is traditionally used."
+        },
+        {
+          "term": "SCAMPER",
+          "definition": "A creative thinking technique that uses action verbs as stimuli to spark innovative ideas and modifications."
+        },
+        {
+          "term": "5 Whys",
+          "definition": "An iterative interrogative technique used to explore the cause-and-effect relationships underlying a particular problem until the root cause is uncovered."
+        }
+      ]
     },
     {
-        "id": "guide-cuu1202-4",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 4,
-        "title": "Thinking Processes, Cognitive Biases & Sound Decision Making",
-        "originalFileName": "Importance of thinking in decision making.pdf",
-        "downloadUrl": "/notes/critical-thinking/Importance of thinking in decision making.pdf",
-        "estimatedReadTimeMinutes": 30,
-        "executiveSummary": "Thinking is the cornerstone of rational human action and effective technical decision-making. Far from being a passive reflex, high-quality thinking is an intentional cognitive process that gathers sensory data, filters it through selective attention, retrieves mental models from memory, and applies deductive and inductive reasoning to evaluate complex trade-offs. This guide explores the 10 vital reasons why deliberate thinking is crucial in decision-making, breaks down the 7 sequential stages of the human cognitive cycle, and provides an exhaustive field guide to 12 destructive cognitive biases (including Confirmation Bias, Anchoring, Availability Heuristic, and Loss Aversion) along with concrete de-biasing protocols used by senior engineering leads.",
-        "coreHighlights": [
-            {
-                "heading": "The 10 Strategic Reasons Why Thinking Governs Decision-Making",
-                "points": [
-                    "Clarity & Problem Formulation: High-quality thinking strips away emotional clutter to define explicit goals, scope boundaries, and core priorities.",
-                    "Multi-Alternative Analysis: Evaluates multiple competing architectural and career paths rather than latching onto the first obvious option.",
-                    "Bias & Emotion Attenuation: Suppresses impulsive emotional reactions (e.g., panic in production outages or infatuation with new tech stacks) in favor of systematic logic.",
-                    "Root-Cause Problem Solving: Goes beyond symptom patching to isolate foundational bottlenecks in software and organizational systems.",
-                    "Consequence Prediction & Anticipation: Models second-order and third-order effects before executing irreversible changes.",
-                    "Experiential Learning: Systematically conducts retrospectives and post-mortems so past missteps compound into wisdom.",
-                    "Proactive Risk Management: Quantifies failure modes, worst-case latency scenarios, and security vulnerabilities prior to deployment.",
-                    "Constructive Conflict Resolution: Facilitates objective consensus across engineering, product, and business stakeholders.",
-                    "Unlocking Lateral Creativity: Provides the mental runway needed for divergent brainstorming and unconventional problem framing.",
-                    "Accountability & Execution Confidence: Empowers engineers to take decisive ownership of technical choices because they are grounded in verifiable data."
-                ],
-                "callout": {
-                    "type": "insight",
-                    "text": "Impulsive decisions optimize for immediate emotional relief, while critical thinking optimizes for long-term systemic stability. In software architecture, skipping thoughtful deliberation creates technical debt that takes years to pay off."
-                }
-            },
-            {
-                "heading": "The 7-Stage Architecture of the Human Thinking Process",
-                "points": [
-                    "1. Perception: Environmental input gathered through human senses and system telemetry (dashboards, logs, user complaints).",
-                    "2. Selective Attention: Cognitive filtering mechanism that focuses limited processing bandwidth onto the highest-priority signals while ignoring noise.",
-                    "3. Memory Retrieval: Accessing short-term working memory (immediate context) and long-term semantic/episodic memory (design patterns, past incident post-mortems).",
-                    "4. Reasoning Engine: Applying formal deductive logic (top-down rules) and inductive probability (pattern matching across telemetry) to construct hypotheses.",
-                    "5. Decision Execution: Committing to an optimal action based on weighted trade-offs and resource constraints.",
-                    "6. Metacognitive Monitoring: Actively 'thinking about thinking'\u2014evaluating whether one's reasoning has fallen victim to emotional defensiveness or cognitive fatigue.",
-                    "7. Solution Validation: Observing system response and closing the feedback loop."
-                ]
-            },
-            {
-                "heading": "Catalog of 12 Fatal Cognitive Biases & Mitigation Protocols",
-                "points": [
-                    "Confirmation Bias: Seeking only evidence that proves your hypothesis while ignoring contradictory telemetry. Fix: Actively design falsification tests.",
-                    "Anchoring Bias: Over-relying on the first number, estimate, or theory presented. Fix: Independent blind estimates (Planning Poker in Scrum).",
-                    "Availability Heuristic: Overestimating risks that are memorable, recent, or dramatic over statistically probable risks. Fix: Look at historical database logs, not gut feelings.",
-                    "Overconfidence Bias: Overestimating personal competence and certainty. Fix: Calibrated probability assessments and peer code reviews.",
-                    "Hindsight Bias ('I Knew It All Along'): Rewriting history after an incident occurs. Fix: Pre-commit written hypotheses and incident timelines in blameless post-mortems.",
-                    "Bandwagon Effect: Adopting tools or opinions simply because the industry or team is hyping them. Fix: Enforce structured POCs (Proof of Concepts) and benchmark metrics.",
-                    "Fundamental Attribution Error: Blaming an engineer's character for an error while attributing your own errors to external environment. Fix: Blameless post-mortem culture.",
-                    "Loss Aversion: Feeling the pain of a loss twice as acutely as equivalent pleasure of a gain. Fix: Reframe choices in terms of expected value (EV) and calculated risks.",
-                    "Framing Effect: Making different decisions depending on whether facts are presented positively or negatively. Fix: Invert the problem statement and restate numbers in neutral terms.",
-                    "Sunk Cost Fallacy: Continuing to pour resources into a failing project because of prior investments. Fix: Base decisions solely on future ROI and marginal cost from today.",
-                    "In-Group Bias: Preferring ideas from internal cliques or familiar teams over external stakeholders. Fix: Establish standardized rubric-based evaluation.",
-                    "Self-Serving Bias: Crediting personal skill for successes while blaming infrastructure or teammates for failures. Fix: Regular peer 360 feedback and objective KPI tracking."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In major tech incidents (e.g., AWS outage or Cloudflare BGP route leak), cognitive biases are the leading cause of prolonged downtime. Engineers suffering from confirmation bias will spend hours troubleshooting DNS because 'it's always DNS', ignoring database metrics screaming that thread pools are exhausted.",
-            "careerRelevance": "Staff+ Engineers and CTOs are distinguished not by syntax mastery, but by metacognitive calibration. They anticipate where their teams will anchor, where loss aversion will delay deprecating obsolete legacy systems, and how to introduce blameless inquiry.",
-            "concreteExample": "When assessing whether to kill an in-house CMS built over 2 years that is slow and buggy: Junior managers fall prey to the Sunk Cost Fallacy ('We spent $200k on this!'). A critical thinker realizes that past dollars are gone forever and chooses a headless CMS that will save $50k annually going forward."
+      "id": "guide-cuu1202-4",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 4,
+      "title": "Thinking Processes, Cognitive Biases & Sound Decision Making",
+      "originalFileName": "Importance of thinking in decision making.pdf",
+      "downloadUrl": "/notes/critical-thinking/Importance of thinking in decision making.pdf",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Thinking is the cornerstone of rational human action and effective technical decision-making. Far from being a passive reflex, high-quality thinking is an intentional cognitive process that gathers sensory data, filters it through selective attention, retrieves mental models from memory, and applies deductive and inductive reasoning to evaluate complex trade-offs. This guide explores the 10 vital reasons why deliberate thinking is crucial in decision-making, breaks down the 7 sequential stages of the human cognitive cycle, and provides an exhaustive field guide to 12 destructive cognitive biases (including Confirmation Bias, Anchoring, Availability Heuristic, and Loss Aversion) along with concrete de-biasing protocols used by senior engineering leads.",
+      "coreHighlights": [
+        {
+          "heading": "The 10 Strategic Reasons Why Thinking Governs Decision-Making",
+          "points": [
+            "Clarity & Problem Formulation: High-quality thinking strips away emotional clutter to define explicit goals, scope boundaries, and core priorities.",
+            "Multi-Alternative Analysis: Evaluates multiple competing architectural and career paths rather than latching onto the first obvious option.",
+            "Bias & Emotion Attenuation: Suppresses impulsive emotional reactions (e.g., panic in production outages or infatuation with new tech stacks) in favor of systematic logic.",
+            "Root-Cause Problem Solving: Goes beyond symptom patching to isolate foundational bottlenecks in software and organizational systems.",
+            "Consequence Prediction & Anticipation: Models second-order and third-order effects before executing irreversible changes.",
+            "Experiential Learning: Systematically conducts retrospectives and post-mortems so past missteps compound into wisdom.",
+            "Proactive Risk Management: Quantifies failure modes, worst-case latency scenarios, and security vulnerabilities prior to deployment.",
+            "Constructive Conflict Resolution: Facilitates objective consensus across engineering, product, and business stakeholders.",
+            "Unlocking Lateral Creativity: Provides the mental runway needed for divergent brainstorming and unconventional problem framing.",
+            "Accountability & Execution Confidence: Empowers engineers to take decisive ownership of technical choices because they are grounded in verifiable data."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Impulsive decisions optimize for immediate emotional relief, while critical thinking optimizes for long-term systemic stability. In software architecture, skipping thoughtful deliberation creates technical debt that takes years to pay off."
+          }
         },
-        "practicalExamples": [
-            {
-                "title": "Engineering De-Biasing Checklist for Architecture Decisions",
-                "language": "markdown",
-                "codeOrDiagram": "## Architecture Decision De-Biasing Protocol\n\n1. Anti-Confirmation Probe: 'What metric or failure condition would immediately convince us that this architecture is wrong?'\n2. Blind Estimation: All developers submit independent timeline estimates before speaking aloud to eliminate Anchoring.\n3. Pre-Mortem Analysis: Assume it is 12 months from now and this deployment failed disastrously. Ask: 'What caused it?'\n4. Sunk Cost Neutralizer: 'If we were hired today with zero emotional attachment to this codebase, would we build this or replace it?'\n5. Framing Inversion: Reframe '99.9% uptime (positive)' as '8.76 hours of unexpected downtime per year (negative)' to evaluate business impact.",
-                "explanation": "Translates cognitive psychology principles into practical, repeatable engineering team rituals."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Confusing Anchoring Bias with Confirmation Bias in exam scenarios.",
-                "correctApproach": "Anchoring occurs at the very beginning based on the first piece of information received (e.g. an initial price or initial root cause guess). Confirmation bias occurs during evidence gathering, where you selectively filter data that supports whatever belief you already hold.",
-                "sampleQuestion": "An engineer estimates a feature will take 3 weeks after the product manager casually mentions 'this shouldn't take more than 3 weeks'. Which bias is this?"
-            },
-            {
-                "trap": "Believing that cognitive biases only affect unintelligent people.",
-                "correctApproach": "Cognitive biases are universal evolutionary heuristics wired into the human brain; higher intelligence often just makes someone better at rationalizing their biased conclusions. Only structured processes and self-awareness overcome them.",
-                "sampleQuestion": "Explain why metacognition is necessary to combat cognitive biases."
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Cognitive Bias",
-                "definition": "A systematic pattern of deviation from rationality or objective judgment caused by mental shortcuts and heuristic processing."
-            },
-            {
-                "term": "Metacognition",
-                "definition": "The active monitoring, regulation, and critical evaluation of one's own thought processes; thinking about how one thinks."
-            },
-            {
-                "term": "Sunk Cost Fallacy",
-                "definition": "The irrational tendency to continue an endeavor once an investment of money, effort, or time has been made, rather than evaluating future utility."
-            },
-            {
-                "term": "Availability Heuristic",
-                "definition": "A mental shortcut that relies on immediate examples that come to a person's mind when evaluating a specific topic, concept, method or decision."
-            },
-            {
-                "term": "Anchoring Bias",
-                "definition": "The cognitive bias where an individual depends too heavily on an initial piece of information offered (considered to be the 'anchor') when making decisions."
-            }
-        ]
+        {
+          "heading": "The 7-Stage Architecture of the Human Thinking Process",
+          "points": [
+            "1. Perception: Environmental input gathered through human senses and system telemetry (dashboards, logs, user complaints).",
+            "2. Selective Attention: Cognitive filtering mechanism that focuses limited processing bandwidth onto the highest-priority signals while ignoring noise.",
+            "3. Memory Retrieval: Accessing short-term working memory (immediate context) and long-term semantic/episodic memory (design patterns, past incident post-mortems).",
+            "4. Reasoning Engine: Applying formal deductive logic (top-down rules) and inductive probability (pattern matching across telemetry) to construct hypotheses.",
+            "5. Decision Execution: Committing to an optimal action based on weighted trade-offs and resource constraints.",
+            "6. Metacognitive Monitoring: Actively 'thinking about thinking'—evaluating whether one's reasoning has fallen victim to emotional defensiveness or cognitive fatigue.",
+            "7. Solution Validation: Observing system response and closing the feedback loop."
+          ]
+        },
+        {
+          "heading": "Catalog of 12 Fatal Cognitive Biases & Mitigation Protocols",
+          "points": [
+            "Confirmation Bias: Seeking only evidence that proves your hypothesis while ignoring contradictory telemetry. Fix: Actively design falsification tests.",
+            "Anchoring Bias: Over-relying on the first number, estimate, or theory presented. Fix: Independent blind estimates (Planning Poker in Scrum).",
+            "Availability Heuristic: Overestimating risks that are memorable, recent, or dramatic over statistically probable risks. Fix: Look at historical database logs, not gut feelings.",
+            "Overconfidence Bias: Overestimating personal competence and certainty. Fix: Calibrated probability assessments and peer code reviews.",
+            "Hindsight Bias ('I Knew It All Along'): Rewriting history after an incident occurs. Fix: Pre-commit written hypotheses and incident timelines in blameless post-mortems.",
+            "Bandwagon Effect: Adopting tools or opinions simply because the industry or team is hyping them. Fix: Enforce structured POCs (Proof of Concepts) and benchmark metrics.",
+            "Fundamental Attribution Error: Blaming an engineer's character for an error while attributing your own errors to external environment. Fix: Blameless post-mortem culture.",
+            "Loss Aversion: Feeling the pain of a loss twice as acutely as equivalent pleasure of a gain. Fix: Reframe choices in terms of expected value (EV) and calculated risks.",
+            "Framing Effect: Making different decisions depending on whether facts are presented positively or negatively. Fix: Invert the problem statement and restate numbers in neutral terms.",
+            "Sunk Cost Fallacy: Continuing to pour resources into a failing project because of prior investments. Fix: Base decisions solely on future ROI and marginal cost from today.",
+            "In-Group Bias: Preferring ideas from internal cliques or familiar teams over external stakeholders. Fix: Establish standardized rubric-based evaluation.",
+            "Self-Serving Bias: Crediting personal skill for successes while blaming infrastructure or teammates for failures. Fix: Regular peer 360 feedback and objective KPI tracking."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In major tech incidents (e.g., AWS outage or Cloudflare BGP route leak), cognitive biases are the leading cause of prolonged downtime. Engineers suffering from confirmation bias will spend hours troubleshooting DNS because 'it's always DNS', ignoring database metrics screaming that thread pools are exhausted.",
+        "careerRelevance": "Staff+ Engineers and CTOs are distinguished not by syntax mastery, but by metacognitive calibration. They anticipate where their teams will anchor, where loss aversion will delay deprecating obsolete legacy systems, and how to introduce blameless inquiry.",
+        "concreteExample": "When assessing whether to kill an in-house CMS built over 2 years that is slow and buggy: Junior managers fall prey to the Sunk Cost Fallacy ('We spent $200k on this!'). A critical thinker realizes that past dollars are gone forever and chooses a headless CMS that will save $50k annually going forward."
+      },
+      "practicalExamples": [
+        {
+          "title": "Engineering De-Biasing Checklist for Architecture Decisions",
+          "language": "markdown",
+          "codeOrDiagram": "## Architecture Decision De-Biasing Protocol\n\n1. Anti-Confirmation Probe: 'What metric or failure condition would immediately convince us that this architecture is wrong?'\n2. Blind Estimation: All developers submit independent timeline estimates before speaking aloud to eliminate Anchoring.\n3. Pre-Mortem Analysis: Assume it is 12 months from now and this deployment failed disastrously. Ask: 'What caused it?'\n4. Sunk Cost Neutralizer: 'If we were hired today with zero emotional attachment to this codebase, would we build this or replace it?'\n5. Framing Inversion: Reframe '99.9% uptime (positive)' as '8.76 hours of unexpected downtime per year (negative)' to evaluate business impact.",
+          "explanation": "Translates cognitive psychology principles into practical, repeatable engineering team rituals."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Confusing Anchoring Bias with Confirmation Bias in exam scenarios.",
+          "correctApproach": "Anchoring occurs at the very beginning based on the first piece of information received (e.g. an initial price or initial root cause guess). Confirmation bias occurs during evidence gathering, where you selectively filter data that supports whatever belief you already hold.",
+          "sampleQuestion": "An engineer estimates a feature will take 3 weeks after the product manager casually mentions 'this shouldn't take more than 3 weeks'. Which bias is this?"
+        },
+        {
+          "trap": "Believing that cognitive biases only affect unintelligent people.",
+          "correctApproach": "Cognitive biases are universal evolutionary heuristics wired into the human brain; higher intelligence often just makes someone better at rationalizing their biased conclusions. Only structured processes and self-awareness overcome them.",
+          "sampleQuestion": "Explain why metacognition is necessary to combat cognitive biases."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Cognitive Bias",
+          "definition": "A systematic pattern of deviation from rationality or objective judgment caused by mental shortcuts and heuristic processing."
+        },
+        {
+          "term": "Metacognition",
+          "definition": "The active monitoring, regulation, and critical evaluation of one's own thought processes; thinking about how one thinks."
+        },
+        {
+          "term": "Sunk Cost Fallacy",
+          "definition": "The irrational tendency to continue an endeavor once an investment of money, effort, or time has been made, rather than evaluating future utility."
+        },
+        {
+          "term": "Availability Heuristic",
+          "definition": "A mental shortcut that relies on immediate examples that come to a person's mind when evaluating a specific topic, concept, method or decision."
+        },
+        {
+          "term": "Anchoring Bias",
+          "definition": "The cognitive bias where an individual depends too heavily on an initial piece of information offered (considered to be the 'anchor') when making decisions."
+        }
+      ]
     },
     {
-        "id": "guide-cuu1202-5",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 5,
-        "title": "Source Credibility, Bias Detection & Evidence-Based Thinking",
-        "originalFileName": "SOURCE CREDIBILITY  BIAS DETECTION.pdf",
-        "downloadUrl": "/notes/critical-thinking/SOURCE CREDIBILITY  BIAS DETECTION.pdf",
-        "estimatedReadTimeMinutes": 25,
-        "executiveSummary": "In an era of generative AI hallucinations, sponsored tech advocacy, and algorithmic echo chambers, establishing source credibility and detecting bias is vital for academic and technical survival. Source credibility rests upon perceived trustworthiness, competence, and goodwill. This guide presents the 5 core pillars of source evaluation (Depth, Objectivity, Currency, Authority, Purpose - DOCAP/CRAAP), outlines systematic methodologies to detect covert bias in research and technical benchmarks, and establishes the Evidence-Based Thinking (EBT) paradigm across education, healthcare, and software engineering.",
-        "coreHighlights": [
-            {
-                "heading": "The Triad of Source Credibility: Trust, Competence & Goodwill",
-                "points": [
-                    "Perceived Trustworthiness: The integrity, honesty, and ethical transparency of the author or publisher (disclosing financial affiliations or conflicts of interest).",
-                    "Perceived Competence: Demonstrated domain expertise, verified academic credentials, peer-reviewed publications, and technical track record.",
-                    "Perceived Goodwill: The author's underlying intent\u2014whether they genuinely aim to inform and educate the reader, or manipulate opinion for political or financial gain."
-                ],
-                "callout": {
-                    "type": "tip",
-                    "text": "Using unverified or biased sources destroys your academic authority. Even if a thesis is sound, citing dubious blogs or vendor-sponsored benchmarks invalidates your entire argument in the eyes of examiners and peers."
-                }
-            },
-            {
-                "heading": "The 5 Pillars of Source Evaluation (DOCAP / CRAAP Criteria)",
-                "points": [
-                    "1. Depth of Coverage: Does the source provide rigorous, substantive technical detail, methodology explanations, and contextual scope, or merely a superficial high-level overview?",
-                    "2. Objectivity: Is the research free from corporate or ideological bias? Does the author acknowledge limitations, present counter-evidence, and cite authentic opposing studies?",
-                    "3. Currency: When was the research published or updated? In computer science, cloud computing, and AI, sources older than 3 to 5 years may be dangerously obsolete.",
-                    "4. Authority: Who authored the text? Are they affiliated with an accredited university, recognized standards body (IEEE, ACM, W3C), or verified research laboratory?",
-                    "5. Purpose: What is the underlying motivation? Is it to teach, advance empirical science, sell enterprise software licenses, or manipulate political sentiment?"
-                ]
-            },
-            {
-                "heading": "Methods to Detect Hidden Bias & Cognitive Traps",
-                "points": [
-                    "Selective Citation (Cherry-Picking): Highlighting only benchmark runs where a particular database wins while omitting scenarios where competitors outperform.",
-                    "Tone & Loaded Language: Using emotive rhetoric ('disastrous', 'revolutionary', 'obvious') instead of objective empirical statements.",
-                    "Funding & Affiliation Links: Inspecting who financed the research study. Industry-sponsored whitepapers frequently disguise marketing as academic scholarship.",
-                    "Absence of Peer Review: Relying on self-published Medium posts, LinkedIn influencer threads, or unverified Reddit discussions instead of vetted literature."
-                ]
-            },
-            {
-                "heading": "4 Institutional Protocols to Mitigate Bias in Technical Teams",
-                "points": [
-                    "1. Formal Devil's Advocate: Designating a team member specifically tasked with challenging assumptions and arguing the contrary position.",
-                    "2. Blind Review Process: Anonymizing technical design proposals and code submissions to prevent seniority or demographic bias.",
-                    "3. Team Diversity: Incorporating engineers with diverse backgrounds, junior perspectives, and cross-functional skill sets to prevent groupthink.",
-                    "4. Explicit Bias Training: Training staff to identify anchoring, confirmation bias, and cognitive blind spots in incident management."
-                ]
-            },
-            {
-                "heading": "Evidence-Based Thinking (EBT) Across Key Domains",
-                "points": [
-                    "Definition: Aligning beliefs and technical decisions with verifiable empirical evidence rather than tradition, authority mandates, or emotional intuition.",
-                    "EBT in Education: Conducting diagnostic pre-assessments, defining measurable learning outcomes, and adapting based on student performance data.",
-                    "EBT in Healthcare: Prescribing treatments validated by double-blind randomized clinical trials rather than anecdotal testimonies.",
-                    "EBT in Software Engineering: Relying on distributed tracing, APM telemetry, A/B test statistical significance, and load testing rather than developer intuition."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In tech infrastructure procurement (evaluating cloud providers like AWS vs Azure, or database engines like MongoDB vs PostgreSQL), vendor whitepapers are notoriously biased. Engineering directors use the DOCAP/CRAAP criteria to filter through marketing claims and demand reproducible third-party benchmarks.",
-            "careerRelevance": "Academic researchers, data scientists, and solution architects must defend their technical stacks before executive steering committees. The ability to cite peer-reviewed ACM/IEEE papers rather than sponsored blog posts gives proposals unbeatable credibility.",
-            "concreteExample": "Evaluating an AI benchmarking claim: A vendor claims their LLM outperforms GPT-4. An evidence-based engineer examines the test: Was the test benchmark leaked into the training set (contamination)? Was the test performed with zero-shot vs few-shot? Were the prompts cherry-picked? Applying DOCAP uncovers that the test was conducted under unrepresentative conditions."
+      "id": "guide-cuu1202-5",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 5,
+      "title": "Source Credibility, Bias Detection & Evidence-Based Thinking",
+      "originalFileName": "SOURCE CREDIBILITY  BIAS DETECTION.pdf",
+      "downloadUrl": "/notes/critical-thinking/SOURCE CREDIBILITY  BIAS DETECTION.pdf",
+      "estimatedReadTimeMinutes": 25,
+      "executiveSummary": "In an era of generative AI hallucinations, sponsored tech advocacy, and algorithmic echo chambers, establishing source credibility and detecting bias is vital for academic and technical survival. Source credibility rests upon perceived trustworthiness, competence, and goodwill. This guide presents the 5 core pillars of source evaluation (Depth, Objectivity, Currency, Authority, Purpose - DOCAP/CRAAP), outlines systematic methodologies to detect covert bias in research and technical benchmarks, and establishes the Evidence-Based Thinking (EBT) paradigm across education, healthcare, and software engineering.",
+      "coreHighlights": [
+        {
+          "heading": "The Triad of Source Credibility: Trust, Competence & Goodwill",
+          "points": [
+            "Perceived Trustworthiness: The integrity, honesty, and ethical transparency of the author or publisher (disclosing financial affiliations or conflicts of interest).",
+            "Perceived Competence: Demonstrated domain expertise, verified academic credentials, peer-reviewed publications, and technical track record.",
+            "Perceived Goodwill: The author's underlying intent—whether they genuinely aim to inform and educate the reader, or manipulate opinion for political or financial gain."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Using unverified or biased sources destroys your academic authority. Even if a thesis is sound, citing dubious blogs or vendor-sponsored benchmarks invalidates your entire argument in the eyes of examiners and peers."
+          }
         },
-        "practicalExamples": [
-            {
-                "title": "DOCAP / CRAAP Source Evaluation Rubric",
-                "language": "markdown",
-                "codeOrDiagram": "## Source Credibility Verification Matrix\n\n| Evaluation Metric | Question to Ask | Passing Indicator (High Credibility) | Red Flag (Low Credibility) |\n|---|---|---|---|\n| **Depth** | Does it explain *why* and *how*? | Includes raw data, mathematical proofs, architecture schemas | Superficial 500-word summary with buzzwords |\n| **Objectivity** | Is there a commercial conflict? | Acknowledges trade-offs, limitations, and failure modes | 'Our product is 100% flawless in every scenario' |\n| **Currency** | Is it up to date? | Published within last 1-3 years (tech) with active revisions | Cites deprecated APIs or ancient libraries |\n| **Authority** | Who is behind it? | Peer-reviewed researcher, IEEE/ACM fellow, core contributor | Anonymous handle or marketing copywriter |\n| **Purpose** | What is the goal? | Educational inquiry, empirical testing, open knowledge | Lead generation, affiliate link clicks, sponsored content |",
-                "explanation": "Standardized rubric for students and engineers to grade research papers and vendor documentation."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Assuming that any peer-reviewed paper is automatically relevant or 100% applicable to your research question.",
-                "correctApproach": "Peer-review guarantees academic rigor, but does not guarantee relevance, depth, or currency for your specific context. Always verify whether the study's scope matches your problem.",
-                "sampleQuestion": "Why is peer-review necessary but not always sufficient when selecting sources for an IT research paper?"
-            },
-            {
-                "trap": "Confusing 'Objectivity' with absence of an opinion.",
-                "correctApproach": "An objective source can still draw a strong conclusion, provided that conclusion is logically derived from transparent data and fair consideration of opposing evidence.",
-                "sampleQuestion": "How does an academic source demonstrate objectivity while defending a specific thesis?"
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Source Credibility",
-                "definition": "The perceived trustworthiness, competence, and goodwill of an author, institution, or information entity."
-            },
-            {
-                "term": "Evidence-Based Thinking (EBT)",
-                "definition": "The systematic practice of making decisions and forming beliefs grounded in empirical, verifiable data and rational analysis rather than tradition, dogma, or anecdote."
-            },
-            {
-                "term": "DOCAP Framework",
-                "definition": "A 5-part evaluation framework assessing Depth, Objectivity, Currency, Authority, and Purpose to determine source reliability."
-            },
-            {
-                "term": "Devil's Advocate",
-                "definition": "A deliberate structural role in group discussion where an individual argues against the prevailing consensus to expose hidden flaws and assumptions."
-            },
-            {
-                "term": "Cherry-Picking",
-                "definition": "The act of selectively pointing to individual cases or data that seem to confirm a particular position while ignoring significant portions of related contradicting cases."
-            }
-        ]
+        {
+          "heading": "The 5 Pillars of Source Evaluation (DOCAP / CRAAP Criteria)",
+          "points": [
+            "1. Depth of Coverage: Does the source provide rigorous, substantive technical detail, methodology explanations, and contextual scope, or merely a superficial high-level overview?",
+            "2. Objectivity: Is the research free from corporate or ideological bias? Does the author acknowledge limitations, present counter-evidence, and cite authentic opposing studies?",
+            "3. Currency: When was the research published or updated? In computer science, cloud computing, and AI, sources older than 3 to 5 years may be dangerously obsolete.",
+            "4. Authority: Who authored the text? Are they affiliated with an accredited university, recognized standards body (IEEE, ACM, W3C), or verified research laboratory?",
+            "5. Purpose: What is the underlying motivation? Is it to teach, advance empirical science, sell enterprise software licenses, or manipulate political sentiment?"
+          ]
+        },
+        {
+          "heading": "Methods to Detect Hidden Bias & Cognitive Traps",
+          "points": [
+            "Selective Citation (Cherry-Picking): Highlighting only benchmark runs where a particular database wins while omitting scenarios where competitors outperform.",
+            "Tone & Loaded Language: Using emotive rhetoric ('disastrous', 'revolutionary', 'obvious') instead of objective empirical statements.",
+            "Funding & Affiliation Links: Inspecting who financed the research study. Industry-sponsored whitepapers frequently disguise marketing as academic scholarship.",
+            "Absence of Peer Review: Relying on self-published Medium posts, LinkedIn influencer threads, or unverified Reddit discussions instead of vetted literature."
+          ]
+        },
+        {
+          "heading": "4 Institutional Protocols to Mitigate Bias in Technical Teams",
+          "points": [
+            "1. Formal Devil's Advocate: Designating a team member specifically tasked with challenging assumptions and arguing the contrary position.",
+            "2. Blind Review Process: Anonymizing technical design proposals and code submissions to prevent seniority or demographic bias.",
+            "3. Team Diversity: Incorporating engineers with diverse backgrounds, junior perspectives, and cross-functional skill sets to prevent groupthink.",
+            "4. Explicit Bias Training: Training staff to identify anchoring, confirmation bias, and cognitive blind spots in incident management."
+          ]
+        },
+        {
+          "heading": "Evidence-Based Thinking (EBT) Across Key Domains",
+          "points": [
+            "Definition: Aligning beliefs and technical decisions with verifiable empirical evidence rather than tradition, authority mandates, or emotional intuition.",
+            "EBT in Education: Conducting diagnostic pre-assessments, defining measurable learning outcomes, and adapting based on student performance data.",
+            "EBT in Healthcare: Prescribing treatments validated by double-blind randomized clinical trials rather than anecdotal testimonies.",
+            "EBT in Software Engineering: Relying on distributed tracing, APM telemetry, A/B test statistical significance, and load testing rather than developer intuition."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In tech infrastructure procurement (evaluating cloud providers like AWS vs Azure, or database engines like MongoDB vs PostgreSQL), vendor whitepapers are notoriously biased. Engineering directors use the DOCAP/CRAAP criteria to filter through marketing claims and demand reproducible third-party benchmarks.",
+        "careerRelevance": "Academic researchers, data scientists, and solution architects must defend their technical stacks before executive steering committees. The ability to cite peer-reviewed ACM/IEEE papers rather than sponsored blog posts gives proposals unbeatable credibility.",
+        "concreteExample": "Evaluating an AI benchmarking claim: A vendor claims their LLM outperforms GPT-4. An evidence-based engineer examines the test: Was the test benchmark leaked into the training set (contamination)? Was the test performed with zero-shot vs few-shot? Were the prompts cherry-picked? Applying DOCAP uncovers that the test was conducted under unrepresentative conditions."
+      },
+      "practicalExamples": [
+        {
+          "title": "DOCAP / CRAAP Source Evaluation Rubric",
+          "language": "markdown",
+          "codeOrDiagram": "## Source Credibility Verification Matrix\n\n| Evaluation Metric | Question to Ask | Passing Indicator (High Credibility) | Red Flag (Low Credibility) |\n|---|---|---|---|\n| **Depth** | Does it explain *why* and *how*? | Includes raw data, mathematical proofs, architecture schemas | Superficial 500-word summary with buzzwords |\n| **Objectivity** | Is there a commercial conflict? | Acknowledges trade-offs, limitations, and failure modes | 'Our product is 100% flawless in every scenario' |\n| **Currency** | Is it up to date? | Published within last 1-3 years (tech) with active revisions | Cites deprecated APIs or ancient libraries |\n| **Authority** | Who is behind it? | Peer-reviewed researcher, IEEE/ACM fellow, core contributor | Anonymous handle or marketing copywriter |\n| **Purpose** | What is the goal? | Educational inquiry, empirical testing, open knowledge | Lead generation, affiliate link clicks, sponsored content |",
+          "explanation": "Standardized rubric for students and engineers to grade research papers and vendor documentation."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Assuming that any peer-reviewed paper is automatically relevant or 100% applicable to your research question.",
+          "correctApproach": "Peer-review guarantees academic rigor, but does not guarantee relevance, depth, or currency for your specific context. Always verify whether the study's scope matches your problem.",
+          "sampleQuestion": "Why is peer-review necessary but not always sufficient when selecting sources for an IT research paper?"
+        },
+        {
+          "trap": "Confusing 'Objectivity' with absence of an opinion.",
+          "correctApproach": "An objective source can still draw a strong conclusion, provided that conclusion is logically derived from transparent data and fair consideration of opposing evidence.",
+          "sampleQuestion": "How does an academic source demonstrate objectivity while defending a specific thesis?"
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Source Credibility",
+          "definition": "The perceived trustworthiness, competence, and goodwill of an author, institution, or information entity."
+        },
+        {
+          "term": "Evidence-Based Thinking (EBT)",
+          "definition": "The systematic practice of making decisions and forming beliefs grounded in empirical, verifiable data and rational analysis rather than tradition, dogma, or anecdote."
+        },
+        {
+          "term": "DOCAP Framework",
+          "definition": "A 5-part evaluation framework assessing Depth, Objectivity, Currency, Authority, and Purpose to determine source reliability."
+        },
+        {
+          "term": "Devil's Advocate",
+          "definition": "A deliberate structural role in group discussion where an individual argues against the prevailing consensus to expose hidden flaws and assumptions."
+        },
+        {
+          "term": "Cherry-Picking",
+          "definition": "The act of selectively pointing to individual cases or data that seem to confirm a particular position while ignoring significant portions of related contradicting cases."
+        }
+      ]
     },
     {
-        "id": "guide-cuu1202-6",
-        "courseCode": "CUU 1202",
-        "lectureNumber": 6,
-        "title": "Problem-Solving Strategies, Decision Frameworks & Group Dynamics",
-        "originalFileName": "Strategies for Problem Solving and Decision Making.pdf",
-        "downloadUrl": "/notes/critical-thinking/Strategies for Problem Solving and Decision Making.pdf",
-        "estimatedReadTimeMinutes": 30,
-        "executiveSummary": "Problem solving and decision making form an inseparable symbiotic loop: you cannot solve a problem without making decisions, and every strategic decision exists to resolve a problem or achieve a goal. Based directly on the foundational CUU 1202 Group 4 lecture, this master guide provides an end-to-end blueprint for engineering leaders. It covers the universal 6-step problem-solving lifecycle (Define, Analyze, Find Options, Compare, Act, Review), decomposes 6 classic algorithmic and heuristic strategies, details root cause analysis toolkits (Toyota 5 Whys, Ishikawa Fishbone, Pareto 80/20), contrasts 4 primary decision-making models (Rational, Herbert Simon's Satisficing, Intuitive, Gary Klein's Recognition-Primed Decision), and explores group decision dynamics (Consensus, Voting, Leader-led, Nominal Group Technique) along with psychological pitfalls like Groupthink.",
-        "coreHighlights": [
-            {
-                "heading": "The Inseparable Dyad: Problem Solving vs. Decision Making",
-                "points": [
-                    "Problem Solving: The diagnostic and generative process of navigating from an undesirable current state to a target goal state when the route is not immediately obvious.",
-                    "Decision Making: The evaluative process of selecting one optimal course of action from among competing alternatives based on weighted criteria.",
-                    "The Symbiotic Bond: You cannot solve a complex problem without making iterative decisions, and you make decisions specifically to unblock and resolve problems."
-                ],
-                "callout": {
-                    "type": "insight",
-                    "text": "Most failed projects do not fail because engineers picked the wrong technical answer; they fail because the team rushed to solve the wrong problem without defining it properly."
-                }
-            },
-            {
-                "heading": "The 6-Step Universal Problem-Solving Pipeline",
-                "points": [
-                    "1. Define: Formulate a precise, quantifiable problem statement. Avoid confusing symptoms with the underlying problem.",
-                    "2. Analyze: Collect empirical facts, telemetry data, and stakeholder constraints. Dissect causal relationships.",
-                    "3. Find Options: Engage in divergent ideation (brainstorming, lateral thinking) to generate a broad portfolio of potential solutions.",
-                    "4. Compare: Evaluate candidate options against explicit criteria (cost, latency, security, operational overhead, time-to-market).",
-                    "5. Act: Commit to the selected option, allocate resources, and implement the plan systematically.",
-                    "6. Review: Conduct post-implementation evaluation to measure if the target goal was met and document lessons learned."
-                ]
-            },
-            {
-                "heading": "The 6 Core Problem-Solving Strategies Matrix",
-                "points": [
-                    "1. Algorithm: Step-by-step deterministic procedure that guarantees the correct solution every time (e.g., sorting algorithms, mathematical formulas). Used when the exact method is known.",
-                    "2. Trial and Error: Testing various actions sequentially until one succeeds. Used when candidate options are small and the cost of failure is negligible.",
-                    "3. Heuristics: Practical mental shortcuts or 'rules of thumb' (e.g., 'check network connectivity first'). Used when time is constrained and perfection is unnecessary.",
-                    "4. Divide and Conquer: Recursively breaking a massive, complex monolith into smaller, manageable subproblems (e.g., microservices, merge sort).",
-                    "5. Working Backwards: Starting from the desired end state and tracing backward step-by-step to the present. Ideal for project milestone scheduling and security threat modeling.",
-                    "6. Means-Ends Analysis: Continually identifying the gap between the current state and target state, creating intermediate subgoals to steadily shrink that gap."
-                ]
-            },
-            {
-                "heading": "Root Cause Analysis (RCA) Diagnostic Toolkit",
-                "points": [
-                    "The 5 Whys (Toyota Production System / Taiichi Ohno): Iteratively asking 'Why?' at least 5 times to bypass superficial proximate causes down to foundational systemic flaws.",
-                    "Fishbone / Ishikawa Diagram: Visual diagram categorizing root causes under standardized dimensions: People, Process, Tools, Environment, Materials, and Management.",
-                    "Pareto Principle (80/20 Rule): Recognizing that roughly 80% of system crashes or user complaints stem from 20% of critical bugs. Always address the vital few before the trivial many."
-                ]
-            },
-            {
-                "heading": "4 Decision-Making Models & Bounded Rationality",
-                "points": [
-                    "1. Rational Model: The classical normative ideal\u2014exhaustively listing all options, scoring every factor, and selecting the mathematically optimal choice.",
-                    "2. Satisficing (Herbert Simon): Real humans operate under 'Bounded Rationality' (limited time, limited data, limited brain bandwidth). Decision-makers select the first alternative that meets the acceptable threshold ('good enough') rather than searching forever for perfection.",
-                    "3. Intuitive Model: Rapid subconscious pattern matching based on deep tacit experience. Highly effective for experts in familiar environments, dangerous for novices.",
-                    "4. Recognition-Primed Decision (RPD - Gary Klein): Observed in fire incident commanders and emergency DevOps leads\u2014experts match novel chaotic scenarios to mental prototypes and immediately simulate actions mentally before executing."
-                ]
-            },
-            {
-                "heading": "Group Decision Dynamics & Avoiding Groupthink",
-                "points": [
-                    "Consensus: High stakeholder buy-in, but requires significant time and can lead to watered-down compromises.",
-                    "Majority Vote: Fast and democratic, but risks alienating the minority faction who may resist execution.",
-                    "Leader Autocracy: Maximum speed and clear accountability, but sacrifices team collective intelligence and creative input.",
-                    "Nominal Group Technique (NGT): Individuals write ideas in silence first, then discuss and rank them collectively. Eliminates loud voices dominating the room.",
-                    "Combating Groupthink (Irving Janis): Appoint a designated Devil's Advocate, invite external objective observers, and have leaders deliberately withhold their opinions until team members speak."
-                ]
-            }
-        ],
-        "realWorldApplication": {
-            "industryContext": "In software incident response (Site Reliability Engineering at Netflix, Google, Amazon), troubleshooting major outages relies directly on these frameworks. SRE teams use Means-Ends Analysis to triage cascading failures, run the 5 Whys in Blameless Post-Mortems, and use Decision Matrices to pick failover strategies.",
-            "careerRelevance": "Technical Project Managers, Lead Architects, and Startup Founders face ambiguous, high-stakes decisions daily. Knowing when to use Satisficing (shipping an MVP to survive) versus the Rational Model (selecting a core database for a 10-year platform) determines career trajectory.",
-            "concreteExample": "Group Assignment 3 Decision Matrix Example: Selecting a student collaboration platform. Criteria: Ease of use (30%), Simultaneous editing (30%), Fast notification speed (20%), Cost (20%). WhatsApp scores 3.8/5, MS Teams scores 3.7/5, Google Docs scores 4.3/5. Google Docs mathematically wins based on weighted priorities."
+      "id": "guide-cuu1202-6",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 6,
+      "title": "Problem-Solving Strategies, Decision Frameworks & Group Dynamics",
+      "originalFileName": "Strategies for Problem Solving and Decision Making.pdf",
+      "downloadUrl": "/notes/critical-thinking/Strategies for Problem Solving and Decision Making.pdf",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Problem solving and decision making form an inseparable symbiotic loop: you cannot solve a problem without making decisions, and every strategic decision exists to resolve a problem or achieve a goal. Based directly on the foundational CUU 1202 Group 4 lecture, this master guide provides an end-to-end blueprint for engineering leaders. It covers the universal 6-step problem-solving lifecycle (Define, Analyze, Find Options, Compare, Act, Review), decomposes 6 classic algorithmic and heuristic strategies, details root cause analysis toolkits (Toyota 5 Whys, Ishikawa Fishbone, Pareto 80/20), contrasts 4 primary decision-making models (Rational, Herbert Simon's Satisficing, Intuitive, Gary Klein's Recognition-Primed Decision), and explores group decision dynamics (Consensus, Voting, Leader-led, Nominal Group Technique) along with psychological pitfalls like Groupthink.",
+      "coreHighlights": [
+        {
+          "heading": "The Inseparable Dyad: Problem Solving vs. Decision Making",
+          "points": [
+            "Problem Solving: The diagnostic and generative process of navigating from an undesirable current state to a target goal state when the route is not immediately obvious.",
+            "Decision Making: The evaluative process of selecting one optimal course of action from among competing alternatives based on weighted criteria.",
+            "The Symbiotic Bond: You cannot solve a complex problem without making iterative decisions, and you make decisions specifically to unblock and resolve problems."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Most failed projects do not fail because engineers picked the wrong technical answer; they fail because the team rushed to solve the wrong problem without defining it properly."
+          }
         },
-        "practicalExamples": [
-            {
-                "title": "Weighted Multi-Criteria Decision Analysis (MCDA) Matrix",
-                "language": "markdown",
-                "codeOrDiagram": "## Weighted Decision Matrix: Collaboration Tool Selection (CUU 1202 Group 4)\n\n| Evaluation Criteria | Weight | WhatsApp (Score 1-5) | Google Docs (Score 1-5) | MS Teams (Score 1-5) |\n|---|---|---|---|---|\n| Ease of Use | 30% (0.30) | 5 (1.50) | 4 (1.20) | 3 (0.90) |\n| Real-Time Co-Authoring | 30% (0.30) | 1 (0.30) | 5 (1.50) | 4 (1.20) |\n| Message Visibility & Speed | 20% (0.20) | 5 (1.00) | 3 (0.60) | 4 (0.80) |\n| Cost / Accessibility | 20% (0.20) | 5 (1.00) | 5 (1.00) | 4 (0.80) |\n| **Weighted Total** | **100% (1.00)** | **3.80 / 5.00** | **4.30 / 5.00 (WINNER)** | **3.70 / 5.00** |\n\n### Root Cause Analysis (5 Whys Case Study):\n- Problem: Group assignment submitted 2 hours past deadline.\n- Why 1: Final compilation started 30 minutes before cutoff.\n- Why 2: Tasks were never delegated to individual members.\n- Why 3: No initial kickoff meeting or team leader was appointed.\n- Why 4: Everyone assumed someone else was coordinating the submission.\n- Root Cause: Lack of explicit role ownership and decentralized bystander effect.\n- Corrective Action: Mandatory role contract in Week 1 with internal mini-deadlines.",
-                "explanation": "Directly implements the official Group 4 Assignment 3 Decision Matrix and 5 Whys case study."
-            }
-        ],
-        "examPitfallsAndTricks": [
-            {
-                "trap": "Confusing an Algorithm with a Heuristic in exam definitions.",
-                "correctApproach": "An algorithm is a step-by-step procedure that GUARANTEES a solution if followed correctly (e.g. Euclidean algorithm, long division). A heuristic is a rule of thumb or shortcut that is FAST but does NOT guarantee optimal success.",
-                "sampleQuestion": "Differentiate between an algorithmic and heuristic problem-solving approach with a computing example."
-            },
-            {
-                "trap": "Describing 'Satisficing' as mere laziness or carelessness.",
-                "correctApproach": "Satisficing (Herbert Simon) is an intelligent, rational adaptation to Bounded Rationality: when exhaustive search is cost-prohibitive or impossible, picking a solution that meets all necessary criteria is optimal.",
-                "sampleQuestion": "Why did Herbert Simon introduce the concept of satisficing in organizational decision making?"
-            }
-        ],
-        "keyTermsGlossary": [
-            {
-                "term": "Satisficing",
-                "definition": "A decision-making strategy that aims for a satisfactory or adequate result ('good enough') rather than the mathematically optimal solution, introduced by Herbert Simon."
-            },
-            {
-                "term": "Bounded Rationality",
-                "definition": "The concept that human decision-making is limited by cognitive capacity, available information, and finite time."
-            },
-            {
-                "term": "5 Whys",
-                "definition": "An iterative root cause interrogative technique developed at Toyota to drill down past superficial symptoms to the fundamental systemic failure."
-            },
-            {
-                "term": "Means-Ends Analysis",
-                "definition": "A problem-solving strategy where the problem-solver envisions the target end state and repeatedly determines intermediate actions to shrink the difference between current and goal states."
-            },
-            {
-                "term": "Groupthink",
-                "definition": "A psychological phenomenon occurring within a group where the desire for harmony or conformity results in irrational or dysfunctional decision-making."
-            },
-            {
-                "term": "Nominal Group Technique (NGT)",
-                "definition": "A structured group decision method that gathers individual ideas independently in silence before group ranking to minimize social loafing and conformity."
-            }
-        ]
+        {
+          "heading": "The 6-Step Universal Problem-Solving Pipeline",
+          "points": [
+            "1. Define: Formulate a precise, quantifiable problem statement. Avoid confusing symptoms with the underlying problem.",
+            "2. Analyze: Collect empirical facts, telemetry data, and stakeholder constraints. Dissect causal relationships.",
+            "3. Find Options: Engage in divergent ideation (brainstorming, lateral thinking) to generate a broad portfolio of potential solutions.",
+            "4. Compare: Evaluate candidate options against explicit criteria (cost, latency, security, operational overhead, time-to-market).",
+            "5. Act: Commit to the selected option, allocate resources, and implement the plan systematically.",
+            "6. Review: Conduct post-implementation evaluation to measure if the target goal was met and document lessons learned."
+          ]
+        },
+        {
+          "heading": "The 6 Core Problem-Solving Strategies Matrix",
+          "points": [
+            "1. Algorithm: Step-by-step deterministic procedure that guarantees the correct solution every time (e.g., sorting algorithms, mathematical formulas). Used when the exact method is known.",
+            "2. Trial and Error: Testing various actions sequentially until one succeeds. Used when candidate options are small and the cost of failure is negligible.",
+            "3. Heuristics: Practical mental shortcuts or 'rules of thumb' (e.g., 'check network connectivity first'). Used when time is constrained and perfection is unnecessary.",
+            "4. Divide and Conquer: Recursively breaking a massive, complex monolith into smaller, manageable subproblems (e.g., microservices, merge sort).",
+            "5. Working Backwards: Starting from the desired end state and tracing backward step-by-step to the present. Ideal for project milestone scheduling and security threat modeling.",
+            "6. Means-Ends Analysis: Continually identifying the gap between the current state and target state, creating intermediate subgoals to steadily shrink that gap."
+          ]
+        },
+        {
+          "heading": "Root Cause Analysis (RCA) Diagnostic Toolkit",
+          "points": [
+            "The 5 Whys (Toyota Production System / Taiichi Ohno): Iteratively asking 'Why?' at least 5 times to bypass superficial proximate causes down to foundational systemic flaws.",
+            "Fishbone / Ishikawa Diagram: Visual diagram categorizing root causes under standardized dimensions: People, Process, Tools, Environment, Materials, and Management.",
+            "Pareto Principle (80/20 Rule): Recognizing that roughly 80% of system crashes or user complaints stem from 20% of critical bugs. Always address the vital few before the trivial many."
+          ]
+        },
+        {
+          "heading": "4 Decision-Making Models & Bounded Rationality",
+          "points": [
+            "1. Rational Model: The classical normative ideal—exhaustively listing all options, scoring every factor, and selecting the mathematically optimal choice.",
+            "2. Satisficing (Herbert Simon): Real humans operate under 'Bounded Rationality' (limited time, limited data, limited brain bandwidth). Decision-makers select the first alternative that meets the acceptable threshold ('good enough') rather than searching forever for perfection.",
+            "3. Intuitive Model: Rapid subconscious pattern matching based on deep tacit experience. Highly effective for experts in familiar environments, dangerous for novices.",
+            "4. Recognition-Primed Decision (RPD - Gary Klein): Observed in fire incident commanders and emergency DevOps leads—experts match novel chaotic scenarios to mental prototypes and immediately simulate actions mentally before executing."
+          ]
+        },
+        {
+          "heading": "Group Decision Dynamics & Avoiding Groupthink",
+          "points": [
+            "Consensus: High stakeholder buy-in, but requires significant time and can lead to watered-down compromises.",
+            "Majority Vote: Fast and democratic, but risks alienating the minority faction who may resist execution.",
+            "Leader Autocracy: Maximum speed and clear accountability, but sacrifices team collective intelligence and creative input.",
+            "Nominal Group Technique (NGT): Individuals write ideas in silence first, then discuss and rank them collectively. Eliminates loud voices dominating the room.",
+            "Combating Groupthink (Irving Janis): Appoint a designated Devil's Advocate, invite external objective observers, and have leaders deliberately withhold their opinions until team members speak."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "In software incident response (Site Reliability Engineering at Netflix, Google, Amazon), troubleshooting major outages relies directly on these frameworks. SRE teams use Means-Ends Analysis to triage cascading failures, run the 5 Whys in Blameless Post-Mortems, and use Decision Matrices to pick failover strategies.",
+        "careerRelevance": "Technical Project Managers, Lead Architects, and Startup Founders face ambiguous, high-stakes decisions daily. Knowing when to use Satisficing (shipping an MVP to survive) versus the Rational Model (selecting a core database for a 10-year platform) determines career trajectory.",
+        "concreteExample": "Group Assignment 3 Decision Matrix Example: Selecting a student collaboration platform. Criteria: Ease of use (30%), Simultaneous editing (30%), Fast notification speed (20%), Cost (20%). WhatsApp scores 3.8/5, MS Teams scores 3.7/5, Google Docs scores 4.3/5. Google Docs mathematically wins based on weighted priorities."
+      },
+      "practicalExamples": [
+        {
+          "title": "Weighted Multi-Criteria Decision Analysis (MCDA) Matrix",
+          "language": "markdown",
+          "codeOrDiagram": "## Weighted Decision Matrix: Collaboration Tool Selection (CUU 1202 Group 4)\n\n| Evaluation Criteria | Weight | WhatsApp (Score 1-5) | Google Docs (Score 1-5) | MS Teams (Score 1-5) |\n|---|---|---|---|---|\n| Ease of Use | 30% (0.30) | 5 (1.50) | 4 (1.20) | 3 (0.90) |\n| Real-Time Co-Authoring | 30% (0.30) | 1 (0.30) | 5 (1.50) | 4 (1.20) |\n| Message Visibility & Speed | 20% (0.20) | 5 (1.00) | 3 (0.60) | 4 (0.80) |\n| Cost / Accessibility | 20% (0.20) | 5 (1.00) | 5 (1.00) | 4 (0.80) |\n| **Weighted Total** | **100% (1.00)** | **3.80 / 5.00** | **4.30 / 5.00 (WINNER)** | **3.70 / 5.00** |\n\n### Root Cause Analysis (5 Whys Case Study):\n- Problem: Group assignment submitted 2 hours past deadline.\n- Why 1: Final compilation started 30 minutes before cutoff.\n- Why 2: Tasks were never delegated to individual members.\n- Why 3: No initial kickoff meeting or team leader was appointed.\n- Why 4: Everyone assumed someone else was coordinating the submission.\n- Root Cause: Lack of explicit role ownership and decentralized bystander effect.\n- Corrective Action: Mandatory role contract in Week 1 with internal mini-deadlines.",
+          "explanation": "Directly implements the official Group 4 Assignment 3 Decision Matrix and 5 Whys case study."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Confusing an Algorithm with a Heuristic in exam definitions.",
+          "correctApproach": "An algorithm is a step-by-step procedure that GUARANTEES a solution if followed correctly (e.g. Euclidean algorithm, long division). A heuristic is a rule of thumb or shortcut that is FAST but does NOT guarantee optimal success.",
+          "sampleQuestion": "Differentiate between an algorithmic and heuristic problem-solving approach with a computing example."
+        },
+        {
+          "trap": "Describing 'Satisficing' as mere laziness or carelessness.",
+          "correctApproach": "Satisficing (Herbert Simon) is an intelligent, rational adaptation to Bounded Rationality: when exhaustive search is cost-prohibitive or impossible, picking a solution that meets all necessary criteria is optimal.",
+          "sampleQuestion": "Why did Herbert Simon introduce the concept of satisficing in organizational decision making?"
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Satisficing",
+          "definition": "A decision-making strategy that aims for a satisfactory or adequate result ('good enough') rather than the mathematically optimal solution, introduced by Herbert Simon."
+        },
+        {
+          "term": "Bounded Rationality",
+          "definition": "The concept that human decision-making is limited by cognitive capacity, available information, and finite time."
+        },
+        {
+          "term": "5 Whys",
+          "definition": "An iterative root cause interrogative technique developed at Toyota to drill down past superficial symptoms to the fundamental systemic failure."
+        },
+        {
+          "term": "Means-Ends Analysis",
+          "definition": "A problem-solving strategy where the problem-solver envisions the target end state and repeatedly determines intermediate actions to shrink the difference between current and goal states."
+        },
+        {
+          "term": "Groupthink",
+          "definition": "A psychological phenomenon occurring within a group where the desire for harmony or conformity results in irrational or dysfunctional decision-making."
+        },
+        {
+          "term": "Nominal Group Technique (NGT)",
+          "definition": "A structured group decision method that gathers individual ideas independently in silence before group ranking to minimize social loafing and conformity."
+        }
+      ]
+    },
+    {
+      "id": "guide-cuu1202-7",
+      "courseCode": "CUU 1202",
+      "lectureNumber": 7,
+      "title": "Lecture 7: KCA Exam Synthesis — Syllogisms, 10 Fallacies Drill, SCAMPER & De Bono's 6 Hats",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Rapid-fire KCA CUU 1202 (Critical & Creative Thinking) exam synthesis under Stephen Kamba Mwangangi. Consolidates Deductive (Validity vs. Soundness) vs. Inductive (Strength vs. Cogency) reasoning, the Top 10 Informal Fallacies with real-world identification patterns, Creative Problem-Solving Frameworks (SCAMPER, 4 Stages of Creativity, De Bono's 6 Thinking Hats), and Cognitive Biases.",
+      "coreHighlights": [
+        {
+          "heading": "Deductive vs. Inductive Arguments: The 4 Evaluation Terms",
+          "points": [
+            "Deductive Argument: Moves from general premises to a guaranteed specific conclusion. Evaluated on VALIDITY (if premises were true, conclusion MUST follow logically) and SOUNDNESS (Valid + ALL premises are factually TRUE).",
+            "Inductive Argument: Moves from specific observations to a probable general conclusion. Evaluated on STRENGTH (premises make conclusion highly probable) and COGENCY (Strong + ALL premises are factually TRUE).",
+            "Exam Classic: A deductive argument can be VALID yet UNSOUND (e.g., 'All birds can fly; Penguins are birds; Therefore penguins can fly' -> Logically valid form, but premise 1 is false -> Unsound!)."
+          ]
+        },
+        {
+          "heading": "Top 10 Informal Fallacies (Name -> Failure -> Example)",
+          "points": [
+            "1. Ad Hominem: Attacking the speaker's character instead of their argument.",
+            "2. Straw Man: Distorting/exaggerating an opponent's position to make it easier to attack.",
+            "3. Slippery Slope: Claiming a minor action will inevitably trigger a catastrophic chain reaction without causal proof.",
+            "4. False Dilemma (Either/Or): Presenting only two extreme choices when viable middle alternatives exist.",
+            "5. Appeal to Authority (Ad Verecundiam): Relying on an unqualified or biased authority as proof.",
+            "6. Hasty Generalization: Drawing a sweeping conclusion from an unrepresentative/tiny sample.",
+            "7. Post Hoc Ergo Propter Hoc: Assuming that because Event B followed Event A, A caused B (confusing correlation with causation).",
+            "8. Circular Reasoning (Begging the Question): Restating the conclusion as its own premise.",
+            "9. Appeal to Pity (Ad Misericordiam) / Appeal to Force (Ad Baculum): Using emotional sympathy or threats instead of evidence.",
+            "10. Red Herring: Introducing an irrelevant distraction to derail the original argument."
+          ]
+        },
+        {
+          "heading": "Creative Process, SCAMPER & De Bono's 6 Thinking Hats",
+          "points": [
+            "4 Stages of the Creative Process (Graham Wallas): (1) Preparation (immersing in problem & data), (2) Incubation (subconscious processing away from desk), (3) Illumination ('Aha!' insight moment), (4) Verification (critical testing & refinement).",
+            "SCAMPER Acronym (7 Innovation Prompts): Substitute, Combine, Adapt, Modify/Magnify, Put to another use, Eliminate, Reverse/Rearrange.",
+            "Edward de Bono's 6 Thinking Hats: White (Facts & Data), Red (Emotions & Intuition), Black (Critical Caution & Risks), Yellow (Optimism & Benefits), Green (Creativity & Alternatives), Blue (Process Control & Facilitation)."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "4-Part Formula for Full Marks on Any Fallacy Question: (1) Name the exact fallacy, (2) Define it in 1 sentence, (3) Pinpoint the exact broken link in the given quote, (4) Show how to reframe the argument logically."
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Product managers use SCAMPER and 6 Thinking Hats during sprint retrospectives and innovation workshops to prevent groupthink and confirmation bias.",
+        "careerRelevance": "Critical appraisal protects IT leaders from sunk-cost fallacy on failing software projects and vendor hype.",
+        "concreteExample": "Applying SCAMPER to a university exam portal: Substitute paper exam cards with QR digital passes; Combine timetable + revision tracker; Eliminate manual venue lookup."
+      },
+      "practicalExamples": [
+        {
+          "title": "Exam-Ready Syllogism & Fallacy Deconstruction Template",
+          "language": "markdown",
+          "codeOrDiagram": "Q: Evaluate: \"Every KCA BSc IT student learns programming. Joseph is a KCA BSc IT student. Therefore, Joseph learns programming.\"\n- Type: Deductive Categorical Syllogism.\n- Validity: VALID (conclusion follows necessarily from the premises).\n- Soundness: SOUND (both premises are factually true -> valid + true premises = sound).\n\nQ: Identify the fallacy: \"If we allow students to use laptops in lectures, soon nobody will read books, exam grades will collapse, and the university will shut down.\"\n- Fallacy: Slippery Slope.\n- Why it fails: Assumes an extreme chain of unproven causal dominoes without empirical justification.",
+          "explanation": "Concise, examiner-friendly structure delivering maximum marks per minute."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Calling an inductive argument 'Valid' or 'Sound'.",
+          "correctApproach": "Deductive = Valid / Invalid / Sound / Unsound. Inductive = Strong / Weak / Cogent / Uncogent. Never mix the two vocabularies!",
+          "sampleQuestion": "Distinguish between a valid argument and a sound argument using an example."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Sound Argument",
+          "definition": "A deductive argument that is both logically valid in structure AND has all factually true premises."
+        },
+        {
+          "term": "Cogent Argument",
+          "definition": "An inductive argument that is both logically strong AND has all factually true premises."
+        },
+        {
+          "term": "SCAMPER",
+          "definition": "Creative ideation checklist: Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse."
+        },
+        {
+          "term": "Confirmation Bias",
+          "definition": "The cognitive tendency to search for, interpret, and recall information that confirms preexisting beliefs while ignoring contradictory evidence."
+        }
+      ]
     }
-],
+  ],
   "CUU 2102": [
     {
       "id": "guide-cuu2102-1",
@@ -1156,6 +1499,169 @@ export const SMART_STUDY_GUIDES: Record<string, SmartLectureGuide[]> = {
         {
           "term": "Patchwriting",
           "definition": "Restating a phrase or passage by making only minor modifications or substitutions of words, considered a form of unintentional plagiarism."
+        }
+      ]
+    },
+    {
+      "id": "guide-cuu2102-5",
+      "courseCode": "CUU 2102",
+      "lectureNumber": 5,
+      "title": "Part 5: Academic Writing Structure, Formal Style, Coherence/Cohesion, APA 7th & IL Models",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Directly synthesized from your 6 uploaded KCA CUU 2102 / CUU 2101 past papers (Aug 2025 PT/FT/Diaspora/DL, Oct 2025 Supp, Apr 2026 Regular [Papers A1–A6]). Locks down standard academic essay architecture, formal vs. informal tone, descriptive vs. analytical vs. argumentative writing, coherence vs. cohesion devices, the 5 differences between APA in-text citations and end-references, and Big6 vs. SCONUL Information Literacy models.",
+      "coreHighlights": [
+        {
+          "heading": "Standard Academic Essay Structure & Writing Modes [Paper A1: Q4a, Paper A4: Q1b, Paper A6: Q3]",
+          "points": [
+            "Three Essential Essay Parts: (1) Introduction (hook/background context, scope, and a clear debatable Thesis Statement), (2) Body Paragraphs (each anchored by a Topic Sentence, supporting cited evidence/examples, critical analysis, and concluding transition), (3) Conclusion (restated thesis in fresh wording, synthesis of key arguments, final implication—NO brand-new unintroduced evidence).",
+            "Four Hallmarks of Academic Writing [Paper A2: Q1c]: Formality (no slang/contractions), Objectivity (third-person, evidence over emotion), Precision & Clarity (exact terminology), and Verifiability/Referencing (APA/MLA attribution).",
+            "Descriptive vs. Analytical vs. Argumentative Writing [Paper A6: Q3]: Descriptive summarizes facts/definitions ('what'); Analytical compares, contrasts, and examines relationships ('how/why'); Argumentative evaluates evidence to defend a clear thesis stance ('which is better and why')."
+          ]
+        },
+        {
+          "heading": "Formal vs. Informal Writing & Coherence vs. Cohesion [Paper A1: Q4b, Paper A5: Q4]",
+          "points": [
+            "Formal vs. Informal Examples [Paper A1: Q4b]: Avoid contractions ('don't' -> 'do not'), avoid colloquial slang ('a lot of kids' -> 'a significant proportion of adolescents'), avoid subjective first-person bias ('I think AI is awesome' -> 'Empirical findings indicate AI improves efficiency').",
+            "Coherence (Macro-Level Logic): The overall logical flow and unity of ideas across paragraphs so the entire essay makes conceptual sense to the reader.",
+            "Cohesion (Micro-Level Glue): Grammatical and lexical linking devices binding sentences together—including transitional words ('Furthermore', 'However', 'Consequently'), pronoun reference, repetition of key terms, and parallel structures."
+          ]
+        },
+        {
+          "heading": "APA 7th: 5 Ways In-Text Citations Differ from End-References [Paper A3: Q1b]",
+          "points": [
+            "1. Location: In-text citations appear inside the body paragraphs immediately after a quote/paraphrase; End-references appear on a dedicated 'References' page at the end of the paper.",
+            "2. Brevity vs. Completeness: In-text citations contain only Author Surname, Year (and page number for direct quotes: `(Mange, 2025, p. 14)`); End-references include full bibliographic metadata (Author initials, Year, Title, Source/Journal, Volume/Issue, Pages, DOI/URL).",
+            "3. Ordering: In-text citations appear in the order ideas are discussed; End-references are strictly sorted ALPHABETICALLY by the first author's surname.",
+            "4. Formatting/Indentation: In-text sits inline inside normal sentences; End-references use a 0.5-inch hanging indent.",
+            "5. Function: In-text attributes a specific claim in real time; End-references enable readers to locate and verify the original source."
+          ]
+        },
+        {
+          "heading": "Information Task Stages & Big6 vs. SCONUL Models [Paper A3: Q1a, Paper A6: Q5]",
+          "points": [
+            "Three Key Stages of an Information Task [Paper A3: Q1a, Paper A5: Q4]: (1) Planning / Task Definition (defining topic, scope, and search terms), (2) Information Retrieval & Evaluation (searching databases, filtering sources via CRAAP), (3) Synthesis, Use & Presentation (organizing, citing ethically, writing, and reviewing).",
+            "Big6 Model (Eisenberg & Berkowitz): Linear 6-step problem-solving process (1. Task Definition, 2. Information Seeking Strategies, 3. Location & Access, 4. Use of Information, 5. Synthesis, 6. Evaluation). Strength: Simple, structured for beginners. Limitation: Can feel overly rigid/linear.",
+            "SCONUL Seven Pillars (Higher Ed): Holistic, non-linear competency model (Identify, Scope, Plan, Gather, Evaluate, Manage, Present). Strength: Mirrors iterative university research & lifelong learning. Limitation: More abstract for first-year students without scaffolding."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Technical RFCs, whitepapers, IEEE conference papers, and enterprise business proposals follow identical coherence, formal style, and verifiable referencing standards.",
+        "careerRelevance": "Directly feeds into writing your Year 3/4 BSc IT Capstone Proposal and Dissertation (STU 2102).",
+        "concreteExample": "APA 7th Journal entry: Mutungi, B. K. (2025). Information literacy frameworks in Kenyan universities. *Journal of Higher Education Studies*, *14*(2), 45–62. https://doi.org/10.xxxx"
+      },
+      "practicalExamples": [
+        {
+          "title": "APA 7th Master Templates (Book, Journal, Website) [Papers A1, A3]",
+          "language": "markdown",
+          "codeOrDiagram": "1. IN-TEXT CITATION:\n   - Paraphrase: Information literacy drives lifelong learning (Mutungi, 2025).\n   - Direct Quote: Mutungi (2025) argues that \"citation upholds scholarship\" (p. 12).\n   - 3+ Authors: (Mange et al., 2024).\n\n2. END-REFERENCE LIST (Alphabetical, Hanging Indent):\n   - Book: Author, A. A. (Year). *Book title in sentence case*. Publisher.\n   - Journal: Author, A. A., & Author, B. B. (Year). Article title in sentence case. *Journal Name in Title Case*, *Volume*(Issue), pp–pp. https://doi.org/...\n   - Website: Organization. (Year, Month Day). *Page title*. Site Name. https://...",
+          "explanation": "Memorize exact punctuation: periods after Year and Title, italics on Book/Journal titles and Volume number, sentence case for article titles."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Confusing Reference Management Tools (Zotero, Mendeley, EndNote) with Citation Styles (APA, MLA, Harvard, IEEE).",
+          "correctApproach": "Citation Styles are formatting rulebooks; Reference Management Tools are software apps that store PDFs and automate formatting [Paper A5: Q3].",
+          "sampleQuestion": "Explain the importance of using citation styles and reference management tools in academic writing [Paper A5: Q3]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Coherence",
+          "definition": "Macro-level logical organization and unity of ideas across an entire academic essay."
+        },
+        {
+          "term": "Cohesion",
+          "definition": "Micro-level grammatical and lexical linking (transitions, pronouns, conjunctions) connecting adjacent sentences."
+        },
+        {
+          "term": "Big6 Model",
+          "definition": "A 6-stage structured information problem-solving framework from Task Definition to Evaluation."
+        },
+        {
+          "term": "SCONUL Seven Pillars",
+          "definition": "A higher-education information literacy model comprising Identify, Scope, Plan, Gather, Evaluate, Manage, and Present."
+        }
+      ]
+    },
+    {
+      "id": "guide-cuu2102-6",
+      "courseCode": "CUU 2102",
+      "lectureNumber": 6,
+      "title": "Part 6: Information Ethics, AI-Assisted Writing, Boolean Queries & Real KCA Case Studies",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Directly covers the highest-scoring scenario questions from CUU 2102 Apr 2026 [Paper A2] and Aug 2025 [Papers A1, A3, A4, A5]: Primary/Secondary/Tertiary sources, Scholarly vs. Trade vs. Popular magazines, CRAAP + Bias Detection, Boolean Search Query construction, Barriers to Information Access, and complete worked solutions to Maria's AI Ethics Case Study and John's Plagiarism Case Study.",
+      "coreHighlights": [
+        {
+          "heading": "Source Categories & Library vs. Open Web [Paper A2: Q1a, Q2a, Paper A3: Q4, Paper A4: Q2b]",
+          "points": [
+            "Primary (original data: empirical journal studies, theses, patents, interviews) vs. Secondary (interprets primary: textbooks, systematic reviews) vs. Tertiary (compiles/indexes: encyclopedias, dictionaries, directories).",
+            "Scholarly Journals vs. Trade Magazines vs. Popular Magazines [Paper A3: Q4]: Scholarly = peer-reviewed by PhDs, dense citations, technical jargon, abstract/methodology (ideal for university essays). Trade = industry practitioners (e.g., IEEE Spectrum), practical trends, minimal citations. Popular = general public (e.g., Time), journalists, glossy ads, zero references (unsuitable as primary academic evidence).",
+            "8 Quality Library Sources [Paper A4: Q4]: Peer-reviewed journal articles, Academic e-books/textbooks, Theses & dissertations, Conference proceedings, Reference works (encyclopedias), Statistical/Government reports, Institutional repositories, Academic databases (EBSCO, JSTOR, IEEE Xplore)."
+          ]
+        },
+        {
+          "heading": "5 Database Search Techniques & Worked Boolean Query [Paper A2: Q1d, Paper A3: Q2a, Paper A4: Q3]",
+          "points": [
+            "1. Boolean Operators: `AND` narrows (requires BOTH terms), `OR` broadens (matches synonyms), `NOT` excludes unwanted concepts.",
+            "2. Phrase Searching: Enclosing exact phrases in quotes `\"renewable energy\"` forces adjacency.",
+            "3. Truncation / Wildcards: `polic*` retrieves policy, policies, policymaking; `wom?n` retrieves woman/women.",
+            "4. Nesting (Parentheses): Controls evaluation order `(\"renewable energy\" OR \"solar power\") AND Africa`.",
+            "5. Field & Date Limiters: Filtering by peer-reviewed only, publication date (2021–2026), author, or title."
+          ]
+        },
+        {
+          "heading": "CRAAP Credibility Test & 5 Ways to Detect Bias [Paper A2: Q4a-b]",
+          "points": [
+            "CRAAP: Currency, Relevance, Authority, Accuracy, Purpose.",
+            "5 Ways to Identify Bias in an Article [Paper A2: Q4b]: (1) Emotionally loaded or sensational language instead of neutral tone, (2) Omission of counterarguments or cherry-picking data, (3) Undisclosed sponsor/funding conflict of interest, (4) Reliance on anonymous/unverified claims without citations, (5) Stereotyping or sweeping generalizations."
+          ]
+        },
+        {
+          "heading": "Real KCA Case Studies: Maria (AI Ethics) [Paper A2: Q3] & John (Plagiarism) [Paper A1: Q3]",
+          "points": [
+            "Maria Case Study (Apr 2026 — 15 Marks): Ethical issues = (1) Self-plagiarism (reusing undergrad paper uncited), (2) Data privacy breach (partially anonymized participant data on public cloud), (3) Predatory publishing (high-fee rapid journal without verification) + Citation fabrication (hallucinated auto-citations). AI Misconduct Verdict: YES—undisclosed AI drafting violates authorship originality and accountability even if explicit AI policy is absent.",
+            "John Plagiarism Case Study (Aug 2025 — 15 Marks): Mistakes = Direct verbatim copying without quotation marks/citation AND paraphrasing without acknowledging original authors. Consequences = Grade zero/cancellation, Disciplinary Committee hearing, suspension, or expulsion. Fix = Use quotation marks + `(Author, Year, p. X)` for verbatim text, cite `(Author, Year)` for every paraphrase, and compile a complete APA Reference list.",
+            "Barriers to Information Access [Paper A5: Q1-ii]: Paywalls/subscription costs, digital divide/poor internet, information overload, language barriers, and low search literacy—overcome via MyLoft/university library subscriptions, open-access repositories (DOAJ), and Boolean training."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Both the Maria AI Ethics scenario [Paper A2: Q3] and the Renewable Energy Boolean Query [Paper A3: Q2a] are textbook 15-mark KCA Question 3/2 templates. Practice writing them in structured numbered headings!"
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Preventing AI hallucinations, verifying open-source licenses, and safeguarding user PII under Kenya's Data Protection Act (2019) mirror the exact ethics tested in Maria's case study.",
+        "careerRelevance": "Every IT consultant, researcher, and policy analyst must separate verified peer-reviewed evidence from vendor marketing and AI-generated misinformation.",
+        "concreteExample": "Worked Boolean Query [Paper A3: Q2a]: `(\"renewable energy\" OR \"clean energy\" OR \"solar power\") AND (Africa OR \"Sub-Saharan Africa\") AND (\"policy development\" OR regulation OR governance) NOT \"fossil fuels\"`."
+      },
+      "practicalExamples": [
+        {
+          "title": "Exam-Ready Boolean Query Breakdown [Paper A3: Q2a — 10 Marks]",
+          "language": "markdown",
+          "codeOrDiagram": "Topic: \"Renewable energy in Africa and policy development\"\n\nQuery:\n(\"renewable energy\" OR \"clean energy\" OR \"sustainable energy\")\nAND (\"Africa\" OR \"Sub-Saharan Africa\" OR \"Kenya\")\nAND (\"policy development\" OR \"energy polic*\" OR regulation)\nNOT (\"nuclear\" OR \"coal\")\n\nHow Each Operator Improves Relevance:\n- Quotes \"...\": Lock multi-word concepts together as exact phrases.\n- OR + Parentheses: Capture synonyms so relevant papers using \"clean energy\" aren't missed.\n- AND: Intersect all 3 mandatory concepts to narrow results drastically.\n- Truncation (*): polic* matches policy, policies, policymaking.\n- NOT: Eliminates irrelevant noise (coal/nuclear).",
+          "explanation": "Following this 5-point annotation guarantees 10/10 marks on Boolean query questions."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Thinking paraphrasing someone's website removes the need for a citation.",
+          "correctApproach": "Paraphrasing WITHOUT an in-text citation and end-reference is STILL plagiarism (exactly John's mistake in [Paper A1: Q3]!).",
+          "sampleQuestion": "Identify and explain the citation and referencing mistakes that John made [Paper A1: Q3a]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Predatory Journal",
+          "definition": "An exploitative publication that charges high fees for rapid publication while skipping legitimate peer review and editorial quality checks."
+        },
+        {
+          "term": "Self-Plagiarism",
+          "definition": "Reusing significant portions of one's own previously submitted work without disclosure or proper citation."
+        },
+        {
+          "term": "Truncation",
+          "definition": "Using a root word plus a symbol like `*` (`comput*`) to retrieve all grammatical variations of a search term."
         }
       ]
     }
@@ -1776,6 +2282,236 @@ export const SMART_STUDY_GUIDES: Record<string, SmartLectureGuide[]> = {
         {
           "term": "Precedence",
           "definition": "The grammatical priority determining which operators are evaluated first in an expression without parentheses."
+        }
+      ]
+    },
+    {
+      "id": "guide-stu1201-11",
+      "courseCode": "STU 1201",
+      "lectureNumber": 11,
+      "title": "Lecture 11: Control Structures in C — Decisions, Loops, Nested Patterns & Math Library",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Directly aligned with KCA Programming Methodology past papers (BIT 1304 Aug 2012/2013/2014 & BIT 1303A Apr 2015 [Papers C1–C4]). Covers the three universal control categories (Sequence, Selection, Iteration), if-else vs. switch-case, while vs. do-while flowcharts, nested loop dry-run trace tables, jump statements (break/continue), and standard `<math.h>`/`<ctype.h>` library expressions.",
+      "coreHighlights": [
+        {
+          "heading": "Selection Structures: `if / else if / else` vs. `switch-case` [Paper C4: Q2a, Paper C3: Q3]",
+          "points": [
+            "Three Control Structure Categories [Paper C2: Q2b]: Sequence (line-by-line execution), Selection/Decision (`if`, `if-else`, `switch`), and Iteration/Looping (`for`, `while`, `do-while`).",
+            "Functional Difference (`if` vs. `switch`) [Paper C4: Q2a]: `if-else` evaluates arbitrary boolean/relational/range expressions (e.g., `salary >= 30000 && salary < 40000` or floats); `switch` tests a single integral/char expression against constant `case` labels and requires `break;` to prevent fall-through.",
+            "Classic Exam Selection Prompts: Overtime Gross Pay (`hours <= 40` vs `40*rate + 1.5*rate*(hours-40)` [Paper C1: Q1d]), Tax Bracket calculator [Paper B6: Q2c], Scholarship eligibility [Paper B4: Q1c], and Age category ladder [Paper C2: Q3b]."
+          ]
+        },
+        {
+          "heading": "Iteration: `for`, `while`, `do-while` & Nested Loop Tracing [Paper C1: Q1f, Q1a]",
+          "points": [
+            "Pre-test vs. Post-test Loops [Paper C1: Q1]: `while` and `for` evaluate the condition BEFORE executing the body (may run 0 times). `do-while` executes the body FIRST and checks the condition at the bottom (guaranteed to run AT LEAST ONCE).",
+            "Nested Loop Counting Formula [Paper C1: Q1f]: `for(x=0; x<10; x++) for(y=5; y>0; y--) printf(\"*\");` runs outer 10 times × inner 5 times = 50 asterisks.",
+            "Jump Statements: `break` terminates the innermost loop or switch immediately; `continue` skips the remainder of the current iteration and jumps to the next iteration check."
+          ]
+        },
+        {
+          "heading": "Standard `<math.h>` & `<ctype.h>` Expressions [Paper C4: Q1e-f]",
+          "points": [
+            "`toupper('b')` -> `'B'`; `tolower('C')` -> `'c'` (require `#include <ctype.h>`).",
+            "`pow(3.0, 3.0)` -> `27.0`; `sqrt(81.0)` -> `9.0`; `fabs(-1.23)` -> `1.23` (absolute value for floats).",
+            "`floor(22.46)` -> `22.0` (rounds DOWN); `ceil(33.3)` -> `34.0` (rounds UP).",
+            "Quadratic Formula in C [Paper C4: Q1f-iv]: `(-b + sqrt(pow(b, 2) - 4 * a * c)) / (2 * a)` — never omit `*` multiplication or outer parentheses around `2 * a`!"
+          ],
+          "callout": {
+            "type": "warning",
+            "text": "Exam Trap [Paper C4: Q1f]: In C, writing `2a` or `b^2` is a syntax/logic error! Always use explicit multiplication (`2 * a`) and `pow(b, 2)` or `(b * b)`."
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Every billing engine, payroll calculator (PAYE tax tiers), and real-time embedded sensor loop depends on rock-solid branching, loop invariants, and boundary checks.",
+        "careerRelevance": "Dry-running loops and catching off-by-one errors (`<` vs `<=`) on paper is tested in both university exams and whiteboard coding interviews.",
+        "concreteExample": "Kenya's progressive PAYE tax bands translate directly into an `else if` ladder testing highest threshold down to lowest [Paper B6: Q2c]."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solutions: Overtime Weekly Wages [Paper C1: Q1d] & Nested Number Pyramid [Paper B6: Q3a]",
+          "language": "c",
+          "codeOrDiagram": "#include <stdio.h>\n\nint main(void) {\n    // 1. BIT 1304 Aug 2012 Q1(d): Overtime Weekly Wages (6 Marks)\n    double hours, rate, grossPay;\n    printf(\"Enter hours worked and pay rate: \");\n    scanf(\"%lf %lf\", &hours, &rate);\n\n    if (hours <= 40.0) {\n        grossPay = hours * rate;\n    } else {\n        grossPay = (40.0 * rate) + (1.5 * rate * (hours - 40.0));\n    }\n    printf(\"Gross Pay = %.2f\\n\\n\", grossPay);\n\n    // 2. Nested Loop Pattern: 1 / 1 2 / 1 2 3 / 1 2 3 4 / 1 2 3 4 5\n    for (int i = 1; i <= 5; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"%d \", j);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+          "explanation": "Shows exact C syntax (`#include <stdio.h>`, `&` in `scanf`, `%lf` for `double`, and nested `for` loop indices `i` and `j`)."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Using `=` (assignment) instead of `==` (equality) inside `if (num = 7)`.",
+          "correctApproach": "Always use `==` for equality and `!=` for not-equal. Single `=` assigns 7 and always evaluates true!",
+          "sampleQuestion": "Distinguish between a while loop and a do-while loop using a flowchart [Paper C1: Q1]."
+        },
+        {
+          "trap": "Omitting `&` (address-of operator) in `scanf(\"%d\", num);`.",
+          "correctApproach": "Always pass memory addresses for scalar variables: `scanf(\"%d\", &num);` (strings/char arrays are the exception).",
+          "sampleQuestion": "Write a C program to compute the sum of odd numbers between user-supplied min and max [Paper C3: Q2d]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Pre-test Loop",
+          "definition": "A loop (`for`, `while`) that evaluates its continuation condition before executing the loop body."
+        },
+        {
+          "term": "Post-test Loop",
+          "definition": "A loop (`do-while`) that executes its body once before checking the continuation condition at the end."
+        },
+        {
+          "term": "Trace Table",
+          "definition": "A manual step-by-step table tracking variable values and output across each iteration of a loop or algorithm."
+        }
+      ]
+    },
+    {
+      "id": "guide-stu1201-12",
+      "courseCode": "STU 1201",
+      "lectureNumber": 12,
+      "title": "Lecture 12: Functions, Modularization, Recursion, Scope & Preprocessor Directives",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Directly aligned with BIT 1304 / BIT 1303A past papers [Papers C1, C3, C4]. Covers modular program decomposition, function prototypes vs. definitions, formal parameters vs. actual arguments, call-by-value vs. call-by-reference, variable scope, recursion vs. iteration (`rec_cheers`, Factorial, Fibonacci), and preprocessor macros (`#include`, `#define` expansion traps).",
+      "coreHighlights": [
+        {
+          "heading": "Function Anatomy & Modular Programming [Paper C1: Q1b, Q5f, Paper C3: Q1e, g]",
+          "points": [
+            "Function Prototype vs. Definition [Paper C3: Q1e]: Prototype declares the function's return type, name, and parameter types before `main()` ending with `;` (e.g., `float average(int a, int b);`). Definition contains the actual executable body `{ return (a + b) / 2.0; }`.",
+            "Parameters vs. Arguments [Paper C1: Q1b]: Parameters are placeholder variables in the function header (`int a, int b`); Arguments are the real values/expressions passed during the function call (`average(10, 20)`).",
+            "Why Use Modular Functions [Paper C1: Q3e, Q5f]: (1) Breaks complex problems into manageable sub-units (divide & conquer), (2) Promotes code reuse without duplication, (3) Simplifies debugging, testing, and team collaboration."
+          ]
+        },
+        {
+          "heading": "Call-by-Value vs. Call-by-Reference & Variable Scope [Paper C1: Q3a-c, Q5d]",
+          "points": [
+            "Call-by-Value: Passes a COPY of the argument's value to the function; modifications inside the function do NOT affect the caller's original variable.",
+            "Call-by-Reference: Passes the MEMORY ADDRESS (`&x`) into a pointer parameter (`int *p`); dereferencing (`*p = 99;`) modifies the caller's original variable directly (essential for `swap(&a, &b)`).",
+            "Variable Scope [Paper C1: Q3b-c]: The region of code where a variable is visible and accessible (Local scope inside a function/block vs. Global scope outside all functions). Scope prevents naming collisions and unintended side-effects."
+          ]
+        },
+        {
+          "heading": "Recursion vs. Iteration & Preprocessor Macro Traps [Paper C1: Q5a-c, Paper C3: Q2c, Paper C4: Q1a]",
+          "points": [
+            "Recursive Function [Paper C1: Q5a]: A function that calls itself to solve smaller sub-instances until reaching a terminating Base Case (e.g., `if (n <= 1) return 1; return n * fact(n - 1);`).",
+            "Recursion vs. Looping [Paper C1: Q5b]: Looping repeats via iteration constructs with constant stack memory; Recursion uses repeated function call stack frames (cleaner for tree/factorial problems, but risks stack overflow if base case is missing).",
+            "Preprocessor Directives [Paper C4: Q1a]: Executed BEFORE compilation. `#include <stdio.h>` inserts header declarations; `#define PI 3.142` performs literal text substitution.",
+            "FAMOUS KCA MACRO TRAP [Paper C3: Q2c]: Given `#define square(x) x*x`, what does `i = 64 / square(4);` print? Answer: **64**! Because text substitution turns it into `64 / 4 * 4` = `16 * 4` = `64` (NOT `64 / 16 = 4`). Fix with parentheses: `#define square(x) ((x)*(x))`."
+          ],
+          "callout": {
+            "type": "warning",
+            "text": "KCA Past Paper Gold [Paper C3: Q2c]: `64 / square(4)` with `#define square(x) x*x` evaluates left-to-right as `(64 / 4) * 4 = 64`. Memorize this exact trick!"
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Every production C/C++ codebase (Linux kernel, SQLite, Redis) separates interfaces into `.h` header prototypes and implementations into `.c` source modules, passing large structs by pointer reference to avoid expensive memory copies.",
+        "careerRelevance": "Mastering stack frames, recursion base cases, and pointer-based pass-by-reference is essential for Data Structures & Algorithms (Year 2).",
+        "concreteExample": "Converting KCA's recursive `rec_cheers(int n)` [Paper C1: Q5c] into an iterative `for (int i = n; i > 1; i--) printf(\"Hip, \"); printf(\"Hurray!\\n\");` eliminates stack overhead."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solutions: Iterative `rec_cheers` [Paper C1: Q5c], Factorial & Swap by Reference [Paper C3: Q3, Q5]",
+          "language": "c",
+          "codeOrDiagram": "#include <stdio.h>\n\n// Prototype\nlong factorial(int n);\nvoid swap(int *a, int *b);\n\n// Iterative version of rec_cheers(n) [BIT 1304 Aug 2012 Q5(c)]\nvoid iter_cheers(int n) {\n    for (int i = n; i > 1; i--) {\n        printf(\"Hip, \");\n    }\n    printf(\"Hurray!\\n\");\n}\n\n// Recursive Factorial [BIT 1303A Apr 2015 Q3]\nlong factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\n// Call-by-Reference Swap [BIT 1303A Apr 2015 Q5]\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}",
+          "explanation": "Demonstrates exact C prototypes, iterative vs. recursive logic, and pointer-based pass-by-reference."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Integer division bug when returning average of two ints: `return (a + b) / 2;`.",
+          "correctApproach": "Divide by `2.0` or cast `(float)(a + b) / 2` so `average(3, 4)` returns `3.5`, not `3` [Paper C1: Q5e].",
+          "sampleQuestion": "Write a function definition that takes two int arguments and returns their average [Paper C1: Q5e]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Function Prototype",
+          "definition": "A forward declaration specifying a function's return type, name, and parameter types so the compiler can type-check calls."
+        },
+        {
+          "term": "Recursion",
+          "definition": "A programming technique where a function invokes itself directly or indirectly until a terminating base case is satisfied."
+        },
+        {
+          "term": "Preprocessor Directive",
+          "definition": "A `#`-prefixed instruction (`#include`, `#define`) processed prior to compilation."
+        }
+      ]
+    },
+    {
+      "id": "guide-stu1201-13",
+      "courseCode": "STU 1201",
+      "lectureNumber": 13,
+      "title": "Lecture 13: Arrays (1D & 2D), Strings, Pointers & Structures (struct) in C",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Directly aligned with BIT 1304 & BIT 1303A past papers [Papers C1–C4]. Covers 1D and 2D array declarations and matrix arithmetic (`char grapes[2][3]`, `marks[3][5]`, 4x3 matrix addition, 6x5 total sum), C string operations (palindrome check & reversal), Pointer declaration and arithmetic tracing (`*p`, `&x`, `*(p2+1)`), and C `struct` declarations (`struct person` BMI calculator, `struct student`, `struct vector`).",
+      "coreHighlights": [
+        {
+          "heading": "1D & 2D Arrays in C [Paper C1: Q2b, d, Paper C2: Q1b-c, Paper C4: Q1c-d]",
+          "points": [
+            "Array Definition: A contiguous fixed-size collection of elements sharing the SAME data type, indexed starting at `0` (e.g., `int arr[5]` has valid indices `0` through `4`).",
+            "2D Array Anatomy (`char grapes[2][3];`) [Paper C1: Q2b]: Name = `grapes`, Rows = 2, Columns = 3, Total elements = 2 × 3 = 6, Data type = `char`. To hold 3 records with same 6 elements: `char grapes[3][2];`.",
+            "Matrix Initialization [Paper C1: Q2d]: `int marks[3][5] = {{34,45,43,89,34}, {89,56,98,34,55}, {67,87,45,43,95}};`.",
+            "Traversing a 2D Array: Always use nested loops—outer loop `i` for rows (`0..R-1`), inner loop `j` for columns (`0..C-1`), accessing `arr[i][j]`."
+          ]
+        },
+        {
+          "heading": "Pointers & Pointer Arithmetic Trace [Paper C3: Q3a, Paper C4: Q1b, Q2b]",
+          "points": [
+            "Pointer Definition: A variable that stores the MEMORY ADDRESS of another variable (`int *p;`).",
+            "Two Key Pointer Operators [Paper C4: Q2b]: `&` (Address-of operator—returns memory location of a variable) and `*` (Dereference/Indirection operator—accesses/modifies the value stored at the pointed address).",
+            "Array Name as Constant Pointer [Paper C4: Q1b]: Given `int a[5]={100,200,300,400,500}; int *p2 = a;`, `p2` points to `a[0]` (100), `*(p2+1)` is `a[1]` (200), and `*(p2+2)` is `a[2]` (300).",
+            "Exact Trace of Paper C4 Q1(b): `x = 500; p = &x;` -> Line 1 prints `1) 500 500`. Then `*(p2+1) = *p;` sets `a[1] = 500`. Then `*p = *p2 + *(p2+2);` sets `x = 100 + 300 = 400`. Line 2 prints `2) 400 400`!"
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "Notice `printf(\"2) %d %d \\n\", x, *p, *p2);` only has TWO `%d` specifiers, so C prints `x` (400) and `*p` (400) and ignores the extra third argument `*p2` (100)!"
+          }
+        },
+        {
+          "heading": "Structures (`struct`) in C [Paper C3: Q1f, Q2f, Paper C4: Q2c, Q3a]",
+          "points": [
+            "Struct Definition: A user-defined composite data type grouping heterogeneous variables (different data types like `int`, `float`, `char[]`) under one logical record name.",
+            "Declaration & Access: Define `struct person { int id, age; float height, weight; };`, instantiate `struct person p1;`, and access members with the dot operator (`p1.weight`) or arrow operator (`ptr->weight`) via pointers.",
+            "Static vs. Dynamic Memory [Paper C4: Q3b]: Static memory is allocated at compile-time with fixed size (stack/global arrays); Dynamic memory is allocated at runtime on the heap via `malloc()`/`calloc()` and freed via `free()`."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Database records, TCP/IP network packet headers, and OS process control blocks (PCBs) are implemented directly as C `struct`s manipulated via pointers.",
+        "careerRelevance": "Understanding pointers and structs in C is the exact gateway to mastering C++ classes, objects, and dynamic memory in `CPP 2104`.",
+        "concreteExample": "In KCA's BMI Calculator [Paper C4: Q2c], bundling `id`, `age`, `height`, and `weight` inside `struct person` keeps all patient attributes organized cleanly."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solutions: `struct person` BMI [Paper C4: Q2c] & 2D Array Sum [Paper C4: Q1d]",
+          "language": "c",
+          "codeOrDiagram": "#include <stdio.h>\n\n// 1. BIT 1304 Aug 2014 Q2(c): struct person + BMI (11 Marks)\nstruct person {\n    int id, age;\n    float height, weight;\n};\n\n// 2. BIT 1304 Aug 2014 Q1(d): Sum of 6x5 2D Array (4 Marks)\nint sumMatrix(int arr[6][5]) {\n    int total = 0;\n    for (int i = 0; i < 6; i++)\n        for (int j = 0; j < 5; j++)\n            total += arr[i][j];\n    return total;\n}\n\nint main(void) {\n    struct person p;\n    printf(\"Enter ID, Age, Height(m), Weight(kg): \");\n    scanf(\"%d %d %f %f\", &p.id, &p.age, &p.height, &p.weight);\n    float bmi = p.weight / (p.height * p.height);\n    printf(\"ID: %d | Age: %d | BMI: %.2f\\n\", p.id, p.age, bmi);\n    return 0;\n}",
+          "explanation": "Directly answers the 11-mark BMI struct question and 4-mark 6x5 2D array summation question from BIT 1304 Aug 2014."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Accessing `arr[5]` in a 5-element array `int arr[5]`.",
+          "correctApproach": "C arrays are 0-indexed: valid indices for size `N` are always `0` to `N - 1`.",
+          "sampleQuestion": "Write a C program to find the largest element in an array [Paper C3: Q4]."
+        },
+        {
+          "trap": "Forgetting the semicolon `};` after closing a `struct` definition (note: Paper C4 Q3a deliberately left it out as a trick!).",
+          "correctApproach": "Always terminate every `struct Name { ... };` with a semicolon.",
+          "sampleQuestion": "Write the syntax of declaring a structure in C [Paper C3: Q1f]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Pointer",
+          "definition": "A variable holding the memory address of another variable, operated on with `&` (address-of) and `*` (dereference)."
+        },
+        {
+          "term": "Structure (struct)",
+          "definition": "A user-defined C data type combining multiple variables of potentially different data types under one record name."
+        },
+        {
+          "term": "Dynamic Memory",
+          "definition": "Heap memory allocated during program runtime using `malloc()`/`calloc()` and explicitly released with `free()`."
         }
       ]
     }
@@ -2554,6 +3290,92 @@ export const SMART_STUDY_GUIDES: Record<string, SmartLectureGuide[]> = {
           "definition": "A numerical score calculated by browsers (Inline > ID > Class > Element) deciding which style declaration takes precedence."
         }
       ]
+    },
+    {
+      "id": "guide-stu1202-14",
+      "courseCode": "STU 1202",
+      "lectureNumber": 14,
+      "title": "Lesson 15: Client-Side JavaScript, DOM Events, CGI, XML/SGML, Image Maps & BIT 1203 Exam Traps",
+      "estimatedReadTimeMinutes": 35,
+      "executiveSummary": "Directly fills every gap found across all 4 KCA BIT 1203 Web Design & Development past papers (Aug 2011, Dec 2012, Aug 2013, Dec 2014 [Papers D1–D4]). Covers JavaScript DOM event handlers (`onFocus`, `onSubmit`, `document.writeln()`), Java vs. JavaScript, CGI scripts vs. programs, Physical vs. Logical HTML tags, GIF vs. JPEG & Image Maps, XML vs. SGML, WYSIWYG Web Page Editors, and Internet Servers.",
+      "coreHighlights": [
+        {
+          "heading": "JavaScript in HTML & Event Handlers [Paper D4: Q1f, Q5a, Q5d]",
+          "points": [
+            "Why Embed JavaScript in HTML [Paper D4: Q1f]: Enables client-side interactivity, instant form validation BEFORE network submission (saving server bandwidth), dynamic DOM updates, and responsive UI feedback.",
+            "Key Exam Event Handlers & Methods [Paper D4: Q5a]: `onFocus` (fires when an input element receives cursor/keyboard focus), `onSubmit` (fires when a user submits a `<form>`, returning `false` cancels submission if validation fails), `document.writeln()` (writes HTML/text to the document stream followed by a newline).",
+            "Java vs. JavaScript [Paper D4: Q5d]: Java is a statically-typed, class-based, compiled-to-bytecode OOP language running on the JVM; JavaScript is a dynamically-typed, prototype-based, interpreted scripting language running natively in web browsers (and Node.js)."
+          ]
+        },
+        {
+          "heading": "Frequently Tested Legacy HTML Tags & Tag Categories [Paper D1: Q1e, Q2c, Paper D2: Q1d, Paper D4: Q4c]",
+          "points": [
+            "Two Groups of HTML Tags [Paper D1: Q2c]: (1) Paired / Container Tags (have opening & closing tags, e.g., `<p>...</p>`, `<table>...</table>`), and (2) Unpaired / Empty / Void Tags (self-contained with no closing tag, e.g., `<br>`, `<hr>`, `<img>`, `<input>`).",
+            "Physical vs. Logical Tags [Paper D4: Q4c]: Physical tags specify visual appearance directly (`<b>`, `<i>`, `<strike>`, `<tt>`); Logical/Semantic tags convey meaning (`<strong>`, `<em>`, `<cite>`, `<samp>`, `<blockquote>`, `<address>`).",
+            "Exact Tag Definitions Tested in KCA Exams: `<SAMP>` (sample program output), `<CITE>` (citation/title of a creative work), `<BLOCKQUOTE>` (indented long quotation), `<HR>` (horizontal thematic divider line), `<PRE>` (preformatted text preserving whitespace/line breaks), `<MARQUEE>` (deprecated scrolling text), `<BASE>` (specifies base URL/target for all relative links in `<head>`), `<DL>/<DT>/<DD>` (Definition List / Term / Description)."
+          ]
+        },
+        {
+          "heading": "Web Page Editors, Image Maps, GIF vs. JPEG & XML vs. SGML [Paper D1: Q1d, Q2b, Paper D4: Q1a, d-e]",
+          "points": [
+            "Web Page Editor (WYSIWYG / Code Editor) [Paper D1: Q2b]: Software for creating and editing HTML/CSS (e.g., VS Code, Dreamweaver). 4 Key Features: Syntax highlighting, auto-completion, live visual preview, built-in FTP/Git deployment & error validation.",
+            "GIF vs. JPEG [Paper D1: Q1d, Paper D4: Q1e]: GIF uses lossless compression, limited to 256 colors, supports transparency and frame animation (best for logos/icons); JPEG uses lossy compression, supports 16.7M true colors, no transparency/animation (best for photographs).",
+            "Image Maps [Paper D4: Q1d]: A single image divided into multiple clickable geometric hotspot regions (`<map>` + `<area shape=\"rect|circle|poly\" coords=\"...\" href=\"...\">`) linking to different URLs.",
+            "XML vs. SGML [Paper D4: Q1a] & CGI [Paper D4: Q5b]: SGML is the complex parent meta-language; XML is a lightweight, web-friendly subset of SGML with custom extensible tags for structured data exchange. CGI (Common Gateway Interface) links web servers to backend scripts (interpreted, e.g., Perl/Python) or compiled CGI programs (C/C++ binaries)."
+          ]
+        },
+        {
+          "heading": "Internet Servers & Protocols [Paper D3: Q3, Q4b, Paper D4: Q3a, Q4d]",
+          "points": [
+            "Proxy Server: Intermediary server between clients and the internet providing caching, content filtering, and anonymity.",
+            "Application Server: Executes business logic and dynamic web apps; Web Server (Apache/Nginx): Serves HTTP/HTTPS web pages; File Server: Centralizes shared file storage; Print Server: Manages network print queues.",
+            "Firewall: Network security barrier filtering incoming/outgoing traffic based on security rules. GET vs. POST: GET appends form data to the URL (visible, length-limited, idempotent); POST sends data inside the HTTP request body (secure for passwords/uploads, no practical size limit)."
+          ],
+          "callout": {
+            "type": "tip",
+            "text": "Table Rendering Trick [Paper D2: Q4a]: KCA loves giving you HTML `<table>` code with `colspan` and `rowspan` and asking you to DRAW the resulting grid on paper! Always count columns per row carefully."
+          }
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "Modern React/TypeScript web apps still sit directly on top of HTML5 semantic forms, HTTP GET/POST verbs, CSS Box Model, and DOM event listeners.",
+        "careerRelevance": "Mastering both modern responsive HTML5/CSS and foundational web protocols prepares you for full-stack web engineering.",
+        "concreteExample": "Client-side validation with `onsubmit=\"return validateForm()\"` stops empty passwords before hitting the backend API, while server-side validation enforces final security."
+      },
+      "practicalExamples": [
+        {
+          "title": "Real KCA Exam Solution: HTML5 Form + JavaScript `onSubmit` Validation & `colspan/rowspan` Table [Papers D1, D2, D4]",
+          "language": "html",
+          "codeOrDiagram": "<form action=\"/register\" method=\"POST\" onsubmit=\"return validateForm()\">\n  <label>Username:</label>\n  <input type=\"text\" id=\"uname\" name=\"uname\" onfocus=\"this.style.background='#eef'\" required>\n\n  <label>Mode:</label>\n  <input type=\"radio\" name=\"mode\" value=\"PT\" checked> Part-Time\n  <input type=\"radio\" name=\"mode\" value=\"DL\"> Distance Learning\n\n  <label>Units:</label>\n  <input type=\"checkbox\" name=\"units\" value=\"STU1202\"> Web Design\n  <input type=\"checkbox\" name=\"units\" value=\"CPP2104\"> OOP\n\n  <label>Campus:</label>\n  <select name=\"campus\">\n    <option value=\"MAIN\">Main Campus</option>\n    <option value=\"TOWN\">Town Campus</option>\n  </select>\n  <button type=\"submit\">Register</button>\n</form>\n\n<script>\nfunction validateForm() {\n  const u = document.getElementById('uname').value.trim();\n  if (u.length < 3) {\n    alert('Username must be at least 3 characters!');\n    return false; // Prevents form submission\n  }\n  return true;\n}\n</script>",
+          "explanation": "Integrates `ACTION`, `METHOD=\"POST\"`, Radio buttons (shared `name`), Checkboxes, `<select>` dropdown, `onfocus`, and `onsubmit` JavaScript validation."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Giving radio buttons different `name` attributes so multiple options can be selected simultaneously.",
+          "correctApproach": "All radio buttons in a mutually exclusive choice MUST share the exact same `name=\"...\"` attribute [Paper D1: Q2a].",
+          "sampleQuestion": "Describe the purpose of Radio Buttons, Check Boxes, and Drop Down Boxes in forms [Paper D1: Q2a]."
+        },
+        {
+          "trap": "Confusing `cellpadding` (space INSIDE cell between content and border) with `cellspacing` (space OUTSIDE between adjacent cells).",
+          "correctApproach": "Padding = inside the cell wall; Spacing = gap between separate cells [Paper D1: Q4a].",
+          "sampleQuestion": "Explain cellpadding, cellspacing, nowrap, colspan, and rowspan [Paper D1: Q4a]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "onSubmit / onFocus",
+          "definition": "JavaScript DOM event handlers firing when a form is submitted or when an input element gains focus."
+        },
+        {
+          "term": "CGI (Common Gateway Interface)",
+          "definition": "A standard protocol enabling web servers to interface with external server-side scripts or executable programs."
+        },
+        {
+          "term": "Logical vs. Physical Tags",
+          "definition": "Logical tags (`<strong>`, `<em>`, `<cite>`) describe semantic meaning; physical tags (`<b>`, `<i>`) dictate literal visual rendering."
+        }
+      ]
     }
   ],
   "STU 2102": [
@@ -3309,6 +4131,93 @@ export const SMART_STUDY_GUIDES: Record<string, SmartLectureGuide[]> = {
         {
           "term": "NACOSTI",
           "definition": "National Commission for Science, Technology and Innovation; the statutory body that regulates research in Kenya."
+        }
+      ]
+    },
+    {
+      "id": "guide-stu2102-12",
+      "courseCode": "STU 2102",
+      "lectureNumber": 12,
+      "title": "Lecture 12: KCA Exam Synthesis — Sub-Problems, Hypotheses, Validity/Reliability & Experimental Designs",
+      "estimatedReadTimeMinutes": 30,
+      "executiveSummary": "Directly synthesized from all 3 KCA BIT 2301 Research Methodology past papers (Aug 2011, Apr 2012, Aug 2012 [Papers E1–E3]). Consolidates the highest-mark recurring exam questions: 4 characteristics of sub-problems, Null vs. Alternative hypotheses & 6 traits of a hypothesis, 5 types of Validity vs. Reliability, Descriptive vs. Inferential statistics, Experimental designs, Action Research, and Tool vs. Method vs. Methodology vs. Framework.",
+      "coreHighlights": [
+        {
+          "heading": "Sub-Problems, Aims vs. Objectives & Hypotheses [Paper E1: Q1a-b, Q2c, Paper E3: Q1d, Q2d]",
+          "points": [
+            "4 Characteristics of Sub-Problems [Paper E1: Q1a — 8 Marks]: (1) Each sub-problem must be a completely researchable unit on its own, (2) Must be clearly tied to data interpretation (not just a yes/no lookup), (3) Collectively, all sub-problems must add up to the totality of the main problem, (4) Must be manageable in number (typically 3–5) and mutually exclusive.",
+            "Aims vs. Objectives [Paper E3: Q2d]: Aims are broad, overarching long-term goals of the study; Objectives are specific, measurable, action-oriented steps (SMART: Specific, Measurable, Achievable, Relevant, Time-bound) executed to fulfill the aim.",
+            "Null ($H_0$) vs. Alternative ($H_1$) Hypothesis [Paper E1: Q1b]: $H_0$ assumes NO statistically significant relationship or difference exists; $H_1$ asserts that a real relationship/effect exists.",
+            "6 Characteristics of a Good Hypothesis [Paper E1: Q2c]: Clear and precise, empirically testable, states relationship between variables, limited in scope, consistent with existing literature, and amenable to statistical testing within reasonable time."
+          ]
+        },
+        {
+          "heading": "Validity (5 Types) vs. Reliability & Statistics [Paper E2: Q1a, Q1e-f]",
+          "points": [
+            "Validity vs. Reliability [Paper E2: Q1a-i]: Validity = accuracy (does the instrument measure what it CLAIMS to measure?); Reliability = consistency/repeatability (does it yield stable results across repeated trials?). An instrument can be reliable without being valid, but CANNOT be valid without being reliable!",
+            "5 Types of Validity [Paper E2: Q1f]: (1) Face Validity (appears valid on surface), (2) Content Validity (covers all facets of the construct), (3) Construct Validity (aligns with theoretical framework), (4) Criterion/Predictive Validity (correlates with external benchmark), (5) Internal & External Validity (causal accuracy & generalizability).",
+            "Descriptive vs. Inferential Statistics [Paper E2: Q1a-iii]: Descriptive summarizes sample data (mean, median, mode, standard deviation, charts); Inferential tests hypotheses and generalizes findings from a sample to a broader population (t-test, ANOVA, Chi-square, regression)."
+          ]
+        },
+        {
+          "heading": "Tool vs. Method vs. Methodology vs. Framework [Paper E2: Q4a, Paper E3: Q4]",
+          "points": [
+            "Tool (Instrument): The concrete device used to gather or process data (e.g., Questionnaire, Python profiler, SPSS, Interview guide).",
+            "Method: The specific technique or procedure applied to collect/analyze data (e.g., Stratified random sampling, thematic coding, A/B benchmarking).",
+            "Methodology: The overarching philosophical and systematic strategy justifying WHY specific methods and tools were chosen (e.g., Design Science Research, Mixed-Methods, Quantitative Experimental Methodology).",
+            "Framework (Conceptual/Theoretical): The structured visual/theoretical blueprint linking Independent Variables (IV), Moderating Variables, and Dependent Variables (DV)."
+          ],
+          "callout": {
+            "type": "insight",
+            "text": "20-Mark Past Paper Classic [Paper E3: Q4]: Differentiating Tool, Method, Methodology, and Framework with computing examples was worth a full 20 Marks!"
+          }
+        },
+        {
+          "heading": "Research Types, Proposal Flaws, Delimitations & Data Planning [Paper E1: Q1e, Q2b, Q3a-b, Paper E2: Q2b-c, Paper E3: Q1e]",
+          "points": [
+            "Action Research [Paper E3: Q1e]: Iterative, participatory research conducted inside a real organization/environment (Plan -> Act -> Observe -> Reflect) to solve an immediate practical problem while generating knowledge.",
+            "4 Questions Answered Before Data Collection [Paper E1: Q1e]: (1) What data is needed? (2) Where is the data located? (3) How will the data be secured/collected? (4) How will the data be interpreted/analyzed?",
+            "Operational Definition vs. Delimitation [Paper E1: Q3b]: Operational definition specifies exactly HOW a variable is measured in this study (e.g., 'exam readiness = mock score >= 75%'); Delimitation explicitly states the researcher-chosen boundaries/scope (what the study will NOT cover).",
+            "6 Common Design/Methodology Flaws in Proposals [Paper E1: Q2b]: Unclear/overly broad problem statement, mismatched sampling technique, inadequate sample size, biased/unvalidated instruments, missing ethical safeguards, and unrealistic budget/timeline."
+          ]
+        }
+      ],
+      "realWorldApplication": {
+        "industryContext": "UX research, ML model evaluation (ablation studies, A/B hypothesis testing), and cybersecurity penetration audits all apply validity, reliability, and controlled experimental design.",
+        "careerRelevance": "Directly equips you to defend your KCA Year 4 Project Proposal before the SDIS Department panel.",
+        "concreteExample": "Benchmarking a new caching algorithm uses an Experimental Design: Independent Variable = Cache Strategy (LRU vs. LFU), Dependent Variable = p99 API Latency (ms), $H_0$: No significant latency difference."
+      },
+      "practicalExamples": [
+        {
+          "title": "Exam-Ready 30-Mark Research Proposal Skeleton [Papers E1, E2, E3]",
+          "language": "markdown",
+          "codeOrDiagram": "Topic: Factors Influencing Adoption of AI Study Assistants in Kenyan Universities\n\n1. PROBLEM STATEMENT: Despite high smartphone penetration, empirical evidence on how AI study hubs impact exam retention among Kenyan IT undergraduates remains fragmented...\n2. OBJECTIVES:\n   - General: To evaluate factors influencing adoption of AI study tools among Kenyan university students.\n   - Specific (SMART): (i) To determine the effect of perceived usefulness on adoption; (ii) To assess the influence of internet affordability; (iii) To design a lightweight offline-first prototype.\n3. HYPOTHESES:\n   - H0: Perceived usefulness has no statistically significant effect on AI study tool adoption.\n   - H1: Perceived usefulness has a statistically significant positive effect on adoption.\n4. CONCEPTUAL FRAMEWORK:\n   [IV: Perceived Usefulness, Affordability] ---> [DV: Adoption Rate]\n                        ^\n            [Moderating: Digital Literacy]\n5. SAMPLING & INSTRUMENTS: Stratified Random Sampling across Years 1–4 + Structured Questionnaire (Likert 1–5) + NACOSTI/Informed Consent Ethics.",
+          "explanation": "Reproduce this exact 5-part template on ANY research scenario question to score 85%+ effortlessly."
+        }
+      ],
+      "examPitfallsAndTricks": [
+        {
+          "trap": "Writing 'Research Proposal' (future tense: 'will investigate') and 'Research Report' (past tense: 'investigated, found') interchangeably.",
+          "correctApproach": "Proposal = Chapters 1–3 BEFORE study (future tense, seeks approval/funding); Report/Thesis = Chapters 1–5 AFTER study (past tense, presents empirical findings & conclusions) [Paper E1: Q1c].",
+          "sampleQuestion": "Describe the Research Proposal vs. Research Report [Paper E1: Q1c]."
+        }
+      ],
+      "keyTermsGlossary": [
+        {
+          "term": "Null Hypothesis (H0)",
+          "definition": "A default statistical proposition stating there is no significant effect, difference, or relationship between variables."
+        },
+        {
+          "term": "Validity vs. Reliability",
+          "definition": "Validity measures accuracy (measuring the intended construct); Reliability measures consistency/repeatability across trials."
+        },
+        {
+          "term": "Delimitation",
+          "definition": "Explicit scope boundaries intentionally set by the researcher defining what is included and excluded from the study."
+        },
+        {
+          "term": "Action Research",
+          "definition": "Iterative, practice-based research aimed at diagnosing and solving an immediate real-world organizational problem."
         }
       ]
     }

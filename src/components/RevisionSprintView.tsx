@@ -62,6 +62,31 @@ const KIND_STYLES: Record<
 export const RevisionSprintView: React.FC<RevisionSprintViewProps> = ({ onSelectCourse }) => {
   const [completedIds, setCompletedIds] = useState<string[]>(() => getCompletedRevisionBlocks());
   const [phaseFilter, setPhaseFilter] = useState<'all' | SprintPhase>('all');
+  const [diagChecked, setDiagChecked] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem('it_study_hub_diag_v1');
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const DIAGNOSTIC_ITEMS = [
+    { id: 'diag-cpp', unit: 'CPP 2104', text: 'Draw the 9-cell C++ Inheritance Visibility Table from memory in <90s (100% accuracy) [Paper B1]' },
+    { id: 'diag-c', unit: 'STU 1201', text: 'Trace pointer dereferencing (`*p = *p2 + *(p2+2)`) & macro trap (`64/square(4) = 64`) cold [Papers C3–C4]' },
+    { id: 'diag-cct', unit: 'CUU 1202', text: 'Distinguish Valid/Sound vs Strong/Cogent & spot all 10 Informal Fallacies without notes [Guide L7]' },
+    { id: 'diag-il', unit: 'CUU 2102', text: 'Write a 3-concept Boolean query + list CRAAP + solve Maria AI Ethics case study [Papers A2–A3]' },
+    { id: 'diag-web', unit: 'STU 1202', text: 'Hand-write HTML5 `colspan`/`rowspan` table + JS `onSubmit` validation + CSS Box Model [Papers D1–D4]' },
+    { id: 'diag-res', unit: 'STU 2102', text: 'Contrast Tool/Method/Methodology/Framework + 5 Validity types + H0/H1 hypotheses [Papers E1–E3]' },
+  ];
+
+  const toggleDiag = (id: string) => {
+    setDiagChecked(prev => {
+      const next = prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id];
+      try { localStorage.setItem('it_study_hub_diag_v1', JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+  };
 
   const todayIso = new Date().toISOString().slice(0, 10);
 
@@ -194,7 +219,7 @@ export const RevisionSprintView: React.FC<RevisionSprintViewProps> = ({ onSelect
               <div className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>
-                  <strong>Exam Timing Split:</strong> 50m Q1 (30m) + 32m Q2 + 28m Q3 + 5m review
+                  <strong>Exam Timing Split (120m):</strong> 50m Q1 (30m) + 32m Q2 + 32m Q3 + 6m review
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-2">
@@ -218,6 +243,53 @@ export const RevisionSprintView: React.FC<RevisionSprintViewProps> = ({ onSelect
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* 6-Point Pre-Exam Weakness Diagnostic Checklist */}
+      <div className="rounded-2xl bg-slate-900/75 border border-indigo-500/30 p-5 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Target className="w-4 h-4 text-indigo-400" />
+            <h2 className="text-sm font-bold text-white">
+              6-Point Pre-Exam Readiness Diagnostic (Distinction Target: 6/6 Checked by Nov 30)
+            </h2>
+          </div>
+          <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold border ${
+            diagChecked.length === 6
+              ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+              : 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
+          }`}>
+            {diagChecked.length}/6 Exam-Ready
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          {DIAGNOSTIC_ITEMS.map(item => {
+            const done = diagChecked.includes(item.id);
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => toggleDiag(item.id)}
+                className={`text-left p-3 rounded-xl border flex items-start gap-2.5 transition-all ${
+                  done
+                    ? 'bg-emerald-950/25 border-emerald-500/35 text-emerald-100'
+                    : 'bg-slate-950/70 border-slate-800 hover:border-indigo-500/40 text-slate-300'
+                }`}
+              >
+                {done ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                ) : (
+                  <Circle className="w-4 h-4 text-slate-600 shrink-0 mt-0.5" />
+                )}
+                <div className="text-xs leading-relaxed">
+                  <span className="font-extrabold text-amber-300 mr-1.5">{item.unit}:</span>
+                  <span className={done ? 'line-through opacity-80' : ''}>{item.text}</span>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
 
