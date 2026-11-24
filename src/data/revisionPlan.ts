@@ -37,7 +37,7 @@ export interface PastPaperUnitResource {
   }[];
   highYieldTopics: string[];
   mockQuestions: {
-    section: 'Section A (Compulsory - 30 Marks)' | 'Section B (20 Marks)';
+    section: string;
     question: string;
     tip: string;
   }[];
@@ -71,28 +71,28 @@ export const PAST_PAPER_GUIDES: PastPaperUnitResource[] = [
     title: 'Introduction to Programming',
     examDate: 'Tue, Dec 1 · 17:00–19:00',
     lecturer: 'Griffin Kenga Kitili',
-    legacyCodes: ['BIT 1106', 'BSD 1105', 'BCT 1104', 'BBIT 105'],
+    legacyCodes: ['BIT 1106', 'BSD 1105', 'BCT 1104', 'BBIT 105', 'BIT 1102', 'BIT 1303A', 'BAC 1102'],
     moodleUrl: 'https://virtualcampus.kcau.ac.ke/course/view.php?id=33500',
     searchLinks: [
       {
-        label: 'Google PDF Search (New + Legacy)',
+        label: 'Google PDF Search (BIT 1303A / BIT 1102)',
         platform: 'Google PDF',
-        url: 'https://www.google.com/search?q=%22KCA+University%22+%28%22STU+1201%22+OR+%22BIT+1106%22+OR+%22Introduction+to+Programming%22%29+exam+OR+%22past+paper%22+filetype%3Apdf',
+        url: 'https://www.google.com/search?q=%22KCA+University%22+%28%22STU+1201%22+OR+%22BIT+1303A%22+OR+%22BIT+1102%22+OR+%22Programming+Methodology%22%29+filetype%3Apdf',
       },
       {
-        label: 'Studocu KCA Search',
+        label: 'Studocu KCA Programming Search',
         platform: 'Studocu',
-        url: 'https://www.studocu.com/row/search/KCA+University+Introduction+to+Programming',
+        url: 'https://www.studocu.com/row/search/KCA+University+Programming+Methodology+BIT+1303A',
       },
       {
-        label: 'Scribd KCA Papers',
+        label: 'Scribd KCA Programming Papers',
         platform: 'Scribd',
-        url: 'https://www.scribd.com/search?query=KCA%20University%20Introduction%20to%20Programming%20exam',
+        url: 'https://www.scribd.com/search?query=KCA%20University%20BIT%201303A%20Programming',
       },
       {
-        label: 'Kenyaplex / Masomo Msingi',
+        label: 'Masomo Msingi / Kenyaplex Bank',
         platform: 'Kenyaplex / Masomo',
-        url: 'https://www.google.com/search?q=site%3Akenyaplex.com+OR+site%3Amasomomsingi.com+%22KCA%22+%22Introduction+to+Programming%22',
+        url: 'https://www.google.com/search?q=site%3Akenyaplex.com+OR+site%3Amasomomsingi.com+%22KCA%22+%22Programming+Methodology%22',
       },
     ],
     highYieldTopics: [
@@ -104,14 +104,19 @@ export const PAST_PAPER_GUIDES: PastPaperUnitResource[] = [
     ],
     mockQuestions: [
       {
-        section: 'Section A (Compulsory - 30 Marks)',
-        question: 'Distinguish between a compiler and an interpreter (4m). Draw a flowchart and write a complete C program that reads 5 student marks, calculates the average, and assigns a grade (A≥70, B≥60, C≥50, D≥40, Fail<40) (12m). Trace the output of a given nested for-loop snippet (8m). Explain 3 types of programming errors with C examples (6m).',
+        section: 'Section A (Compulsory - 30 Marks) [KCA Legacy Paper BIT 1303A]',
+        question: 'a) Distinguish between a compiler and an interpreter with real examples (4m). b) Draw a flowchart and write a complete C program that requests user input for 3 subjects (Math, Physics, Computer Science), computes average, and outputs Pass (>=50%) or Fail (8m). c) Trace the output of a nested for-loop producing number pyramids (1, 12, 123, 1234, 12345) (6m). d) Explain the 3 main types of programming errors in C: Syntax, Runtime, and Semantic/Logical (6m). e) Differentiate between while loop and do-while loop (6m).',
         tip: 'Always include #include <stdio.h>, int main(void), proper format specifiers (%d, %f), and & in scanf().',
       },
       {
-        section: 'Section B (20 Marks)',
-        question: 'Explain the 6 stages of the Program Development Lifecycle (PDLC) (10m). Compare Procedural, Object-Oriented, and Functional programming paradigms with real language examples and use-cases (10m).',
+        section: 'Section B (20 Marks) [KCA Past Paper]',
+        question: 'a) Explain the 6 stages of the Program Development Lifecycle (PDLC) (10m). b) Compare Procedural, Object-Oriented, and Functional programming paradigms with real language examples and use-cases (10m).',
         tip: 'Use a clean structured table for paradigm comparisons — KCA examiners love well-organized tables.',
+      },
+      {
+        section: 'Section B (20 Marks) [Functions & Arrays]',
+        question: 'a) Define the term function as used in programming and outline two advantages of modular programming (4m). b) Write a C function that takes two integer arrays of size 5, multiplies corresponding values, and stores them in a third array (8m). c) Explain the difference between call-by-value and call-by-reference using C code snippets (8m).',
+        tip: 'Call-by-value passes a copy; call-by-reference uses pointers (& and *) to manipulate original memory addresses.',
       },
     ],
   },
@@ -204,14 +209,24 @@ export const PAST_PAPER_GUIDES: PastPaperUnitResource[] = [
     ],
     mockQuestions: [
       {
-        section: 'Section A (Compulsory - 30 Marks)',
-        question: 'Distinguish between Primary, Secondary, and Tertiary information sources with 2 academic examples each (9m). Explain how Boolean operators (AND, OR, NOT) and truncation refine database searches for an IT topic on "Cybersecurity in Mobile Banking" (9m). Format 4 given raw source details (Book, Journal Article, Website, Two-Author Report) into exact APA 7th edition reference list entries (12m).',
-        tip: 'Check APA punctuation ruthlessly: Author, A. A. (Year). *Title in sentence case*. Publisher/Journal, *vol*(issue), pp–pp.',
+        section: 'Question 1 (Compulsory - 20 Marks) [Real KCA Exam - April 2026 / August 2025]',
+        question: 'a) Differentiate between primary, secondary, and tertiary sources of information and give relevant examples (6 Marks). b) Outline FIVE criteria for judging an information source (5 Marks). c) Explain FOUR hallmarks of academic writing and give relevant examples (4 Marks). d) Describe FIVE database searching techniques (5 Marks).',
+        tip: 'Criteria for judging sources: Currency, Relevance, Authority, Accuracy, Purpose (CRAAP). Hallmarks: Formality, Objectivity, Evidence-based/Referencing, Precision/Clarity.',
       },
       {
-        section: 'Section B (20 Marks)',
-        question: 'Apply the CRAAP evaluation framework to assess whether a blog article on AI healthcare diagnostics is suitable for a university term paper (10m). Discuss 5 forms of plagiarism and 5 practical strategies students use to maintain academic integrity (10m).',
-        tip: 'Spell out every letter of CRAAP clearly and explain what specific evidence you check under each.',
+        section: 'Question 2 (15 Marks) [Real KCA Exam - August 2025 Diaspora & PT]',
+        question: 'a) Using Boolean search strategy, design a comprehensive search query to retrieve information about "renewable energy in Africa and policy development". Explain how your search terms and operators will improve relevance (10 Marks). b) Describe FIVE ways in which "in-text citations" differ from "end-references" when using APA Referencing style (10 Marks). c) Defend the concept of referencing in academic writing (5 Marks).',
+        tip: 'Query template: ("renewable energy" OR "solar energy" OR "clean energy") AND Africa AND ("policy development" OR regulation). In-text appears in body (Author, Year); end-reference appears at end with full bibliographic metadata.',
+      },
+      {
+        section: 'Question 3 (15 Marks) [Real KCA Exam - Case Study: AI Ethics in Academic Writing]',
+        question: 'Scenario: At KCA University, postgraduate student Maria uses an undisclosed AI writing tool for her literature review, reuses portions of an undergrad paper without citation, shares partially anonymized participant data via a public cloud link, submits to a rapid-publication fee-charging journal, and relies on automated tools generating fake citations. a) Identify and explain THREE key information ethics issues raised (6 Marks). b) Evaluate whether Maria\'s use of AI tools constitutes academic misconduct (6 Marks). c) Analyze responsibilities of the student, supervisor, and university (3 Marks).',
+        tip: 'Ethics issues: Self-plagiarism, Data privacy breach, Predatory publishing, Hallucinated citations. Defend with university integrity policy.',
+      },
+      {
+        section: 'Question 4 (15 Marks) [Real KCA Exam - Scenario: John Plagiarism & Source Credibility]',
+        question: 'a) John copied paragraphs word-for-word without citing and paraphrased websites without referencing. Explain the mistakes, potential academic disciplinary consequences, and how he should have properly cited (15 Marks). b) Distinguish between formal and informal writing styles in academic contexts with examples (8 Marks).',
+        tip: 'Consequences: Disqualification of paper, referral to Disciplinary Committee, suspension, or expunging of credit.',
       },
     ],
   },
@@ -254,14 +269,19 @@ export const PAST_PAPER_GUIDES: PastPaperUnitResource[] = [
     ],
     mockQuestions: [
       {
-        section: 'Section A (Compulsory - 30 Marks)',
-        question: 'Write complete HTML5 code to render a KCA Exam Timetable table demonstrating both colspan and rowspan (10m). Distinguish between GET and POST form submission methods and write an HTML registration form with text, email, radio, dropdown, and submit inputs (12m). Differentiate relative vs absolute URLs with examples (8m).',
+        section: 'Section A (Compulsory - 30 Marks) [KCA Legacy Paper BIT 1203]',
+        question: 'a) Describe the standard web design development lifecycle and list 4 guidelines a webmaster should follow when compiling a detailed site layout (10m). b) Write complete HTML5 code to render a university timetable table demonstrating both colspan and rowspan (8m). c) Distinguish between GET and POST form submission methods and write an HTML registration form with input types: text, email, radio button, select dropdown, and submit button (12m).',
         tip: 'Close every HTML tag cleanly (<tr>, <td>, </form>) and use semantic tags (<header>, <nav>, <main>, <footer>).',
       },
       {
-        section: 'Section B (20 Marks)',
-        question: 'Illustrate the CSS Box Model with a labeled diagram and write CSS rules demonstrating margin, border, padding, class vs ID selectors, and a mobile-first @media query (12m). Discuss 4 stages of Web Project Management and 4 UI/UX accessibility principles (8m).',
+        section: 'Section B (20 Marks) [CSS Box Model & Styling]',
+        question: 'a) Illustrate the CSS Box Model with a labeled diagram (Content, Padding, Border, Margin) (6m). b) Distinguish between Inline, Internal, and External CSS with pros/cons (6m). c) Write CSS rules demonstrating class vs ID selectors, hover pseudo-class, and a mobile-first responsive media query (@media (max-width: 768px)) (8m).',
         tip: 'Draw the concentric CSS Box Model diagram cleanly: Content → Padding → Border → Margin.',
+      },
+      {
+        section: 'Section B (20 Marks) [JavaScript DOM & Client-Side Scripting]',
+        question: 'a) Explain the purpose of the following JavaScript event handlers and methods: OnSubmit, OnFocus, OnChange, and document.getElementById() (8m). b) Write a client-side JavaScript validation function validateForm() that checks if the username is not empty and password has at least 8 characters before submitting (8m). c) Distinguish between client-side and server-side scripting (4m).',
+        tip: 'Always return false from the event handler if validation fails (e.g., event.preventDefault() or onsubmit="return validateForm()").',
       },
     ],
   },
@@ -321,47 +341,57 @@ export const PAST_PAPER_GUIDES: PastPaperUnitResource[] = [
     title: 'Object-Oriented Technologies',
     examDate: 'Thu, Dec 10 · 17:00–19:00',
     lecturer: 'Beatrice Muthoni Kagucia',
-    legacyCodes: ['BIT 2107', 'BIT 2108', 'BBIT 203', 'BSD 2101'],
+    legacyCodes: ['BIT 2108', 'BBIT 203', 'BAC 2101', 'BSD 2102', 'BISF 2101', 'CPP 2201'],
     moodleUrl: 'https://virtualcampus.kcau.ac.ke/course/view.php?id=33251',
     searchLinks: [
       {
-        label: 'Google PDF Search (BIT 2107 / BIT 2108 / CPP 2104)',
+        label: 'Google PDF Search (BIT 2108 / BAC 2101 / CPP 2201)',
         platform: 'Google PDF',
-        url: 'https://www.google.com/search?q=%22KCA+University%22+%28%22CPP+2104%22+OR+%22BIT+2107%22+OR+%22BIT+2108%22+OR+%22Object+Oriented%22%29+exam+filetype%3Apdf',
+        url: 'https://www.google.com/search?q=%22KCA+University%22+%28%22BIT+2108%22+OR+%22BAC+2101%22+OR+%22CPP+2201%22+OR+%22Object+Oriented+Programming%22%29+exam+filetype%3Apdf',
       },
       {
-        label: 'Studocu KCA Search',
+        label: 'Studocu KCA OOP Search',
         platform: 'Studocu',
-        url: 'https://www.studocu.com/row/search/KCA+University+Object+Oriented',
+        url: 'https://www.studocu.com/row/search/KCA+University+BIT+2108+Object+Oriented+Programming',
       },
       {
-        label: 'Scribd KCA Papers',
+        label: 'Scribd KCA OOP Papers',
         platform: 'Scribd',
-        url: 'https://www.scribd.com/search?query=KCA%20University%20Object%20Oriented%20BIT%202107%202108',
+        url: 'https://www.scribd.com/search?query=KCA%20University%20BIT%202108%20Object%20Oriented',
       },
       {
-        label: 'Kenyaplex / Masomo Msingi',
+        label: 'Masomo Msingi / Kenyaplex Bank',
         platform: 'Kenyaplex / Masomo',
-        url: 'https://www.google.com/search?q=site%3Akenyaplex.com+OR+site%3Amasomomsingi.com+%22KCA%22+%22Object+Oriented%22',
+        url: 'https://www.google.com/search?q=site%3Akenyaplex.com+OR+site%3Amasomomsingi.com+%22KCA%22+%22BIT+2108%22',
       },
     ],
     highYieldTopics: [
-      'UML Building Blocks, Structural (Class, Object, Package) vs Behavioral (Use Case, Sequence, Activity) Diagrams',
-      'UML Class Diagrams: Visibility (+, -, #), Multiplicity (1..*, 0..1), Association, Aggregation (hollow diamond) vs Composition (filled diamond)',
-      '4 Pillars of OOP: Encapsulation, Inheritance, Polymorphism (Overloading vs Overriding), Abstraction',
-      'Constructors, Destructors, Access Modifiers, Abstract Classes vs Interfaces',
-      'Exception Handling (try/catch/throw/finally) & Design Patterns (Singleton, Factory, Observer)',
+      'OOP 4 Pillars: Abstraction, Encapsulation, Inheritance, Polymorphism (Runtime vs Compile-time)',
+      'Member Visibility & Inheritance Derivation Table (Public, Protected, Private base class derivations)',
+      'Constructors (Parameterized, Default, Copy) and Destructors (~ClassName)',
+      'Friend Functions, Inline Functions & Static Class Members in C++',
+      'File Handling (ifstream, ofstream, fstream) with persistent text files (e.g., calllogs.txt)',
     ],
     mockQuestions: [
       {
-        section: 'Section A (Compulsory - 30 Marks)',
-        question: 'Design a complete UML Class Diagram for a KCA University Library System (Book, Member, Student, Lecturer, Loan, Library) showing visibility (+/-/ #), methods, inheritance, aggregation/composition, and multiplicity (14m). Differentiate Method Overloading vs Method Overriding with code examples (8m). Contrast Abstract Classes vs Interfaces (8m).',
-        tip: 'Bring a ruler! Hollow triangle = Inheritance (Generalization), Filled diamond = Composition (strong whole-part), Hollow diamond = Aggregation.',
+        section: 'Question 1 (Compulsory - 20 Marks) [Real KCA Exam - Aug 2024 / Aug 2025]',
+        question: 'a) Define the 4 OOP principles and explain their importance (4 Marks). b) Copy and complete the table to show child class visibility of inherited members under Protected, Public, and Private derivation from Public, Private, and Protected parent members (9 Marks). c) Explain the circumstances under which Struct, Class, and Union are most applicable in OOP (6 Marks). d) Explain the terms state and behavior (2 Marks).',
+        tip: 'Table Rule: Private parent members are NEVER accessible in derived classes. Under public derivation: public stays public, protected stays protected. Under protected derivation: both become protected. Under private derivation: both become private.',
       },
       {
-        section: 'Section B (20 Marks)',
-        question: 'Write a clean OOP program (Java or C++) demonstrating Encapsulation, Inheritance, Dynamic Polymorphism, and try-catch exception handling for a Banking Account hierarchy (SavingsAccount & CurrentAccount) (14m). Explain the Singleton and Observer design patterns with real software use cases (6m).',
-        tip: 'Keep your handwritten code concise, clearly annotate access specifiers (private/protected/public), and show @Override or virtual methods.',
+        section: 'Question 2 (15 Marks) [Real KCA Exam - Class E-Shamba / BankAccount]',
+        question: 'a) Write a C++ program implementing class E-Shamba containing two variables, unparameterized and parameterized constructors initializing objects S1(13,19) and S2(25,35), and method Area() to determine and output their areas (8 Marks). b) Design a C++ BankAccount class with private attributes accountNumber and balance, and public methods deposit(), withdraw(), and display() (6 Marks).',
+        tip: 'Show explicit constructor definitions: EShamba() : length(0), width(0) {} and EShamba(int l, int w) : length(l), width(w) {}.',
+      },
+      {
+        section: 'Question 3 (15 Marks) [Real KCA Exam - Call Log Receipt File Handling]',
+        question: 'Scenario: Express Call Centre Ltd in Nairobi Call Log Receipt (Log No: 5558, Caller: Samuel Otieno, Duration: 15 mins, Charge: KES 150.00). a) Define C++ class CallLog with private attributes: logNo, callerName, callReason, duration, charge. Include public input and display methods (5 Marks). b) Explain how encapsulation protects caller data (3 Marks). c) Write a C++ code segment to open "calllogs.txt" and write one call log record to it using ofstream (4 Marks).',
+        tip: 'Use #include <fstream>; ofstream outfile("calllogs.txt", ios::app); outfile << logNo << " " << callerName ...; outfile.close();',
+      },
+      {
+        section: 'Question 4 (15 Marks) [Real KCA Exam - Polymorphism & Pure Virtual Functions]',
+        question: 'a) Describe THREE benefits of polymorphism in OOP (3 Marks). b) Using a code example, describe the use of a pure virtual function (virtual void show() = 0;) in C++ and explain abstract base classes (5 Marks). c) Write a C++ program that uses overloaded function compute() to calculate area or volume based on argument count (compute(15,6) vs compute(7,5,10)) (7 Marks).',
+        tip: 'Pure virtual functions force derived classes to provide concrete implementations, enabling runtime dynamic dispatch.',
       },
     ],
   },
